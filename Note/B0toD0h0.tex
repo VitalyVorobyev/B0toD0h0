@@ -1,0 +1,2546 @@
+%
+%    Template for Belle journal submissions
+%
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.0
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+%%% Use this for e-print submission 
+%%% You also need to do the following:
+%%%   * Comment out widetext, use eqnarray and \nonumber 
+%%%     (for the first line) for eq:likelihood
+%%%   * Change the figure size to 0.6
+%%%   * Put preprint numbers and the Belle logo
+%\documentclass[aps,prl,preprint,tightenlines,superscriptaddress,showpacs,byrevtex]{revtex4}
+%
+%%% Use this for PRL submission 
+%%% You also need to do the following:
+%%%   * Comment out widetext, use eqnarray and \nonumber 
+%%%     (for the first line) for eq:likelihood
+%%%   * Change the figure size to 0.6
+%%%   * Comment out preprint numbers and the Belle logo
+%\documentclass[aps,prl,preprint,superscriptaddress,showpacs,byrevtex]{revtex4}
+%
+%%% Double-column style
+%%% You also need to do the following:
+%%%   * Use widetext for eq:likelihood, comment out \nonumber
+%%%   * Change the figure size appropriately (should be less than 0.5)
+%%%   * Comment out preprint numbers and the Belle logo
+%\documentclass[aps,prl,twocolumn,superscriptaddress,showpacs,preprintnumbers,amsmath,amssymb]{revtex4}
+%
+
+% Some other (several out of many) possibilities
+\documentclass[preprint,aps,showpacs]{revtex4}
+%\documentclass[preprint,aps,draft]{revtex4}
+
+\usepackage{graphicx} % Include figure files
+\usepackage{dcolumn}  % Align table columns on decimal point
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+
+\usepackage{multirow}
+%\graphicspath{{ps}}
+
+%\extrafloats{100}
+
+\renewcommand{\arraystretch}{1.1}
+
+\RequirePackage{xspace}
+
+\newcommand{\dz}{\ensuremath{\left|D^0\right>}\xspace}
+\newcommand{\dzb}{\ensuremath{\left|\bar D^0\right>}\xspace}
+\newcommand{\da}{\ensuremath{\left|D_1\right>}\xspace}
+\newcommand{\db}{\ensuremath{\left|D_2\right>}\xspace}
+
+\newcommand{\massp}{\ensuremath{m^2_{+}}\xspace}
+\newcommand{\massm}{\ensuremath{m^2_{-}}\xspace}
+
+\newcommand{\dzt}{\left|D^0\left(t\right)\right>}
+\newcommand{\dzbt}{\left|\bar D^0\left(t\right)\right>}
+\newcommand{\dat}{\left|D_1\left(t\right)\right>}
+\newcommand{\dbt}{\left|D_2\left(t\right)\right>}
+
+\newcommand{\dzti}{\left|D^0\left(0\right)\right>}
+\newcommand{\dzbti}{\left|\bar D^0\left(0\right)\right>}
+\newcommand{\dati}{\left|D_1\left(0\right)\right>}
+\newcommand{\dbti}{\left|D_2\left(0\right)\right>}
+
+\newcommand{\ampmod}{\left|\mathcal{A}\right|}
+\newcommand{\ampbmod}{\left|\mathcal{\bar A}\right|}
+
+\newcommand{\kap}{\varkappa\left(t\right)}
+\newcommand{\sig}{\sigma\left(t\right)}
+
+\newcommand{\kapdt}{\varkappa\left(\Delta t\right)}
+\newcommand{\sigdt}{\sigma\left(\Delta t\right)}
+
+\newcommand{\dsdpi}{\ensuremath{D^{*{\pm}}\to D^0\pi^{\pm}}\xspace}
+
+\newcommand{\dt}{\ensuremath{\Delta t}\xspace}
+\newcommand{\mpsq}{\ensuremath{m_+^2}\xspace}
+\newcommand{\mmsq}{\ensuremath{m_-^2}\xspace}
+
+\newcommand{\cpconj}{\ensuremath{\mathcal{CP}}\xspace}
+\newcommand{\pconj}{\ensuremath{\mathcal{P}}\xspace}
+\newcommand{\cconj}{\ensuremath{\mathcal{C}}\xspace}
+\newcommand{\tconj}{\ensuremath{\mathcal{T}}\xspace}
+\newcommand{\cpvconj}{\ensuremath{\mathcal{CPV}}\xspace}
+\newcommand{\cptconj}{\ensuremath{\mathcal{CPT}}\xspace}
+
+\newcommand{\kspp}{\ensuremath{K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dkpp}{\ensuremath{D\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dnkpp}{\ensuremath{D^0\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dbkpp}{\ensuremath{\overline{D}{}^0\to K^0_S\pi^+\pi^-}\xspace}
+%\newcommand{\bdkp}{\ensuremath{B^0\to D K^+\pi^-}\xspace}
+%\newcommand{\bdnkp}{\ensuremath{B^0\to D^0 K^+\pi^-}\xspace}
+%\newcommand{\bdbkp}{\ensuremath{B^0\to \overline{D}{}^0 K^+\pi^-}\xspace}
+%\newcommand{\bdcpkp}{\ensuremath{B^0\to D_{CP} K^+\pi^-}\xspace}
+%\newcommand{\bdkstar}{\ensuremath{B^0\to D K^{*0}}\xspace}
+
+\newcommand{\bdk}{\ensuremath{B^{\pm}\to D K^{\pm}}\xspace}
+\newcommand{\bdkp}{\ensuremath{B^+\to D K^+}\xspace}
+\newcommand{\bdkm}{\ensuremath{B^+\to D K^+}\xspace}
+\newcommand{\bdcpk}{\ensuremath{B^+\to D_{CP} K^+}\xspace}
+
+%\newcommand{\sindbeta}{\ensuremath{\sin{2\beta}}\xspace}
+%\newcommand{\cosdbeta}{\ensuremath{\cos{2\beta}}\xspace}
+
+\newcommand{\sindbeta}{\ensuremath{\sin{2\varphi_1}}\xspace}
+\newcommand{\cosdbeta}{\ensuremath{\cos{2\varphi_1}}\xspace}
+
+\newcommand{\dkp}{\ensuremath{D\to K^+\pi^-}\xspace}
+\newcommand{\dkpbar}{\ensuremath{D\to K^-\pi^+}\xspace}
+
+\newcommand{\dn}{\ensuremath{D^0}\xspace}
+\newcommand{\dnbar}{\ensuremath{\overline{D}{}^0}\xspace}
+
+\newcommand{\ab}{\ensuremath{\mathcal{A}_B}\xspace}
+\newcommand{\abbar}{\ensuremath{\overline{\mathcal{A}}_B}\xspace}
+
+\newcommand{\pd}{\ensuremath{P}\xspace}
+\newcommand{\pdbar}{\ensuremath{\overline{P}}\xspace}
+
+\newcommand{\ad}{\ensuremath{\mathcal{A}}\xspace}
+\newcommand{\adbar}{\ensuremath{\overline{\mathcal{A}}}\xspace}
+\newcommand{\dvar}{\ensuremath{(m^2_{+}, m^2_{-})}\xspace}
+
+\newcommand{\grad}{\ensuremath{^{\circ}}\xspace}
+
+\newcommand{\ks}{\ensuremath{K_S^0}\xspace}
+
+\newcommand{\mca}{\mathcal{A}}
+\newcommand{\mcab}{\overline{\mathcal{A}}}
+\newcommand{\af}{\ensuremath{\mathcal{A}_f}\xspace}
+\newcommand{\abf}{\ensuremath{\overline{\mathcal{A}}{}_f}\xspace}
+\newcommand{\afb}{\ensuremath{\mathcal{A}_{\overline{f}}}\xspace}
+\newcommand{\abfb}{\ensuremath{\overline{\mathcal{A}}{}_{\overline{f}}}\xspace}
+\newcommand{\afm}{\ensuremath{\mathcal{A}_f^{\prime}}\xspace}
+\newcommand{\abfm}{\ensuremath{\overline{\mathcal{A}}{}_f^{\prime}}\xspace}
+\newcommand{\afbm}{\ensuremath{\mathcal{A}_{\overline{f}}^{\prime}}\xspace}
+\newcommand{\abfbm}{\ensuremath{\overline{\mathcal{A}}_{\overline{f}}^{\prime}}\xspace}
+
+\newcommand{\dkspp}{\ensuremath{D^0\to K_S^0\pi^+\pi^-}\xspace}
+\newcommand{\bdh}{\ensuremath{B^0\to \bar D^0h^0}\xspace}
+\newcommand{\bdsth}{\ensuremath{B^0\to \bar D^{(*)0}h^0}\xspace}
+\newcommand{\bdstarh}{\ensuremath{B^0\to \bar D^{*0}h^0}\xspace}
+\newcommand{\bdpi}{\ensuremath{B^0\to \bar D^0\pi^0}\xspace}
+\newcommand{\bdeta}{\ensuremath{B^0\to \bar D^0\eta}\xspace}
+\newcommand{\bdetagg}{\ensuremath{B^0\to \bar D^0\eta_{\gamma\gamma}}\xspace}
+\newcommand{\bdetap}{\ensuremath{B^0\to \bar D^0\eta\prime}\xspace}
+\newcommand{\bdetappp}{\ensuremath{B^0\to \bar D^0\eta_{\pi^+\pi^-\pi^0}}\xspace}
+\newcommand{\bdomega}{\ensuremath{B^0\to \bar D^0\omega}\xspace}
+\newcommand{\btodstpi}{\ensuremath{B^0\to \bar D^{*0}\pi^0}\xspace}
+\newcommand{\btodsteta}{\ensuremath{B^0\to \bar D^{*0}\eta}\xspace}
+
+\newcommand{\dpi}{\ensuremath{D^0\pi^0}\xspace}
+\newcommand{\detagg}{\ensuremath{D^0\eta_{\gamma\gamma}}\xspace}
+\newcommand{\detap}{\ensuremath{D^0\eta\prime}\xspace}
+\newcommand{\detappp}{\ensuremath{D^0\eta_{\pi^+\pi^-\pi^0}}\xspace}
+\newcommand{\domega}{\ensuremath{D^0\omega}\xspace}
+\newcommand{\todstpi}{\ensuremath{D^{*0}\pi^0}\xspace}
+\newcommand{\todsteta}{\ensuremath{D^{*0}\eta}\xspace}
+
+\newcommand{\bjpsik}{\ensuremath{B^+\to (J/\psi\to\mu^+\mu^-)K^+}\xspace}
+\newcommand{\bcbjpsik}{\ensuremath{B^+_c\to(B^+\to J/\psi K^+)K^-\pi^+}\xspace}
+%\newcommand{\bcbdpi}{\ensuremath{B^+_c\to(B^+\to (\bar D^0\to K^-\pi^+))\pi^+)K^-\pi^+}\xspace}
+\newcommand{\bcbdpi}{\ensuremath{B^+_c\to(B^+\to \bar D^0\pi^+)K^-\pi^+}\xspace}
+\newcommand{\aad}{\ensuremath{|f|}\xspace}
+\newcommand{\aadbar}{\ensuremath{|\overline{f}|}\xspace}
+
+\newcommand{\hgg}{\ensuremath{h^0\to\gamma\gamma}\xspace}
+\newcommand{\dst}{\ensuremath{D^{\star}(2007)^0}\xspace}
+\newcommand{\etagg}{\ensuremath{\eta\to\gamma\gamma}\xspace}
+\newcommand{\etasubgg}{\ensuremath{\eta_{\gamma\gamma}}\xspace}
+\newcommand{\hppp}{\ensuremath{h^0\to\pi^+\pi^-\pi^0}\xspace}
+\newcommand{\etappp}{\ensuremath{\eta\to\pi^+\pi^-\pi^0}\xspace}
+\newcommand{\etasubppp}{\ensuremath{\eta_{\pi^+\pi^-\pi^0}}\xspace}
+\newcommand{\omegappp}{\ensuremath{\omega\to\pi^+\pi^-\pi^0}\xspace}
+\newcommand{\omegasubppp}{\ensuremath{\omega_{\pi^+\pi^-\pi^0}}\xspace}
+
+\newcommand{\bz}{\left|B^0\right>}
+\newcommand{\bzb}{\left|\bar B^0\right>}
+\newcommand{\ba}{\left|B_H\right>}
+\newcommand{\bb}{\left|B_L\right>}
+
+\newcommand{\bzt}{\left|B^0\left(t\right)\right>}
+\newcommand{\bzbt}{\left|\bar B^0\left(t\right)\right>}
+\newcommand{\bzta}{\left|B^0\left(t_1\right)\right>}
+\newcommand{\bztb}{\left|B^0\left(t_2\right)\right>}
+\newcommand{\bzbta}{\left|\bar B^0\left(t_1\right)\right>}
+\newcommand{\bzbtb}{\left|\bar B^0\left(t_2\right)\right>}
+\newcommand{\bat}{\left|B_H\left(t\right)\right>}
+\newcommand{\bbt}{\left|B_L\left(t\right)\right>}
+
+\newcommand{\bzti}{\left|B^0\left(0\right)\right>}
+\newcommand{\bzbti}{\left|\bar B^0\left(0\right)\right>}
+\newcommand{\bati}{\left|B_H\left(0\right)\right>}
+\newcommand{\bbti}{\left|B_L\left(0\right)\right>}
+
+\newcommand{\bptodpi}{\ensuremath{B^{+}\to \bar D^0\pi^+}\xspace}
+
+\newcommand{\de}{\ensuremath{\Delta E}\xspace}
+\newcommand{\mbc}{\ensuremath{M_{bc}}\xspace}
+
+\newcommand{\new}[1]{\textcolor{red}{#1}}
+
+% Belle authors Checklist:
+% 1) Title; use \\ to break title over several lines.
+% 2) Author list
+% 3) Abstract
+% 4) pacs numbers, for PRL, PRD
+% 5) Body
+
+\begin{document}
+
+%\vspace*{-3\baselineskip}
+%\resizebox{!}{3cm}{\includegraphics{belle.eps}}
+
+
+\preprint{\vbox{ \hbox{   }
+%			 \hbox{Belle DRAFT {\it YY-NN}}
+			 \hbox{Belle NOTE {\it 1383}}
+%                        \hbox{Intended for}% {\it PRD}}
+%                        \hbox{Author: V.~Vorobyev}
+                        \hbox{Committee: Vladimir Savinov (chair),}
+                        \hbox{\hspace{2.2 cm}David Asner and}
+                        \hbox{\hspace{2.2 cm}Pavel Krokovny.}
+  		              % \hbox{hep-ex nnnn}
+}}
+
+\title{ \quad\\[1.0cm] Measurement of the $\cos{2\varphi_1}$ in \bdh, \dkpp decays with a time-dependent binned Dalitz analysis}
+
+%%%% >>>>> insert the authorlist here. BEFORE the abstract !!!!! <<<<<
+%%%% >>>>> from the authorship confirmation web page
+%%% Name the file author.tex and use \input{author} to insert into your latex file.
+\author{Vitaly~Vorobyev}
+\affiliation{Budker Institute of Nuclear Physics, Lavrentieva 11, Novosibirsk, 630090, Russia}
+\affiliation{Novosibirsk State University, Pirogova 2, Novosibirsk, 630090, Russia}
+%\author{Anton Poluektov}
+%\affiliation{Budker Institute of Nuclear Physics, Lavrentieva 11, Novosibirsk, 630090, Russia}
+%\affiliation{Department of Physics, University of Warwick, Coventry CV4 7AL, United Kingdom}
+%\collaboration{The Belle Collaboration}
+\noaffiliation
+%% end author list
+
+\date{November 3rd, 2015}
+
+
+%\begin{abstract}
+% This measurement of $\cos{2\varphi_1}$ in \bdh, \dkpp decays with time-dependent binned Dalitz analysis is based on a full Belle experiment data sample that contains $700\cdot 10^6$ $BB$ pairs, collected  with the Belle detector at the KEKB asymmetric-energy $e^+e^-$ (3.5 on 8~GeV) collider~\cite{KEKB} operating at the $\Upsilon(4S)$ resonance.
+
+% We report the most beautiful result to date. 
+% These results are obtained from a $YYY\,{\rm fb}^{-1}$ data sample 
+% that contains $XXX \times 10^6 B\bar{B}$ pairs and was collected 
+% near the $\Upsilon(4S)$ resonance,
+% with the Belle detector at the KEKB asymmetric energy $e^+ e^-$
+% collider.
+% {\it For official integrated luminosity, see }
+% {\tt     http://belle.kek.jp/group/ecl/private/lum/, }
+% {\it  and for number of $B\bar{B}$ pairs, see }
+% {\tt     http://belle.kek.jp/secured/nbb/nbb.html.   }
+%\end{abstract}
+
+%\pacs{XX.YY.ZZ, AA.BB.CC}
+
+\maketitle
+
+\tableofcontents
+%%%% >>>> keep the final version single-spaced
+%\tightenlines
+
+{\renewcommand{\thefootnote}{\fnsymbol{footnote}}}
+\setcounter{footnote}{0}
+
+\newpage
+\section{Introduction}
+\subsection{Discrete symmetries and violation of the \cpconj symmetry}
+Our analysis is devoted to study of phenomenon of \cpconj symmetry violation. This symmetry means invariance of a field theory Lagrangian under combination of \cconj and \pconj transformations:
+\begin{itemize}
+ \item \pconj {\it (parity inversion)} transformation inverts sing of spatial coordinates: $\mathbf{r}\to -\mathbf{r}$;
+ \item \cconj {\it (charge conjugation)} transformation changes particles to antiparticles.
+\end{itemize}
+Since \cpconj symmetry braking is needed for creation of matter-antimatter imbalance in the Universe (it is one of Sakharov conditions) one can call \cpconj symmetry as a symmetry between matter and antimatter.
+
+Up to date observations show that strong and electromagnetic interactions are invariant under \pconj and \cpconj transformations. In contrast, both \pconj and \cpconj symmetries are broken by weak interaction. 
+
+\subsubsection{The Cabibbo-Kobayashi-Maskawa matrix}
+Kobayashi and Maskawa suggested a natural mechanism of the \cpconj symmetry breaking in case of three generations of quarks \cite{KM}. The idea is that weak charged currents lead to transitions between up quarks ($u$, $c$, $t$) and linear combinations of bottom quarks ($d^{\prime}$, $s^{\prime}$, $b^{\prime}$). Primed states are connected with flavor states by an unitary $V$:
+\begin{equation}\label{eq:CKM-matrix}
+ \left(\begin{array}{c} d^{\prime}\\s^{\prime}\\b^{\prime}\end{array}\right)=V\left(\begin{array}{c} d\\s\\b\end{array}\right)=\left(\begin{array}{ccc} V_{ud}&V_{us}&V_{ub}\\V_{cd}&V_{cs}&V_{cb}\\V_{td}&V_{ts}&V_{tb}\end{array}\right)\left(\begin{array}{c} d\\s\\b\end{array}\right)
+\end{equation}
+known as the {\it Cabibbo-Kobayashi-Maskawa matrix}. Correspondent mixing matrix for anti-quarks is obtained by complex conjugation of the matrix $V$. Imaginary part of $V$ leads to difference between flavor-changing interactions for matter and anti-matter and, in other words, to the \cpconj violation. The key point is that at least dimension $3$ is required for inability to make the matrix $V$ a real matrix by choosing appropriate unobserved phases. One complex phase is irremovable if there are three quarks generations. It does not mean that the phase can not equals zero, but there is not any reason for that.
+
+Considering a Feynman diagram one should put correspondent element $V_{ij}$ to each $Wq_{up}q_{down}$ vertex and $V^{*}_{ij}$ to each $W\bar q_{up}\bar q_{down}$ vertex.
+
+\subsubsection{The Unitarity Triangle}
+The Cabibbo-Kobayashi-Maskawa (CKM) mechanism of the \cpconj violation must be tested experimentally. All matrix elements $V_{ij}$ should be measured, all observations should be in agreement with CKM predictions and unitarity conditions of the CKM matrix should be checked.
+
+\begin{figure}[htb]
+\includegraphics[width=0.6\textwidth]{pics/UTriangle.png}
+\caption{The Unitarity Triangle \cite{BPhys}.}
+\label{fig:UT}
+\end{figure}
+
+The most convenient for experimental checking unitary condition is the following:
+\begin{equation}\label{eq:unitarity_condition}
+ \frac{V_{ud}V^*_{ub}}{V_{cd}V^*_{cb}}+\frac{V_{td}V^*_{tb}}{V_{cd}V^*_{cb}}+1=0,
+\end{equation}
+This condition can be shown as triangle on a complex plane (Fig.\,\ref{fig:UT}). All angles and sides of the triangle are not small and it is common to call it as Unitarity Triangle. What we need now in order to test CKM mechanism is to measure independently all elements of the Unitarity Triangle and check triangle conditions. Our analysis is devoted to measurement of the angle $\varphi_1$ \footnote{Another naming convention, $\beta$ ($= \varphi_1$) and $\alpha$ ($= \varphi_2$), is also used in the literature.}
+\begin{equation}\label{eq:phi1}
+ \varphi_1\equiv\arg\left(-\frac{V_{td}V^*_{tb}}{V_{cd}V^*_{cb}}\right).
+\end{equation}
+
+\subsection{Neutral $B_d$ meson oscillations}
+\begin{figure}[htb]
+\includegraphics[width=0.4\textwidth]{pics/BoxMixing.png}
+\caption{Box diagram for $B^0_{d(s)}\to\bar B^0_{d(s)}$ transition \cite{BPhys}.}
+\label{fig:BoxMixing}
+\end{figure}
+Flavor-changing weak currents allow one to consider process $B^0 \to \bar B^0$ (Fig.\,\ref{fig:BoxMixing}). That means flavor eigenstates $B^0$ and $\bar B^0$ are not eigenstates of weak interaction Lagrangian. In general flavor states are connected with Lagrangian eigenstates $B_H$ and $B_L$ by the following relation:
+\begin{equation}\label{eq:basis_transformation}
+ \left (\begin{array}{c}\ba\\ \bb\end{array}\right )=
+\left (\begin{array}{cc}p & q\\
+p & -q\end{array}\right )
+\left (\begin{array}{c}\bz\\\bzb\end{array}\right ),
+\end{equation}
+where complex numbers $p$ and $q$ obey the normalization condition $\left|p\right|^2 +\left|q\right|^2 = 1$. The Lagrangian eigenstates $B_H$ and $B_L$ have definite masses and widths:
+\begin{equation}
+ \bat = e^{-im_Ht-\frac{\Gamma_H}{2}t}\bati,\quad \bbt = e^{-im_Lt-\frac{\Gamma_L}{2}t}\bbti.
+\end{equation}
+Since $\left(\Gamma_H-\Gamma_L\right)\ll \Gamma_H$ we will use a single value $\Gamma$ in the following. Now we can write down equation for time evolution of the flavor eigenstates (see \cite{CarterSanda,BigiSanda}):
+ \begin{equation}\label{eq:flavor_states_evolution}
+ \left (\begin{array}{c}\bzt\\\bzbt\end{array}\right )=
+ \left (\begin{array}{cc}\kap & i\frac{q}{p}\sig\\
+ i\frac{p}{q}\sig & \kap \end{array}\right )
+ \left (\begin{array}{c}\bzti\\\bzbti\end{array}\right ),
+ \end{equation}
+where
+ \begin{equation}
+ \kap=e^{-imt}e^{-\frac{\Gamma t}{2}}\cos{\frac{\Delta m_B t}{2}},\quad
+ \sig=e^{-imt}e^{-\frac{\Gamma t}{2}}\sin{\frac{\Delta m_B t}{2}},
+ \end{equation}
+ where
+ \begin{equation}
+  \Delta m_B \equiv m_H - m_L,\quad m = \frac{1}{2}(m_H+m_L).
+ \end{equation}
+ 
+\subsection{Evolution of coherent $B^0$-$\bar B^0$ pairs}
+Neutral $B$ mesons are produced at a $B$-factory together with its antiparticle in process
+\begin{equation}
+ e^+e^-\to\Upsilon(4S)\to B^0\bar B^0.
+\end{equation}
+Before decay one can not distinguish between two mesons. That is why one must describe the $B^0$-$\bar B^0$ system with a common wave function
+\begin{equation}\label{eq:raw_coh_ampl}
+ \Psi(t_1,t_2) \propto \bzta\bzbtb - \bzbtb\bzta,
+\end{equation}
+where we drop out normalization coefficient. Sign minus is put here because the wave function must change sign under \cconj transformation keeping quantum numbers of photon and $\Upsilon(4S)$. One can consider the wave function (\ref{eq:raw_coh_ampl}) as a function of $\Delta t\equiv t_1 - t_2$ and $(t_1+t_2)$. Variable $(t_1+t_2)$ appears only in a common factor $e^{-\frac{\Gamma(t_1+t_2)}{2}}$ (page~$9$ in \cite{BaBarBook}) and can be integrated out in an expression for probability density without any change in \cpvconj dependent part:
+\begin{equation}
+ p(\dt) = \int\limits_{|\dt|}^{\infty}|\Psi(\dt,t_1+t_2)|^2 \,d(t_1+t_2).
+\end{equation}
+This probability density does not depend on $\Upsilon(4S)$ decay time.
+
+Let us denote an amplitude of $B^0$ decay into a final state $f$ by $A_f$ and amplitude of $\bar B^0$ decay into the same final state $f$ as $\bar A_{f}$. Assume now one $B$ meson ($B_{tag}$) decays into a $\bar B^0$ flavor specific final state at time $t_{tag}$. Flavor of the second $B$ meson is fixed in $B^0$ at that moment. The second $B$ meson decays into some final state $f$ at time $t_{sig}$. Amplitude of this process has the following form:
+\begin{equation}\label{eq:coh_ampl}
+ A(\Delta t) \propto \left|A_f\right|\kapdt - ie^{i\theta}\left|\bar A_f\right|\sigdt,\quad \Delta t\equiv t_{sig} - t_{tag},
+\end{equation}
+where we assume $\left|p/q\right|=1$ and
+\begin{equation}
+ \theta = arg\left(\frac{p}{q}\frac{\bar A_f}{A_f}\right)
+\end{equation}
+is {\it convention-independent} phase. Taking a sum over box mixing diagrams (Fig.\,\ref{fig:BoxMixing}) one can obtain
+\begin{equation}
+ \theta = -2\varphi_1 + \delta_{f},\quad \delta_{f} = arg\left(\frac{\bar A_f}{A_f}\right) \left( =arg\left(\frac{A_{\bar f}}{\bar A_{\bar f}}\right) \right).
+\end{equation}
+
+Time dependent probability density of this process is:
+\begin{equation}
+\begin{split}
+ p(\Delta t) \propto e^{-\Gamma|\dt|}&\left[\left(\left|A_f\right|^2+\left|\bar A_f\right|^2\right)\right.\\
+ +&\left.\left(\left|A_f\right|^2-\left|\bar A_f\right|^2\right)\cos(\Delta m\Delta t)+2\sin{\theta}\left|A_{f}\right|\left|\bar A_{f}\right|\sin(\Delta m\Delta t)\right].
+\end{split}
+\end{equation}
+\cpconj conjugated process gives
+\begin{equation}
+\begin{split}
+ \bar p(\Delta t) \propto e^{-\Gamma|\dt|}&\left[\left(\left|A_{\bar f}\right|^2+\left|\bar A_{\bar f}\right|^2\right)\right.\\
+ +&\left.\left(\left|A_{\bar f}\right|^2-\left|\bar A_{\bar f}\right|^2\right)\cos(\Delta m\Delta t)+2\sin{\bar\theta}\left|A_{\bar f}\right|\left|\bar A_{\bar f}\right|\sin(\Delta m\Delta t)\right],
+\end{split}
+\end{equation}
+where
+\begin{equation}
+ \bar\theta = +2\varphi_1 + \delta_f.
+\end{equation}
+Considering two data samples with opposite tagged $B$ decays one can extract information about $\varphi_1$. If $\delta_f=0$ or $\delta_f=\pi$ (the case for \cpconj eigenstate $f$) only \sindbeta can be measured.
+
+Other necessary condition is non-zero amplitudes for $B^0$ and $\bar B^0$ decays into final state~$f$. Indeed, only interference between oscillating and not oscillating amplitudes provides sensitivity to the complex phase $\varphi_1$.
+
+\subsection{Sensitivity to the $\varphi_1$ in \bdsth, \dkpp decays}
+Let us consider processes \bdsth, \dbkpp\footnote{Throughout this paper, the inclusion of the charge conjugate mode decay is implied unless otherwise stated.} as a signal final state \cite{BGK}. (We neglect charm mixing due to smallness of the charm mixing parameters.)
+
+\bdsth decay goes through color suppressed $b\to c\bar u d$ transition at tree level (Fig.\,\ref{fig:bdhpi}). \cpconj violating phase appears in doubly-Cabibbo and color suppressed process $B^0\to D^0h^0$ with $b\to u\bar c d$ transition and can be safely neglected in this study. Let us denote amplitude of \bdsth as $A_{\bar B}$ and amplitude of $\bar B^0\to D^0h^0$ as $\bar A_{B}$. Our assumptions here are as follows:
+\begin{equation}
+ A_{\bar B} = \xi_{h^0}(-1)^l\bar A_{B},\quad \bar A_{\bar B} = A_{B} = 0,
+\end{equation}
+where $\xi_{h^0}$ is \cpconj eigenvalue of $h^0$, $l$ is orbital moment of the $D^{(*)0}h^0$ system;
+
+\begin{figure}[htb]
+\includegraphics[width=0.4\textwidth]{pics/B0toD0pi0.png}
+\caption{Tree-level $b\to c\bar u d$ transition leads to \bdh processes.}
+\label{fig:bdhpi}
+\end{figure}
+
+\dbkpp decay is a three body decay of pseudoscalar particle into three pseudoscalar particles. Phase space of this decay is two-dimensional. Convenient and commonly used variables for parameterization of the phase space are Dalitz variables:
+\begin{equation}
+ m^2_{\pm} \equiv m^2\left(K_S^0\pi^{\pm}\right).
+\end{equation}
+This decay has been studied in several experiments \cite{BaBar_model,Belle_model,mixing_peng}. Distribution of the Dalitz variables (Dalitz plot) is shown at Fig.\,\ref{fig:DP} (left). Let us denote amplitude of \dbkpp as $A_D(m^2_+,m^2_-)$ and amplitude of $D^0\to\kspp$ as $\bar A_D(m^2_+,m^2_-)$. If this process respects \cpconj symmetry we can write
+\begin{equation}
+ \bar A_D(m^2_+,m^2_-) \equiv A_D(m^2_-,m^2_+).
+\end{equation}
+
+Amplitudes $A_{f}$ and $\bar A_{f}$ (Eq.\,(\ref{eq:coh_ampl})) in our case are following:
+\begin{equation}
+ A_{f} = A_{\bar B} A_D(m^2_+,m^2_-),\quad \bar A_{f} = \xi_{h^0}(-1)^lA_{\bar B}A_D(m^2_-,m^2_+).
+\end{equation}
+Phase difference 
+\begin{equation}
+ \delta_f(m^2_+,m^2_-) = \arg\left(\xi_{h^0}(-1)^l\frac{A_D(m^2_-,m^2_+)}{A_D(m^2_+,m^2_-)}\right)
+\end{equation}
+is a function of the Dalitz variables $m^2_+$ and $m^2_-$. Probability density for process \bdh, \dkpp as a function of \dt, \mpsq and \mmsq:
+\begin{equation}\label{eq:model_dependent_pdf}
+\begin{split}
+ p(\Delta t,\mpsq,\mmsq) \propto e^{-\Gamma|\dt|}&\left[\left(p_D+\bar p_D\right)+\left(p_D-\bar p_D\right)\cos(\Delta m\Delta t)\right.\\
+ +&\left.2\xi_{h^0}(-1)^l\sqrt{p_D\bar p_D}\sin(\Delta m\Delta t)\sin{\left(\delta-2\varphi_1\right)}\right],
+\end{split}
+\end{equation}
+where
+\begin{equation}
+ p_D \equiv \left|A_D(m^2_+,m^2_-)\right|^2,\quad \bar p_D \equiv \left|\bar A_D(m^2_+,m^2_-)\right|^2,\quad p_D(m^2_+,m^2_-)\equiv \bar p_D(m^2_-,m^2_+).
+\end{equation}
+It is convenient to write the probability density of \cpconj conjugate process switching \mpsq and \mmsq:
+\begin{equation}\label{eq:model_dependent_pdf_bar}
+\begin{split}
+ \bar p(\Delta t,\mmsq,\mpsq) \propto e^{-\Gamma|\dt|}&\left[\left(p_D+\bar p_D\right)+\left(p_D-\bar p_D\right)\cos(\Delta m\Delta t)\right.\\
+ +&\left.2\xi_{h^0}(-1)^l\sqrt{p_D\bar p_D}\sin(\Delta m\Delta t)\sin{\left(\delta+2\varphi_1\right)}\right],
+\end{split}
+\end{equation}
+The only difference between right parts of Eq.\,(\ref{eq:model_dependent_pdf}) and Eq.\,(\ref{eq:model_dependent_pdf_bar}) is sign of the angle $\varphi_1$.
+
+Eq.\,(\ref{eq:model_dependent_pdf}) and Eq.\,(\ref{eq:model_dependent_pdf_bar}) show that significant variation of the $\delta_f$ over the Dalitz plot provides sensitivity to both \sindbeta and \cosdbeta. The question is how to determine the function $\delta_f(m^2_+,m^2_-)$.
+
+\subsection{Binned Dalitz plot analysis for \dkpp decay}
+\begin{figure}[htb]
+\includegraphics[width=0.4\textwidth]{pics/DP.png}
+\includegraphics[width=0.4\textwidth]{pics/DP_Belle_binning.png}
+\caption{Dalitz distribution of the \dbkpp decay (left) and binning of the Dalitz plot based on the decay model (right).}
+\label{fig:DP}
+\end{figure}
+
+The function $\delta_f(m^2_+,m^2_-)$ can not be measured in each point of the Dalitz plot. One approach to this issue is to construct an isobar model describing Dalitz plot distribution and to take complex phase from the model. Inevitable uncertainties due to model assumptions appear in this case.
+
+We apply an alternative approach initially proposed in \cite{GGSZ} and developed further for several applications in \cite{BP_phi3_model_ind1,BP_phi3_model_ind2,BPV}. The idea is that full knowledge of the $\delta_f(m^2_+,m^2_-)$ is not necessary. One can divide Dalitz plot into $2\mathcal{N}$ bins symmetrically with respect to $m_+^2 \leftrightarrow m_-^2$ exchange (Fig.\,\ref{fig:DP} (right)). Bin number $i$ runs through values from $-\mathcal{N}$ to $\mathcal{N}$ excluding $0$; $m_+^2 \leftrightarrow m_-^2$ exchange corresponds to sign inversion $i \to -i$. The case of $\mathcal{N}=8$ is considered in the following.
+
+Integrating Eq.\,(\ref{eq:model_dependent_pdf}) and Eq.\,(\ref{eq:model_dependent_pdf_bar}) over the $i^{\text{th}}$ Dalitz plot bin one obtains time-dependent probability density:
+\begin{equation}\label{eq:master-formula}
+ \begin{split}
+  N_i\left(\Delta t,\varphi_1\right) &= e^{-\frac{\left|\Delta t\right|}{\tau}}\left(K_{i}+K_{-i}\right)\left[ 1 + q_{B}\frac{K_{i}-K_{-i}}{K_{i}+K_{-i}}\cos\left(\Delta m\Delta t\right)+\right.\\
+  &\left.+2q_{B}\xi_{h^0}(-1)^l\frac{\sqrt{K_iK_{-i}}}{K_{i}+K_{-i}}\sin\left(\Delta m\Delta t\right)\left(C_i\sin2\varphi_1+S_i\cos2\varphi_1\right)\right],
+ \end{split}
+ \end{equation}
+where $q_{B}=\pm1$ means $B$ meson flavor and parameters of the binned Dalitz plot analysis are introduced:
+ \begin{itemize}
+  \item Probability for pure flavor $\bar D^0$ state to decay into bin number $i$:
+  \begin{equation}
+   K_i = \int\limits_{\mathcal{D}_i}p_D d\mathcal{D},\quad \left[\bar K_i = \int\limits_{\mathcal{D}_i}\bar p_D d\mathcal{D} = K_{-i}\right];
+  \end{equation}
+
+  \item Averaged over $i^{\text{th}}$ Dalitz plot bin cosine and sine of a phase difference between $\bar D^0$ and $D^0$  decay amplitudes $\delta_f\left(m_+^2,m_-^2\right)$:
+  \begin{equation}\label{cs}
+  C_i=\frac{\int\limits_{\mathcal{D}_i}
+            \sqrt{p_D\bar p_D}
+            \cos\delta_D\,d\mathcal{D}
+            }{\sqrt{
+            \int\limits_{\mathcal{D}_i}p_D d\mathcal{D}
+            \int\limits_{\mathcal{D}_i}\bar p_D d\mathcal{D}
+            }}\,, \quad
+  S_i=\frac{\int\limits_{\mathcal{D}_i}
+            \sqrt{p_D\bar p_D}
+            \sin\delta_D\,d\mathcal{D}
+            }{\sqrt{
+            \int\limits_{\mathcal{D}_i}p_D d\mathcal{D}
+            \int\limits_{\mathcal{D}_i}\bar p_D d\mathcal{D}
+            }}\,.
+  \end{equation}
+ \end{itemize}
+
+% \begin{equation}
+%  C_{-i} = C_i\quad\text{and}\quad S_{-i} = -S_i.
+% \end{equation}
+
+One can see that $C_{-i} = C_i$ and $S_{-i} = -S_i$. Parameters $C_i$ and $S_i$ give enough information about the strong phase difference $\delta$ to measure the phase $\varphi_1$. These parameters can be measured in coherent decays of $D^0\bar D^0$ pairs~\cite{GGSZ,BPV,CLEO_phasees}.
+
+The last point we should discuss is how to choose binning map maximizing sensitivity to the $\varphi_1$ for a given number of bins. Transparent idea is to choose binning map maximizing combination $C_i^2+S_i^2$ in each bin. Binning map obtained with the {\it equal-phase} rule
+\begin{equation}\label{eq:bin_condition}
+\frac{\pi(-i+1/2)}{4}<\delta_f\left(m_+^2,m_-^2\right)<\frac{\pi(-i+3/2)}{4},
+\end{equation}
+where $i=1, \dots, 8$ is a bin index, is close to the required solution. Binning rule Eq.\,(\ref{eq:bin_condition}) can be done only with a \dbkpp decay model. We use an equal-phase binning map based on the model obtained in \cite{Belle_model} (Fig.\,\ref{fig:DP} (right)). Parameters $K_i$, $C_i$ and $S_i$ have been measured for this map by CLEO collaboration \cite{CLEO_phasees} (see Tab.\,\ref{tab:CLEO_measurements}). The choice of binning map based on the isobar model does not lead to any model uncertainty. It affects only on statistical precision.
+
+\begin{table}[htb]
+ \caption{Parameters for equal-phase Dalitz plot binning based on \dbkpp model from \cite{Belle_model} measured by CLEO \cite{CLEO_phasees}.}
+ \label{tab:CLEO_measurements}
+ \begin{tabular}
+  { @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}r@{\hspace{0.3cm}}  @{\hspace{0.3cm}}r@{\hspace{0.3cm}} @{\hspace{0.3cm}}r@{\hspace{0.3cm}} @{\hspace{0.3cm}}r@{\hspace{0.3cm}}} \hline\hline
+  {\bf Bin} & $K_i$ (\%) & $K_{-i}$ (\%) & \multicolumn{1}{c}{$C_i$} & \multicolumn{1}{c}{$S_i$}\\ \hline
+  $1$ & $16.5\pm0.5$ & $8.8\pm0.4$ & $ 0.710\pm 0.034\pm 0.038$ & $-0.013\pm 0.097\pm 0.031$ \\ \hline
+  $2$ & $12.4\pm0.4$ & $2.9\pm0.2$ & $ 0.365\pm 0.071\pm 0.078$ & $-0.279\pm 0.266\pm 0.048$ \\ \hline
+  $3$ & $ 9.9\pm0.4$ & $1.6\pm0.2$ & $ 0.206\pm 0.205\pm 0.200$ & $-1.063\pm 0.274\pm 0.066$ \\ \hline
+  $4$ & $ 7.1\pm0.3$ & $1.8\pm0.2$ & $-0.462\pm 0.200\pm 0.082$ & $-0.616\pm 0.288\pm 0.052$ \\ \hline
+  $5$ & $ 8.0\pm0.4$ & $4.0\pm0.3$ & $-0.884\pm 0.056\pm 0.054$ & $-0.262\pm 0.230\pm 0.041$ \\ \hline
+  $6$ & $ 3.0\pm0.2$ & $1.3\pm0.2$ & $-0.757\pm 0.099\pm 0.065$ & $ 0.386\pm 0.208\pm 0.067$ \\ \hline
+  $7$ & $ 9.8\pm0.4$ & $3.2\pm0.2$ & $ 0.080\pm 0.080\pm 0.087$ & $ 0.938\pm 0.220\pm 0.047$ \\ \hline
+  $8$ & $ 7.7\pm0.4$ & $2.0\pm0.2$ & $ 0.481\pm 0.080\pm 0.070$ & $-0.247\pm 0.277\pm 0.207$ \\ \hline
+  \hline
+ \end{tabular}
+\end{table}
+
+Previous Belle measurement of the angle $\varphi_1$ with \bdh decays \cite{Pasha} is performed with model-depend approach and is based on about half of full statistics.
+
+\clearpage
+\section{Data selection}
+% \subsection{The Belle detector}
+% The Belle detector is a large-solid-angle magnetic spectrometer that consists of a silicon vertex detector (SVD), a 50-layer central drift chamber (CDC), an array of aerogel threshold \v{C}erenkov counters (ACC),  % <- \v{C}erenkov 2007.08
+% a barrel-like arrangement of time-of-flight scintillation counters (TOF), and an electromagnetic calorimeter comprised of CsI(Tl) crystals (ECL) located inside  a super-conducting solenoid coil that provides a 1.5~T magnetic field.  An iron flux-return located outside of the coil is instrumented to detect $K_L^0$ mesons and to identify muons (KLM).  The detector is described in detail elsewhere~\cite{Belle}.
+% % {\bf SVD2+SVD1, up to experiment 37:}
+% Two inner detector configurations were used. A 2.0 cm beampipe and a 3-layer silicon vertex detector (SVD1) was used for the first sample of $152 \times 10^6 B\bar{B}$ pairs, while a 1.5 cm beampipe, a 4-layer silicon detector (SVD2) and a small-cell inner drift chamber were used to record the remaining $620 \times 10^6 B\bar{B}$ pairs~\cite{svd2}.  
+% 
+% \subsection{Data set}
+
+\subsection{Event reconstruction procedure}
+%\subsection{Candidates selection}
+Six $B^0$ decay modes are under consideration in this analysis \cite{PDG}:
+\begin{equation}\label{eq:signal-modes}
+ \begin{split}
+  \mathcal{B}(B^0\to\bar D^0\pi^0)      &= (2.63\pm0.24)\times 10^{-4}\\
+%  \mathcal{B}(B^0\to\bar D^0\rho^0)     &= (3.2\pm0.5)\times 10^{-4}\\
+  \mathcal{B}(B^0\to\bar D^0\eta)       &= (2.36\pm0.32)\times 10^{-4}\\
+  \mathcal{B}(B^0\to\bar D^0\eta\prime) &= (1.38\pm0.26)\times 10^{-4}\\
+  \mathcal{B}(B^0\to\bar D^0\omega)     &= (2.53\pm0.26)\times 10^{-4}\\
+  \mathcal{B}(\bar B^0\to\dst\pi^0)      &= (2.2\pm0.6)\times 10^{-4}\\
+%  \mathcal{B}(B^0\to\bar D^*(2007)^0\rho^0)    &< 5.1\times 10^{-4}\\
+  \mathcal{B}(\bar B^0\to\dst\eta)       &= (2.3\pm0.6)\times 10^{-4}\\
+%  \mathcal{B}(B^0\to\bar D^*(2007)^0\eta\prime)&= (1.40\pm0.22)\times 10^{-4}\\
+%  \mathcal{B}(B^0\to\bar D^*(2007)^0\omega)    &= (3.6\pm1.1)\times 10^{-4}\\
+ \end{split}
+\end{equation}
+$D^0$ is reconstructed in $K_S^0\pi^+\pi^-$, $K_S^0\to\pi^+\pi^-$ final state. Probability for $D^0$ meson to decay into this final state is
+\begin{equation}
+ \mathcal{B}(\dnkpp)\times\mathcal{B}(K_S^0\to\pi^+\pi^-) = (2.89\pm0.08)\% \times (69.20\pm0.05)\% \approx 2\%.
+\end{equation}
+
+$h^0$ mesons are reconstructed with the following decays:
+\begin{equation}\label{eq:h0-modes}
+\begin{split}
+ \mathcal{B}(\pi^0\to\gamma\gamma)        &= (98.823 \pm 0.034)\%\\
+ \mathcal{B}(\eta\to\gamma\gamma)         &= (39.41  \pm 0.20)\%\\
+ \mathcal{B}(\eta\to\pi^+\pi^-\pi^0)      &= (22.92  \pm 0.28)\%\\
+ \mathcal{B}(\omega\to\pi^+\pi^-\pi^0)    &= (89.2   \pm 0.7)\%\\
+ \mathcal{B}(\eta\prime\to\eta\pi^+\pi^-) &= (42.9   \pm 0.7)\%\\
+\end{split}
+\end{equation}
+\dst candidates are combined only with $\pi^0$ and \etagg candidates to form a $B^0$ candidate. Probability for \dst to decay into $D^0\pi^0$ is about $62\%$.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/m_d0_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_pi0_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_etagg_cut}\\
+ \includegraphics[width=0.32\textwidth]{pics/m_etappp_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_omega_cut}\\
+ \caption{Signal ranges for mass distributions (signal MC). Top row from left to right: $m(D^0)$, $m(\pi^0)$, $m(\etagg)$. Bottom row from left to right: $m(\etappp)$, $m(\omega)$.}
+ \label{fig:signal_mass_ranges}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/de_pi0_cut}
+ \includegraphics[width=0.24\textwidth]{pics/de_etagg_cut}
+ \includegraphics[width=0.24\textwidth]{pics/de_etappp_cut}
+ \includegraphics[width=0.24\textwidth]{pics/de_omega_cut}\\
+ \includegraphics[width=0.24\textwidth]{pics/mbc_pi0_cut}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_etagg_cut}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_etappp_cut}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_omega_cut}\\
+ \caption{Signal ranges for \de (top) and \mbc (bottom) distributions (signal MC). Four columns from left to right correspond to \bdpi, \bdetagg, \bdetappp and \bdomega modes.}
+ \label{fig:signal_de_mbc_ranges}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/de_etapgg_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_de_m10h0m10_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_de_m20h0m10_cut}\\
+ \includegraphics[width=0.32\textwidth]{pics/mbc_etapgg_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_mbc_m10h0m10_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_mbc_m20h0m10_cut}\\
+ \includegraphics[width=0.32\textwidth]{pics/dm_etapgg_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_dmdst0_m10h0m10_cut}
+ \includegraphics[width=0.32\textwidth]{pics/m_dmdst0_m20h0m10_cut}
+% \includegraphics[width=0.32\textwidth]{pics/dm_etapppp_cut}
+% \includegraphics[width=0.32\textwidth]{pics/de_etapppp_cut}
+% \includegraphics[width=0.32\textwidth]{pics/mbc_etapppp_cut}
+ \caption{Signal ranges of \de (first row), \mbc (second row) and mass difference (third row) for \bdetap (first column), $B^{0}\to D^{\star0}\pi^0$ (second column) and $B^{0}\to D^{\star0}\eta$ (third column). Signal MC.}
+ \label{fig:signal_etap_dst0}
+\end{figure}
+Signal candidates selection procedure is described below.
+
+%\subsection{$\pi$ selection}
+{\bf \boldmath$\pi^{+}$ candidate} is a charged track with (1) at least $1$ and $2$ SVD hits in $r\varphi$ and $rz$ plains respectively, (2) impact parameters with respect to the interaction point $\left|\Delta z\right|<5$ cm and $\Delta\rho<2$ cm and (3) transverse momentum $p_t>50$ MeV ($p_t>100$ MeV) for pions from \dkspp (from \hppp) decay.
+
+%\subsection{$K_S^0$ selection}
+{\bf \boldmath$K_S^0$ candidate} is a \verb@Vee2@ candidate passed the standard criteria of the \verb@nisKsFinder@ tool. We demand mass of the candidates to be between $488.5\,\text{MeV}$ and $506.5\,\text{MeV}$.
+
+%\subsection{$\pi^0$ selection}
+{\bf \boldmath$\pi^0$ candidates} are taken from \verb@Mdst_pi0_Manager@ with the following mass cut: $115.7\,\text{MeV}<m(\pi^0)<153.7\,\text{MeV}$. In order to suppress combinatorial background from soft photons we requite energy of photons from $\pi^0$ decay to be more than $40\,\text{MeV}$. Energy of a $\pi^0$ from \hppp candidate is required to be greater than $200$ MeV.
+
+%\subsection{$\eta\to\gamma\gamma$ selection}
+{\bf \boldmath$\eta\to\gamma\gamma$ candidate} is a combination of two photons with invariant mass within interval $517.6\,\text{MeV}<m(\eta_{\gamma\gamma})<573.7\,\text{MeV}$. Minimal photon energy is $80\,\text{MeV}$. In order to improve momentum resolution we perform mass constrained kinematic fit of $\etagg$ candidates.
+
+%\subsection{$h^0\to\pi^+\pi^-\pi^0$ selection}
+{\bf \boldmath$h^0\to\pi^+\pi^-\pi^0$ candidate} is a combination of a $\pi^0$ candidate and two oppositely charged tracks with invariant mass within intervals $537.6\,\text{MeV}<m(\eta_{\pi^+\pi^-\pi^0})<557.4\,\text{MeV}$ or $760.4\,\text{MeV}<m(\omega)<803.9\,\text{MeV}$. We require absolute value of cosine of helicity angle $\cos\theta_{hel}$ for $\omega$ candidate to be greater than $0.2$ ($\theta_{hel}$ is angle between $B^0$ flight direction in the center-of-mass frame and $\omega$ flight direction in the $B^0$ rest frame);
+
+{\bf \boldmath$\eta\prime$ candidate} is a combination of \etagg candidate and two oppositely charged tracks with mass difference $\Delta m_{\eta} \equiv m(\eta\prime)-m(\eta)$ withing interval $(401.7,417.7)\,\text{MeV}$.% for \etagg and withing interval $(402.5,417.1)\,\text{MeV}$ for \etappp.
+
+%In order to improve momentum resolution we perform mass and vertex constrained kinematic fit of $\etappp$ candidates.
+
+%We perform a kinematic fit of the decay tree (including $\pi^0\to\gamma\gamma$) for preselected candidates. We put three constrains: $\pi^0$ mass, $h^0$ mass and $h^0$ vertex. We accept candidates with $\chi^2/n.d.f.<1000$. This procedure is performed with the \verb@ExKFitter@ tool.
+
+%\subsection{$D^0$ selection}
+{\bf \boldmath$D^0\to K_S^0\pi^+\pi^-$ candidate} is a combination of $K_S^0$ candidate and two opposite charged tracks with mass in a range $\left(1.8516,1.8783\right)\,\text{GeV}$. Kinematic fit with vertex constraint is performed for preselected $D^0$ candidates. We accept candidates with $\chi^2/n.d.f.<500$ (this cut is tuned in order to minimize lifetime offset in signal MC fit). % After kinematic fit we impose mass cut $\left|m(D^0)-1865\,\text{MeV}\right|<13\,\text{MeV}$.
+
+Mass constrained kinematic fit is performed for $D^0$ candidates in order to
+%improve $\de$ and $\mbc$ resolution and to
+bring Dalitz parameters into the allowed phase space. This fit does not affect any part of the signal vertex reconstruction procedure.
+
+%Four constrains are applied: $K_S^0$ mass, $K_S^0$ vertex, $D^0$ mass and $D^0$ vertex. We accept candidates with $\chi^2/n.d.f.<1000$. This procedure is performed with the \verb@ExKFitter@ tool.
+
+{\bf \boldmath\dst candidate} is a combination of $D^0$ candidate and neutral pion with mass difference $\Delta m_{D} \equiv m(D^{\star0})-m(D^0)$ withing interval $(138.6,145.7)\,\text{MeV}$.
+
+%\subsection{$B^0$ selection}
+{\bf \boldmath$B^0\to D^{(*)}h^0$ candidate} is a combination of $D^{(*)0}$ candidate and $h^0=\pi^0,\eta^{(\prime)},\omega$ candidate. We exclude $B^0$ candidate if the same charged track enters to the decay tree mode more than once.
+
+There are two convenient and commonly used parameters for $B$ mesons selection: {\it ''energy difference``} and {\it ''beam-energy constrained mass``}:
+\begin{equation}\label{eq:de-mbc-definition}
+ \de \equiv E^{cms}_{B}-E^{cms}_{beam},\quad
+ \mbc \equiv \sqrt{\left(E^{cms}_{beam}\right)^2-\left(p^{cms}_{B}\right)^2},
+\end{equation}
+where $E^{cms}_{beam}$ is a beam energy in the center-of-mass frame. We demand $\left|\Delta E\right|<0.3\,\text{GeV}$ and $5.2\,\text{GeV}<M_{bc}<5.3\,\text{GeV}$.
+
+Vertex constrained kinematic fit of the $B^0$ decay is performed. Two modifications of this procedure are implemented:
+\begin{enumerate}
+ \item $h^0$ is useless for the $B^0$ vertex determination for $h^0\to\gamma\gamma$ modes (\bdpi, \bdetagg, \btodstpi and \btodsteta). In this case we intersect flight line of $D^0$ candidate with IP tube in order to obtain the vertex.
+ \item $D^0$ candidate and two charged tracks from the $h^0$ or $\eta\prime$ decay are required to originate from a common vertex within IP tube area for $h^0\to\pi^+\pi^-\pi^0$ modes (\bdetappp, \bdomega and \bdetap).% Two charged tracks from $\eta\prime$ candidate are included in the fit as well.
+\end{enumerate}
+
+Figs.~\ref{fig:signal_mass_ranges},~\ref{fig:signal_de_mbc_ranges}~and~\ref{fig:signal_etap_dst0} show signal ranges of various kinematic parameters. Edges of this ranges are chosen as $(\text{mean}-\varkappa\sigma_{\text{left}},\text{mean}+3\sigma_{\text{right}})$ intervals, where $\sigma_{i}$ are determined by fitting narrow peak parts with bifurcated Gaussian. $\varkappa=3$ is set for each parameter except \mbc. $\varkappa=2.5$ is set for \mbc distributions because of increasing background and fast non-Gaussian decreasing of signal. One more exception is \de signal region: if left edge is below $-0.2\,\text{GeV}$ we set it to $-0.2\,\text{GeV}$ in order to suppress background from partially reconstructed $B$ decays. Efficiencies of cuts are calculated with accurate parameterization of the distributions and are also shown on Figs.~\ref{fig:signal_mass_ranges},~\ref{fig:signal_de_mbc_ranges}~and~\ref{fig:signal_etap_dst0}.
+
+We define a \de-\mbc signal area as an ellipse inscribed in the edges defined above. Data inside this area are used for \cpvconj fit. A \de-\mbc fit area defined as a rectangular area
+\begin{equation}\label{eq:de-mbc-fit-area}
+ \mbc \subset \left(5.20\,\text{GeV},\ 5.29\,\text{GeV}\right)\ \cap\ \de \subset \left(-0.25\,\text{GeV},\ 0.30\,\text{GeV}\right).
+\end{equation}
+is used for determination of relative fractions of signal and backgrounds components.
+
+%\subsection{Multiple candidates}
+
+%In order to reduce number of combinations with random soft photons, we require photon energy $E_{\gamma}$ to be more than $80\,\text{MeV}$ for \etagg candidates and more than $30\,\text{MeV}$ for $\pi^0$ candidates.
+
+If there are several candidates in a single event we choose a candidate with minimal value of a $\chi^2$-like discriminator
+\begin{equation}\label{eq:multi_chi}
+ \chi^2 = \left(\frac{\Delta m_{D^0}}{\sigma_{m(D^0)}}\right)^2 + \left(\frac{\Delta m_{h^0}}{\sigma_{m(h^0)}}\right)^2 + \left(\frac{\Delta (\Delta m)}{\sigma_{\Delta m}}\right)^2,
+\end{equation}
+where $\sigma_i$ are peak widths of correspondent signal distribution and $\Delta m$ means $m(D^{*0})~-~m(D^0)$ ($m(\eta\prime)~-~m(\eta)$) for mode \bdsth (\bdetap). The third term appears only for modes with $\eta\prime$ and $D^{*0}$. The multiple candidates selection procedure is applied after applying all selections except cuts on \de and \mbc.
+
+The described procedure is tested with a signal MC data. Multiple candidates rate, probability of right choice and loss of signal due to the procedure are listed in Table~\ref{tab:multiple_test}. Our definition of the multiple candidates rate is as follows. If an event contains correctly reconstructed candidates {\it and} background candidates we count this event with weight $w=1+N_B$, where $N_B$ is number of background candidates in this event. Weight equals zero $w=0$ if an event does not contain a correctly reconstructed candidate. Weight equals one $w=1$ if an event does not contain a background candidate. With these definitions multiplicity is
+\begin{equation}\label{eq:multpl}
+ \text{Multiplicity} = \frac{1}{N}\sum\limits_{i=0}^{N}w_i.
+\end{equation}
+%We use a joint signal MC dataset for \btodstpi and \btodsteta modes.
+%We found significant impact of modes \btodstpi and \btodsteta to each other: notable part of events with correctly reconstructed candidate of the first mode contains background candidates of the second mode and vice versa.
+%That is why we do not show separate results for \btodstpi and \btodsteta in the Table~\ref{tab:multiple_test}.
+%Bad performance of the procedure for \bdsth modes comes from absence of the third term in~Eq.\,(\ref{eq:multi_chi}) for \bdpi and \bdeta modes. One obtains a background candidate with smaller $\chi^2$ value than value for correctly reconstructed \bdsth decay removing $\pi^0$ from the $D^{*0}$ decay. This can be solved (up to success rate of about $70\%$) by substitution of the third term with some constant of order on one for \bdh modes. We tried this approach and found worse performance for \bdpi and \bdeta signals with common decrease of efficiency over the all signal modes. Summarizing, we have not found a good compromise here yet.
+
+\begin{table}[htb]
+ \caption{Performance of the multiple candidates selection procedure based on discriminator~Eq.\,(\ref{eq:multi_chi}). We use definition Eq.\,(\ref{eq:multpl}) for multiplicity.}
+ \label{tab:multiple_test}
+ \begin{tabular}
+  { @{\hspace{0.3cm}}l@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} } \hline\hline
+ {\bf Parameter}     &  \dpi  & \detagg & \detappp & \domega & \detap & \todstpi & \todsteta\\ \hline
+%  Multiplicity        & $1.11$ & $1.12$  & $1.14$   & $1.09$  & $1.09$ & $1.18$   & $1.21$ \\ \hline
+%  Success rate ($\%$) & $77.8$ & $63.5$  & $67.4$   & $66.8$  & $64.0$ & $34.5$   & $41.9$ \\ \hline
+%  Signal loss ($\%$)  & $2.02$ & $3.54$  & $3.32$   & $2.48$  & $2.96$ & $9.79$   & $9.48$ \\ \hline
+ Multiplicity        & $1.03$ & $1.09$  & $1.06$   & $1.09$  & $1.08$ & $1.08$   & $1.12$ \\ \hline
+ Success rate ($\%$) & $95.2$ & $65.1$  & $69.6$   & $66.7$  & $67.3$ & $73.8$   & $71.6$ \\ \hline
+ Signal loss ($\%$)  & $0.95$ & $2.78$  & $1.40$   & $2.41$  & $2.36$ & $1.72$   & $2.76$ \\ \hline
+ %  {\bf Parameter}     &  \dpi  & \detagg & \detappp & \domega & \detap & $D^{*0}h^0$ \\ \hline
+%  Multiplicity        & $1.11$ & $1.12$ & $1.14$ & $1.09$ & $1.09$ & $1.22$ \\ \hline
+%  Success rate ($\%$) & $77.8$ & $63.5$ & $67.4$ & $66.8$ & $64.0$ & $40.5$ \\ \hline
+%  Signal loss ($\%$)  & $2.02$ & $3.54$ & $3.32$ & $2.48$ & $2.96$ & $10.2$ \\ \hline
+\hline
+ \end{tabular}
+ \end{table}
+
+%\subsection{Tag side}
+Flavor tagging is performed with a multidimensional likelihood (\verb@MDLH@) method of the \verb@Hamlet@ package. The procedure for flavor tagging is described in Ref.~\cite{TaggingNIM}. The \verb@MDLH@ procedure returns a real value $-1<q_{tag}<1$. Negative (positive) $q_{tag}$ corresponds to $\bar B^0$ ($B^0$) tagging side flavor.
+%Probability of wrong tagging $w(q_{tag})$ has been studied before.
+Average wrong tagging probability $w_i$ is determined for seven bins of $|q_{tag}|$ (see Fig.~\ref{fig:wtag}).
+%We do not find any significant disagreement with established values.
+Wrong tagging leads to an effective reducing of statistics by factor $3$.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.6\textwidth]{pics/TagVTest1_m1}\\
+ \includegraphics[width=0.6\textwidth]{pics/TagVTest2_m1}
+ \caption{Wrong tagging probability in seven bins of $|q_{tag}|$ returned by the Hamlet MDLH algorithm for SVD1 (left) and SVD2 (right) cases. Red circles are predefined values, blue circles with errors are values determined with signal MC \bdpi data set. Bottom figures show difference. Predefined values are used in the analysis.}
+ \label{fig:wtag}
+\end{figure}
+
+Position of a tagging $B$ meson vertex is determined with \verb@TagVertex@ tool with a standard settings \cite{vertexres}.
+Kinematic vertex constrained fit procedures provide estimation of the spatial resolution $\sigma_{z}^{\{sig,tag\}}$ and fit quality parameter $\chi^2/n.d.f.^{\{sig,tag\}}$ for signal and tagging sides. These values are used for an event-dependent parameterization of the time resolution.% description. for the \cpvconj fit procedure.
+
+\clearpage
+\section{Background components}
+Background can be divided into four categories:
+\begin{enumerate}
+ \item Combinatorial background from $q\bar q$-events, where $q=u,d,s,c$ ({\it continuum} background);
+ \item Combinatorial background from $B\bar B$-events;
+ \item {\it Peaking} background from partially reconstructed $B$ decays ($B^+\to D^{(\star)0}\rho^+$, $B^+\to D^{\star+}h^0$, \dots);
+ \item Charmless $B^0$ decays: $B^0\to K_S^0\pi^+\pi^-\pi^0$, $B^0\to K_S^02\pi^+2\pi^-\pi^0$, $B^0\to K_S^0\pi^+\pi^-2\pi^0$.
+\end{enumerate}
+
+Combinatorial background has smooth shaped $(\de,\mbc)$ distribution. About $40\%$ of combinatorial background events contain correctly reconstructed \dnkpp decay.
+
+Partially reconstructed $B$ decays lead to a peak in the signal region of \mbc, while \de values are less than~$-0.2\,\text{GeV}$ in most cases. % Study of $(\de,\mbc)$ distribution shapes of different background components will be described below.
+%The main part of background comes from random combinations of particles produced in non-resonant $q\bar q$-events, where $q=u,d,s,c$. We call that component {\it continuum} background. Continuum background has .
+%The second background component is combinatorial background from $B\bar B$ events with smooth $(\de,\mbc)$ distribution.
+% There are some processes that can lead to peaks in $\Delta E$ and/or $M_{bc}$. We found several possible sources of peaking background:
+% \begin{itemize}
+%  \item $B^+\to D^0\rho^+$, $B\to D^{*}\pi^0$. If one charged or neutral pion is lost these modes can simulate $D^0\pi^0$ signal mode. Peaks from these events are seen clearly in $\Delta E$ distribution. Thanks to significant energy loss these peaks stay below $\Delta E=-0.2\,\text{GeV}$ and could be cut off.
+%  \item $B^+\to \bar D^0\omega\pi^+$, $\bar D^0\to K^{*-}l^+\nu_l$, $K^{*-}\to K_S^0\pi^-$. If we lose pion from $B^+$ decay and missidentified lepton as pion we can reconstruct this event as $D^0\omega$ candidate.
+Following decays may be considered as a source of background:
+\begin{equation}\label{eq:peaking_bkg_modes}
+\begin{split}
+ \mathcal{B}(B^+\to \bar D^*(2007)^0\pi^+) &= (5.18\pm0.26)\times 10^{-3}\\
+ \mathcal{B}(B^+\to \bar D^0\omega\pi^+) &= (4.1\pm0.9)\times 10^{-3}\\
+ \mathcal{B}(B^+\to \bar D^*(2007)^0\omega\pi^+) &= (4.5\pm1.2)\times 10^{-3}\\
+ \mathcal{B}(B^+\to \bar D^*(2007)^0\rho) &= (9.8\pm1.7)\times 10^{-3}\\
+ \mathcal{B}(B^+\to \bar D^0\pi^+\pi^+\pi^-) &= (5.7\pm2.2)\times 10^{-3}\\
+ \mathcal{B}(B^+\to \bar D^*(2007)^0\pi^+\pi^+\pi^-) &= (1.03\pm0.22)\% \\
+ \mathcal{B}(B^+\to \bar D^*(2007)^0\pi^-\pi^+\pi^+\pi^0) &= (1.8\pm0.4)\% \\
+ \mathcal{B}(B^+\to D^*(2010)^-\pi^+\pi^+\pi^0) &= (1.5\pm0.7)\% \\
+% \mathcal{B}(B^0\to D^*(2007)^0\pi^+\pi^-) &= (6.2\pm2.2)\times 10^{-4} \\
+\end{split}
+\end{equation}
+We also found that decays chain $B^+\to \bar D^0\omega\pi^+$, $\bar D^0\to K^{*-}l^+\nu_l$, $K^{*-}\to K_S^0\pi^-$ gives a contribution into background of the \bdomega channel.
+
+Charmless $B^0$ decays can not be totally suppressed or subtracted. It is a potential source of bias of \cpvconj parameters because of non trivial decay time behavior with possible \cpvconj effects. Contribution of this component should be estimated using $m_{D^0}$ sideband data.
+% \end{itemize}
+
+\clearpage
+\section{Continuum suppression}
+Continuum background component can be highly suppressed because of topological difference between $q\bar q$ and $B\bar B$ events in the center-of-momentum frame. The first ones are more jet-like, the second ones are more spherical-like.
+
+Procedure of continuum suppression depends on signal mode. Likelihood discriminator based on Fisher's discriminators of KFSW moments \cite{SFW,KSFW} is used for \btodstpi, \btodsteta and \bdetap decays. Boosted Decision Trees (BDT) method \cite{BDT} implemented in the \verb@TMVA@ package \cite{TMVA} is applied for other modes. BDT input variables for different modes are listed in the Tab. \ref{tab:bdt_input}.
+
+\begin{table}[htb]
+ \caption{BDT input variables for different signal channels. $E_{\gamma}$ is minimal photon energy in an event, $lh_{F}$ is discriminator based on Fisher's discriminators of KFSW moments, $p\left(\pi^0\right)$ is momentum of $\pi^0$ from \hppp decay in the lab. frame.}
+ \label{tab:bdt_input}
+ \begin{tabular}
+  { @{\hspace{0.3cm}}l@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}} \hline\hline
+ Parameter                                & $\pi^0$ & \etasubgg & \etasubppp & $\omega$ \\ \hline
+ $\left|\cos\theta_B^{cms}\right|$        & $+$ & $+$ & $+$ & $+$ \\ \hline
+ $\ln(\chi^2/n.d.f.)$ for $D^0$ mass fit  & $+$ & $+$ & $+$ & $+$ \\ \hline
+ $\left|\cos\theta_{thrust}\right|$       & $+$ & $+$ & $+$ & $+$ \\ \hline
+ Signal thrust abs. value                 & $+$ & $+$ & $+$ & $+$ \\ \hline
+ $\ln(E_{\gamma})$                & $+$ & $+$ & $+$ & $+$ \\ \hline
+ $lh_{F}$                                 & $+$ & $+$ & $+$ & $+$ \\ \hline
+ $\ln(\chi^2/n.d.f.)$ for $\eta$ mass fit &     & $+$ &     &     \\ \hline
+ $p(\pi^0)$                               &     &     & $+$ & $+$ \\ \hline
+ $\cos\theta_{helicity}$                  &     &     &     & $+$ \\ \hline
+ \hline
+ \end{tabular}
+ \end{table}
+
+Signal and background data samples are required to train BDT response. For the background data sample we use four streams of \verb@charm@ and \verb@uds@ Generic MC, for the signal data sample we use about $3\cdot10^5$ events signal MC data sample for each signal mode. The discriminator is tested on an independent data sample (Fig.~\ref{fig:bdt-response}). We do not use BDT method for \btodstpi, \btodsteta and \bdetap modes because of too low background training sample.
+
+\begin{figure}[htb]
+\includegraphics[width=0.24\textwidth]{pics/bdt-m1}
+\includegraphics[width=0.24\textwidth]{pics/bdt-m2}
+\includegraphics[width=0.24\textwidth]{pics/bdt-m3}
+\includegraphics[width=0.24\textwidth]{pics/bdt-m4}\\
+\caption{BDT response for the signal (blue) and continuum background (red) events. Histograms correspond to a test data sample, dots correspond to a training data sample. From left to right: \bdpi, \bdetagg, \bdetappp, \bdomega. Purple lines show cut point maximizing FOM.}
+\label{fig:bdt-response}
+\end{figure}
+\begin{figure}[htb]
+\includegraphics[width=0.24\textwidth]{pics/eff-rej-m11}
+\includegraphics[width=0.24\textwidth]{pics/eff-rej-m12}
+\includegraphics[width=0.24\textwidth]{pics/eff-rej-m13}
+\includegraphics[width=0.24\textwidth]{pics/eff-rej-m14}\\
+\includegraphics[width=0.24\textwidth]{pics/eff-fom-m11}
+\includegraphics[width=0.24\textwidth]{pics/eff-fom-m12}
+\includegraphics[width=0.24\textwidth]{pics/eff-fom-m13}
+\includegraphics[width=0.24\textwidth]{pics/eff-fom-m14}\\
+\caption{From left to right: \bdpi, \bdetagg, \bdetappp, \bdomega. Fraction of rejected background (top) and figure-of-merit (bottom) as a function of fraction of accepted signal. Red lines show cut point maximizing FOM.}
+\label{fig:bdt-fom}
+\end{figure}
+
+\begin{figure}[htb]
+\includegraphics[width=0.24\textwidth]{pics/eff-rej-m15}
+\includegraphics[width=0.24\textwidth]{pics/eff-rej-m101}
+\includegraphics[width=0.24\textwidth]{pics/eff-rej-m102}\\
+\includegraphics[width=0.24\textwidth]{pics/eff-fom-m15}
+\includegraphics[width=0.24\textwidth]{pics/eff-fom-m101}
+\includegraphics[width=0.24\textwidth]{pics/eff-fom-m102}\\
+\caption{From left to right: $\eta^{\prime}$, $D^{\star0}\pi^0$ and $D^{\star0}\eta$. Fraction of rejected background (top) and figure-of-merit (bottom) as a function of fraction of accepted signal. Red lines show cut point maximizing FOM.}
+\label{fig:lh0-fom}
+\end{figure}
+
+Table~\ref{tab:continuum_test} shows results of BDT (and likelihood discriminator) cut optimization. We estimate initial (before BDT cut) numbers of signal $S_{init}$ and continuum background $B_{init}$ events with Generic MC data applying all cuts except BDT. Chosen BDT threshold maximizes $FOM\equiv\frac{S}{\sqrt{S+B}}$ value (see. Figs.~\ref{fig:bdt-response},~\ref{fig:bdt-fom}~and~~\ref{fig:lh0-fom}).
+\begin{table}[htb]
+ \caption{ Performance of a continuum suppression procedure with TMVA BDT (four leftmost modes) and likelihood discriminator (three rightmost modes) methods.}
+ \label{tab:continuum_test}
+ \begin{tabular}
+  { @{\hspace{0.3cm}}l@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}}} \hline\hline
+ Parameter                    & $\pi^0$ & \etasubgg & \etasubppp & $\omega$ & $\eta^{\prime}$ & $D^{\star0}\pi^0$ & $D^{\star0}\eta$ \\ \hline
+ $S_{init}$                   & $635$   & $156$  & $57$    & $337$   & $28$   & $82$   & $31$   \\ \hline
+ $B_{init}$                   & $5118$  & $685$  & $195$   & $2065$  & $91$   & $239$  & $38$   \\ \hline
+ BDT (LH) cut                 & $0.27$  & $0.25$ & $0.28$  & $0.28$  & $0.56$ & $0.60$ & $0.68$ \\ \hline
+ $\varepsilon_{sig}$ ($\%$)   & $67.0$  & $83.3$ & $80.3$  & $79.5$  & $72.6$ & $78.4$ & $86.5$ \\ \hline
+ $1-\varepsilon_{bkg}$ ($\%$) & $97.6$  & $91.9$ & $93.1$  & $96.7$  & $92.9$ & $91.1$ & $89.0$ \\ \hline
+ $f_{sig}$ ($\%$)             & $77.5$  & $70.0$ & $77.2$  & $79.5$  & $72.6$ & $75.2$ & $86.3$ \\ \hline
+ $FOM$                        & $18.2$  & $9.5$  & $5.95$  & $14.6$  & $3.92$ & $6.95$ & $4.81$ \\ \hline
+ \hline
+ \end{tabular}
+ \end{table}
+
+ Based on this results, we expect about $900$ total signal events with purity between $60\%$ and $80\%$ for considered seven modes.
+
+\newpage
+\section{MC study}
+\subsection{\de-\mbc fit}
+This section is devoted to description of (\de,\mbc) distributions for all signal modes and all background components and $2D$ (\de,\mbc) fit procedure. Signal distributions are studied with large samples of signal MC (Sec.\,\ref{sec:de_mbc_signal}); background (\de,\mbc) distributions are studied with four streams of generic MC (Sec.\,\ref{sec:de_mbc_comb} and Sec.\,\ref{sec:de_mbc_peak}). Finally, we describe and test our $2D$ (\de,\mbc) fit procedure with independent data (other two generic MC streams) in Sec.\,\ref{sec:de-mbc-fit-procedure}.
+
+\subsubsection{Signal}\label{sec:de_mbc_signal}
+%We determine signal fraction in a data sample with $2D$ (\de,\mbc) fit.
+%In order to determine shape of the (\de,\mbc) distributions we studied large signal MC samples of each signal mode. Signal modes with \hppp decay give narrower \de peak than modes with \hgg decay.
+We use two different signal \de-\mbc parameterization forms for modes with (a) \hgg decay (\bdpi, \bdetagg, \bdetap and \bdsth) and (b) \hppp decay (\bdetappp and \bdomega). Modes of (a) type have wider \de distribution than modes of (b) type. \de distribution of each mode has a wide tail at negative side due to events reconstructed with wrong soft $\gamma$ in $\pi^0\to\gamma\gamma$ and/or \etagg candidates. %This tail does not stand out much for \hgg case allowing to parameterize it together with the peak part. Narrow \de peak in \hppp case
+
+The (a) type \de-\mbc parameterization has the following form:
+\begin{equation}\label{eq:de_mbc_sig_gg}
+ p_{sig}^{\gamma\gamma}(\de,\mbc,\mathbf{h}_1,\mathbf{h}_2) = p_{sig}^{\gamma\gamma}(\de,\mathbf{h}_1)p_{sig}^{\gamma\gamma}(\mbc,\de,\mathbf{h}_2),
+\end{equation}
+where $\mathbf{h}_{1,2}$ denote two sets of shape parameters.
+%$\mathbf{h}_2$ is a function of \de since there is a correlation between \de and \mbc.
+$p_{sig}^{\gamma\gamma}(\de,\mathbf{h}_1)$ is sum of \verb@Gaussian@ and two \verb@CrystallBall@ line shapes~\cite{CB} describing left and right tails:
+\begin{equation}\label{eq:de_sig_pdf_gg}
+\begin{split}
+ p_{sig}^{\gamma\gamma}(\de,\mathbf{h}_1) = (1-f_l-f_r)G(\de^0,\sigma)+&f_lCB(\de^0_l,\sigma_l,n_l,\alpha_l)+\\
+ &f_rCB(\de^0_r,\sigma_r,n_r,\alpha_r),
+\end{split}
+\end{equation}
+where $n_{l,r} = 2$ and $\mathbf{h}_1=\{\de^0,\sigma,\de^0_{l,r},\sigma_{l,r},\alpha_{l,r},f_{l,r}\}$ contains $10$ parameters. % and $f_r$ equals $0$ for \btodsteta mode.
+
+$p_{sig}^{\gamma\gamma}(\mbc,\de,\mathbf{h}_2)$ is \verb@Novosibirsk@ function \cite{NskPdf}
+\begin{equation}\label{eq:mbc_sig_pdf_gg}
+ p_{sig}^{\gamma\gamma}(\mbc,\de,\mathbf{h}_2) = Nsk\left(\mbc^0(\de),\sigma(\de),\alpha\right),
+\end{equation}
+where parameters $\mbc^0$ and $\sigma$ are second order polynomials of \de
+\begin{equation}\label{eq:de_mbc_sig_gg_corr}
+\begin{split}
+   \mbc^0(\de) &= c_0^{\mbc^0} + c_1^{\mbc^0}\de + c_2^{\mbc^0}\de^2,\\
+ \sigma^0(\de) &= c_0^{\sigma} + c_1^{\sigma^0}\de + c_2^{\sigma^0}\de^2
+\end{split}
+\end{equation}
+and $\mathbf{h}_2=\{c_{i}^{j},\alpha\}$ contains $7$ parameters. Parameters of the polynomials are determined by fitting signal \mbc distribution in slices of \de (see~Fig.~\ref{fig:de-mbc-corr}). %This parameterization takes into account correlation between \de and \mbc.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.75\textwidth]{pics/de-mbc_corr_m1_Nsk}
+ \caption{Parameters $M_{bc}^0$ and $\sigma$ of $\text{Nsk}(\mbc,\mbc^0,\sigma)$ function (see Eq.~(\ref{eq:mbc_sig_pdf_gg})) in slices of \de for \bdpi mode.}
+\label{fig:de-mbc-corr}
+\end{figure}
+
+%\clearpage
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/mbc_sig_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_sig_m2_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_sig_m2_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_sig_m3_h0m20}\\
+ \includegraphics[width=0.24\textwidth]{pics/de_sig_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_sig_m2_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_sig_m2_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/de_sig_m3_h0m20}
+ \caption{Projections of $2D$ fit of \mbc-\de distribution for a signal MC samples. From left to right: \bdpi, \bdetagg, \bdetappp and \bdomega. Probability density function $p(\mbc,\de)$ is defined in Eq.~(\ref{eq:de_sig_pdf_gg}), Eq.~(\ref{eq:mbc_sig_pdf_gg}) and Eq.~(\ref{eq:de_mbc_ppp_pdf}).}
+\label{fig:de-mbc-sig}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/mbc_sig_m5_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_sig_m10_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_sig_m20_h0m10}\\
+ \includegraphics[width=0.24\textwidth]{pics/de_sig_m5_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_sig_m10_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_sig_m20_h0m10}
+ \caption{Projections of $2D$ fit of \mbc-\de distribution for a signal MC samples. From left to right: \bdetap, \btodstpi and \btodsteta. Probability density function $p(\mbc,\de)$ is defined in Eq.~(\ref{eq:de_sig_pdf_gg}), Eq.~(\ref{eq:mbc_sig_pdf_gg}) and Eq.~(\ref{eq:de_mbc_ppp_pdf}).}
+\label{fig:de-mbc-sig-prime-star}
+\end{figure}
+
+% As an alternative parameterization of \mbc distribution we use bifurcated Gaussian function:
+% \begin{equation}\label{eq:mbc_sig_pdf_gg_dg}
+%  p(\mbc) = BG\left(\mbc^0(\de),\sigma_l(\de),\sigma_r(\de)\right),
+% \end{equation}
+% where all three parameters are second order polynomials of \de.
+
+The (b) type signal \de-\mbc parameterization has the following form:
+\begin{equation}\label{eq:de_mbc_ppp_pdf}
+ p_{sig}^{\pi\pi\pi^0}\left(\de,\mbc\right) = (1-f^{sig}_{tail})p^{\pi\pi\pi^0}_{peak}\left(\de,\mbc\right) + f^{sig}_{tail}p^{\pi\pi\pi^0}_{tail}\left(\de,\mbc\right),
+\end{equation}
+where $p^{\pi\pi\pi^0}_{peak}$ describes correctly reconstructed signal candidates and $p^{\pi\pi\pi^0}_{tail}$ describes candidates reconstructed with wrong soft photon. Peak and tail components are separated because of different correlation between \de and \mbc. The tail component $p^{\pi\pi\pi^0}_{tail}$ has the following form
+\begin{equation}\label{eq:de_mbc_sig_ppp_tail}
+ p^{\pi\pi\pi^0}_{tail}(\de,\mbc,\mathbf{h}_3,\mathbf{h}_4) = p^{\pi\pi\pi^0}_{tail}(\de,\mathbf{h}_3)p^{\pi\pi\pi^0}_{tail}(\mbc,\de,\mathbf{h}_4),
+\end{equation}
+\begin{equation}\label{eq:de_sig_pdf_ppp_tail}
+ p^{\pi\pi\pi^0}_{tail}(\de,\mathbf{h}_3) = (1-f^{tail}_l)G(\de^{0,tail},\sigma^{tail})+f^{tail}_lCB(\de^{0,tail}_l,\sigma^{tail}_l,n^{tail}_l,\alpha^{tail}_l),
+\end{equation}
+where $n^{tail}_{l} = 2$ and $\mathbf{h}_3 = \{\de^{0,tail}_l,\sigma^{tail},f^{tail}_l,\de^{0,tail}_l,\sigma^{tail}_l,\alpha^{tail}_l\}$ contains $6$ parameters. $p^{\pi\pi\pi^0}_{tail}(\mbc,\de,\mathbf{h}_4)$ and 
+% $p_{sig}^{\gamma\gamma}$ (Eq.\,(\ref{eq:de_mbc_sig_gg})) with
+ correlation between \de and \mbc in the tail component are of the same form as in $p_{sig}^{\gamma\gamma}$ (Eq.\,(\ref{eq:mbc_sig_pdf_gg}) and Eq.\,(\ref{eq:de_mbc_sig_gg_corr})).
+ The peak component $p^{\pi\pi\pi^0}_{peak}$ has the same form as $p_{sig}^{\gamma\gamma}$ (Eq.\,(\ref{eq:de_mbc_sig_gg})), but dependence of $M_{bc}^{0,peak}$ on \de is parameterized in a different way:
+% Both components are parameterized according to Eq.~(\ref{eq:de_sig_pdf_gg}) and Eq.~(\ref{eq:mbc_sig_pdf_gg}) with $f_r=0$ for the tail component. There is one feature for correlation in the peak component: $\mbc^{0,peak}(\de)$ is parametrized with \verb@Error@ function:
+\begin{equation}
+ \mbc^{0,peak}(\de) = \mu_0 + \eta\text{Erf}\left(\frac{\de-\varepsilon_0}{\xi}\right),
+\end{equation}
+where parameters $\mu_0$, $\eta$, $\varepsilon_0$ and $\xi$ are determined in \mbc distribution fit in slices of~\de~(Fig.~\ref{fig:de-mbc-peak-corr}). A total of $31$ parameters describe the (b) type signal \de-\mbc PDF.
+
+Projections of signal $(\mbc,\de)$ distributions together with fit lines projections are shown at Figs.~\ref{fig:de-mbc-sig} and \ref{fig:de-mbc-sig-prime-star}.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.75\textwidth]{pics/de-mbc_corr_m4_Nsk_peak}
+ \caption{Parameters $\mbc^0$ and $\sigma$ of $\text{Nsk}_{peak}(\mbc,\mbc^0,\sigma)$ function (see Eq.~(\ref{eq:de_mbc_ppp_pdf})) in slices of \de for \bdomega mode.}
+\label{fig:de-mbc-peak-corr}
+\end{figure}
+
+\subsubsection{Combinatorial background}\label{sec:de_mbc_comb}
+$(\de,\mbc)$ distributions of the {\it combinatorial} background for events originating from $q\bar q$-continuum and from $B\bar B$ have different shapes:
+\begin{equation}\label{eq:de-mbc-cpmb}
+ p_{cmb}(\de,\mbc) = (1-f_{BB})p^{cont}_{cmb}(\de,\mbc) + f_{BB}p_{cmb}^{BB}(\de,\mbc).
+\end{equation}
+The continuum component is parameterized with
+\begin{equation}\label{eq:de-mbc-cont}
+ p^{cont}_{cmb}(\de,\mbc) = \text{Ch}_2(\de)\times\text{Argus}(\mbc),
+\end{equation}
+where $\text{Ch}_2$ is second order Chebyshev polynomial function. Combinatorial background from $B\bar B$-events is parameterized with
+\begin{equation}\label{eq:de-mbc-BB}
+% p_{cmb}^{BB}(\de,\mbc) = \left[(1-f_G)\text{Argus}(\mbc)+f_G G(\mbc)\right]\times\text{Ch}_2(\de,\mbc),
+ p_{cmb}^{BB}(\de,\mbc) = \text{Exp}(\de)\times\text{Argus}(\mbc)
+\end{equation}
+for all modes except \btodstpi and with
+\begin{equation}\label{eq:de-mbc-BB-dst0}
+ \begin{split}
+  p_{cmb}^{BB}(\de,\mbc)(\btodstpi) &= \left[f_{a}\left(\frac{\pi}{2}-\arctan\left(\frac{\de - \de_0}{\xi}\right)\right)\right.\\
+  &\left.+(1-f_{a})\text{Exp}(\de)\right]\times\text{Argus}(\mbc)
+ \end{split}
+\end{equation}
+for \btodstpi mode. Term with $\arctan$ is needed to describe events with real $D^0$ meson and random slow $\pi^0$. We do not include \de-\mbc correlation in parameterization of the combinatorial background. A total of $7$ \de-\mbc distribution shape parameters for combinatorial background (and $10$ for \btodstpi mode). Projections of $2D$ fit of $(\mbc,\de)$ distribution for MC samples of combinatorial background are shown at Fig.~\ref{fig:de-mbc-cmb} and Fig.~\ref{fig:de-mbc-cmb-prime-star}.
+
+% where $\text{Ch}_2$ is second order Chebyshev polynomial function with correlation taken into account:
+% \begin{equation}\label{eq:cheb_2nd}
+%  \text{Ch}_2(\de,\mbc) = 1 + c_1(\mbc)\de+c_2\left(2\de^2-1\right),\quad c_1(\mbc) = c_1^0+c_1^1\mbc.
+% \end{equation}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/mbc_comb_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_comb_m2_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_comb_m2_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_comb_m3_h0m20}\\
+ \includegraphics[width=0.24\textwidth]{pics/de_comb_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_comb_m2_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_comb_m2_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/de_comb_m3_h0m20}
+ \caption{Projections of $2D$ fit of \mbc-\de distribution for a MC samples of combinatorial background ($0$-$3$ generic MC streams). From left to right: \bdpi, \bdetagg, \bdetappp and \bdomega. Probability density function $p(\mbc,\de)$ is sum of PDFs defined in Eq.~\ref{eq:de-mbc-cont} and Eq.~\ref{eq:de-mbc-BB}.}
+\label{fig:de-mbc-cmb}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/mbc_comb_m5_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_comb_m10_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_comb_m20_h0m10}\\
+ \includegraphics[width=0.24\textwidth]{pics/de_comb_m5_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_comb_m10_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_comb_m20_h0m10}
+ \caption{Projections of $2D$ fit of \mbc-\de distribution for a MC samples of combinatorial background. From left to right: \bdetap, \btodstpi and \btodsteta. Probability density function $p(\mbc,\de)$ is sum of PDFs defined in Eq.~\ref{eq:de-mbc-cont} and Eq.~\ref{eq:de-mbc-BB}.}
+\label{fig:de-mbc-cmb-prime-star}
+\end{figure}
+
+\subsubsection{Partially reconstructed $B$ decays background}\label{sec:de_mbc_peak}
+Background from partially reconstructed $B$ meson decays comes from processes listed in Eq.~(\ref{eq:peaking_bkg_modes}) and from some other ones. All these modes give peak in the signal \mbc region and give no peak in the \de signal region. Most of \de values are situated below $-0.2\,\text{GeV}$ with steep decline between $\de = -0.25\,\text{GeV}$ and $\de = -0.2\,\text{GeV}$. We refer to this component as {\it peaking} background. 
+
+We use the following parameterization form of \de-\mbc distribution:
+\begin{equation}
+ p_{peak}(\de,\mbc,\mathbf{h}_5,\mathbf{h}_6) = p_{peak}(\de,\mathbf{h}_5)\times p_{peak}(\de,\mbc,\mathbf{h}_6),
+\end{equation}
+where dependence of $p_{peak}(\de,\mbc,\mathbf{h_6})$ on \de is taking into account \de-\mbc correlation and
+%To avoid complicated and dependent on simulation description of \de distribution shape, we parameterize \de distribution only in the region $\de>-0.25\,\text{GeV}$ with the following function:
+\begin{equation}\label{eq:de_peak_pdf}
+ p_{peak}(\de,\mathbf{h}_5) \propto 1+sl_l(\Delta E-\varepsilon_0)+st\ln\left(1+\xi\text{Exp}\left[\frac{(sl_r-sl_l)(\Delta E-\varepsilon_0)}{st}\right]\right),
+\end{equation}
+$\mathbf{h_5} = \{sl_l,sl_r,\varepsilon_0,st,\xi\}$. $p_{peak}(\de,\mathbf{h_5})$ shape describes two straight lines with smooth junction near value of the parameter $\varepsilon_0$.
+
+\mbc distribution is parameterized in a different ways for (a) \hgg and (b) \hppp modes. For the (a) case we use the \verb@Novosibirsk@ function:
+\begin{equation}\label{eq:mbc_peak_pdf_gg}
+ p^{\gamma\gamma}_{peak}(\de,\mbc,{h}^{\gamma\gamma}_6) = Nsk\left(\mbc^0(\de),\sigma(\de),\alpha\right),
+\end{equation}
+where parameters $\mbc^0$ and $\sigma$ are linear functions of \de and vector $\mathbf{h}^{\gamma\gamma}_6$ contains $5$ elements. Parameterization of \mbc distribution for the (b) case is the following:
+\begin{equation}\label{eq:mbc_peak_pdf_ppp}
+ p^{\pi\pi\pi^0}_{peak}(\mbc,\mathbf{h}^{\pi\pi\pi^0}_6) = (1-f_G)\text{Argus}(\mbc)+f_G G(\mbc),
+\end{equation}
+where vector $\mathbf{h}^{\pi\pi\pi^0}_6$ contains $5$ elements.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/mbc_part_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_part_m2_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_part_m2_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_part_m3_h0m20}\\
+ \includegraphics[width=0.24\textwidth]{pics/de_part_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_part_m2_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_part_m2_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/de_part_m3_h0m20}
+ \caption{Projections of $2D$ fit of \mbc-\de distribution for a MC samples of peaking background. From left to right: \bdpi, \bdetagg, \bdetappp, and \bdomega. Probability density function $p(\mbc,\de)$ is sum of PDFs defined in Eq.~(\ref{eq:de_peak_pdf}), Eq.~(\ref{eq:mbc_peak_pdf_gg}) and Eq.~(\ref{eq:mbc_peak_pdf_ppp}).}
+\label{fig:de-mbc-peak}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/mbc_part_m5_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_part_m10_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_part_m20_h0m10}\\
+ \includegraphics[width=0.24\textwidth]{pics/de_part_m5_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_part_m10_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_part_m20_h0m10}
+ \caption{Projections of $2D$ fit of \mbc-\de distribution for a MC samples of peaking  background. From left to right: \bdetap, \btodstpi and \btodsteta. Probability density function $p(\mbc,\de)$ is sum of PDFs defined in Eq.~(\ref{eq:de_peak_pdf}), Eq.~(\ref{eq:mbc_peak_pdf_gg}) and Eq.~(\ref{eq:mbc_peak_pdf_ppp}).}
+\label{fig:de-mbc-peak-prime-star}
+\end{figure}
+
+Projections of $2D$ fit of $(\mbc,\de)$ distribution for MC samples of peaking background are shown at the Figs.~\ref{fig:de-mbc-peak} and \ref{fig:de-mbc-peak-prime-star}.
+
+\clearpage
+\subsubsection{Fit procedure}\label{sec:de-mbc-fit-procedure}
+Full PDF describing $(\de,\mbc)$ distribution has four components:
+\begin{equation}
+ p = (1-f_{peak}-f_{cmb}^{cont}-f_{cmb}^{BB})p_{sig}+f_{cmb}^{cont}p_{cmb}^{cont}+f_{cmb}^{BB}p_{cmb}^{BB}+f_{peak}p_{peak},
+\end{equation}
+where $p_{sig}$ describes signal, $p_{cmb}^{cont}$ --- continuum background, $p_{cmb}^{BB}$ --- combinatorial background from $B\bar B$ events and $p_{peak}$ --- peaking background. Fraction of peaking background $f_{peak}$ is small for all modes except \bdpi and \btodstpi and can not be determined in the fit procedure. That is why we fix ratio $f_{peak}/f_{cmb}^{BB}$ based on generic MC information for all modes except \bdpi and \btodstpi. In order to minimize possible biases related to wrong parameterization we keep several shape parameters free: both parameters of continuum \de distribution; point of junction of peaking background \de distribution (parameter $\varepsilon_0$ in Eq.\,(\ref{eq:de_peak_pdf})); \de and \mbc peak positions for signal component. There are $7$ (if $f_{peak}$ is fixed) or $8$ (if $f_{peak}$ is released) free parameters in the \de-\mbc fit procedure.
+
+We calculate number of signal events {\it in a signal area} $S$ in the following way:
+\begin{equation}
+ S = N_{tot}f_{sig}\int\limits_{\mathcal{E}}p_{sig}(\de,\mbc)d\,\de\,d\,\mbc\equiv N_{tot}f_{sig}I_{sig}\equiv N_{sig}I_{sig},
+\end{equation}
+where $\mathcal{E}$ means an elliptic signal area on the $(\de,\mbc)$ plane and $N_{tot}$ is total number of event in the fitted \de-\mbc area. More than $80\%$ signal events are in the signal region for all modes.
+
+An uncertainty in $S$ is calculated taking binomial variance into account:
+\begin{equation}
+ \delta S = N_{tot}I_{sig}\delta f_{sig} \oplus \sqrt{N_{sig}I_{sig}(1-I_{sig})},
+\end{equation}
+where $\oplus$ denotes quadratic summation.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/mbc_purity_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_purity_m2_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_purity_m2_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_purity_m3_h0m20}\\
+ \includegraphics[width=0.24\textwidth]{pics/de_purity_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_purity_m2_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_purity_m2_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/de_purity_m3_h0m20}
+% \includegraphics[width=0.24\textwidth]{pics/de_mbc_pur_m1_v2}
+% \includegraphics[width=0.24\textwidth]{pics/de_mbc_pur_m2_v2}
+% \includegraphics[width=0.24\textwidth]{pics/de_mbc_pur_m3_v2}
+% \includegraphics[width=0.24\textwidth]{pics/de_mbc_pur_m4_v2}\\
+ \caption{Projections of $2D$ fit and scatter plots of \mbc-\de distribution for a two streams of generic MC samples. From left to right: \bdpi, \bdetagg, \bdetappp, and \bdomega. Obtained signal fractions and purities are shown on plots.}
+\label{fig:de-mbc-pur}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/mbc_purity_m5_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_purity_m10_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/mbc_purity_m20_h0m10}\\
+ \includegraphics[width=0.24\textwidth]{pics/de_purity_m5_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_purity_m10_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/de_purity_m20_h0m10}
+ \caption{Projections of $2D$ fit and scatter plots of \mbc-\de distribution for a two streams of generic MC samples. From left to right: \bdetap, \btodstpi and \btodsteta. Obtained signal fractions and purities are shown on plots.}
+\label{fig:de-mbc-pur-prime-star}
+\end{figure}
+
+Figs.~\ref{fig:de-mbc-pur} and \ref{fig:de-mbc-pur-prime-star} show fit results for two streams of generic MC data set. Parameterization of all fit components is established with independent data sets (signal MC and other four streams of generic MC). Table \ref{tab:purity_test} summarizes obtained numbers of signal events in a signal area $S$. Values of offsets $\delta S \equiv S_{fit}-S_{true}$ show good agreement with zero.
+%We should point out that dispersion of $\delta S \equiv S_{fit}-S_{true}$ values does not correspond to fit error because parameters of background line shapes are determined with the same data. $\delta S$ may be considered as an estimation of a systematic error. % Obtained values may be taken as an estimation of systematic error of number of signal events.
+Table \ref{tab:purity_zero_test} shows fit results for the same data set with subtracted signal events (zero-signal test).
+
+\begin{table}[htb]
+ \caption{ Numbers of signal events in a signal area $S_{fit}$ obtained with $2D$ (\de, \mbc) fit of two streams of generic MC data in comparison with true values $S_{true}$.}% with realistic signal fraction.}
+ \label{tab:purity_test}
+ \begin{tabular}
+  { @{\hspace{0.3cm}}l@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}} \hline\hline
+ Parameter               &  $\pi^0$  & \etasubgg & \etasubppp & $\omega$   &$\eta\prime$& $D^{*0}\pi^0$ & $D^{*0}\eta$ \\ \hline
+%  $S_{true}$              & $1491$     & $466$      & $168$        & $988$       & $74$       & $261$       & $97$  \\ %\hline
+%  $S_{fit}-S_{true}$      & $5 \pm 46$ & $5 \pm 28$ & $-10 \pm 19$ & $-2 \pm 50$ & $7 \pm 11$ & $24 \pm 26$ & $-1 \pm 12$ \\ \hline
+%  $S_{true}$              & $1913$    & $583$     & $209$     & $1216$    & $90$     & $323$     & $118$  \\ %\hline
+%  $S_{fit}-S_{true}$      & $53\pm53$ & $12\pm31$ & $-8\pm21$ & $31\pm56$ & $5\pm12$ & $43\pm29$ & $-5\pm14$ \\ \hline
+ $S_{true}$              & $818$     & $248$     & $80$       & $492$      & $33$     & $154$     & $59$     \\ %\hline
+ $S_{fit}-S_{true}$      & $5\pm35$  & $-9\pm21$ & $-10\pm10$ & $-25\pm34$ & $11\pm8$ & $15\pm20$ & $1\pm10$ \\ \hline
+%  $P_{true}$ (\%)         & $68.55$        & $53.14$        & $50.28$          & $57.83$        \\ %\hline
+%  $P_{fit}$  (\%)         & $71.7 \pm 3.3$ & $57.0 \pm 5.5$ & $55.1 \pm 8.1$   & $62.2 \pm 3.9$ \\ \hline
+%  $S_{true}$ (full range) & $958$          & $246$          & $120$            & $509$          \\ %\hline
+%  $S_{fit}$  (full range) & $1001 \pm 43$  & $280 \pm 26$   & $142.5 \pm 19.6$ & $580 \pm 34  $ \\ \hline
+\hline
+ \end{tabular}
+ \end{table}
+
+\begin{table}[htb]
+% \caption{Zero-signal test for the (\de, \mbc) fit with generic MC. Shapes of the fit components are determined with streams $0$-$5$, $0$-$3$ and $0$-$4$ while fit is performed with stream(s) $0$-$5$, $4$-$5$ and $5$ correspondingly for the first, the second and the third row.}
+ \caption{Zero-signal test for the (\de, \mbc) fit with two streams of generic MC.}
+ \label{tab:purity_zero_test}
+ \begin{tabular}
+  { @{\hspace{0.3cm}}l@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}} \hline\hline
+ Parameter & $\pi^0$ &\etasubgg  & \etasubppp & $\omega$  & $\eta\prime$ & $D^{*0}\pi^0$ & $D^{*0}\eta$ \\ \hline
+% $S_{fit}$ ($6$ streams)&$22\pm22$& $9\pm18$ & $-11 \pm 7$& $49\pm19$ & $11 \pm 7$   & $64 \pm 22$   & $9 \pm 8$ \\ \hline
+% $S_{fit}$ ($2$ streams)&$-7\pm13$& $-10\pm9$ & $-7 \pm 3$& $15\pm13$ & $11 \pm 5$   & $14 \pm 13$   & $6 \pm 5$ \\ \hline
+ $S_{fit}$ &$-7\pm13$& $-10\pm9$ & $-6 \pm 3$ & $11\pm10$ & $11 \pm 5$   & $14 \pm 13$   & $5 \pm 4$ \\ \hline
+% $S_{fit}$ ($1$ stream) &$-11\pm8$& $-14\pm5$ & $-1 \pm 2$& $4\pm7$   & $11 \pm 4$   & $ 4 \pm  9$   & $4 \pm 3$ \\ \hline
+\hline
+ \end{tabular}
+ \end{table}
+
+ Event dependent signal fraction in the $i^{th}$ Dalitz bin $f^{i}_S(\de,\mbc)$ may be calculated using result of $2D$ $(\de,\mbc)$ fit of full Dalitz plot. Let us denote quotient of signal reconstruction efficiency in $i^{th}$ Dalitz bin to the average reconstruction efficiency over the Dalitz plot as $\varepsilon_i$. Number of signal events in $i^{th}$ is
+\begin{equation}\label{eq:nsig-prediction-with-tag}
+  N_{sig}^i = \varepsilon_i N_{sig}\frac{(K_i + K_{-i})(1+\xi^2)+(1-2w_i)q_B(K_i - K_{-i})}{2(1+\xi^2)},\quad \xi = \tau\Delta m,
+\end{equation}
+where $q_B$ is a flavor of the signal $B^0$ and $w_i$ is an averaged probability of wrong tagging. This formula is obtained with integration of Eq.~(\ref{eq:master-formula}) and taking wrong tagging probability into account. Averaged probability of wrong tagging $w_i$ can be calculated for a data set separately for each Dalitz bin.
+%Fig.~\ref{fig:nsig-prediction} shows the results of calculations with Eq.~(\ref{eq:nsig-prediction-with-tag}) in comparison with true values.
+
+Total number of background events in a Dalitz plot bin (for a flavor tagged data set) is
+\begin{equation}
+ N_{bkg}^i = N_{tot}^i - N_{sig}^i,
+\end{equation}
+where $N_{tot}^i$ is total number of events reconstructed in $i^{\text{th}}$ Dalitz bin. With these numbers and determined \de-\mbc p.d.f. one can obtain probability for $j^{\text{th}}$ event in $i^{\text{th}}$ Dalitz bin to be background event:
+\begin{equation}\label{eq:f_bkg}
+ f^{ij}_{bkg} = \frac{N_{bkg}^ip_{bkg}(\de^j,\mbc^j)}{N_{sig}^ip_{sig}(\de^j,\mbc^j)},
+\end{equation}
+where $p_{sig}$ and $p_{bkg}$ are PDFs for signal and background \de-\mbc distributions respectively. Similar calculations can be done in order to obtain probability $f^{ij}_{cnt}$ for an event to be continuum background event. We will use these event-dependent numbers in fits of \dt distributions. Fig.~\ref{fig:f_bkg} illustrates $f^{ij}_{bkg}(\de,\mbc)$ distributions in each Dalitz bin for both $B$ meson flavors.
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{pics/f_bkg_m2.png}
+\caption{Generic MC. Equi-$f_{bkg}$ zones on the $(\de,\mbc)$ plane for each Dalitz bin and each $B^0$ flavor for \bdetagg mode. Black corresponds to $0.0<f_{bkg}<0.2$, red --- $0.2<f_{bkg}<0.2$ and so on. $f_{bkg}$ values are derived from \de-\mbc fit results.}
+ \label{fig:f_bkg}
+\end{figure}
+
+% \begin{figure}[htb]
+%  \includegraphics[width=0.49\textwidth]{pics/nsig_predicted_m1}
+%  \includegraphics[width=0.49\textwidth]{pics/nsig_predicted_m2}\\
+%  \includegraphics[width=0.49\textwidth]{pics/nsig_predicted_m3}
+%  \includegraphics[width=0.49\textwidth]{pics/nsig_predicted_m4}\\
+%  \caption{Comparison of calculated with Eq.~(\ref{eq:nsig-prediction-with-tag}) number of signal events in each (Dalitz\&Flavor) bin (blue circles with error bars) with true values (blue circles).}
+%  \label{fig:nsig-prediction}
+% \end{figure}
+ 
+% \begin{figure}[htb]
+%  \includegraphics[width=\textwidth]{pics/f_bkg_m1.png}
+%  \caption{Equi-$f_{bkg}$ zones on the $(\de,\mbc)$ plane for each Dalitz bin and each $B^0$ flavor for \bdpi generic MC data set. Black corresponds to $0.0<f_{bkg}<0.2$, red --- $0.2<f_{bkg}<0.2$ and so on till yellow color corresponding to $0.4<f_{bkg}<0.5$.}
+%  \label{fig:f_bkg_m1}
+% \end{figure}
+
+\clearpage
+\subsection{Dalitz plot phase space}\label{sec:DP_phsp}
+We perform a mass constrained kinematic fit for \dkpp, $K_S^0\to\pi^+\pi^-$ decay chain with the \verb@ExKFitter@ package (BN\,706) in order to bring events into physical phase space and to improve resolution of the Dalitz variables \massp and \massm. Let us consider an effect of this procedure. Fig.\,\ref{fig:DalitzBins} shows reconstructed DP bins rate for each generated DP bin before and after the mass fit procedure. One can see significant improvement: from $84\%$-$94\%$ to $93\%$-$97\%$ correctly reconstructed bin numbers.
+\begin{figure}[htb]
+ \includegraphics[width=0.45\textwidth]{pics/dbin_raw}
+ \includegraphics[width=0.45\textwidth]{pics/dbin_fit}
+ \caption{Reconstructed DP bin vs. True DP bin before (left) and after (right) mass constrained kinematic fit of \dkpp. Zero reconstructed bin corresponds to not allowed phase space.}
+\label{fig:DalitzBins}
+\end{figure}
+
+Precision of \massp and \massm parameters increased more than twice due to the fit: from $5.2\,\text{MeV}^2/\text{c}^4$ to $2.0\,\text{MeV}^2/\text{c}^4$ (see Fig.~\ref{fig:DalitzResolution}). These values are widths of main peaks. Tails lead to RMS values about $11\,\text{MeV}^2/\text{c}^4$ and $7\,\text{MeV}^2/\text{c}^4$ for distributions before and after the fit respectively.
+\begin{figure}[htb]
+ \includegraphics[width=0.45\textwidth]{pics/dmp_raw1}
+ \includegraphics[width=0.45\textwidth]{pics/dmm_raw}\\
+ \includegraphics[width=0.45\textwidth]{pics/dmp_fit}
+ \includegraphics[width=0.45\textwidth]{pics/dmm_fit}
+\caption{Resolution of \massp (left) and \massm (right) before (top) and after (bottom) mass constrained kinematic fit of \dkpp.}
+\label{fig:DalitzResolution}
+\end{figure}
+
+Possible bias of the \cpvconj parameters due to wrong reconstructed Dalitz bin is considered in section~\ref{sec:mc_cpv_fit}.
+
+\clearpage
+\subsection{Entangling of signal channels }\label{sec:cross_feed}
+A signal event of some mode can be reconstructed as a signal event of some other mode. If two entangled modes lead to different time behavior, \cpvconj parameters could be affected. We obtained relative fractions of entangled events with signal MC. Tab.~\ref{tab:cross_feed} shows values
+\begin{equation}\label{eq:cross_feed}
+ \xi_{ij}=\frac{N_{ij}}{N_{ii}},
+\end{equation}
+where $N_{ij}$ is number of events of signal mode $i$ reconstructed as signal events of mode $j$ staying in the signal \de-\mbc area. Two values are order of one percent: $2.3\%$ for $D^0\pi^0\to D^0\etasubgg$ and $0.9\%$ for $D^{*0}h^0\to D^0\etasubgg$ and only the last one leads to entangling of modes with different \dt distributions. About $9$ events from $D^0\pi^0$ and one event from $D^{*0}h^0$ among about $120$ signal events of $D^0\etasubgg$ are expected in the signal area.  
+
+\begin{table}[htb]
+ \caption{Values of $\xi_{ij}$ (Eq.\,(\ref{eq:cross_feed})) obtained with signal MC.}
+ \label{tab:cross_feed}
+ \begin{tabular}
+  { @{\hspace{0.3cm}}l@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}} \hline\hline
+ \multirow{2}{*}{{\bf Source mode}} & \multicolumn{7}{c}{{\bf Relative contribution to a destination mode (\%)}} \\ % \hline
+  &  $\pi^0$  & \etasubgg & \etasubppp  & $\omega$ &$\eta\prime$& $D^{*0}\pi^0$ & $D^{*0}\eta$ \\ \hline
+ \bdpi        &  $100$    &  $2.3$    & $0.0$       &  $0.0$   &  $0.0$     & $0.2$         & $0.0$        \\ \hline
+ \bdeta       &  $0.2$    &\multicolumn{2}{l}{$100$}&  $0.2$   &  $0.2$     & $0.0$         & $0.0$        \\ \hline
+ \bdomega     &  $0.0$    &  $0.0$    & $0.0$       &  $100$   &  $0.0$     & $0.0$         & $0.0$        \\ \hline
+ \bdstarh     &  $0.0$    &  $0.9$    & $0.0$       &  $0.0$   &  $0.0$     & \multicolumn{2}{l}{$100$}   \\ \hline
+ \hline
+ \end{tabular}
+ \end{table}
+
+\clearpage
+\subsection{Sideband \dt fit}\label{sec:mc_sideband_fit}
+We determine background $\Delta t$ distribution in \mbc sideband area. This area is defined as union of two rectangular areas near the signal area (Fig.\,\ref{fig:SidebandDefinition}):
+\begin{equation}\label{eq:de-mbc-sideband-area}
+\begin{split}
+&\mbc \subset \left(5.23\,\text{GeV},\ 5.26\,\text{GeV}\right)\ \cap\ \de \subset \left(-0.25\,\text{GeV},\ 0.30\,\text{GeV}\right),\\
+&\mbc \subset \left(5.26\,\text{GeV},\ 5.29\,\text{GeV}\right)\ \cap\ \de \subset \left(\phantom{-}0.22\,\text{GeV},\ 0.30\,\text{GeV}\right)
+%  &\mbc > 5.23\,\text{GeV}\ \&\&\ \mbc < 5.26\,\text{GeV}\ \&\&\ \de>-0.25\,\text{GeV}\ \&\&\ \de<0.3\,\text{GeV}\\
+%  &\mbc > 5.26\,\text{GeV}\ \&\&\ \mbc < 5.29\,\text{GeV}\ \&\&\ \de>\phantom{-}0.22\,\text{GeV}\ \&\&\ \de<0.3\,\text{GeV}
+\end{split}
+\end{equation}
+
+\begin{figure}[htb]
+\includegraphics[width=0.5\textwidth]{pics/sideband_definition.png}\\
+ \caption{Definition of sideband area. Blue dots correspond to signal area, red dots correspond to sideband area.}
+\label{fig:SidebandDefinition}
+\end{figure}
+
+Background \dt p.d.f. consists of $\delta$-functional and effective lifetime $\tau_{bkg}$ parts:
+\begin{equation}\label{eq:dt_sideband}
+  p_{bkg}(\Delta t) = \left(f_{\delta}\delta(\Delta t - \mu_{\delta})+(1-f_{\delta})2\tau_{bkg}e^{-\frac{|\Delta t|}{\tau_{bkg}}}\right)\otimes G_2\left(\Delta t,\mu,s_{mn}\sigma_z,s_{tl}\sigma_z,f_{tl}\right),
+ \end{equation}
+where $G_2$ is a double Gaussian and $\sigma^2_z=\sigma_z^{2(sig)}+\sigma_z^{2(tag)}$ --- event-dependent value. $\sigma_z^{\{sig,tag\}}$ are an estimated spatial precisions obtained in vertices fit procedures.
+%All parameters are well defined if value of $\tau_{bkg}$ is fixed. We choose empirical vlue $\tau_{bkg}=1.2\,\text{ps}$.
+Parameters of $G_2$ are determined separately for single track tagging vertices and multiple tracks tagging vertices. All parameters except $\tau_{bkg}$ are determined for SVD1 and SVD2 independently.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/sideband_m77_BB_gg}
+ \includegraphics[width=0.24\textwidth]{pics/sideband_m77_cont_gg}
+ \includegraphics[width=0.24\textwidth]{pics/sideband_m77_BB_ppp}
+ \includegraphics[width=0.24\textwidth]{pics/sideband_m77_cont_ppp}\\
+ \includegraphics[width=0.24\textwidth]{pics/sb_test_m77_BB_gg}
+ \includegraphics[width=0.24\textwidth]{pics/sb_test_m77_cont_gg}
+ \includegraphics[width=0.24\textwidth]{pics/sb_test_m77_BB_ppp}
+ \includegraphics[width=0.24\textwidth]{pics/sb_test_m77_cont_ppp}
+\caption{Background \dt distributions from five streams of generic MC. Distributions in sideband (top row) and signal (bottom row) areas are described with the same shape. From left to right: (a) $B\bar B$ events for single track signal vertex modes, (b) continuum events for single track signal vertex modes, (c) $B\bar B$ events for multiple tracks signal vertex modes and (d) continuum events for multiple tracks signal vertex modes.}
+%\bdpi, \bdetagg, \bdetappp, \bdomega, \bdetap, \btodstpi and \btodsteta. Line shape is the same for both cases and is obtained in fit of the \mbc-sideband $\Delta t$ distribution.}
+\label{fig:GenMCSideband}
+\end{figure}
+
+We found \dt distributions for background events from $q\bar q$ continuum and from $B\bar B$ decays are different. It is important because relative fraction of continuum background in combinatorial background significantly varies over \de-\mbc plane. That leads to a difference between background \dt distributions in sideband and signal areas. At the same time, \dt distributions for continuum background and background from $B\bar B$ decays do not change much over \de-\mbc plane (Fig.~\ref{fig:GenMCSideband}). Taking this into account we suggest the following approach to the \dt background description:
+\begin{enumerate}
+ \item Parameters of background \dt distributions are determined with generic MC, separately for continuum and $B\bar B$ components;
+ \item Relative fraction of continuum background $f_{cnt}^i$ is determined from \de-\mbc fit for each event.
+ \item Data sideband \dt distribution is fitted using parameters determined with generic MC and $f_{cnt}^i$. There are two free scaling parameters: $k_i$, $i = 1,2$, so that $s^{i}_{mn}\to k_is^{i}_{mn}$ and $s^{i}_{tl}\to k_is^{i}_{tl}$ (see. Eq.~(\ref{eq:dt_sideband})) and $i = 1$ ($i=2$) corresponds to SVD1 (SVD2) case;
+ \item Fit of the \dt distribution in the signal area is performed using obtained parameters, scales and corresponding $f_{cnt}^i$.
+\end{enumerate}
+
+% \begin{figure}[htb]
+%  \includegraphics[width=0.24\textwidth]{pics/sideband_m1}
+%  \includegraphics[width=0.24\textwidth]{pics/sideband_m2}
+%  \includegraphics[width=0.24\textwidth]{pics/sideband_m3}
+%  \includegraphics[width=0.24\textwidth]{pics/sideband_m4}\\
+%  \includegraphics[width=0.24\textwidth]{pics/sb_test_m1}
+%  \includegraphics[width=0.24\textwidth]{pics/sb_test_m2}
+%  \includegraphics[width=0.24\textwidth]{pics/sb_test_m3}
+%  \includegraphics[width=0.24\textwidth]{pics/sb_test_m4}
+% \caption{\dt distributions for background events from four streams of generic MC. \mbc sideband (top row) and in the signal region (bottom row). From left to right: \bdpi, \bdetagg, \bdetappp, and \bdomega. Line shape is the same for both cases and is determined in fit of the sideband $\Delta t$ distribution.}
+% \label{fig:GenMCSideband}
+% \end{figure}
+% 
+% \begin{figure}[htb]
+%  \includegraphics[width=0.24\textwidth]{pics/sideband_m5}
+%  \includegraphics[width=0.24\textwidth]{pics/sideband_m10}
+%  \includegraphics[width=0.24\textwidth]{pics/sideband_m20}\\
+%  \includegraphics[width=0.24\textwidth]{pics/sb_test_m5}
+%  \includegraphics[width=0.24\textwidth]{pics/sb_test_m10}
+%  \includegraphics[width=0.24\textwidth]{pics/sb_test_m20}
+% \caption{\dt distributions for background events from four streams of generic MC. \mbc sideband (top row) and in the signal region (bottom row). From left to right: \bdetap, \btodstpi and \btodsteta. Line shape is the same for both cases and is determined in fit of the sideband $\Delta t$ distribution.}
+% \label{fig:GenMCSideband-star-prime}
+% \end{figure}
+
+\clearpage
+\subsection{Lifetime fit}\label{sec:mc_lifetime_fit}
+Signal $\dt \equiv (t_{sig} - t_{tag})$ distribution is parameterized with the following general form:
+\begin{equation}
+ p_{sig}(\dt) = p_{phys}(\dt)\otimes R(\dt),
+\end{equation}
+where $R(\dt)$ is a resolution function and $p_{phys}(\dt)$ is a physical PDF defined in Eq.~(\ref{eq:master-formula}) in our case.
+
+One can not obtain $B$ mesons decay times in the event reconstruction procedure directly. Instead, we obtain positions of decay vertices of the signal $B$ and tagging $B$ candidates. Assuming both $B$ mesons have zero momentum in the center-of-moments frame, we set radial flight distances equal zero and use the following approximation:
+\begin{equation}\label{eq:dz-dt}
+ \dt \approx \frac{\Delta z}{c\beta\gamma},\quad c\beta\gamma\approx 78.49~\text{cm}\cdot\text{ps}^{-1}.
+\end{equation}
+In fact, there is momentum of $B$ mesons in the center-of-moments frame about $0.3\,\text{GeV}$. It has to be taken into account in the resolution function $R(\Delta t)$.
+
+It is necessary to consider a case when only one track is used for the vertex reconstruction separately. Vertex constrained fit is still possible because momentum of the track can be continued into interaction point region. Vertex position resolution for the {\it single track vertex} case differs from the {\it multiple tracks vertex} case.
+
+%Other important factor is number of tracks which are used for the vertex reconstruction: resolution is different for case of single track and case of several tracks.
+
+Resolution function $R(\dt)$ has been studied and parameterized in previous studies of the Belle collaboration \cite{vertexres}. The \verb@TATAMI@ package describes free components of the \dt resolution:
+\begin{enumerate}
+ \item Detector resolution $R_{det}^{\{sig,tag\}}$. This part is parameterized with Gaussian with event-dependent width and zero mean. Separate sets of constants have been determined for SVD1/SVD2 cases, signal/tagging side and single track/multiple tracks vertex.
+ \item Non-primary vertices effect $R_{np}$. There is probability to reconstruct vertex of some long lived secondary particle on the tagging size instead of primary $B$ meson vertex. This effect leads to asymmetry and mean bias of the \dt distribution.
+ \item Kinematic approximation $R_k$. This part takes into account distortion of the \dt distribution due to an approximation Eq.\,(\ref{eq:dz-dt}).
+\end{enumerate}
+
+Taking all discussed resolution components into account we perform several tests of the lifetime fits procedure. In all tests we use default \verb@TATAMI@ parameters for the signal resolution. Outlier parameters are left free in all tests. Also, we use event-dependent background and continuum background fractions as was discussed above (see Eq.~(\ref{eq:f_bkg}) and Sec.~\ref{sec:de-mbc-fit-procedure}).
+
+Studying lifetime fit procedure with MC events we aim to check our understanding of signal and background \dt distributions and to study possible lifetime offsets due to inaccuracies in their parameterizations.
+
+With the first test we check parameterization of the signal \dt distribution. Fitted \dt distributions of large signal MC data sets for each considered signal mode are shown on the Fig.~\ref{fig:sig_mc_lifetime}.
+%We found that \dt distribution is dependent on quality of the $D^0$ vertex fit.
+Obtained lifetime offsets are shown at Fig.~\ref{fig:mc_tau_offsets} (left) and listed at the Tab.~\ref{tab:sig_mc_lifetime}.
+%First one (black circles) corresponds to $\chi^2/n.d.f.<50$ cut, the second one corresponds to $\chi^2/n.d.f.<500$ cut.
+One can see that average offset is close to zero and value $2\cdot10^{-2}\,\text{ps}$ can be taken as a conservative estimation of $B^0$ lifetime offset due to inaccuracies in the signal \dt parameterization.
+
+\begin{figure}
+ \includegraphics[width=0.235\textwidth]{pics/lifetime_m1_nobkg}
+ \includegraphics[width=0.235\textwidth]{pics/lifetime_m2_nobkg}
+ \includegraphics[width=0.235\textwidth]{pics/lifetime_m3_nobkg}
+ \includegraphics[width=0.235\textwidth]{pics/lifetime_m4_nobkg}
+ \includegraphics[width=0.235\textwidth]{pics/lifetime_m5_nobkg}
+ \includegraphics[width=0.235\textwidth]{pics/lifetime_m10_nobkg}
+ \includegraphics[width=0.235\textwidth]{pics/lifetime_m20_nobkg}
+%  \includegraphics[width=0.235\textwidth]{pics/lifetime_m1}
+%  \includegraphics[width=0.235\textwidth]{pics/lifetime_m2}
+%  \includegraphics[width=0.235\textwidth]{pics/lifetime_m3}
+%  \includegraphics[width=0.235\textwidth]{pics/lifetime_m4}
+%  \includegraphics[width=0.235\textwidth]{pics/lifetime_m5}
+%  \includegraphics[width=0.235\textwidth]{pics/lifetime_m10}
+%  \includegraphics[width=0.235\textwidth]{pics/lifetime_m20}
+ \caption{Lifetime fit for signal MC data. From left to right: \bdpi, \bdetagg, \bdetappp, \bdomega, \bdetap, \btodstpi and \btodsteta.}% Top row corresponds to pure signal data set, bottom row corresponds to the fit procedure with event-dependent background fraction.}
+ \label{fig:sig_mc_lifetime}
+\end{figure}
+
+%is lifetime fit of generic MC data. We applied full selection procedure to four streams of Generic MC data and performed lifetime fit. The results are shown at the Fig.~\ref{fig:mc_tau_offsets} (left). Shape of background \dt distribution is obtained from \mbc-sideband region. A problem here is limited statistics, so we can not confidently determine offset below $0.2\,\text{ps}$ precision.
+
+The second test of the lifetime fit procedure is based on generic MC data. We apply complete selection procedure for five streams of generic MC and determine parameters of background \dt distribution using sideband area. Fig.\,\ref{fig:mc_tau_offsets} (middle) shows lifetime obtained offsets. Blue circles correspond to all selected events, red circles correspond to signal events (the same events but without background). Difference between these two sets may be taken as an estimation of $B^0$ lifetime offset due to inaccuracies in the background \dt parameterization. Since statistics is limited, we combine together all modes with single track signal vertex and multiple track signal vertex and obtain two numbers for these two groups (see also Fig.\,\ref{fig:mc_tau_offsets} (right)):
+\begin{equation}
+\begin{split}
+ &\tau_{Fit} - \tau_{Fit}^{NoBkg} = (2.73 \pm 1.85)\times10^{-2}\,\text{ps},\quad\text{(single track vertex)}\\
+ &\tau_{Fit} - \tau_{Fit}^{NoBkg} = (3.44 \pm 2.25)\times10^{-2}\,\text{ps},\quad\text{(multiple tracks vertex)}\\
+\end{split}
+\end{equation}
+
+%The second test of the lifetime fit procedure uses large signal MC data set. Signal MC data is mixed with background events from Generic MC. In order to obtain many background events in the signal \de-\mbc region we do not suppress continuum. Shape of background \dt distribution is obtained from fit of the selected background events (sideband effect is not tested here). Results are shown in the Table\,\ref{tab:sig_mc_lifetime}, at Fig.\,\ref{fig:sig_mc_lifetime} and Fig.~\ref{fig:mc_tau_offsets} (right). Averaged over all modes offset about $\delta\tau \approx -2\cdot 10^{-2}\,\text{ps}$ is found. Since background component does not change offset much we conclude that the main source of offset is  parameterization of the signal \dt resolution. 
+
+% \begin{table}[htb]
+%  \caption{ Results of the lifetime fit for signal MC samples. True values $\tau_{B^0}=1.534\,\text{ps}$ and $\tau_{B^+}=1.638\,\text{ps}$ are subtracted.}
+%  \label{tab:sig_mc_lifetime}
+%  \begin{tabular}
+%   {| @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}}  @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} @{\hspace{0.3cm}}c@{\hspace{0.3cm}} |}
+%  \hline
+%  \multicolumn{6}{|c|}{$\left(\tau_{rec}-\tau_{true}\right),\,10^{-2}\,\text{ps}$} \\
+%    $\pi^0$       &     \etagg     & $\pi^+$ (Only $D^0$) &  \etappp       &  $\omega$  &  $\pi^+$ \\ \hline
+%   $-2.1 \pm 0.4$ & $-1.3 \pm 0.5$ & $-0.2 \pm 0.5$       & $-1.1 \pm 0.7$ & $-2.8 \pm 0.4$ & $-1.1 \pm 0.5$ \\ \hline
+%  \end{tabular}
+% \end{table}
+
+\begin{table}[htb]
+ \caption{ Lifetime offsets $\delta\tau\equiv\left(\tau_{fit}-\tau_{B^0}\right),\,10^{-2}\,\text{ps}$. Fit of signal MC samples. $\tau_{B^0}=1.534\,\text{ps}$.}
+ \label{tab:sig_mc_lifetime}
+ \begin{tabular}
+  { @{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} }
+ \hline\hline
+% \multicolumn{7}{|c|}{$\left(\tau_{rec}-\tau_{true}\right),\,10^{-2}\,\text{ps}$} \\
+   $\pi^0$       &  \etasubgg     & \etasubppp    & $\omega$  &  $\eta\prime$ & $D^{*}\pi^0$ & $D^{*}\eta$ \\ \hline
+  $-0.71\pm0.43$ & $1.03\pm0.55$ & $1.24\pm0.76$ & $-0.46\pm0.49$ & $-1.59\pm2.86$ & $0.27\pm1.76$ & $-3.81\pm2.49$ \\ \hline
+  \hline
+ \end{tabular}
+\end{table}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/tau_offset_ww1}
+ \includegraphics[width=0.32\textwidth]{pics/tau_offset_small_ww}
+ \includegraphics[width=0.32\textwidth]{pics/tau_offset_h0_ww}
+ \caption{Lifetime offsets obtained with MC data. Left plot shows offsets for large samples of signal MC. Middle plot shows offsets for five streams of generic MC data. Blue circles correspond to all selected events, red circles correspond to a fit of only signal events. Right plot shows average difference between offsets with and without background for modes with single track signal vertex and modes with multiple tracks signal vertex.}
+ \label{fig:mc_tau_offsets}
+\end{figure}
+
+\clearpage
+\subsection{Binned Dalitz plot efficiency map}\label{sec:efficiency}
+It is easy to see (Eq.\,(\ref{eq:master-formula})) that \cpvconj analysis procedure is not sensitive to the following transformation:
+\begin{equation}\label{eq:effi}
+ K_i\to\alpha_i K_i,\quad K_{-i}\to\alpha_i K_{-i},
+\end{equation}
+where $\alpha_i>0$ and $i>0$. The only possible effect of this transformation is changing of statistical precision, but not bias of \cpvconj parameters. Particularly, the analysis procedure is not sensitive to overall changing of efficiency ($\alpha_i\equiv\alpha$). $\alpha$ is reduced because of normalization condition
+\begin{equation}
+ \sum_i K_i = 1.
+\end{equation}
+
+The only effect important for us is asymmetrical correction
+\begin{equation}\label{eq:effi1}
+ K_i\to\alpha_i K_i,\quad K_{-i}\to\alpha_{-i} K_{-i},\quad \alpha_i\neq\alpha_{-i}.
+\end{equation}
+This asymmetry may appears due to asymmetry of \dkpp Dalitz plot distribution even if Dalitz plot efficiency map is symmetrical.
+
+We studied efficiency with signal MC data sets. Tab.\,\ref{tab:KCorrection} shows values of parameters $K_i$ predicted by \dkpp decay model which we use for signal MC production and values measured with signal MC. Let us consider parameters
+\begin{equation}\label{eq:effi_asym}
+ \alpha_i\equiv\frac{K^{\text{SigMC}}_{i}}{K^{\text{model}}_{i}} \quad\text{and}\quad   \varepsilon_i\equiv\frac{\alpha_i}{\alpha_{-i}}.
+\end{equation}
+As discussed above $\varepsilon_i\neq 1$ leads to biased \cpvconj parameters. Values $\alpha_i$ and $\varepsilon_i$ for \bdpi and \bdomega modes are shown at Fig.\,\ref{fig:asym}. We see similar results for both modes (up to statistical uncertainty). Significant deviation from $\varepsilon_i = 1$ is probably the case for bins $1$, $6$ and $8$. That is why we use corrected $K_i$ values for our \cpvconj fit of MC data.
+
+\begin{table}[htb]
+ \caption{$K_i$ predicted by \dkpp decay model \cite{Belle_model} and $K_i$ measured with signal MC generated with this model (\bdpi and \bdomega modes).}
+ \label{tab:KCorrection}
+ \begin{tabular}
+  {@{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}r@{\hspace{0.2cm}}  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}r@{\hspace{0.2cm}}  @{\hspace{0.2cm}}r@{\hspace{0.2cm}} @{\hspace{0.2cm}}r@{\hspace{0.2cm}}  @{\hspace{0.2cm}}r@{\hspace{0.2cm}}} \hline \hline
+  \multirow{2}{*}{\bf Bin} & \multicolumn{2}{c}{{\bf Model}} & \multicolumn{2}{c}{{\bf Signal MC ($\pi^0$)}} & \multicolumn{2}{c}{{\bf Signal MC ($\omega$)}} \\% \cline{2-7}
+      & $K_i$ (\%)& $K_{-i}$ (\%)  & \multicolumn{1}{c}{$K_i$ (\%)} & $K_{-i}$ (\%) & $K_i$ (\%) & $K_{-i}$ (\%) \\ \hline
+  $1$ & $16.88$ & $8.80$ &$16.90\pm0.21$ & $9.43\pm0.20$ &$17.03\pm0.24$ & $9.10\pm0.22$ \\ \hline
+  $2$ & $11.85$ & $2.86$ &$11.95\pm0.20$ & $2.96\pm0.07$ &$11.87\pm0.22$ & $2.98\pm0.08$ \\ \hline
+  $3$ & $9.62$  & $1.14$ & $9.60\pm0.09$ & $1.33\pm0.06$ & $9.60\pm0.20$ & $1.16\pm0.07$ \\ \hline
+  $4$ & $7.42$  & $1.50$ & $7.54\pm0.08$ & $1.50\pm0.05$ & $7.65\pm0.09$ & $1.50\pm0.07$ \\ \hline
+  $5$ & $9.07$  & $4.25$ & $9.35\pm0.09$ & $4.26\pm0.07$ & $9.27\pm0.21$ & $4.40\pm0.09$ \\ \hline
+  $6$ & $3.08$  & $1.01$ & $3.02\pm0.05$ & $1.13\pm0.04$ & $3.08\pm0.06$ & $1.07\pm0.05$ \\ \hline
+  $7$ & $10.54$ & $2.32$ & $9.67\pm0.09$ & $2.29\pm0.06$ &$10.03\pm0.21$ & $2.28\pm0.08$ \\ \hline
+  $8$ & $7.79$  & $1.78$ & $7.18\pm0.08$ & $1.90\pm0.05$ & $7.19\pm0.09$ & $1.79\pm0.07$ \\ \hline
+  \hline
+ \end{tabular}
+\end{table}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/effit_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/asym_m1_h0m10}
+ \includegraphics[width=0.24\textwidth]{pics/effit_m3_h0m20}
+ \includegraphics[width=0.24\textwidth]{pics/asym_m3_h0m20}
+ \caption{Values $\alpha_i$ (first and third plots) and $\varepsilon_i$ (second and fourth) (see. Eq.\,(\ref{eq:effi_asym})) for \bdpi (two left plots) and \bdomega (two right plots). Red circles correspond to $\alpha_i$ in negative bin numbers.}
+ \label{fig:asym}
+\end{figure}
+
+In case of data \cpvconj fit we have to take this asymmetry into account. The cleanest way with minimal systematic uncertainty is to take parameters $K_i$ measured in \bptodpi decays. This process is self tagging, very similar kinematically to our signal and experimentally clean enough (see. Sec.\,\ref{sec:Kmeasurement}).
+
+\clearpage
+\subsection{\cpvconj fit}\label{sec:mc_cpv_fit}
+Performance of the \cpvconj fit procedure is studied with signal and generic MC data. We describe several tests and discuss several sources of systematic uncertainties in \cpvconj parameters in this section.
+
+\subsubsection{Fit of generated signal \dt distribution}\label{sec:mc_cpv_gen_fit}
+%{\bf 1.}
+The first test is a fit of {\it generated} \dt distribution for signal MC events. This exercise is important for several reasons:
+\begin{itemize}
+ \item We make sure that we understand our ideal (perfect time resolution, no wrong Dalitz bin numbers etc.) p.d.f. for the \cpvconj fit procedure;
+ \item We check correlation between \dt and our selection criteria. If this correlation is significant we obtain biased value of lifetime;
+ \item There is also a subtle effect related to variation of detection efficiency over the Dalitz plot. We studied this effect in Sec.\,\ref{sec:efficiency} considering bias of parameters $K_i$. Parameters $S_i$ and $C_i$ may also be effectively changed  due to nonuniform efficiency map. Fit of generated \dt distribution for signal events after the selection procedure is sensitive to this effect.
+\end{itemize}
+Fit offsets for generated \dt distribution are as follows:
+\begin{equation}\label{eq:gen_offsets}
+\begin{split}
+ &\delta\tau = (5.3 \pm 2.5)\cdot10^{-3}\,\text{ps},\\
+ \delta(\sindbeta) = (-5.5\ \pm\ &4.3)\cdot 10^{-3},\quad\delta(\cosdbeta) = (-8.1 \pm 6.2)\cdot 10^{-3}.
+\end{split}
+\end{equation}
+These values are in agreement with zero and can be taken as limits for the discussed effects. We also performed this test for each pair of Dalitz plot bins and didn't find significant bias.
+
+\subsubsection{Fit of reconstructed signal \dt distribution}\label{sec:mc_cpv_signal_mc}
+%{\bf 2.}
+The second test is fit of {\it reconstructed} \dt distributions for large samples of signal MC. Fig.\,\ref{fig:mc_cpv_offsets} shows fit offsets of \sindbeta and \cosdbeta for five signal modes. Red circles correspond to fit procedure with perfect tagging and perfect determination of the Dalitz plot bin number (this information is taken from MC generator). Blue circles correspond to Dalitz plot bin numbers taken as it was measured and still perfect tagging. First set of offsets gives us information about inaccuracies due to signal \dt parameterization:
+\begin{equation}
+\begin{split}
+%  &\delta(\sindbeta) = (3.61 \pm 0.41)\times10^{-2}\quad\text{(single track vertex modes)}\\
+%  &\delta(\cosdbeta) = (3.78 \pm 0.58)\times10^{-2}\quad\text{(single track vertex modes)}\\
+%  &\delta(\sindbeta) = (1.34 \pm 0.51)\times10^{-2}\quad\text{(multiple tracks vertex modes)}\\
+%  &\delta(\cosdbeta) = (1.58 \pm 0.73)\times10^{-2}\quad\text{(multiple tracks vertex modes)}
+%  &\delta(\sindbeta) = (4.1 \pm 0.4)\times10^{-2}\quad\text{(single track vertex modes)}\\
+%  &\delta(\cosdbeta) = (5.3 \pm 0.6)\times10^{-2}\quad\text{(single track vertex modes)}\\
+%  &\delta(\sindbeta) = (2.1 \pm 0.5)\times10^{-2}\quad\text{(multiple tracks vertex modes)}\\
+%  &\delta(\cosdbeta) = (3.0 \pm 0.7)\times10^{-2}\quad\text{(multiple tracks vertex modes)}
+ &\delta(\sindbeta) = (3.9 \pm 0.4)\times10^{-2}\quad\text{(single track vertex modes)}\\
+ &\delta(\cosdbeta) = (4.5 \pm 0.6)\times10^{-2}\quad\text{(single track vertex modes)}\\
+ &\delta(\sindbeta) = (2.0 \pm 0.5)\times10^{-2}\quad\text{(multiple tracks vertex modes)}\\
+ &\delta(\cosdbeta) = (2.9 \pm 0.7)\times10^{-2}\quad\text{(multiple tracks vertex modes)}
+\end{split}
+\end{equation}
+Effect of wrong Dalitz plot bin numbers (see Sec.\,\ref{sec:DP_phsp}) is estimated by difference between offsets obtained with measured and with true Dalitz plot bin numbers:
+\begin{equation}
+ \delta(\sindbeta) \approx 0.3\times10^{-2}\quad \delta(\cosdbeta) \approx 0.7\times10^{-2}.
+\end{equation}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/sin_offset_nobkg_corrected}
+ \includegraphics[width=0.32\textwidth]{pics/cos_offset_nobkg_corrected}
+ \caption{Offsets of \sindbeta and \cosdbeta obtained with signal MC data. Blue circles correspond to measured Dalitz plot bin numbers, red circles correspond to Dalitz plot bin numbers taken from MC generator.}
+ \label{fig:mc_cpv_offsets}
+\end{figure}
+
+%\clearpage
+\subsubsection{Separate fit for each pair of Dalitz plot bins}\label{sec:mc_cpv_dalitz_bins}
+Different Dalitz plot bins correspond to different kinematics of \dkpp decay. It may happen that kinematics affects vertex (and time) resolution. Especially we may except this effect for single track vertex modes.
+
+We performed lifetime and \cpvconj fits of signal MC for each pair of Dalitz plot bins ($i^{\text{th}}$ and $-i^{\text{th}}$, where $i = 1, 2, \dots, 8$). \sindbeta and \cosdbeta can be determined in such a bins pair. This is equivalent to a measurement with an hadronic two body $D$ meson decay.
+
+Our goal here is to study signal time resolution. That is why we take information on bin number and $B$ meson flavor from generator. Results for \bdpi and \bdomega modes are shown at the Fig.~\ref{fig:bin-by-bin}. All values for different bins are in agreement with each other. For illustration, red squares show offsets for fit procedures without efficiency correction (see. Sec.\,\ref{sec:efficiency}).
+% We obtained the following average offsets:
+% \begin{equation}\label{eq:bin-by-bin-offsets}
+% \begin{split}
+%  &\delta(\tau)      = (-0.7\pm0.4)\times10^{-2}\quad(\bdpi)\\
+%  &\delta(\sindbeta) = (5.3\pm0.8)\times10^{-2}\quad(\bdpi)\\
+%  &\delta(\cosdbeta) = (4.9\pm1.2)\times10^{-2}\quad(\bdpi)\\
+%  &\delta(\tau)      = (-0.6\pm0.5)\times10^{-2}\quad(\bdomega)\\
+%  &\delta(\sindbeta) = (2.6\pm0.9)\times10^{-2}\quad(\bdomega)\\
+%  &\delta(\cosdbeta) = (4.5\pm1.4)\times10^{-2}\quad(\bdomega)
+% \end{split}
+% \end{equation}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/tau_bscan_m1_h0m10}
+ \includegraphics[width=0.32\textwidth]{pics/sin_bscan_m1_h0m10_pb_pt}
+ \includegraphics[width=0.32\textwidth]{pics/cos_bscan_m1_h0m10_pb_pt}\\
+ \includegraphics[width=0.32\textwidth]{pics/tau_bscan_m3_h0m20}
+ \includegraphics[width=0.32\textwidth]{pics/sin_bscan_m3_h0m20_pb_pt}
+ \includegraphics[width=0.32\textwidth]{pics/cos_bscan_m3_h0m20_pb_pt}
+ \caption{Offsets for bin-by-bin fit of signal MC data sets. Top (bottom) plots correspond to \bdpi (\bdomega) mode. Left --- lifetime, middle --- \sindbeta, right --- \cosdbeta. Red lines show average offset. Red squares correspond to results obtained without Dalitz plot efficiency correction.}
+ \label{fig:bin-by-bin}
+\end{figure}
+
+\subsubsection{Linearity test with signal MC}\label{sec:mc_cpv_linearity}
+%{\bf 3.}
+We do not assume perfect tagging any more. Wrong tagging probability $w$ is taken into account by modification of our master formula Eq.\,(\ref{eq:master-formula}) in the following way:
+\begin{equation}\label{eq:master-formula-with-tag}
+ \begin{split}
+  N_i\left(\Delta t,\varphi_1\right) &= e^{-\frac{\left|\Delta t\right|}{\tau}}\left(K_{i}+K_{-i}\right)[ 1 + (1-2w)q_{B}\frac{K_{i}-K_{-i}}{K_{i}+K_{-i}}\cos\left(\Delta m\Delta t\right)+\\
+  &+(1-2w)2q_{B}\xi_{h^0}(-1)^l\frac{\sqrt{K_iK_{-i}}}{K_{i}+K_{-i}}\sin\left(\Delta m\Delta t\right)\left(C_i\sin2\varphi_1+S_i\cos2\varphi_1\right)],
+ \end{split}
+\end{equation}
+
+It is important to be sure that \cpvconj fit procedure does not depend on values of \cpvconj parameters. We prepared several signal MC samples of \bdpi and \bdomega modes with different values of $\varphi_1$ and performed \cpvconj fit for each sample. Results are shown at Fig.\,\ref{fig:mc_cpv_linearity}. Dependence of fitted values on values in generator is described well with function~$f(x) = x$.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.49\textwidth]{pics/linearity_pi0}
+ \includegraphics[width=0.49\textwidth]{pics/linearity_omega}
+ \caption{Fitted values of \sindbeta and \cosdbeta as a functions of values in generator (linearity test). Signal MC of \bdpi (left) and \bdomega (right).}
+ \label{fig:mc_cpv_linearity}
+\end{figure}
+
+%\clearpage
+\subsubsection{Quasi toy experiment with signal MC}\label{sec:mc_cpv_toy}
+Other cause for concern is \cpvconj fit bias and wrong error estimation in case of small data sets. A quasi toy study is performed in order to clarify this point.
+%\bdpi and \bdomega modes are taken as a single track vertex mode and a multiple tracks vertex mode respectively. \bdpi (\bdomega) signal MC data set is divided into subsamples of $600$ ($300$) events in each one. These numbers are close to expected numbers of events for single track vertex and multiple tracks vertex modes.
+Signal MC data samples for \bdpi, \bdeta and \bdomega modes are used in this study. Several subsamples are chosen with $414$, $124$, $40$ and $246$ events for \bdpi, \bdetagg, \bdetappp and \bdomega modes respectively in each subsample. These numbers correspond to one stream of generic MC. 
+Lifetime and \cpvconj fit procedures are performed for each subsample.
+
+Distributions of fit results and pull-distributions are shown at Fig.\,\ref{fig:quasi_toy2}. Standard deviations are close to unity for each pull distribution. Mean offsets are similar to ones obtained with large signal MC samples.
+
+% \begin{figure}[htb]
+%  \includegraphics[width=0.24\textwidth]{pics/toy_tau_m1_h0m10_n600}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_tau_pull_m1_h0m10_n600}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_tau_m3_h0m20_n300}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_tau_pull_m3_h0m20_n300}\\
+%  \includegraphics[width=0.24\textwidth]{pics/toy_cos_m1_h0m10_n600_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_cos_pull_m1_h0m10_n600_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_cos_m3_h0m20_n300_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_cos_pull_m3_h0m20_n300_pb_pt}\\
+%  \includegraphics[width=0.24\textwidth]{pics/toy_sin_m1_h0m10_n600_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_sin_pull_m1_h0m10_n600_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_sin_m3_h0m20_n300_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_sin_pull_m3_h0m20_n300_pb_pt}\\
+%  \caption{Results of quasi toy experiment.}
+%  \label{fig:quasi_toy1}
+% \end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/toy_tau}
+ \includegraphics[width=0.32\textwidth]{pics/toy_sin}
+ \includegraphics[width=0.32\textwidth]{pics/toy_cos}\\
+ \includegraphics[width=0.32\textwidth]{pics/toy_tau_pull} 
+ \includegraphics[width=0.32\textwidth]{pics/toy_sin_pull} 
+ \includegraphics[width=0.32\textwidth]{pics/toy_cos_pull}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_tau_m3_h0m20_n300}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_tau_pull_m3_h0m20_n300}\\
+%  \includegraphics[width=0.24\textwidth]{pics/toy_cos_m1_h0m10_n600_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_cos_pull_m1_h0m10_n600_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_cos_m3_h0m20_n300_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_cos_pull_m3_h0m20_n300_pb_pt}\\
+%  \includegraphics[width=0.24\textwidth]{pics/toy_sin_m1_h0m10_n600_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_sin_pull_m1_h0m10_n600_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_sin_m3_h0m20_n300_pb_pt}
+%  \includegraphics[width=0.24\textwidth]{pics/toy_sin_pull_m3_h0m20_n300_pb_pt}\\
+ \caption{Results of quasi toy experiment. $511$ signal MC samples are considered. Each sample contains $414$, $124$, $40$ and $246$ events for \bdpi, \bdetagg, \bdetappp and \bdomega modes respectively. Lifetime and \cpvconj fit procedures are tested separately (lifetime is fixed in \cpvconj fit).}
+ \label{fig:quasi_toy2}
+\end{figure}
+
+\subsubsection{Separate fit for different signal modes with background}\label{sec:mc_cpv_modes}
+%{\bf 4.}
+This and the next one tests are performed using both generic MC and signal MC. Data selection and \de-\mbc fit procedures are applied to generic MC data. Then, signal events are substituted by random sample (of the same size) of signal MC before the \cpvconj fit. Data sample with \cpconj violation and background component is obtained this way.
+
+An effect of the background component is studied with six streams of generic MC separately for different signal modes. \cpvconj fit is performed with data samples with and without background component. The results for four signal modes are shown at Fig.\,\ref{fig:gen_mc_cpv_offsets} (left). Fig.\,\ref{fig:gen_mc_cpv_offsets}~(center) shows difference between values obtained with and without background component. All values are in agreement with zero. We combined together modes with single track signal vertex and multiple tracks signal vertex and repeated the test (Fig.\,\ref{fig:gen_mc_cpv_offsets} (right)). Statistical precision is still not enough to establish offsets due to background component.
+
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/sin_offset_modes}
+ \includegraphics[width=0.32\textwidth]{pics/sin_modes_diff}
+ \includegraphics[width=0.32\textwidth]{pics/sin_offset_h0}\\
+ \includegraphics[width=0.32\textwidth]{pics/cos_offset_modes}
+ \includegraphics[width=0.32\textwidth]{pics/cos_modes_diff}
+ \includegraphics[width=0.32\textwidth]{pics/cos_offset_h0}
+ \caption{Offsets of \sindbeta and \cosdbeta obtained with MC data corresponding to six streams of generic MC. Left two plots show offsets for all selected events (blue circles) and only signal events (red circles). Right two plots show average difference between offsets with and without background for modes with single track signal vertex and modes with multiple tracks signal vertex.}
+ \label{fig:gen_mc_cpv_offsets}
+\end{figure}
+
+%\clearpage
+\subsubsection{Fit procedure with realistic data samples}\label{sec:mc_cpv_streams}
+\begin{figure}[htb]
+% \includegraphics[width=0.32\textwidth]{pics/cpv_test_sin_pi0_nb}
+% \includegraphics[width=0.32\textwidth]{pics/cpv_test_sin_omega_nb}
+ \includegraphics[width=0.49\textwidth]{pics/cpv_test_sin_full}
+ \includegraphics[width=0.49\textwidth]{pics/cpv_test_cos_full}\\
+ \includegraphics[width=0.49\textwidth]{pics/cpv_test_sin_full_bkgeff}
+ \includegraphics[width=0.49\textwidth]{pics/cpv_test_cos_full_bkgeff}
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_sin_pi0}
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_sin_omega}
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_sin_full}\\
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_cos_pi0_nb}
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_cos_omega_nb}
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_cos_full_nb}\\
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_cos_pi0}
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_cos_omega}
+%  \includegraphics[width=0.32\textwidth]{pics/cpv_test_cos_full}\\
+ \caption{Upper half: results of simultaneous \cpvconj fit of \bdpi, \bdeta and \bdomega modes for each stream of generic MC (red circles) and fit result of a single fit of all stream (blue circle). Lower half: difference between fit results with and without background component. Blue lines show true value of fit parameter.}
+ \label{fig:six_streams}
+\end{figure}
+Simultaneous \cpvconj fit of \bdpi, \bdeta and \bdomega modes is performed for each stream of generic MC. Fit results are shown at upper half of Fig.\,\ref{fig:six_streams} (red circles) together with result of single fit of all $6$ streams (blue circle). Six fit results are in agreement with each other and with true values withing statistical uncertainty. Average precisions for \cpvconj parameters are obtained:
+\begin{equation}\label{eq:cpv_stat_prec}
+ \sigma_{\sindbeta} = 0.24,\quad \sigma_{\cosdbeta} = 0.35.
+\end{equation}
+It can be considered as an estimation of expected statistical precision of this analysis.
+
+Lower part of Fig.\,\ref{fig:six_streams} shows difference between fit results obtained with and without background component. All values are in agreement with zero.
+
+%\end{table}
+% \begin{figure}[htb]
+% %\includegraphics[width=0.54\textwidth]{psiks.eps}
+% \caption{Insert figure filename here.
+%  For advice and macros for publication quality figures, see\\
+% %{\bf  
+% {\tt http://belle.kek.jp/secured/publication/figure\_tips.html}
+% % http://belle.kek.jp/~kinosh/private/pub/figure_tips.html
+% Please try to make data points and fit
+% curves clear and visible. Use reasonable bin sizes and appropriate
+% aspect ratios. Axes should be labeled. For color figures
+% use primary colors and avoid "Miami Vice" pastels (pink, light green, etc.)
+% }
+% \label{xm}
+% \end{figure}
+
+% {\it SVD1:}
+% {The Belle detector is a large-solid-angle magnetic
+% {spectrometer that
+% {consists of a three-layer silicon vertex detector (SVD),
+% {a 50-layer central drift chamber (CDC), an array of
+% {aerogel threshold Cherenkov counters (ACC), % <- \v{C}erenkov 2007.08
+% {a barrel-like arrangement of time-of-flight
+% {scintillation counters (TOF), and an electromagnetic calorimeter
+% {comprised of CsI(Tl) crystals (ECL) located inside 
+% {a super-conducting solenoid coil that provides a 1.5~T
+% {magnetic field.  An iron flux-return located outside of
+% {the coil is instrumented to detect $K_L^0$ mesons and to identify
+% {muons (KLM).  The detector
+% {is described in detail elsewhere~\cite{Belle}.
+
+% {\it SVD2+SVD1:}
+
+
+%while the improved continuum suppression algorithm is discussed in Ref.~\cite{KSFW}.
+
+%\newpage
+\clearpage
+\section{\bptodpi test sample}
+ \bptodpi decay has similar to \bdh kinematic properties and does not contain effects of \cpconj-violation and oscillations. This process allows one to reproduce vertex reconstruction procedure of both $h^0\to \gamma\gamma$ and $h^0\to \pi^+\pi^-\pi^0$ modes. For the first case we reconstruct $B^+$ vertex only with $D^0$ meson candidate, for the second case we use $D^0$ meson and pion candidates.
+\subsection{Continuum suppression}
+ We perform multivariate analysis in order to suppress random combinations of particles from $q\bar q$ events. We use generic MC data sample and Gradient Boosted Decision Trees (BDTG) tool of the \verb@TMVA@ package. To train trees we used $23$ parameters:
+ \begin{itemize}
+  \item $\left|\cos{\theta^{CMS}_B}\right|$, where $\theta^{CMS}_B$ is a polar flight angle of $B^+$ meson in the CMS;
+  \item $\chi^2/n.d.f.$ of the $D^0$ meson vertex fit procedure;
+  \item Cosine of the thrust angle;
+  \item Thrust values of the signal and tag sides;
+  \item Momentum of the charged pion from the $B^+$ decay;
+  \item $16$ KSWF moments.
+ \end{itemize}
+
+Obtained BDTG discriminator is shown on the Fig.\,\ref{fig:bdtg-bptodpi}. The BDTG cut value was chosen equal $-0.44$.
+\begin{figure}[htb]
+\includegraphics[width=0.49\textwidth]{pics/BDTg_Bp2D0pi_v2.eps}
+\caption{BDTG response for \bptodpi signal (blue) and combinatorial $q\bar q$ background (red). Histograms correspond to a test data sample, dots correspond to a training data sample.}
+\label{fig:bdtg-bptodpi}
+\end{figure}
+
+\subsection{$\Delta E$  fit}
+\begin{figure}[htb]
+\includegraphics[width=0.6\textwidth]{pics/de_Bp2D0pi_v2.eps}
+\caption{$\Delta E$ distributions fit for \bptodpi after $M_{bc}$ and BDTG cut.}
+\label{fig:raw-de-bptodpi}
+\end{figure}
+After we put $M_{bc}>5.27\, \text{GeV}$ and BDTG$>-0.44$ requirements the majority of background comes from charged $B$ mesons (Fig.~\ref{fig:raw-de-bptodpi}). The $B^+\to D^0K^+$ decay gives a small peak near to the signal one. This contribution may be effectively suppressed by \verb@atc(K,pi)<0.8@ requirement for the pion from $B$. $B^+\to D^0\rho^+$ and $B^+\to D^{*0}\pi^+$ decays may be excluded from the consideration by $\Delta E>-0.2\,\text{GeV}$ cut. There still remains a small tail up to $\Delta E = 0$ from these decays. It can be considered as a part of smooth shaped background.
+Finally, we include three contributions for the fit:
+
+{\bf Signal peak}. We parameterize the signal peak with sum of Gaussian and two Crystal Ball functions with common offset and width. Shape of the Crystal Ball tails (left and right) are determined using simulated signal data. Offset and width are free parameters.
+
+{\bf $B^+\to D^0K^+$ peak}. It is parameterized by Gaussian with fixed shape determined with simulated data.
+
+{\bf Smooth background}. Smooth part of the background is parameterized by $2^{nd}$ Chebyshev polynomial with free coefficients.
+
+We use standard Belle requirements for the lifetime fit:
+\begin{itemize}
+ \item $\sigma^{\{sig,tag\}}_z<0.2\,\text{mm}$ for multiple tracks decay vertex, $\sigma^{\{sig,tag\}}_z<0.5\,\text{mm}$ --- for single track decay vertex, where $\sigma_z^{\{i\}}$ is an estimation of the vertex uncertainty from the vertex fit procedure;
+ \item $h_{\{sig,tag\}}^2/n.d.f.<50$ --- for multiple tracks decay vertex and no limits on $h_{\{sig,tag\}}^2/n.d.f.$ for single track decay vertex. $h$ is a $\chi^2$ value of the vertex fit procedure without taking into account IP tube constraint;
+ \item $\left|\Delta t\right|<10\,\text{ps}$ --- fit range.
+\end{itemize}
+
+As a result, we obtain the signal peak in $\Delta E$ distribution with negligible amount of peaking background (Fig.~\ref{fig:de-bptodpi}). Results of the fit are shown in Table~\ref{tab:bp2d0pi_de_fit}.
+
+\begin{table}[htb]
+\caption{ Fit results of the $\Delta E$ distribution for \bptodpi candidates.}
+\label{tab:bp2d0pi_de_fit}
+\begin{tabular}
+%{@{\hspace{0.5cm}}l@{\hspace{0.5cm}}||@{\hspace{0.5cm}}c@{\hspace{0.5cm}}}
+ {@{\hspace{0.5cm}}l@{\hspace{0.5cm}}  @{\hspace{0.5cm}}c@{\hspace{0.5cm}} @{\hspace{0.5cm}}c@{\hspace{0.5cm}}}
+\hline \hline
+Parameter & SVD1 & SVD2 \\
+\hline
+ Signal peak offset, MeV              & $-0.56 \pm 0.34$ & $-0.07 \pm 0.24$\\ \hline
+ Signal peak width, MeV               & $12.15 \pm 0.30$ & $13.09 \pm 0.22$\\ \hline
+ Signal yield (full range)            & $2003 \pm 49$    & $13782 \pm 132$\\ \hline
+ Signal yield (signal range)          & $1942 \pm 49$    & $13271 \pm 129$ \\ \hline
+ $B^+\to D^0K^+$ yield (signal range) & $8.9 \pm 4.4$    & $16.4  \pm 9.4$\\ \hline
+ Smooth bkg. yield (signal range)     & $164.6 \pm 15.1$ & $1315  \pm 42$   \\ \hline \hline
+ Signal purity (signal range), $\%$   & $91.80 \pm 2.29$ & $90.88 \pm 0.88$ \\
+\hline \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[htb]
+\includegraphics[width=0.49\textwidth]{pics/deBp2D0pi_svd1_v3.eps}
+%\includegraphics[width=0.49\textwidth]{pics/deBp2D0pi_svd2.eps}
+\includegraphics[width=0.49\textwidth]{pics/deBp2D0pi_svd2_v3.eps}
+% \includegraphics[width=0.9\textwidth]{pics/sin_cos_fixsin_sampling_m1_nsig_600_fsig_0_6}\\
+% \includegraphics[width=0.9\textwidth]{pics/sin_cos_fixsin_sampling_m1_nsig_600_fsig_0_6_pull}
+% \includegraphics[width=0.9\textwidth]{pics/sin_cos_fixsin_sampling_m1_nsig_300_fsig_0_6}\\
+ %\includegraphics[width=0.9\textwidth]{pics/sin_cos_fixsin_sampling_m1_nsig_300_fsig_0_6_pull}
+\caption{$\Delta E$ distributions fit for \bptodpi. Left --- SVD1, right --- SVD2.}
+\label{fig:de-bptodpi}
+\end{figure}
+
+Signal $\Delta E$ region for $\Delta t$ fit is $-30\,\text{MeV}<\Delta E<40\,\text{MeV}$.
+
+\subsection{$B^+$ lifetime fit}
+Fit of the $\Delta t\equiv \left(t_{sig}-t_{tag}\right)$ distribution was performed in order to determine $B^+$ lifetime. Signal $\Delta t$ resolution function is parameterized according to the \verb@TATAMI@ package with default resolution coefficients. Background $\Delta t$ distribution was determined by consideration of the $M_{bc}$ sideband ($M_{bc}<5.26\,\text{GeV}$ and signal $\Delta E$ region).
+ 
+Parameterization of the background $\Delta t$ distribution follows (\ref{eq:dt_sideband}). $\Delta t$ distributions in the $M_{bc}$ sideband region are shown at the Fig.~\ref{fig:bp2d0pi_sideband}.
+
+ %, obtained parameters are shown in Table~\ref{tab:bp2d0pi_sideband}
+
+\begin{figure}[htb]
+\includegraphics[width=0.35\textwidth]{pics/dt_sideband_Bp2D0pi_svd1_v3.eps}
+\includegraphics[width=0.35\textwidth]{pics/dt_sideband_Bp2D0pi_svd2_v3.eps}\\
+\includegraphics[width=0.35\textwidth]{pics/dt_sideband_Bp2D0pi_svd1_singleD0_v3.eps}
+\includegraphics[width=0.35\textwidth]{pics/dt_sideband_Bp2D0pi_svd2_singleD0_v3.eps}\\
+\caption{$\Delta t$ distributions fit for $M_{bc}$ sideband region of \bptodpi. Left --- SVD1, right --- SVD2, top (bottom) --- $D^0$ and $\pi^+$ are (only $D^0$ is) included in the $B^+$ decay vertex fit.}
+\label{fig:bp2d0pi_sideband}
+\end{figure}
+ 
+\begin{figure}[htb]
+\includegraphics[width=0.35\textwidth]{pics/tau_Bp2D0pi_svd1_v3.eps}
+\includegraphics[width=0.35\textwidth]{pics/tau_Bp2D0pi_svd2_v3.eps}\\
+\includegraphics[width=0.35\textwidth]{pics/tau_Bp2D0pi_svd1_onlyD0_v3.eps}
+\includegraphics[width=0.35\textwidth]{pics/tau_Bp2D0pi_svd2_onlyD0_v3.eps}\\
+\caption{$\Delta t$ distributions fit for \bptodpi candidates. Left --- SVD1, right --- SVD2, top (bottom) --- $D^0$ and $\pi^+$ are (only $D^0$ is) included in the $B^+$ decay vertex fit.}
+\label{fig:bp2d0pi_tau}
+\end{figure}
+
+We determined $\tau_{B^+}$ in a fit of the $\Delta t$ distribution in the rectangle signal $(\Delta E,M_{bc})$ region (Fig.~\ref{fig:bp2d0pi_tau}). Background fraction is fixed based on information from the $\Delta E$ fit, shape of the background distribution is fixed from the sideband fit. $\tau_{B^+}$ is the only free parameter. We obtained the following results:
+ \begin{equation}
+ \begin{split}
+  \tau_{B^+} &= \left(1.623 \pm 0.017\,\text{(stat)}\right)\text{ps}\quad \text{(SVD2)}\\
+%  1.62292 +- 0.0168436
+  \tau_{B^+} &= \left(1.634 \pm 0.018\,\text{(stat)}\right)\text{ps}\quad \text{(SVD2, only } D^0\text{)}\\
+%  1.63405 +- 0.0183028
+  \tau_{B^+} &= \left(1.648 \pm 0.045\,\text{(stat)}\right)\text{ps}\quad \text{(SVD1)}\\
+%  1.64823 +- 0.0449971
+  \tau_{B^+} &= \left(1.687 \pm 0.050\,\text{(stat)}\right)\text{ps}\quad \text{(SVD1, only } D^0\text{)}
+%  1.68681 +- 0.05042
+ \end{split}
+ \end{equation}
+ 
+\subsection{Measurement of parameters $K_i$}\label{sec:Kmeasurement}
+In Sec.\,\ref{sec:efficiency} we came to conclusion that parameters $K_i$ measured in \bptodpi decays may be taken for our main \cpvconj fit. An advantage of such approach is major cancellation of systematic uncertainties related to detection efficiency map over the Dalitz plot. Result of this measurement is described in this section.
+
+\begin{figure}[htb]
+\includegraphics[width=0.4\textwidth]{pics/bp_sig_dp.png}
+\includegraphics[width=0.4\textwidth]{pics/bp_sb_dp.png}
+\caption{Dalitz plot distributions for \dkpp decay for $D$ meson reconstructed in \bptodpi decay. Signal area (left) and sideband area (right).}
+\label{fig:bp_dp}
+\end{figure}
+
+The procedure is as follows. \bptodpi decay is self tagging. That is why we can reflect $D^0$ Dalitz plot and combine Dalitz distributions for both flavors together (see. Fig.\,\ref{fig:bp_dp} (left)). Next thing to do is to subtract background component.  Fraction of background events (about $10\%$) in the signal area is known from \de fit. Dalitz distribution for background events (see. Fig.\,\ref{fig:bp_dp} (right)) is taken from sideband areas
+\begin{equation}
+\begin{split}
+ &\mbc > 5.23\,\text{GeV}\ \&\&\ \mbc < 5.26\,\text{GeV}\ \&\&\ \de>-0.2\,\text{GeV}\ \&\&\ \de<0.3\,\text{GeV}\\
+ &\mbc > 5.26\,\text{GeV}\ \&\&\ \mbc < 5.29\,\text{GeV}\ \&\&\ \de>\phantom{-}0.2\,\text{GeV}\ \&\&\ \de<0.3\,\text{GeV}
+\end{split}
+\end{equation}
+
+\begin{table}[htb]
+ \caption{Values of parameters $K_i$ measurements with \bptodpi data sample. First error is statistical, the second one is related to uncertainty in background distribution and the third one is related to uncertainty in background fraction.}
+ \label{tab:Kmeasured}
+ \begin{tabular}
+  { @{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}c@{\hspace{0.2cm}}} \hline
+  {\bf Bin} & $K_i$ (\%)& $K_{-i}$ (\%) \\ \hline\hline
+  $1$ & $17.42\pm0.32\pm0.03\pm0.01$ & $7.81\pm0.23\pm0.03\pm0.08$ \\ \hline
+  $2$ & $12.46\pm0.28\pm0.02\pm0.04$ & $2.38\pm0.23\pm0.02\pm0.05$ \\ \hline
+  $3$ & $10.48\pm0.26\pm0.01\pm0.05$ & $1.18\pm0.09\pm0.02\pm0.04$ \\ \hline
+  $4$ & $ 7.31\pm0.22\pm0.01\pm0.02$ & $1.73\pm0.21\pm0.02\pm0.03$ \\ \hline
+  $5$ & $ 9.45\pm0.25\pm0.02\pm0.01$ & $4.25\pm0.27\pm0.02\pm0.04$ \\ \hline
+  $6$ & $ 2.85\pm0.24\pm0.01\pm0.01$ & $1.16\pm0.09\pm0.01\pm0.03$\\ \hline
+  $7$ & $10.24\pm0.26\pm0.02\pm0.03$ & $2.58\pm0.23\pm0.02\pm0.05$ \\ \hline
+  $8$ & $ 7.51\pm0.22\pm0.02\pm0.01$ & $1.29\pm0.20\pm0.02\pm0.04$ \\ \hline
+  \hline
+ \end{tabular}
+\end{table}
+%  bin 1: K  = 0.2742 +- 0.003225 +- 0.0002572 +- 0.0001237 (0.003238)
+%         Kb = 0.07811 +- 0.002282 +- 0.0002715 +- -0.0007723 (0.002424)
+%  bin 2: K  = 0.2246 +- 0.002809 +- 0.0001743 +- 0.0004394 (0.002848)
+%         Kb = 0.02379 +- 0.001296 +- 0.0001992 +- -0.0004967 (0.001402)
+%  bin 3: K  = 0.2048 +- 0.002604 +- 0.0001436 +- 0.0004582 (0.002648)
+%         Kb = 0.01181 +- 0.0009188 +- 0.0001647 +- -0.0003619 (0.001001)
+%  bin 4: K  = 0.07313 +- 0.002214 +- 0.0001397 +- 0.0002361 (0.002231)
+%         Kb = 0.01731 +- 0.001109 +- 0.0001617 +- -0.000303 (0.001161)
+%  bin 5: K  = 0.09452 +- 0.002488 +- 0.0001869 +- 0.0001283 (0.002498)
+%         Kb = 0.04252 +- 0.001716 +- 0.0002083 +- -0.0004236 (0.00178)
+%  bin 6: K  = 0.02845 +- 0.001414 +- 0.0001407 +- -0.0001087 (0.001425)
+%         Kb = 0.01155 +- 0.0009088 +- 0.0001496 +- -0.000281 (0.0009629)
+%  bin 7: K  = 0.2014 +- 0.002567 +- 0.0001711 +- 0.0002821 (0.002588)
+%         Kb = 0.02583 +- 0.001349 +- 0.000196 +- -0.0004577 (0.001438)
+%  bin 8: K  = 0.07509 +- 0.002241 +- 0.0001616 +- 0.0001375 (0.002251)
+%         Kb = 0.01286 +- 0.0009583 +- 0.0001729 +- -0.0004026 (0.001054)
+
+Measured values of parameters $K_i$ are listed in Tab.\,\ref{tab:Kmeasured}. One can see that statistical uncertainty is dominant. That is why we do not study corrections due to difference between background Dalitz distributions in sideband and signal areas.
+
+\begin{figure}[htb]
+\includegraphics[width=0.32\textwidth]{pics/k_raw_diff}
+\includegraphics[width=0.32\textwidth]{pics/k_diff}
+\includegraphics[width=0.32\textwidth]{pics/k_effi}
+\caption{Raw (left) and corrected with detection efficiency (middle) difference between $K_i$ measured in \bptodpi and measured by CLEO. Units of vertical axis are $10^{-2}$. Blue (red) circles correspond to positive (negative) Dalitz plot bins. Rightmost plot shows relative detection efficiency for each Dalitz plot bin determined with MC data.}
+\label{fig:k_diff}
+\end{figure}
+
+%\clearpage
+\section{\bdh data}
+\subsection{\de-\mbc fit}
+% Projections on \de and \mbc together with fit lines for \bdh data are shown at Fig.\,\ref{fig:de_mbc_data} and Fig.\,\ref{fig:de_mbc_ex_data}. Obtained numbers of signal events and signal purities are listed in Tab.\,\ref{tab:data_de_mbc}.
+% 
+% \begin{figure}[htb]
+% \includegraphics[width=0.24\textwidth]{pics/de_data_m1_h0m10_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/de_data_m2_h0m10_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/de_data_m2_h0m20_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/de_data_m3_h0m20_ns1_cs0}\\
+% \includegraphics[width=0.24\textwidth]{pics/mbc_data_m1_h0m10_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/mbc_data_m2_h0m10_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/mbc_data_m2_h0m20_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/mbc_data_m3_h0m20_ns1_cs0}
+% \caption{\de (top) and \mbc (bottom) fit projections for \bdh data. From left to right: \bdpi, \bdetagg, \bdetappp, \bdomega modes.}
+% \label{fig:de_mbc_data}
+% \end{figure}
+% 
+% \begin{figure}[htb]
+% \includegraphics[width=0.24\textwidth]{pics/de_data_m5_h0m10_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/de_data_m10_h0m10_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/de_data_m20_h0m10_ns1_cs0}\\
+% \includegraphics[width=0.24\textwidth]{pics/mbc_data_m5_h0m10_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/mbc_data_m10_h0m10_ns1_cs0}
+% \includegraphics[width=0.24\textwidth]{pics/mbc_data_m20_h0m10_ns1_cs0}\\
+% \caption{\de (top) and \mbc (bottom) fit projections of real data. From left to right: \bdetap, \btodstpi, \btodsteta modes.}
+% \label{fig:de_mbc_ex_data}
+% \end{figure}
+% 
+% \begin{table}[htb]
+%  \caption{ Results of \de-\mbc fit for \bdh data. Numbers correspond to signal \de-\mbc area.}
+%  \label{tab:data_de_mbc}
+%  \begin{tabular}
+%   {| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} |}
+%  \hline
+%  {\bf Par}  & $\pi^0$       &  \etasubgg     & \etasubppp    & $\omega$  &  $\eta\prime$ & $D^{*}\pi^0$ & $D^{*}\eta$ \\ \hline
+% % $N_{sig}$                & $495\pm27$ &  &  &  &  &  &  \\ \hline
+%  $N_{sig}$     & $464 \pm26$  & $119\pm16$   & $47\pm8$      & $181\pm22$   & $32\pm7$  & $113\pm21$   & $40\pm9$ \\ \hline
+%  $f_{sig}$ (\%)& $71.7\pm4.1$ & $43.8\pm5.8$ & $65.6\pm11.3$ & $63.1\pm7.8$ & $68\pm15$ & $28.5\pm5.3$ & $49.8\pm11.3$ \\ \hline
+% % $N_{cmb}$                & $3157\pm59$ &  &  &  &  &  &  \\ \hline
+% % $N_{cmb}$ (sig area)     & $148\pm12$ &  &  &  &  &  &  \\ \hline
+% % $f_{BB}^{cmb}$ (\%)       & $10.2\pm2.5$ &  &  &  &  &  &  \\ \hline
+% % $f^{part}_{cmbBB}$(\%)   & $89\pm22$ &  &  &  &  &  &  \\ \hline
+% % $N_{part}$ (sig area)    & $20.2\pm5.1$ &  &  &  &  &  &  \\ \hline
+%  \end{tabular}
+% \end{table}
+% 
+% \clearpage
+\subsection{Lifetime fit}
+
+% \clearpage
+\subsection{\cpvconj fit}
+
+\clearpage
+\section{Systematic uncertainties}
+Considered sources of systematic uncertainty and estimation of their effect on the \cpvconj parameters are listed in Tab.\,\ref{tab:systematics}. Some of them has been discussed in Sec.~\ref{sec:mc_cpv_fit}. Most of other sources are taken into account with a {\it nuisance parameters} technique (p.\,174 in \cite{statistics}). If there is no correlation between nuisance parameters, logarithmic likelihood function can be modified in the following way:
+\begin{equation}\label{eq:sys_non_corr}
+ -2\log{\mathcal{L}}\to -2\log{\mathcal{L}}+\sum\limits_i\frac{\left(p_i-p_i^{0}\right)^2}{\sigma^2_{i}},
+\end{equation}
+where $p_i$ means current value of i$^{th}$ nuisance parameter, $p_i^0$ means its central value and $\sigma_i$ means its uncertainty. Correlation matrix should be taken into account for parameters $S_i$ and $C_i$. In this case one obtains a generalization of Eq.\,(\ref{eq:sys_non_corr}):
+\begin{equation}\label{eq:sys_with_corr}
+ -2\log{\mathcal{L}}\to -2\log{\mathcal{L}}+\sum\limits_{i,j}\left(p_i-p_i^{0}\right)\mathcal{K}_{ij}\left(p_j-p_j^{0}\right),
+ \end{equation}
+where $\mathcal{K}$ is inverse covariance matrix or {\it concentration} matrix. \cpvconj fit is performed with released nuisance parameters and modified likelihood function. ``Square difference''
+\begin{equation}
+ \sigma^{\text{syst}}_{i}=\sqrt{\sigma^{\text{full}}_{i}-\sigma^{\text{full}}_{0}}
+\end{equation}
+between statistical precision of a \cpvconj parameter obtained with released $\sigma^{\text{full}}_{i}$ and with fixed $\sigma^{\text{full}}_{0}$ i$^{th}$ nuisance parameter(s) is taken as an estimation of effect of the nuisance parameter.
+
+Some nuisance parameters are straightforward like $B^0$ lifetime, $\Delta m_B$, $K_i$, $C_i$ and $S_i$. Others need to be discussed in more details.
+
+There are errors for wrong tagging probability in each bin of $|q_{tag}|$ (see Fig.\,\ref{fig:wtag}). We calculate weighted with a data set errors $\sigma_{1,2}^{tag}$ for SVD1 and SVD2 parts and use two correspondent nuisance parameters $\delta q_{1,2}$.
+
+Signal purity with error is calculated from \de-\mbc fit for each of $32$ Dalitz$\times$flavor bins (Sec.\,\ref{sec:de-mbc-fit-procedure}). All $32$ parameters are released in order to obtain systematic uncertainty due to \de-\mbc fit result. Note, that uncertainty due to parameterization of the \de-\mbc distribution is taken into account by releasing of shape parameters:
+\begin{itemize}
+ \item Peak positions in \de and \mbc for the signal pdf;
+ \item Both parameters of polynomial in continuum \de parameterization;
+ \item Parameter $\de_0$ for peaking background component (only for \bdpi and \btodstpi modes).
+\end{itemize}
+Statistical uncertainty in these parameters translates to uncertainty in signal purity and thus taken into account.
+
+Finally, uncertainty due to background parameterization. We didn't manage to obtain \cpvconj parameters offset due to background component in Sec.\,\ref{sec:mc_cpv_modes} and Sec.\,\ref{sec:mc_cpv_streams} because of insufficiently statistical precision. That is why we apply our nuisance parameters approach here. In Sec.\,\ref{sec:mc_sideband_fit} we describe scale parameters $k_{1,2}$ for background \dt distribution. These parameters can be used for estimation of systematic uncertainty due to background \dt parameterization.
+
+Tab.\,\ref{tab:systematics} summarizes our systematic studies. The main systematic source is $C_i$ and $S_i$ parameters. Nevertheless, statistical uncertainties dominate for both \cpvconj parameters.
+
+\begin{table}[htb]
+\caption{ List of systematic uncertainties.}
+\label{tab:systematics}
+\begin{tabular}
+%{@{\hspace{0.5cm}}l@{\hspace{0.5cm}}||@{\hspace{0.5cm}}c@{\hspace{0.5cm}}}
+ {@{\hspace{0.5cm}}l@{\hspace{0.5cm}}  @{\hspace{0.5cm}}c@{\hspace{0.5cm}} @{\hspace{0.5cm}}c@{\hspace{0.5cm}} }
+\hline \hline
+Source & $\delta(\sindbeta)$ ($10^{-2}$) & $\delta(\cosdbeta)$ ($10^{-2}$) \\
+\hline
+%Background \de-\mbc parameterization &  & \\
+%Signal \de-\mbc parameterization     &  & \\
+Signal purity                        & $2.3$ & $3.2$ \\
+%Fraction of continuum background     & $4.6$  & $7.0$ \\
+%Fraction of continuum background     &  & \\
+Dalitz bin number                    & $0.3$  & $0.7$ \\
+Flavor tagging                       & $0.08$ & $0.01$ \\
+Efficiency variation over
+the Dalitz plot                      & $0.6$  & $0.8$ \\
+\hline
+Signal \dt parameterization          & $3.9$/$2.0$ & $4.5$/$2.9$ \\
+Background \dt parameterization      & $3.1$  & $2.7$ \\
+\verb@TATAMI@ parameters             &  & \\
+%Sideband \dt fit                     & $2.1$  & $2.2$ \\
+\hline
+Uncertainty in $B^0$ lifetime        & $1.6$  & $1.2$ \\
+Uncertainty in $\Delta m_B$          & $0.03$ & $0.03$ \\
+Uncertainty in $K_i$                 & $0.4$  & $1.2$ \\
+Uncertainty in $C_i$ and $S_i$       & $\mathbf{6.3}$ & $\mathbf{13.5}$ \\
+\hline
+Total w/o $C_i$ and $S_i$            & $5.8$/$4.7$ & $6.5$/$5.5$ \\
+Total                                & $8.5$/$7.9$ & $15.0$/$14.7$ \\
+Stat. error (to compare)             & $24$   & $35$ \\
+\hline \hline
+\end{tabular}
+\end{table}
+\section{Conclusions}
+
+% \newpage
+% \section{\cpconj violation fit}
+
+%\clearpage
+ \section{Acknowledgments}
+% 
+% Paste in most recent acknowledgements from
+% \begin{verbatim}
+%  http://belle.kek.jp/secured/publication/ack.txt
+% \end{verbatim}
+
+
+\begin{thebibliography}{99}
+
+%\bibitem{Silva} {J.P.~Silva}, Use of the reciprocal basis in neutral meson mixing, Phys.\ Rev.\ D {\bf 62}, 116008 (2000) [arXiv:hep-ph/0007075v1].
+
+\bibitem{KM}
+M.~Kobayashi and T.~Maskawa, Prog. Theor. Phys. {\bf 49}, 652 (1973).
+
+\bibitem{CarterSanda}
+A.B.~Carter and A.I.~Sanda, Phys. Rev. {\bf D23}, 1567 (1981).
+
+\bibitem{BigiSanda}
+I.I.~Bigi and A.I.~Sanda, Nucl. Phys. {\bf B193}, 85 (1981).
+
+\bibitem{BPhys}
+Ed.~A.J.~Bevan, B.~Golob, Th.~Mannel, S.~Prell, and B.D.~Yabsley,
+Eur. Phys. J. C74 (2014) 3026, SLAC-PUB-15968, KEK Preprint 2014-3.
+
+\bibitem{BaBarBook}
+P.H.~Harrison and H.R.~Quinn, eds., ''The B A B AR physics book``, SLAC-R-504 (1998).
+%D.~Boutigny {\it et al.}, SLAC Report No. SLAC-R-504, 1998.
+
+\bibitem{BGK}
+A.~Bondar, T.~Gershon, and P.~Krokovny, Phys. Lett. {\bf B 624}, 1 (2005).
+
+\bibitem{CLEO_phasees}
+J.~Libby {\it et al.} (CLEO Collab.) Phys. Rev.  {\bf D82}, 112006 (2010).
+% @article{Libby:2010nu,
+%       author         = "Libby, J. and others",
+%       title          = "{Model-independent determination of the strong-phase
+%                         difference between $D^0$ and $\bar{D}^0 \to K^0_{S,L} h^+
+%                         h^-$ ($h=\pi,K$) and its impact on the measurement of the
+%                         CKM angle $\gamma/\phi_3$}",
+%       collaboration  = "CLEO Collaboration",
+%       journal        = "Phys.Rev.",
+%       volume         = "D82",
+%       pages          = "112006",
+%       doi            = "10.2103/PhysRevD.82.112006",
+%       year           = "2010",
+%       eprint         = "1010.2817",
+%       archivePrefix  = "arXiv",
+%       primaryClass   = "hep-ex",
+%       reportNumber   = "CLNS-10-2070, CLEO-10-07",
+%       SLACcitation   = "%%CITATION = ARXIV:1010.2817;%%",
+% }
+
+\bibitem{Pasha}
+P.~Krokovny {\it et al.} (Belle Collaboration)
+Phys. Rev. Lett. {\bf 97}, 081801 – Published 24 August 2006. (Belle Note 883).
+
+\bibitem{BaBar_model}
+P.~del~Amo~Sanchez {\it et al.} (BABAR Collaboration), Phys. Rev. Lett. {\bf 105}, 081803 (2010).
+
+\bibitem{Belle_model}
+A.~Poluektov {\it et al.} (Belle Collaboration) Phys. Rev. {\bf D81}, 112002 (2010).
+
+\bibitem{mixing_peng}
+T.~Peng {\it et al.} (Belle Collaboration), Phys. Rev. {\bf D 89}, 091103(R) (2014).
+
+\bibitem{GGSZ}
+Anjan Giri, Yuval Grossman, Abner Soffer, and Jure Zupan Phys. Rev. {\bf D 68}, 054018 (2003).
+
+\bibitem{BP_phi3_model_ind1}
+A. Bondar, A. Poluektov, Eur. Phys. J. {\bf C 47}, 347 (2006).
+
+\bibitem{BP_phi3_model_ind2}
+A. Bondar, A. Poluektov, Eur. Phys. J. {\bf C 55}, 51–56 (2008).
+
+\bibitem{BPV}
+A.~Bondar, A.~Poluektov, and V.~Vorobiev, Phys.Rev. {\bf D82}, 034033 (2010).
+
+\bibitem{KEKB}
+S.~Kurokawa and E.~Kikutani, Nucl. Instr. and. Meth. A499, 1 (2003),
+and other papers included in this volume.
+
+\bibitem{Belle}
+A.~Abashian {\it et al.} (Belle Collab.),
+Nucl. Instr. and Meth. A {\bf 479}, 117 (2002).
+
+\bibitem{svd2} Z.Natkaniec {\it et al.} (Belle SVD2 Group), Nucl. Instr. and Meth. A {\bf 560}, 1(2006).
+%Y. Ushiroda (Belle SVD2 Group), Nucl. Instr. and Meth.A {\bf 511} 6 (2003). 
+
+\bibitem{PDG}
+%S. Eidelman {\it et al.} (Particle Data Group), Phys. Lett. B 592, 1 (2004).
+% W.-M.Yao {\it et al.} (Particle Data Group), J. Phys. G {\bf 33}, 1 (2006). 
+K.A.~Olive {\it et al.} (Particle Data Group), Chin. Phys. C, 38, 090001 (2014).
+
+\bibitem{TaggingNIM}
+H. Kakuno {\it et al.}, Nucl. Instr. and Meth.A {\bf 533} 516 (2004). 
+
+\bibitem{vertexres}
+H. Tajima {\it et al.}, Nucl. Instr. and Meth.A {\bf 533} 370 (2004). 
+
+% \bibitem{Sanda}
+% A.~B.~Carter and A.~I.~Sanda, Phys. Rev. Lett. {\bf 45}, 952 (1980); 
+% A.~B.~Carter and A.~I.~Sanda, Phys. Rev.  {\bf D23}, 1567 (1981); 
+% I.~I.~Bigi and A.~I.~Sanda, Nucl. Phys. {\bf 193}, 85 (1981).
+
+% \bibitem{CPVrev}
+% A general review of the formalism is given in
+% I.I.~Bigi, V.A.~Khoze, N.G.~Uraltsev, and A.I.~Sanda, ``$CP$ Violation''
+% page 175, ed. C.~Jarlskog, World Scientific, Singapore (1989). 
+
+\bibitem{SFW}
+ The Fox-Wolfram moments were introduced in
+ G.~C.~Fox and S.~Wolfram, Phys. Rev. Lett. {\bf 41}, 1581 (1978).
+ The Fisher discriminant used by Belle, based on modified Fox-Wolfram
+ moments (SFW), is described in 
+ K.~Abe {\it et al.} (Belle Collab.), Phys. Rev. Lett. {\bf 87},
+ 101801 (2001) and
+ K.~Abe {\it et al.} (Belle Collab.), Phys. Lett. {\bf B 511}, 151
+ (2001). 
+
+\bibitem{KSFW}
+S. H. Lee {\it et al.}(Belle Collab.), Phys. Rev. Lett. {\bf 91},
+261801 (2003)
+
+\bibitem{BDT}
+Hai-Jun Yang, Byron P. Roe, Ji Zhu, NIM A555 (2005) p. 370
+% L. Breiman, J.H. Friedman, R.A. Olshen, and C.J. Stone, Classification and Re-
+% gression Trees, Wadsworth International Group, Belmont, California (1984).
+% [8] R.E. Schapire, The boosting approach to machine learning: An overview, MSRI
+% Workshop on Nonlinear Estimation and Classification, (2002).
+% [9] Y. Freund and R.E. Schapire, A short introduction to boosting, Journal of Japanese
+% Society for Artificial Intelligence, 14(5), 771-780, (September, 1999). (Appearing in
+% Japanese, translation by Naoki Abe.)
+% [10] J. Friedman, Recent Advances in Predictive (Machine) Learning, Proceedings of
+% Phystat2003, Stanford University, (September 2003).
+
+\bibitem{TMVA}
+The Toolkit for Multivariate Analysis (TMVA), 
+http://tmva.sourceforge.net/
+
+\bibitem{HFAG}
+ E. Barberio {\it et al.} (Heavy Flavor Averaging Group), 
+ arXiv:0704.3575 [hep-ex] and online update for Winter 2015 at 
+ http://www.slac.stanford.edu/xorg/hfag.
+
+% \bibitem{FeldmanCousins}
+% G.~J.~Feldman and R.~D.~Cousins, Phys. Rev. {\bf D57}, 3873 (1998).
+% 
+% \bibitem{HighlandCousins}
+% The Highland-Cousins method for calculating upper limits with
+% systematic errors is described in J. Conrad {\it et al.}, Phys. Rev. {\bf
+% D67}, 012002 (2003). 
+
+\bibitem{CB}
+T.Skwarnicki, Ph.D Thesis, DESY F31-86-02(1986) Appendix E.
+
+\bibitem{NskPdf}
+H. Ikeda et al. NIM A441 (2000), p. 401 (Belle Collaboration)
+
+\bibitem{statistics}
+Gerhard Bohm, Günter Zech, Introduction to statistics and data analysis for physicists, DESY, 2010.
+
+\end{thebibliography}
+
+\appendix
+\newpage
+\section{Dalitz model and CLEO input}
+Isobar model of \dkpp decay is used for generation of signal MC events. This model follows resonance structure measured in \cite{Belle_model}.
+%and is written with \verb@EvtResonance2@ class.
+Binning map of the Dalitz plot is taken from supplementary materials to \cite{CLEO_phasees} and is based on the model from \cite{Belle_model}. Binning map is defined by the following condition:
+\begin{equation}
+\frac{\pi(-i+0.5)}{4}<\Delta\delta<\frac{\pi(-i+1.5)}{4}
+\end{equation}
+for bin number $i$, where $\Delta\delta$ is strong phases difference between $D^0$ and $\bar D^0$ decay amplitudes calculated with decay model. We calculated parameters $K_i$, $C_i$ and $S_i$ numerically for this binning with the model and used it in our \cpvconj fitting of MC data (with small correction due to detection efficiency). Calculated values and CLEO measurements are listed in Tab.~\ref{tab:CLEO_vs_Model} and shown at Fig.~\ref{fig:CLEO_vs_Model}.
+
+\begin{table}[htb]
+ \caption{Values of parameters $C_i$ and $S_i$ measured by CLEO \cite{CLEO_phasees} and predicted by \dkpp decay model \cite{Belle_model}.}
+ \label{tab:CLEO_vs_Model}
+ \begin{tabular}
+  { @{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}r@{\hspace{0.2cm}}  @{\hspace{0.2cm}}r@{\hspace{0.2cm}} @{\hspace{0.2cm}}r@{\hspace{0.2cm}}  @{\hspace{0.2cm}}r@{\hspace{0.2cm}} } \hline
+  \multirow{2}{*}{\bf Bin}  & \multicolumn{2}{c}{{\bf CLEO}}     & \multicolumn{2}{c}{{\bf Model}}        \\% \cline{2-5}
+      & \multicolumn{1}{c}{{$C_i$ ($10^{-2}$)}} & \multicolumn{1}{c}{{$S_i$ ($10^{-2}$)}} & $C_i$ ($10^{-2}$) & $S_i$ ($10^{-2}$) \\ \hline\hline
+  $1$ & $ 0.710\pm 0.034\pm 0.038$ & $-0.013\pm0.097\pm0.031$ & $ 0.676$ & $ 0.005$ \\ \hline
+  $2$ & $ 0.365\pm 0.071\pm 0.078$ & $-0.279\pm0.266\pm0.048$ & $ 0.432$ & $-0.413$ \\ \hline
+  $3$ & $ 0.206\pm 0.205\pm 0.200$ & $-1.063\pm0.274\pm0.066$ & $-0.037$ & $-0.725$ \\ \hline
+  $4$ & $-0.462\pm 0.200\pm 0.082$ & $-0.616\pm0.288\pm0.052$ & $-0.643$ & $-0.514$ \\ \hline
+  $5$ & $-0.884\pm 0.056\pm 0.054$ & $-0.262\pm0.230\pm0.041$ & $-0.936$ & $ 0.017$ \\ \hline
+  $6$ & $-0.757\pm 0.099\pm 0.065$ & $ 0.386\pm0.208\pm0.067$ & $-0.615$ & $ 0.669$ \\ \hline
+  $7$ & $ 0.008\pm 0.080\pm 0.087$ & $ 0.938\pm0.220\pm0.047$ & $ 0.003$ & $ 0.815$ \\ \hline
+  $8$ & $ 0.481\pm 0.080\pm 0.070$ & $-0.247\pm0.277\pm0.207$ & $ 0.571$ & $ 0.416$ \\ \hline
+  \hline
+ \end{tabular}
+\end{table}
+
+\begin{table}[htb]
+ \caption{Comparison between CLEO measurements, predictions of \dkpp decay model from \cite{Belle_model} and our measurements with \bptodpi data sample for parameters $K_i$ (Sec.\,\ref{sec:Kmeasurement}). Efficiency correction based on MC study (Sec.\,\ref{sec:efficiency}) is applied to measurements with \bptodpi data.}
+ \label{tab:CLEO_vs_Model_K}
+ \begin{tabular}
+  { @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}}   @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}}  @{\hspace{0.2cm}}c@{\hspace{0.2cm}}} \hline\hline
+  \multirow{2}{*}{\bf Bin} & \multicolumn{2}{c}{{\bf CLEO}} & \multicolumn{2}{c}{{\bf Model}} & \multicolumn{2}{c}{{\bf \bptodpi}} \\% \cline{2-7}
+      & $K_i$ (\%)& $K_{-i}$ (\%)  & $K_i$ (\%) & $K_{-i}$ (\%) & $K_i$ (\%) & $K_{-i}$ (\%) \\ \hline
+  $1$ & $16.5\pm0.5$ & $8.8\pm0.4$ & $16.9$ & $8.8$ & $17.5\pm0.3$ & $8.3\pm0.2$ \\ \hline
+  $2$ & $12.4\pm0.4$ & $2.9\pm0.2$ & $11.9$ & $2.9$ & $12.6\pm0.3$ & $2.4\pm0.2$ \\ \hline
+  $3$ & $ 9.9\pm0.4$ & $1.6\pm0.2$ & $9.6$  & $1.2$ & $10.5\pm0.3$ & $1.3\pm0.2$ \\ \hline
+  $4$ & $ 7.1\pm0.3$ & $1.8\pm0.2$ & $7.4$  & $1.5$ & $ 7.5\pm0.2$ & $1.7\pm0.2$ \\ \hline
+  $5$ & $ 8.0\pm0.4$ & $4.0\pm0.3$ & $9.1$  & $4.3$ & $ 9.6\pm0.2$ & $4.4\pm0.2$ \\ \hline
+  $6$ & $ 3.0\pm0.2$ & $1.3\pm0.2$ & $3.1$  & $1.0$ & $ 2.8\pm0.2$ & $1.3\pm0.2$ \\ \hline
+  $7$ & $ 9.8\pm0.4$ & $3.2\pm0.2$ & $10.5$ & $2.3$ & $ 9.5\pm0.3$ & $2.6\pm0.2$ \\ \hline
+  $8$ & $ 7.7\pm0.4$ & $2.0\pm0.2$ & $7.8$  & $1.8$ & $ 6.9\pm0.2$ & $1.3\pm0.2$ \\ \hline
+  \hline
+ \end{tabular}
+\end{table}
+
+
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/K}
+ \includegraphics[width=0.32\textwidth]{pics/CS}
+ \includegraphics[width=0.32\textwidth]{pics/cleo_binning.png}
+ \caption{Comparison between CLEO measurements (red) and \dkpp decay model predictions (blue). Left: parameters $K_i$ (circles) and $K_{-i}$ (squares); middle: parameters $C_i$ and $S_i$; right: binning map according to supplementary materials to \cite{CLEO_phasees}.}
+ \label{fig:CLEO_vs_Model}
+\end{figure}
+
+% Carr_model[8] = { 0.675798,0.431828,-0.036724,-0.642989,-0.935997,-0.615002, 0.003410, 0.571212};
+% Sarr_model[8] = {-0.005376,0.413289, 0.725041, 0.514323,-0.017438,-0.668626,-0.814657,-0.416431};
+% Karr_model[8] = { 0.268795,0.218502, 0.096164, 0.074168, 0.090667, 0.030814, 0.205442, 0.077863};
+% Kbarr_model[8]= { 0.088009,0.028629, 0.012360, 0.014960, 0.042507, 0.010055, 0.023245, 0.017819};
+
+% Carr_CLEO[8] = { 0.710, 0.365,0.008,-0.757,-0.884,-0.462, 0.206, 0.481};
+% Sarr_CLEO[8] = {-0.013,-0.279,0.938, 0.386,-0.262,-0.616,-1.063,-0.247};
+% Karr_CLEO[8] = { 0.265, 0.224,0.099, 0.071, 0.080, 0.030, 0.098, 0.077};
+% Kbarr_CLEO[8]= { 0.088, 0.029,0.016, 0.018, 0.040, 0.013, 0.032, 0.020};
+
+\end{document}
+
+\clearpage
+\section{Photons}
+\subsection{\bdpi and \bdomega}\label{sec:photons_pi0_omega}
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_sig_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_sig_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_sig_omega}
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_sig_omega}\\
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_bkg_pi0} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_bkg_pi0} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_bkg_omega} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_bkg_omega}
+ \caption{Polar angle distributions for photons in \bdpi and \bdomega.}
+ \label{fig:thgamma_pi0_omega}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_bar_sig_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_bar_sig_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_bar_sig_omega}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_bar_sig_omega}\\
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_bar_bkg_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_bar_bkg_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_bar_bkg_omega}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_bar_bkg_omega}\\
+% \caption{Energy spectra of barrel photons in \btodstpi.}
+% \label{fig:egamma_bar_dstpi}
+%\end{figure}
+%
+%\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_end_sig_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_end_sig_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_end_sig_omega}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_end_sig_omega}\\
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_end_bkg_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_end_bkg_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_end_bkg_omega}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_end_bkg_omega}
+ \caption{Energy spectra of barrel and endcap photons in \bdpi and \bdomega.}
+ \label{fig:egamma_pi0_omega}
+\end{figure}
+
+\clearpage
+\subsection{\bdeta}
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_sig_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_sig_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_sig_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_sig_etappp}\\
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_bkg_etagg} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_bkg_etagg} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_bkg_etappp} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_bkg_etappp}
+ \caption{Polar angle distributions for photons in \bdetagg and \bdetappp.}
+ \label{fig:thgamma_eta}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_bar_sig_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_bar_sig_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_bar_sig_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_bar_sig_etappp}\\
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_bar_bkg_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_bar_bkg_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_bar_bkg_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_bar_bkg_etappp}\\
+% \caption{Energy spectra of barrel photons in \btodstpi.}
+% \label{fig:egamma_bar_dstpi}
+%\end{figure}
+%
+%\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_end_sig_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_end_sig_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_end_sig_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_end_sig_etappp}\\
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_end_bkg_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_end_bkg_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_end_bkg_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_end_bkg_etappp}
+ \caption{Energy spectra of barrel and endcap photons in \bdetagg and \bdetappp.}
+ \label{fig:egamma_eta}
+\end{figure}
+
+\clearpage
+\subsection{\btodstpi}
+% \begin{figure}[htb]
+%  \includegraphics[width=0.49\textwidth]{pics/th_gl_hard_sig}
+%  \includegraphics[width=0.49\textwidth]{pics/th_gl_hard_bkg}\\
+%  \includegraphics[width=0.49\textwidth]{pics/th_gh_hard_sig}
+%  \includegraphics[width=0.49\textwidth]{pics/th_gh_hard_bkg}\\
+%  \includegraphics[width=0.49\textwidth]{pics/th_gl_soft_sig}
+%  \includegraphics[width=0.49\textwidth]{pics/th_gl_soft_bkg}\\
+%  \includegraphics[width=0.49\textwidth]{pics/th_gh_soft_sig}
+%  \includegraphics[width=0.49\textwidth]{pics/th_gh_soft_bkg}\\
+%  \caption{Polar angle distributions for photons in \btodstpi.}
+%  \label{fig:CLEO_vs_Model}
+% \end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_hard_sig}
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_hard_sig}
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_soft_sig}
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_soft_sig}\\
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_hard_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_hard_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gl_soft_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/th_gh_soft_bkg}
+ \caption{Polar angle distributions for photons in \btodstpi.}
+ \label{fig:thgamma_dstpi}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_hard_bar_sig}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_hard_bar_sig}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_soft_bar_sig}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_soft_bar_sig}\\
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_hard_bar_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_hard_bar_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_soft_bar_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_soft_bar_bkg}\\
+% \caption{Energy spectra of barrel photons in \btodstpi.}
+% \label{fig:egamma_bar_dstpi}
+%\end{figure}
+%
+%\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_hard_end_sig}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_hard_end_sig}
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_soft_end_sig}
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_soft_end_sig}\\
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_hard_end_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_hard_end_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/e_gl_soft_end_bkg} 
+ \includegraphics[width=0.24\textwidth]{pics/e_gh_soft_end_bkg}
+ \caption{Energy spectra of barrel and endcap photons in \btodstpi.}
+ \label{fig:egamma_end_dstpi}
+\end{figure}
+
+\clearpage
+\section{$h^0\to\gamma\gamma$ selection}
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/ppi0_sig_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/peta_sig_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/ppi0_sig_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/ppi0_sig_omega}\\
+ \includegraphics[width=0.24\textwidth]{pics/ppi0_bkg_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/peta_bkg_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/ppi0_bkg_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/ppi0_bkg_omega}\\
+ \caption{$\pi^0$ and $\etagg$ momentum spectra in the lab frame.}
+ \label{fig:ph0}
+\end{figure}
+
+\begin{figure}[htb]
+ \includegraphics[width=0.24\textwidth]{pics/helpi0_sig_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/heleta_sig_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/helpi0_sig_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/helpi0_sig_omega}\\
+ \includegraphics[width=0.24\textwidth]{pics/helpi0_bkg_pi0}
+ \includegraphics[width=0.24\textwidth]{pics/heleta_bkg_etagg}
+ \includegraphics[width=0.24\textwidth]{pics/helpi0_bkg_etappp}
+ \includegraphics[width=0.24\textwidth]{pics/helpi0_bkg_omega}\\
+ \caption{$(E_{\gamma}^{H}-E_{\gamma}^{L})/(E_{\gamma}^{H}+E_{\gamma}^{L})$ in the lab frame.}
+ \label{fig:helh0}
+\end{figure}
+
+\newpage
+\section{Tracks momentum}
+\begin{figure}[htb]
+ \includegraphics[width=0.32\textwidth]{pics/ppip_sig_pi0}
+ \includegraphics[width=0.32\textwidth]{pics/ppi1_sig_etappp}
+ \includegraphics[width=0.32\textwidth]{pics/ppi1_sig_omega}\\
+ \includegraphics[width=0.32\textwidth]{pics/ppip_bkg_pi0}
+ \includegraphics[width=0.32\textwidth]{pics/ppi1_bkg_etappp}
+ \includegraphics[width=0.32\textwidth]{pics/ppi1_bkg_omega}\\
+ \includegraphics[width=0.32\textwidth]{pics/ptpip_sig_pi0}
+ \includegraphics[width=0.32\textwidth]{pics/ptpi1_sig_etappp}
+ \includegraphics[width=0.32\textwidth]{pics/ptpi1_sig_omega}\\
+ \includegraphics[width=0.32\textwidth]{pics/ptpip_bkg_pi0}
+ \includegraphics[width=0.32\textwidth]{pics/ptpi1_bkg_etappp}
+ \includegraphics[width=0.32\textwidth]{pics/ptpi1_bkg_omega}
+ \caption{Momentum (in the lab. frame) and transverse momentum spectra for $\pi^+$.}
+ \label{fig:track momentom}
+\end{figure}
+
+\end{document}
+
+
+\newpage
+\section{Nuisance parameters technique}
+We use {\it nuisance parameters} technique to evaluate most of systematic uncertainties.
+
+\newpage
+\section{Event-dependent calculations}
+Structure of the \de-\mbc p.d.f. is
+\begin{equation}
+ p(\de,\mbc) = f_Sp_S + f_{cmb}p_{cmb} + f_{part}p_{part},
+\end{equation}
+where $f_S+f_{cmb}+f_{part}=1$ and
+\begin{equation}
+ p_{cmb} = \left(f_{BB}p_{BB}+(1.-f_{BB})p_{cnt}\right).
+\end{equation}
+
+Our goal is to determine fraction of signal and continuum background in i$^{th}$ Dalitz bin as a function of \de and \mbc.
+\begin{equation}
+ V^j_{sig} = N_{sig}^{i_j}p_{sig}(j)
+\end{equation}
+
+\begin{equation}
+ f_{bkg}(j) = \frac{V_{cmb}+V_{prt}}{V_{cmb}+V_{prt}+V_{sig}},\quad
+ \delta f_{bkg} = \frac{V_{sig}\delta V_{cmb}\oplus V_{sig}\delta V_{prt}\oplus (V_{cmb}+V_{prt})\delta V_{sig}}{\left(V_{cmb}+V_{prt}+V_{sig}\right)^2}.
+\end{equation}
+
+\begin{equation}
+ f_{cnt}^{BB}(j)\equiv\frac{f_{cnt}}{f_{cmb}+f_{prt}} = \frac{V_{cnt}}{V_{cmb}+V_{prt}},\quad V_{cnt}=N_{cnt}^{i_j}p_{cnt}(j),\quad N_{cnt}^{i_j}=(1-f_{BB})N_{cmb}^{i_j}.
+\end{equation}
+
+\begin{equation}
+ \delta f_{cnt}^{BB}(j) = f_{cnt}^{BB}(j)\left[\frac{\delta f_{BB}}{1-f_{BB}}\oplus\frac{V_{prt}\delta V_{cmb}}{V_{cmb}(V_{cmb}+V_{prt})}\oplus\frac{\delta V_{prt}}{V_{cmb}+V_{prt}}\right]
+\end{equation}
+
+\begin{equation}
+ N_{sig}^i = N_{sig}F_i,\quad \delta N_{sig} = F_i\delta N_{sig}\oplus \sqrt{\frac{F_i(1-F_i)}{N_{sig}}},
+\end{equation}
+where the second term is from variance of binomial distribution.
+
+\begin{equation}
+ N_{prt}^i = \frac{f_{prt}}{1+f_{prt}}(N^i-N^i_{sig}),\quad f_{prt} = f_{BB}f_{prt}^{BB},\quad \delta f_{prt} = f_{BB}\delta f_{prt}^{BB} + f_{prt}^{BB}\delta f^{BB}.
+\end{equation}
+
+\begin{equation}
+ \delta N^i_{prt} = \frac{f_{prt}}{1+f_{prt}}\delta N_{sig}^i\oplus \frac{N_{prt}^i\delta f_{prt}}{f_{prt}(1+f_{prt})}.
+\end{equation}
+
+\begin{equation}
+ N_{cmb}^i = \frac{1}{1+f_{prt}}(N^i-N^i_{sig}).
+\end{equation}
+
+\begin{equation}
+ N_{cnt}^i = \frac{1-f_{BB}}{1+f_{prt}}(N^i-N^i_{sig}),\quad N_{cmb}^{BB} = \frac{f_{BB}}{1+f_{prt}}(N^i-N^i_{sig}).
+\end{equation}
+
+\end{document}
+\section{Convolution integral}
+\begin{equation}
+ J_S(t) = \int_{\infty}^{\infty}e^{-\Gamma|\xi|}\sin{(\omega\xi)}e^{-\alpha^2(\xi-t)^2}d\xi,\quad
+ J_C(t) = \int_{\infty}^{\infty}e^{-\Gamma|\xi|}\cos{(\omega\xi)}e^{-\alpha^2(\xi-t)^2}d\xi.
+\end{equation}
+
+\begin{equation}
+ J(t) = \int_{\infty}^{\infty}e^{-\Gamma|\xi|}e^{i\omega\xi}e^{-\alpha^2(\xi-t)^2}d\xi = J_C(t)+iJ_S(t).
+\end{equation}
+
+It is easy to show that
+\begin{equation}
+ J_S(t) = I_S(t)-I_S(-t),\quad J_C(t) = I_C(t)+I_C(-t),\quad J(t) = I(t)+I^{\star}(-t),
+\end{equation}
+where
+\begin{equation}\label{eq:int_I}
+ I(t) = I_C(t)+iI_S(t) = \int_{0}^{\infty}e^{-\Gamma\xi}e^{i\omega\xi}e^{-\alpha^2(\xi-t)^2}d\xi.
+\end{equation}
+
+\begin{equation}
+ I(t) = \frac{\sqrt{\pi}}{2\alpha}e^{-\beta t}e^{\frac{\beta^2}{4\alpha^2}}\text{erfc}\left(-t\alpha+\frac{\beta}{2\alpha}\right),\quad \beta = \Gamma + i\omega.
+\end{equation}
+
+ 
+\section{Kinematic fit routines}
+\subsection{$D^0$ vertex fit}
+\begin{verbatim}
+ int b2d0eta::d0_vertex_fit(Particle& d0){
+// Ks0 vertex fit
+  kvertexfitter kv_rec_ks;
+  addTrack2fit(kv_rec_ks,d0.child(0).child(0));
+  addTrack2fit(kv_rec_ks,d0.child(0).child(1));
+  const int unusable_ks = kv_rec_ks.fit();
+  Particle& ks = d0.child(0);
+  if(unusable_ks){
+    std::cout << "!!! Unusable Ks0" << std::endl;
+  } else{
+    makeMother(kv_rec_ks,ks);
+  }
+
+  kvertexfitter kv_rec;
+  addTrack2fit(kv_rec,d0.child(1));
+  addTrack2fit(kv_rec,d0.child(2));
+  if(!unusable_ks) addTrack2fit(kv_rec,ks);
+  if(kv_rec.fit()) return -1;
+  dynamic_cast<D0UserInfo&>(d0.userInfo()).VtxChi2(kv_rec.chisq()/kv_rec.dgf());
+  if(!unusable_ks) makeMother(kv_rec,d0);
+
+  return 0;
+}
+\end{verbatim}
+
+\subsection{$B^0$ vertex fit}
+\begin{verbatim}
+ int b2d0eta::b0_fit(Particle& b0,const int single_track_flag = 1){
+//  1 -> D0 pi0 fit
+//  0 -> full D0 pi+ pi- fit
+// -1 -> pi+ pi- fit
+// -2 -> single D0 fit
+// -3 -> D0 pi+ pi- w/o IPTube
+  kvertexfitter kv_rec;
+//  addBeam2fit(kv_rec,IpProfile::position(1),IpProfile::position_err_b_life_smeared(1));
+  if(single_track_flag != -1){
+    addTrack2fit(kv_rec,b0.child(0));// D0
+  }
+  if(single_track_flag == 0 || single_track_flag == -1){// eta, omega
+    addTrack2fit(kv_rec,b0.child(1).child(0));// pi+
+    addTrack2fit(kv_rec,b0.child(1).child(1));// pi-
+  }
+  if(!IpProfile::usable()) cout << "Unusable IP tube" << endl;
+  else if(single_track_flag != -3) addTube2fit(kv_rec);
+
+  int status = kv_rec.fit();
+
+  if(status){
+    return status;
+  }
+  return 0;
+ }
+\end{verbatim}
+
+\end{document}

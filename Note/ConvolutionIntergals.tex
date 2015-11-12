@@ -1,0 +1,156 @@
+\documentclass[preprint,aps,showpacs]{revtex4}
+%\documentclass[preprint,aps,draft]{revtex4}
+
+\usepackage{graphicx} % Include figure files
+\usepackage{dcolumn}  % Align table columns on decimal point
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+
+%\graphicspath{{ps}}
+
+\renewcommand{\arraystretch}{1.1}
+
+\RequirePackage{xspace}
+
+\newcommand{\dz}{\ensuremath{\left|D^0\right>}\xspace}
+\newcommand{\dzb}{\ensuremath{\left|\bar D^0\right>}\xspace}
+\newcommand{\da}{\ensuremath{\left|D_1\right>}\xspace}
+\newcommand{\db}{\ensuremath{\left|D_2\right>}\xspace}
+
+\newcommand{\dzt}{\left|D^0\left(t\right)\right>}
+\newcommand{\dzbt}{\left|\bar D^0\left(t\right)\right>}
+\newcommand{\dat}{\left|D_1\left(t\right)\right>}
+\newcommand{\dbt}{\left|D_2\left(t\right)\right>}
+
+\newcommand{\dzti}{\left|D^0\left(0\right)\right>}
+\newcommand{\dzbti}{\left|\bar D^0\left(0\right)\right>}
+\newcommand{\dati}{\left|D_1\left(0\right)\right>}
+\newcommand{\dbti}{\left|D_2\left(0\right)\right>}
+
+\newcommand{\ampmod}{\left|\mathcal{A}\right|}
+\newcommand{\ampbmod}{\left|\mathcal{\bar A}\right|}
+
+\newcommand{\kap}{\varkappa\left(t\right)}
+\newcommand{\sig}{\sigma\left(t\right)}
+
+\newcommand{\dsdpi}{\ensuremath{D^{*{\pm}}\to D^0\pi^{\pm}}\xspace}
+
+\newcommand{\cconj}{\ensuremath{\mathcal{C}}\xspace}
+\newcommand{\cpconj}{\ensuremath{\mathcal{CP}}\xspace}
+\newcommand{\cptconj}{\ensuremath{\mathcal{CPT}}\xspace}
+
+\newcommand{\kspp}{\ensuremath{K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dkpp}{\ensuremath{D\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dnkpp}{\ensuremath{D^0\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dbkpp}{\ensuremath{\overline{D}{}^0\to K^0_S\pi^+\pi^-}\xspace}
+%\newcommand{\bdkp}{\ensuremath{B^0\to D K^+\pi^-}\xspace}
+%\newcommand{\bdnkp}{\ensuremath{B^0\to D^0 K^+\pi^-}\xspace}
+%\newcommand{\bdbkp}{\ensuremath{B^0\to \overline{D}{}^0 K^+\pi^-}\xspace}
+%\newcommand{\bdcpkp}{\ensuremath{B^0\to D_{CP} K^+\pi^-}\xspace}
+%\newcommand{\bdkstar}{\ensuremath{B^0\to D K^{*0}}\xspace}
+
+\newcommand{\bdk}{\ensuremath{B^{\pm}\to D K^{\pm}}\xspace}
+\newcommand{\bdkp}{\ensuremath{B^+\to D K^+}\xspace}
+\newcommand{\bdkm}{\ensuremath{B^+\to D K^+}\xspace}
+\newcommand{\bdcpk}{\ensuremath{B^+\to D_{CP} K^+}\xspace}
+
+\newcommand{\sindbeta}{\ensuremath{\sin{2\beta}}\xspace}
+\newcommand{\cosdbeta}{\ensuremath{\cos{2\beta}}\xspace}
+
+\newcommand{\dkp}{\ensuremath{D\to K^+\pi^-}\xspace}
+\newcommand{\dkpbar}{\ensuremath{D\to K^-\pi^+}\xspace}
+
+\newcommand{\dn}{\ensuremath{D^0}\xspace}
+\newcommand{\dnbar}{\ensuremath{\overline{D}{}^0}\xspace}
+
+\newcommand{\ab}{\ensuremath{\mathcal{A}_B}\xspace}
+\newcommand{\abbar}{\ensuremath{\overline{\mathcal{A}}_B}\xspace}
+
+\newcommand{\pd}{\ensuremath{P}\xspace}
+\newcommand{\pdbar}{\ensuremath{\overline{P}}\xspace}
+
+\newcommand{\ad}{\ensuremath{\mathcal{A}}\xspace}
+\newcommand{\adbar}{\ensuremath{\overline{\mathcal{A}}}\xspace}
+\newcommand{\dvar}{\ensuremath{(m^2_{+}, m^2_{-})}\xspace}
+
+\newcommand{\grad}{\ensuremath{^{\circ}}\xspace}
+
+\newcommand{\ks}{\ensuremath{K_S^0}\xspace}
+
+\newcommand{\mca}{\mathcal{A}}
+\newcommand{\mcab}{\overline{\mathcal{A}}}
+\newcommand{\af}{\ensuremath{\mathcal{A}_f}\xspace}
+\newcommand{\abf}{\ensuremath{\overline{\mathcal{A}}{}_f}\xspace}
+\newcommand{\afb}{\ensuremath{\mathcal{A}_{\overline{f}}}\xspace}
+\newcommand{\abfb}{\ensuremath{\overline{\mathcal{A}}{}_{\overline{f}}}\xspace}
+\newcommand{\afm}{\ensuremath{\mathcal{A}_f^{\prime}}\xspace}
+\newcommand{\abfm}{\ensuremath{\overline{\mathcal{A}}{}_f^{\prime}}\xspace}
+\newcommand{\afbm}{\ensuremath{\mathcal{A}_{\overline{f}}^{\prime}}\xspace}
+\newcommand{\abfbm}{\ensuremath{\overline{\mathcal{A}}_{\overline{f}}^{\prime}}\xspace}
+
+\newcommand{\dkspp}{\ensuremath{D^0\to K_S^0\pi^+\pi^-}\xspace}
+\newcommand{\bdh}{\ensuremath{B^0\to \bar D^0h^0}\xspace}
+\newcommand{\bdpi}{\ensuremath{B^0\to \bar D^0\pi^0}\xspace}
+\newcommand{\bdetagg}{\ensuremath{B^0\to \bar D^0\eta_{\gamma\gamma}}\xspace}
+\newcommand{\bdetappp}{\ensuremath{B^0\to \bar D^0\eta_{\pi^+\pi^-\pi^0}}\xspace}
+\newcommand{\bdomega}{\ensuremath{B^0\to \bar D^0\omega}\xspace}
+\newcommand{\bjpsik}{\ensuremath{B^+\to (J/\psi\to\mu^+\mu^-)K^+}\xspace}
+\newcommand{\bcbjpsik}{\ensuremath{B^+_c\to(B^+\to J/\psi K^+)K^-\pi^+}\xspace}
+%\newcommand{\bcbdpi}{\ensuremath{B^+_c\to(B^+\to (\bar D^0\to K^-\pi^+))\pi^+)K^-\pi^+}\xspace}
+\newcommand{\bcbdpi}{\ensuremath{B^+_c\to(B^+\to \bar D^0\pi^+)K^-\pi^+}\xspace}
+\newcommand{\aad}{\ensuremath{|f|}\xspace}
+\newcommand{\aadbar}{\ensuremath{|\overline{f}|}\xspace}
+
+\newcommand{\hgg}{\ensuremath{h^0\to\gamma\gamma}\xspace}
+\newcommand{\etagg}{\ensuremath{\eta\to\gamma\gamma}\xspace}
+\newcommand{\hppp}{\ensuremath{h^0\to\pi^+\pi^-\pi^0}\xspace}
+\newcommand{\etappp}{\ensuremath{\eta\to\pi^+\pi^-\pi^0}\xspace}
+\newcommand{\omegappp}{\ensuremath{\omega\to\pi^+\pi^-\pi^0}\xspace}
+
+\newcommand{\bptodpi}{\ensuremath{B^{+}\to \bar D^0\pi^+}\xspace}
+
+\newcommand{\de}{\ensuremath{\Delta E}\xspace}
+\newcommand{\mbc}{\ensuremath{M_{bc}}\xspace}
+
+\newcommand{\new}[1]{\textcolor{red}{#1}}
+
+% Belle authors Checklist:
+% 1) Title; use \\ to break title over several lines.
+% 2) Author list
+% 3) Abstract
+% 4) pacs numbers, for PRL, PRD
+% 5) Body
+
+\begin{document}
+\title{Convolution integrals}
+%\maketitle
+\begin{equation}
+ J_S(t) = \int_{\infty}^{\infty}e^{-\Gamma|\xi|}\sin{(\omega\xi)}e^{-\alpha^2(\xi-t)^2}d\xi,\quad
+ J_C(t) = \int_{\infty}^{\infty}e^{-\Gamma|\xi|}\cos{(\omega\xi)}e^{-\alpha^2(\xi-t)^2}d\xi.
+\end{equation}
+
+\begin{equation}
+ J(t) = \int_{\infty}^{\infty}e^{-\Gamma|\xi|}e^{i\omega\xi}e^{-\alpha^2(\xi-t)^2}d\xi = J_C(t)+iJ_S(t).
+\end{equation}
+
+It is easy to show that
+\begin{equation}
+ J_S(t) = I_S(t)-I_S(-t),\quad J_C(t) = I_C(t)+I_C(-t),\quad J(t) = I(t)+I^{\star}(-t),
+\end{equation}
+where
+\begin{equation}\label{eq:int_I}
+ I(t) = I_C(t)+iI_S(t) = \int_{0}^{\infty}e^{-\Gamma\xi}e^{i\omega\xi}e^{-\alpha^2(\xi-t)^2}d\xi.
+\end{equation}
+
+\begin{equation}
+ I(t) = \frac{\sqrt{\pi}}{2\alpha}e^{-\beta t}e^{\frac{\beta^2}{4\alpha^2}}\text{erfc}\left(-t\alpha+\frac{\beta}{2\alpha}\right),\quad \beta = \Gamma + i\omega.
+\end{equation}
+ 
+
+
+
+
+\end{document}
+

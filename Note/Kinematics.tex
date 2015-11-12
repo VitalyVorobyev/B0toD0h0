@@ -1,0 +1,170 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{epsfig}
+%\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{floatflt}
+%\usepackage{fontenc}
+%\usepackage{mathtext}
+\usepackage{appendix}
+
+
+\textwidth = 180mm
+\textheight = 240mm
+\topmargin = -20mm
+\oddsidemargin = -10mm
+
+\RequirePackage{xspace}
+\newcommand{\cconj}{\ensuremath{\mathcal{C}}\xspace}
+\newcommand{\cpconj}{\ensuremath{\mathcal{CP}}\xspace}
+\newcommand{\cptconj}{\ensuremath{\mathcal{CPT}}\xspace}
+\newcommand{\dsdpi}{\ensuremath{D^{*+}\to D^0\pi^+}\xspace}
+
+\newcommand{\dkpp}{\ensuremath{D\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dnkpp}{\ensuremath{D^0\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dbkpp}{\ensuremath{\overline{D}{}^0\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\bdkp}{\ensuremath{B^0\to D K^+\pi^-}\xspace}
+\newcommand{\bdnkp}{\ensuremath{B^0\to D^0 K^+\pi^-}\xspace}
+\newcommand{\bdbkp}{\ensuremath{B^0\to \overline{D}{}^0 K^+\pi^-}\xspace}
+\newcommand{\bdcpkp}{\ensuremath{B^0\to D_{CP} K^+\pi^-}\xspace}
+\newcommand{\bdkstar}{\ensuremath{B^0\to D K^{*0}}\xspace}
+
+\newcommand{\bdk}{\ensuremath{B^+\to D K^+}\xspace}
+\newcommand{\bdcpk}{\ensuremath{B^+\to D_{CP} K^+}\xspace}
+
+\newcommand{\dkp}{\ensuremath{D\to K^+\pi^-}\xspace}
+\newcommand{\dkpbar}{\ensuremath{D\to K^-\pi^+}\xspace}
+
+\newcommand{\dn}{\ensuremath{D^0}\xspace}
+\newcommand{\dnbar}{\ensuremath{\overline{D}{}^0}\xspace}
+
+\newcommand{\ab}{\ensuremath{A_B}\xspace}
+\newcommand{\abbar}{\ensuremath{\overline{A}_B}\xspace}
+
+\newcommand{\ad}{\ensuremath{A}\xspace}
+\newcommand{\adbar}{\ensuremath{\overline{A}}\xspace}
+\newcommand{\dvar}{\ensuremath{(m^2_{+}, m^2_{-})}\xspace}
+
+\newcommand{\aab}{\ensuremath{|A_B|}\xspace}
+\newcommand{\aabbar}{\ensuremath{|\overline{A}_B|}\xspace}
+\newcommand{\aad}{\ensuremath{|A|}\xspace}
+\newcommand{\aadbar}{\ensuremath{|\overline{A}|}\xspace}
+
+\newcommand{\mppsq}{\ensuremath{m^2\left(\pi^+\right)}\xspace}
+\newcommand{\mpmsq}{\ensuremath{m^2\left(\pi^-\right)}\xspace}
+\newcommand{\mksq}{\ensuremath{m^2\left(K_S^0\right)}\xspace}
+\newcommand{\mdsq}{\ensuremath{m^2\left(D^0\right)}\xspace}
+\newcommand{\mpsq}{\ensuremath{m_+^2}\xspace}
+\newcommand{\mmsq}{\ensuremath{m_-^2}\xspace}
+\newcommand{\mmpsq}{\ensuremath{m_{\mp}^2}\xspace}
+\newcommand{\ek}{\ensuremath{\varepsilon\left(K_S^0\right)}\xspace}
+\newcommand{\eksq}{\ensuremath{\varepsilon^2\left(K_S^0\right)}\xspace}
+\newcommand{\epp}{\ensuremath{\varepsilon\left(\pi^+\right)}\xspace}
+\newcommand{\eppsq}{\ensuremath{\varepsilon^2\left(\pi^+\right)}\xspace}
+\newcommand{\epm}{\ensuremath{\varepsilon\left(\pi^-\right)}\xspace}
+\newcommand{\epmsq}{\ensuremath{\varepsilon^2\left(\pi^-\right)}\xspace}
+\newcommand{\eppm}{\ensuremath{\varepsilon\left(\pi^{\pm}\right)}\xspace}
+\newcommand{\pimodsq}{\ensuremath{\left|{\bf p_i}\right|^2}\xspace}
+\newcommand{\pjmodsq}{\ensuremath{\left|{\bf p_j}\right|^2}\xspace}
+
+
+%\newcommand{\deg}{\ensuremath{^{\circ}}\xspace}
+
+
+%\title{Model-independent measurement of $D^0$-$\bar D^0$ mixing at a Charm Factory}
+\title{Заметки о кинематике Далиц-анализа}
+\author{В. Воробьев}
+\begin{document}
+\maketitle
+
+\section{Вычисление $4$-импульсов через переменные Далица}
+\subsection{Постановка задачи}
+Рассмотрим трехчастичный распад скалярной частицы на три скалярные частицы (\dnkpp). Амплитуда распада является функцией двух переменных $m_{\pm}^2=m^2_{K_S^0\pi^{\pm}}$. Необходимо предложить вариант вычисления $4$-импульсов всех четырех частиц, если известны \mpsq и \mmsq.
+
+\subsection{Выбор системы отсчета}
+Необходимо получить $16$ параметров. Естественные связи следующие: $4$ массы частиц и $4$ связи из закона сохранения энергии-импульса. Остается $16-4-4-2=6$ ''лишних'' степеней свободы. Мы их устраним с помощью следующих ограничений:
+\begin{enumerate}
+ \item Перейдем в систему покоя $D^0$. Это снимет три степени свободы;
+ \item Выберем направление вылета $K_S^0$, совпадающее с осью $z$. После этого остается одна степень свободы --- вращение вокруг оси $z$;
+ \item Выберем направление вылета $\pi^+$ (а в силу сохранения импульса, и направление вылета $\pi^-$), лежащее в плоскости $xz$.
+\end{enumerate}
+
+Перечисленные условия равносильны следующим уравнениям:
+\begin{equation}
+\begin{split}
+ &p_x(K_S^0) = p_y(K_S^0) = p_y(\pi^{+}) = 0,\\
+ &p_i(K_S^0) + p_i(\pi^{+}) + p_i(\pi^{-}) = 0,\quad i = x,y,z.
+\end{split}
+\end{equation}
+
+Следствиями приведенного выбора кинематических условий также являются соотношения
+\begin{equation}
+ p_y(\pi^-) = 0,\quad p_x(\pi^+) = -p_x(\pi^-).
+\end{equation}
+
+\subsection{Результат}
+Последовательно применяя следующие формулы, можно вычислить все компоненты $4$-импульсов:
+\begin{equation}
+ \begin{split}
+  \ek  &= \frac{1}{2m_D}\left(\mpsq + \mmsq - 2m_{\pi}^2\right),\\
+  \eppm &= \frac{1}{2m_D}\left(m_D^2 + m_{\pi}^2 - \mmpsq\right),\\
+  p_z(K_S^0) & = \sqrt{\eksq-\mksq},\\
+  p_z(\pi^{\pm}) &= \frac{1}{2p_z(K_S^0)}\left(m_{\pi}^2+\mksq+2\ek\eppm-m_{\pm}^2\right)\\
+  p_x(\pi^+) &= -p_x(\pi^-) = \pm\sqrt{(\ek+\epp)^2-\mpsq - (p^2_z(K_S^0)+p^2_z(\pi^+))^2}.
+ \end{split}
+\end{equation}
+
+\subsection{Дополнительно}
+\begin{equation}
+ \mpsq + \mmsq =  2\left(m_{\pi}^2 + m_D\ek\right).
+\end{equation}
+
+\section{Масштабирование импульсов}
+\subsection{Постановка задачи}
+Для того, чтобы переменные Далица \mpsq и \mmsq находились в пределах допустимого фазового пространства, необходимо, чтобы массы дочерних частиц и инвариантная масса $D^0$ находились в табличных значениях. После кинематического фитирования дерева распадов, это условие не всегда реализуется с достаточной точностью. Поэтому рассмотри следующую задачу. Есть три $4$-импульса:
+\begin{equation}
+ p^0_{K}=(\varepsilon^0_K,{\bf p_K}),\quad p^0_{-}=(\varepsilon^0_+,{\bf p_+}),\quad p^0_{+}=(\varepsilon^0_-,{\bf p_-}).
+\end{equation}
+
+Мы хотим с помощью масштабного преобразования
+\begin{equation}
+ p_{K}=(\varepsilon_K,{\bf p_K}(1+\alpha)),\quad p_{-}=(\varepsilon_+,{\bf p_+}(1+\alpha)),\quad p_{+}=(\varepsilon_-,{\bf p_-}(1+\alpha)),
+\end{equation}
+где 
+\begin{equation}
+ \varepsilon_i = \sqrt{m_i^2+\pimodsq(1+\alpha)^2},
+\end{equation}
+удовлитворить соотношению
+\begin{equation}\label{eq:condition}
+ m_D^2 = \left(\sum_{i}p_i\right)^2.
+\end{equation}
+
+\subsection{Линеаризация}
+Предполагая $\alpha\ll1$, получим:
+\begin{equation}
+ \varepsilon_i \approx \sqrt{m_i^2+\pimodsq}\left(1+\frac{\alpha\pimodsq}{\pimodsq+m_i^2}\right)=\varepsilon^0_i\left(1+\frac{\alpha\pimodsq}{\pimodsq+m_i^2}\right),
+\end{equation}
+\begin{equation}
+ \varepsilon_i\varepsilon_j\approx \varepsilon^0_i\varepsilon^0_j\left[1+\alpha\left(\frac{\pimodsq}{(\varepsilon^0_i)^2}+\frac{\pjmodsq}{(\varepsilon^0_j)^2}\right)\right] \equiv \varepsilon^0_i\varepsilon^0_j\left(1+\alpha\chi_{ij}\right).
+\end{equation}
+
+В результате из (\ref{eq:condition}) получаем:
+\begin{equation}
+ m_D^2-\sum_i m_i^2 \approx 2\sum_{i>j}\left[\varepsilon^0_i\varepsilon^0_j\left(1+\alpha\chi_{ij}\right)-{\bf p_i}{\bf p_j}\left(1+2\alpha\right)\right]
+\end{equation}
+
+и
+
+\begin{equation}
+ \alpha \approx \frac{m_D^2-\sum_i m_i^2-2\sum_{i<j}\left(\varepsilon^0_i\varepsilon^0_j-{\bf p_i}{\bf p_j}\right)}{2\sum_{i<j}\left(\varepsilon^0_i\varepsilon^0_j\chi_{ij}-2{\bf p_i}{\bf p_j}\right)}=\frac{m_D^2-\left(\sum_ip_i^0\right)^2}{2\sum_{i<j}\left(\pimodsq\frac{\varepsilon^0_j}{\varepsilon^0_i}+\pjmodsq\frac{\varepsilon^0_i}{\varepsilon^0_j}-2{\bf p_i}{\bf p_j}\right)},
+\end{equation}
+
+
+
+\end{document}
+

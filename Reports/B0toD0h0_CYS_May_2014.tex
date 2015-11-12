@@ -1,0 +1,794 @@
+\documentclass[10 pt,compress,mathserif]{beamer}
+
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+%\usepackage{multirow}
+\usepackage{hhline}
+%\titlehead{\centering\includegraphics[width=6cm]{pics/B-logo.png}}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usetheme{Warsaw}
+
+%\usecolortheme{rose}
+%\usecolortheme{dolphin}
+\usecolortheme{lily}
+
+\RequirePackage{xspace}
+\newcommand{\cosbeta}{\ensuremath{\cos{2\varphi_1}}\xspace}
+\newcommand{\sinbeta}{\ensuremath{\sin{2\varphi_1}}\xspace}
+\newcommand{\cosbetasq}{\ensuremath{\cos^2{2\varphi_1}}\xspace}
+\newcommand{\sinbetasq}{\ensuremath{\sin^2{2\varphi_1}}\xspace}
+\newcommand{\cpconj}{\ensuremath{\mathcal{CP}}\xspace}
+\newcommand{\dkspp}{\ensuremath{D^0\to K_S^0\pi^+\pi^-}\xspace}
+\newcommand{\bdh}{\ensuremath{B^0\to \bar D^0h^0}\xspace}
+\newcommand{\bdpi}{\ensuremath{B^0\to \bar D^0\pi^0}\xspace}
+\newcommand{\bdpp}{\ensuremath{B^0\to \bar D^0\pi^+\pi^-}\xspace}
+\newcommand{\bdstpi}{\ensuremath{B^0\to \bar D^{\star0}\pi^0}\xspace}
+\newcommand{\bdsth}{\ensuremath{B^0\to \bar D^{\star0}h^0}\xspace}
+\newcommand{\bdeta}{\ensuremath{B^0\to \bar D^0\eta}\xspace}
+\newcommand{\bdetast}{\ensuremath{B^0\to \bar D^0\eta^{\prime}}\xspace}
+\newcommand{\hgg}{\ensuremath{h^0\to \gamma\gamma}\xspace}
+\newcommand{\pigg}{\ensuremath{\pi^0\to \gamma\gamma}\xspace}
+\newcommand{\etagg}{\ensuremath{\eta\to \gamma\gamma}\xspace}
+\newcommand{\etappp}{\ensuremath{\eta\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\hppp}{\ensuremath{h^0\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\bdomega}{\ensuremath{B^0\to \bar D^0\omega}\xspace}
+\newcommand{\omegappp}{\ensuremath{\omega\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\aad}{\ensuremath{|f|}\xspace}
+\newcommand{\aadbar}{\ensuremath{|\overline{f}|}\xspace}
+
+\defbeamertemplate*{footline}{shadow theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertframenumber\,/\,\inserttotalframenumber\hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\begin{document}
+\title{Модельно-независимое измерение $CKM$-фазы $\varphi_1$ в распадах \bdh, \dkspp}
+\author{Виталий Воробьев,\\
+        аспирант 3 года}
+\institute{Научный руководитель: А.Е.~Бондарь}
+\date{14 мая 2014}
+% Создание заглавной страницы
+\frame{\titlepage}
+% Автоматическая генерация содержания
+\frame{\frametitle{Содержание}\tableofcontents}
+
+\section{Введение}
+\subsection{Треугольник унитарности}
+\begin{frame}
+ \frametitle{Треугольник унитарности}
+ \begin{small}
+ \begin{columns}
+ \begin{column}{0.6\textwidth}
+  \begin{block}{Матрица $CKM$}
+%   \only<1>{
+  Связывает с. с. кварков в слабых заряженных токах с массовыми c. с.:
+  \begin{equation*}
+   \left( \begin{array}{c}
+          d^{\prime} \\
+          s^{\prime} \\
+          b^{\prime} \end{array}
+   \right) = 
+   \left( \begin{array}{ccc}
+          V_{ud} & V_{us} & V_{ub} \\
+          V_{cd} & V_{cs} & V_{cb} \\
+          V_{td} & V_{ts} & V_{tb}
+          \end{array}
+   \right)
+   \left( \begin{array}{c}
+          d \\
+          s \\
+          b \end{array}
+   \right)
+  \end{equation*}
+  Антикварки преобразуются с помощью сопряженной матрицы.
+%   }
+%   \only<2>{
+%    Параметризация Вольфенштейна $\mathcal{O}(\lambda^4)$:
+%    \begin{equation*}
+% %   V_{CKM} = 
+%    \left( \begin{array}{ccc}
+%           1-\frac{\lambda^2}{2}    & \lambda               & A\lambda^3(1-i\eta)\\
+%           -\lambda                 & 1-\frac{\lambda^2}{2} & A\lambda^2\\
+%           A\lambda^3(1-\rho-i\eta) & -A\lambda^2           & 1
+%           \end{array}
+%    \right)
+%   \end{equation*}
+%   $\lambda\approx0.23$, $A\approx 0.8$, $\rho\approx 0.14$, $\eta\approx 0.35$.
+%   }
+  
+  \end{block}
+  \includegraphics[width=\textwidth]{pics/UnitarityTriangle.png}
+ \end{column}
+ \begin{column}{0.4\textwidth}
+  \includegraphics[width=\textwidth]{pics/UnitarityTriangleSketch.png}
+
+  \begin{itemize}
+   \item Условие унитарности:
+  \end{itemize}
+  \begin{equation*}
+   V_{ud}V^{\star}_{ub}+V_{cd}V^{\star}_{cb}+V_{td}V^{\star}_{tb}=0
+  \end{equation*}
+ \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\subsection{Угол $\beta\equiv\varphi_1$}
+\begin{frame}
+ \frametitle{Измерение угла $\beta\equiv\varphi_1$: \sinbeta}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{itemize}
+   \item Наиболее точные измерения на $B$-фабриках при изучении времени-зависимой \cpconj-асимметрии в переходах $b\to c\bar c s$ (\textcolor{blue}{$B^0\to J/\psi K_S^0$} и др.).
+   \item Общее конечное состояние для $B^0$ и $\bar B^0$ позволяет наблюдать интерференцию при осцилляциях $B$-мезонов и обеспечивает чувствительность к фазе амплитуд распадов.
+   \item Проблема неоднозначности решения: \textcolor{red}{$2\varphi_1\to (\pi-2\varphi_1)$}.
+  \end{itemize}
+    %\includegraphics[width=\textwidth]{pics/sin2betaMoriond2014.png}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+   \includegraphics[width=\textwidth]{pics/phi1_ambiguity.png}
+  \end{column}
+ \end{columns}
+
+ \begin{equation*}
+    \mathcal{P}(\Delta t) = \frac{e^{-\Delta t}/\tau_{B^{0}}}{4\tau_{B^0}}\left(1+q_B\left[\mathcal{S}_f\sin(\Delta m_B\Delta t)+\mathcal{A}_f\cos(\Delta m_B\Delta t)\right]\right),
+ \end{equation*}
+ где $q_B=1 (-1)$ для $B^0 (\bar B^0)$, в Стандартной Модели $\mathcal{S}_f=\pm\sinbeta$, $\mathcal{A}_f=0$.
+ \begin{equation*}
+  \textcolor{blue}{\sinbeta = 0.682 \pm 0.019}
+ \end{equation*}
+\end{small}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{Измерение угла $\beta\equiv\varphi_1$: \cosbeta}
+ \begin{small}
+
+ \begin{columns}
+  \begin{column}{0.7\textwidth}
+   \begin{itemize}
+    \item Наиболее точные измерения выполнены на $B$-фабриках при изучении времени-зависимой \cpconj-асимметрии в переходах $b\to c\bar u d$ с многочастичными распадами $D$ (\textcolor{blue}{$B^0\to [K_S^0\pi^+\pi^-]_{D^0} h^0$, $h^0=\pi^0, \eta, \omega$} и др.). Метод предложен в [1].
+ \end{itemize}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \includegraphics[width=\textwidth]{pics/DP.png}
+  \end{column}
+ \end{columns}
+  
+ \begin{equation*}
+ \begin{split}
+  &\mathcal{M}\left(m_+^2,m_-^2,\Delta t\right) \propto\\
+  &f\left(m_-^2,m_+^2\right)\cos\left(\frac{\Delta m\Delta t}{2}\right)-i\textcolor{blue}{e^{-i2\varphi_1}}\xi_{h^0}(-1)^l f\left(m_+^2,m_-^2\right)\sin\left(\frac{\Delta m\Delta t}{2}\right),
+ \end{split}
+ \end{equation*}
+ где $m_{\pm} \equiv m\left(K_S^0\pi^{\pm}\right)$, $\xi_{h^0}$ --- собственное \cpconj-значение $h^0$, $l$ --- орбитальный момент системы $D^0h^0$, $f\left(m_-^2,m_+^2\right)$ --- амплитуда распада \dkspp.
+ 
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+    \begin{itemize}
+     \item BaBar {\small [PRL 99, 231802 (2007)]}:
+    \end{itemize}
+   \begin{center}
+    \textcolor{blue}{$\cos2\beta = 0.42 \pm 0.49 \pm 0.09 \pm 0.13$}
+   \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+   \begin{itemize}
+    \item Belle {\small [PRL 97, 081801 (2006)]}:
+   \end{itemize}
+   \begin{center}
+    \textcolor{blue}{$\cos2\varphi_1 = 1.87^{+0.40}_{-0.53}{}^{+0.22}_{-0.32}$}
+   \end{center}
+  \end{column}
+ \end{columns}
+
+ \vspace{0.4 cm}
+ [1] \verb@Bondar, Gershon, Krokovny, Phys.Lett.B624:1-10,2005@
+ \end{small}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{Бинированный Далиц-анализ для \dkspp}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.7\textwidth}
+   \begin{block}{Бинирование диаграммы Далица}
+  Диаграмма Далица разбивается на $16$ бинов симметрично относительно замены $m_+^2 \leftrightarrow m_-^2$. Номер бина $i$ принимает значения от $-8$ до $8$, исключая $0$; замена $m_+^2 \leftrightarrow m_-^2$ соответствует инверсии знака $i \leftrightarrow -i$.
+ \end{block}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \includegraphics[width=\textwidth]{pics/DP_Belle_binning.png}
+  \end{column}
+ \end{columns}
+
+ \begin{block}{Параметра бинированного анализа}
+ \begin{itemize}
+  \item \textcolor{blue}{$K_i$} --- вероятность распада флэйворного состояния $D^0$ в бин $i$.
+  \item $\delta_D$ --- разность сильных фаз между амплитудами распада $D^0$ и $\bar D^0$:
+  \begin{equation*}
+  \textcolor{blue}{C_i}=\frac{\int\limits_{\mathcal{D}_i}
+            \aad\aadbar
+            \cos\delta_D\,d\mathcal{D}
+            }{\sqrt{
+            \int\limits_{\mathcal{D}_i}\aad^2 d\mathcal{D}
+            \int\limits_{\mathcal{D}_i}\aadbar^2 d\mathcal{D}
+            }}\,, \quad
+  \textcolor{blue}{S_i}=\frac{\int\limits_{\mathcal{D}_i}
+            \aad\aadbar
+            \sin\delta_D\,d\mathcal{D}
+            }{\sqrt{
+            \int\limits_{\mathcal{D}_i}\aad^2 d\mathcal{D}
+            \int\limits_{\mathcal{D}_i}\aadbar^2 d\mathcal{D}
+            }}\,.
+  \label{cs}
+  \end{equation*}
+ \end{itemize}
+
+ \end{block}
+
+  \begin{itemize}
+   \item $C_i$ и $S_i$ измерены в когерентных распадах $\psi(3770)\to D^0\bar D^0$ \verb@[CLEO, PRD 82, 112006 (2010)]@.
+  \end{itemize}
+  \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Модельно-независимый подход к \bdh, \dkspp}
+ \begin{small}
+ Наблюдаемые величины: времени-зависимые вероятности
+ \begin{equation*}
+ \begin{split}
+  N_i\left(\Delta t,\varphi_1\right) &= e^{-\frac{\left|\Delta t\right|}{\tau}}\left(K_{i}+K_{-i}\right)[ 1 + q_{B}\frac{K_{i}-K_{-i}}{K_{i}+K_{-i}}\cos\left(\Delta m\Delta t\right)+\\
+  &+q_{B}\xi_{h^0}(-1)^l\frac{\sqrt{K_iK_{-i}}}{K_{i}+K_{-i}}\sin\left(\Delta m\Delta t\right)\left(\textcolor{red}{C_i\sin2\varphi_1+S_i\cos2\varphi_1}\right)]
+ \end{split}
+ \end{equation*}
+ 
+ \begin{itemize}
+  %\item Simultaneous time-dependent fit for all DP bins;
+  \item $\sin2\varphi_1$ точно измерен в переходах $b\to c\bar c s$ и может быть зафиксирован.
+  \item $K_i$ могут быть точно измерены в распадах $D^{\star\pm}\to D^0\pi^{\pm}$.
+  \item Полный интеграл светимости эксперимента Belle в два раза больше использовавшегося в предыдущем, модельно-зависимом, анализе.
+ \end{itemize}
+ \end{small}
+\end{frame}
+
+\subsection{Эксперимент Belle}
+\begin{frame}
+ \frametitle{Эксперимент Belle}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+   \includegraphics[width=\textwidth]{pics/KEKB.png}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+   \includegraphics[width=\textwidth]{pics/BelleDetector.png}
+  \end{column}
+ \end{columns}
+  \begin{itemize}
+   \item Интеграл светимости на резонансе $\Upsilon(4S)$: $711$ fb$^{-1}$, что соответствует $772\cdot 10^6$ $B\bar B$-парам. Полный интеграл светимости $>1$ ab$^{-1}$.
+  \end{itemize}
+ \end{small}
+\end{frame}
+
+\section{Отбор событий}
+\begin{frame}
+ \frametitle{Отбор событий}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.4\textwidth}
+   \begin{block}{Рассмотренные моды}
+    \begin{enumerate}
+     \item \bdpi;
+     \item \bdeta
+     \begin{itemize}
+      \item \etagg;
+      \item \etappp;
+     \end{itemize}
+     \item \bdomega, \omegappp;
+    \end{enumerate}
+   \end{block}
+   \begin{block}{Кинематические параметры}
+     \begin{align*}
+     & M_{bc} \equiv \sqrt{\left(E^{cms}_{beam}\right)^2-\left(p^{cms}_{B}\right)^2}\\
+     &\Delta E \equiv E^{cms}_{B}-E^{cms}_{beam}
+     \end{align*}
+   \end{block}
+
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   \begin{columns}
+    \begin{column}{0.5\textwidth}
+   \begin{center}
+    \includegraphics[width=\textwidth]{pics/de_2dfit_gen_1.png}
+   \end{center}
+  \end{column}
+    \begin{column}{0.5\textwidth}
+   \begin{center}
+    \includegraphics[width=\textwidth]{pics/mbc_2dfit_gen_1.png}
+   \end{center}
+  \end{column}
+   \end{columns}
+   \begin{center}
+    $2D$-фит данных моделирования.\\
+    Проекция на $\Delta E$ (слева) и на $M_{bc}$ (справа) для моды \bdpi.\\
+    \vspace{0.3 cm}
+    \textcolor{blue}{$N_{sig}^{fit} = 894 \pm 38$}, \textcolor{blue}{$N_{sig}^{true} = 902$}
+   \end{center}
+   \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+
+\section{Подавление континуума}
+\begin{frame}
+ \frametitle{Подавление континуума (мода \bdpi)}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.4\textwidth}
+   \begin{itemize}
+    \item Основной фон возникает благодаря случайным комбинациям частиц, рожденных в $q\bar q$-континууме.
+    \item Мы разработали процедуру подавления $q\bar q$-фона с помощью инструмена Boosted Decision Trees и получили следующие результаты:
+    \begin{itemize}
+     \item Доля прошедшего сигнала: \textcolor{blue}{$67.7\%$}
+     \item Доля подавленного фона: \textcolor{blue}{$96.9\%$}
+    \end{itemize}
+   \end{itemize}
+
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   \begin{center}
+    \includegraphics[width=0.5\textwidth]{pics/BackRej_BAM.png}
+    \includegraphics[width=0.5\textwidth]{pics/SigSignif_BAM.png}\\
+    Подавление фона (слева) и значимость сигнала (справа) как функции доли прошедшего сигнала.\\
+    \includegraphics[width=0.5\textwidth]{pics/best_cut_sl.png}\\
+    отклик BDTg для \textcolor{blue}{Сигнала} и \textcolor{red}{Континуума}
+   \end{center}
+  \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\section{Toy MC}
+\begin{frame}
+ \frametitle{Toy MC}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.6\textwidth}
+  \begin{block}{Условия}
+  \begin{itemize}
+   \item $5000$ toy экспериментов;
+   \item Временное разрешение задавалось одним гауссом с $\frac{\sigma}{\tau_{B^0}}=0.8$;
+   \item Доля сигнальных событий: $60.1\%$
+   \item Количество сигнальных событий: $840$
+   \item Вероятность неверно определить аромат $B$: $0.3$
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Результат}
+   \begin{itemize}
+    \item<1-> Ожидаемая стат. точность для $700$ сигнальных событий:
+    \begin{itemize}
+     \item $\sigma\left({\cosbeta}\right) = 0.25$
+     \item $\sigma\left({\sinbeta}\right) = 0.27$
+    \end{itemize}
+    \item<2-> Оптимальная доля сигнала: $\approx 60\%$. 
+   \end{itemize}
+  \end{block}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+    \begin{center}
+    \only<1>{
+     \cosbeta\\ \includegraphics[width=\textwidth]{pics/mode3_x.png}\\
+     \sinbeta\\ \includegraphics[width=\textwidth]{pics/mode3_y.png}
+    }
+    \only<2>{
+     \includegraphics[width=0.8\textwidth]{pics/mode3_rms.png}\\
+     \textcolor{blue}{RMS(\cosbeta)} и \textcolor{red}{RMS(\sinbeta)} в зависимости от доли сигнальных событий (согласно порогу BDT).
+    }
+    \end{center}
+  \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\section{Выводы}
+\begin{frame}
+ \frametitle{Выводы}
+ \begin{small}
+
+ Выводы:
+ \begin{enumerate}
+  \item Реконструкция событий \bdh (\hppp и \hgg) готова;
+  \item Для моды \bdpi:
+   \begin{itemize}
+    \item Разработана процедура подавления континуума;
+    \item Изучены компоненты фона и реализован $2D$-фит $\Delta E$-$M_{bc}$ распределений.
+   \end{itemize}
+  \item Простое toy MC показало:
+  \begin{itemize}
+   \item Метод приблизительно одинаково чувствителен и \sinbeta и \cosbeta. Ожидаемая стат. точность после анализа данных эксперимента Belle составляет $\approx 0.3$;
+   \item Оптимальная доля сигнальных событий $\approx 60 \%$.
+  \end{itemize}
+ \end{enumerate}
+
+ План:
+ \begin{itemize}
+%  \item Выполнить фит $\tau_{B}$ на полном сигнальном MC;
+  \item Выполнить \cpconj-фит на полном сигнальном MC для произвольных значений $\varphi_1$;
+  \item Выполнить полный анализ для моды \bdpi;
+  \item Добавить к полной процедуре остальные моды;
+  \item Изучить систематические эффекты;
+  \item ...
+ \end{itemize}
+\end{small}
+\end{frame}
+
+\appendix
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
+\section{Backup}
+\begin{frame}
+ \begin{center}
+  \begin{LARGE}
+   Backup
+  \end{LARGE}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Motivation}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+   \begin{itemize}
+    \item To determine sign of the $\cos2\varphi_1$;
+    \item Previous Belle measurement is based on $350$ fb${}^{-1}$ [BN 883]. Full data set is twice larger;
+    \item Model-independent approach is (probably) preferable for the Belle II data;
+    \item This measurement is hardly accessible at LHCb.
+   \end{itemize}
+
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{block}{\bdpi}
+   \includegraphics[width=\textwidth]{pics/B0toD0pi0.png}
+  \end{block}
+  
+  \begin{block}{$\cos2\varphi_1$}
+   \begin{itemize}
+    \item BaBar {\small [PRL 99, 231802 (2007)]}:
+   \end{itemize}
+  
+   $\cos2\beta = 0.42 \pm 0.49 \pm 0.09 \pm 0.13$
+   
+   \begin{itemize}
+    \item Belle {\small [PRL 97, 081801 (2006)]}:
+   \end{itemize}
+
+   $\cos2\varphi_1 = 1.87^{+0.40}_{-0.53}{}^{+0.22}_{-0.32}$
+  \end{block}
+
+  \end{column}
+ \end{columns}
+\end{frame}
+
+\subsection{$\varphi_1$ senitivity}
+\begin{frame}
+ \frametitle{$\varphi_1$ sensitivity [BN 883]}
+ \begin{small}
+% I follow BN 883.
+ \begin{itemize}
+  \item $B$ oscillations:
+ \end{itemize}
+ \begin{equation}
+  \bar B^0\left(\Delta t\right) \propto \bar B^0\cos\left(\frac{\Delta m\Delta t}{2}\right)-ie^{-i2\varphi_1}B^0\sin\left(\frac{\Delta m\Delta t}{2}\right)
+ \end{equation}
+  \begin{itemize}
+  \item $\bar B^0\to D^0h^0$ decay, where $h^0 = \pi^0,\eta,\omega$ (neglecting $D$ oscillations):
+ \end{itemize}
+ \begin{equation}
+  \widetilde{D}^0\left(\Delta t\right) \propto D^0\cos\left(\frac{\Delta m\Delta t}{2}\right)-ie^{-i2\varphi_1}\xi_{h^0}(-1)^l\bar D^0\sin\left(\frac{\Delta m\Delta t}{2}\right),
+ \end{equation}
+  where $\xi_{h^0}$ is \cpconj eigenvalue of $h^0$, $l$ is orbital moment of the $D^0h^0$ system;
+ \begin{itemize}
+  \item \dkspp decay (assuming \cpconj conservation in $D$ decay):
+ \end{itemize}
+ \begin{equation}
+ \begin{split}
+  &M\left(m_+^2,m_-^2,\Delta t\right) \propto\\
+  &f\left(m_-^2,m_+^2\right)\cos\left(\frac{\Delta m\Delta t}{2}\right)-ie^{-i2\varphi_1}\xi_{h^0}(-1)^l f\left(m_+^2,m_-^2\right)\sin\left(\frac{\Delta m\Delta t}{2}\right),
+ \end{split}
+ \end{equation}
+ where $m_{\pm} \equiv m\left(K_S^0\pi^{\pm}\right)$. Let's denote $f \equiv f\left(m_-^2,m_+^2\right)$ and $\bar f \equiv f\left(m_+^2,m_-^2\right)$.
+ \end{small}
+\end{frame}
+
+\subsection{Events reconstruction}
+\begin{frame}[containsverbatim]
+ \frametitle{Event reconstruction 1}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+   \begin{block}{$\pi^{\pm}$ selection}
+  \begin{itemize}
+   \item $r\varphi$ SVD hits $>0$;
+   \item $rz$ SVD hits $>1$.
+  \end{itemize}
+ \end{block}
+ \begin{block}{$\pi^0$ selection}
+  All $\pi^0$ from \verb@Mdst_pi0_Manager@.
+ \end{block}
+ \begin{block}{$K_S^0$ selection}
+ \begin{itemize}
+  \item \verb@nisKsFinder@;
+  \begin{small}
+   \item $0.48\ MeV<m_{K_S^0}<0.52\ MeV$.
+  \end{small}
+ \end{itemize}
+ \end{block}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+   \begin{block}{$D^0$ candidates}
+    \begin{itemize}
+    \begin{small}
+     \item $1.81\ GeV < m_{K_s^0\pi^+\pi^-} < 1.92\ GeV$;
+    \end{small}     
+     \item $D^0$ decay tree fit with \verb@ExKFitter@ with $K_S^0$ and $D^0$ masses and vertices constrains;
+     \item $\chi^2/n.d.f$ of the fit $<1000$.
+    \end{itemize}
+   \end{block}
+  \end{column}
+ \end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{Event reconstruction 2}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+   \begin{block}{\etagg candidates}
+    \begin{itemize}
+     \item $\left|m(\gamma\gamma)-m(\eta)\right|<50\ MeV$;
+     \item Mass fit with \verb@kfitter@.
+    \end{itemize}
+   \end{block}
+   \begin{block}{\hppp candidates}
+    \begin{itemize}
+     \item $\left|m(\pi^+\pi^-\pi^0)-m(h^0)\right|<50\ MeV$;
+     \item $h^0$ decay tree fit with \verb@ExKFitter@ with $h^0$ and $\pi^0$ masses and $h^0$ vertex constrains.
+    \end{itemize}
+   \end{block}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{block}{\bdh, \hgg}
+    \begin{itemize}
+     \item \verb@IPTube@ constrained fit with $D^0$ candidate. $h^0$ is not used;
+    \end{itemize}
+   \end{block}
+   \begin{block}{\bdh, \hppp}
+    \begin{itemize}
+     \item Vertex constrained fit of $D^0$ candidate and two charged $\pi$ from the $h^0$ candidate.
+    \end{itemize}
+   \end{block}
+  \end{column}
+ \end{columns}
+
+ \begin{center}
+  \begin{equation*}
+   \left|\Delta E\right| < 0.3\ GeV,\quad 5.2\ GeV < M_{bc} < 5.3\ GeV.
+  \end{equation*}
+ \end{center}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Event reconstruction 3}
+ \begin{small}
+ Data:
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/mk_signal.png}\\
+   $m(K_S^0)$\\
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/md_signal.png}\\
+   $m(D^0)$
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+   \begin{center}
+    \includegraphics[width=\textwidth]{pics/mpi0_signal.png}\\
+   $m(\pi^0)$\\
+   \end{center}
+  \end{column}
+ \end{columns}
+ \vspace{0.5 cm}
+ Signal MC:
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/eta_gg_signal.png}\\
+   $m(\etagg)$\\
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/eta_ppp_signal.png}\\
+   $m(\etappp)$\\
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/omega_signal.png}\\
+   $m(\omega^0)$\\
+  \end{center}
+  \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Continuum suppression: Variables}
+   \includegraphics[width=0.5\textwidth]{pics/tmva_vars_1.png} \includegraphics[width=0.5\textwidth]{pics/tmva_vars_3.png}\\
+   \includegraphics[width=0.5\textwidth]{pics/tmva_vars_2.png} \includegraphics[width=0.5\textwidth]{pics/tmva_vars_4.png}
+\end{frame}
+
+\subsection{Multiple candidates}
+\begin{frame}
+\frametitle{Multiple candidates and signal selection efficiency} 
+\begin{small}
+\begin{columns}
+ \begin{column}{0.78\textwidth}
+ \begin{itemize}
+%  \item We apply cut \textcolor{blue}{$BDTg>0.98$} which keeps $74.8\%$ of signal and suppress $87.2\%$ of background.
+  \item After the BDTg cut we've got $1.046$ candidates per event on the average for the fit region:
+  \begin{equation*}
+  \begin{split}
+   -0.15\ \text{GeV} < &\Delta E < 0.3\ \text{GeV},\\
+    5.20\ \text{GeV} < &M_{bc} < 5.29\ \text{GeV}
+  \end{split}
+  \end{equation*}
+
+  \item But! In many cases, all candidates originate from a single signal decay (e.g. due to random soft $\gamma$'s). Such events do not affect on the signal selection efficiency.
+ \end{itemize}
+ \end{column}
+ \begin{column}{0.22\textwidth}
+  \small
+   \begin{tabular}{|l|c|} \hline
+   \# & events, $\%$ \\ \hline
+   $1$ & $95.69$\\ \hline
+   $2$ & $4.04$\\ \hline
+   $3$ & $0.22$\\ \hline
+   $4$ & $0.04$\\ \hline
+   $5$ & $<0.01$\\ \hline
+   \end{tabular}
+  \end{column}
+ \end{columns}
+
+ \begin{columns}
+  \begin{column}{0.4\textwidth}
+   \begin{itemize}
+    \item If we consider events containing true background candidates, multiplicity comes to \textcolor{blue}{$1.021$}.
+%    \item We choose candidate with the highest $M_{bc}$. It leads to \textcolor{blue}{$0.04\%$} signal loss.
+    \item We choose candidate with the smallest $|m_{D}-m_{K_S^0\pi^+\pi^-}|$. It leads to \textcolor{blue}{$0.06\%$} signal loss.
+   \end{itemize}
+
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   \begin{table}[bt]
+   \small
+   \begin{tabular}{|l|c|c|} \hline
+   {Criterion} & {Right decision}, $\%$ & {Efficiency}, $\%$ \\ \hline
+   First              & $62.53$ & $99.23$ \\ \hline
+   Random             & $50.37$ & $98.99$ \\ \hline
+   \textcolor{blue}{$M_{bc}$} & \textcolor{blue}{$80.75$} & \textcolor{blue}{$99.61$} \\ \hline
+   \textcolor{blue}{$m_D$}    & \textcolor{blue}{$68.60$} & \textcolor{blue}{$99.36$} \\ \hline
+   $\chi^2(D^0)$      & $67.20$ & $99.33$ \\ \hline
+   $\left|\cos\theta_{thr}\right|$ & $52.83$ & $99.04$ \\ \hline
+   \end{tabular}
+   \end{table}
+  \end{column}
+ \end{columns}
+\end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Elliptic signal region}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   Signal
+   \includegraphics[width=\textwidth]{pics/ellips_sig.png}
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   Background
+   \includegraphics[width=\textwidth]{pics/ellips_back.png}
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   Together
+   \includegraphics[width=\textwidth]{pics/ellips_gen.png}
+  \end{center}
+  \end{column}
+ \end{columns}
+
+ \begin{table}[bt]
+ \small
+ \begin{tabular}{|l|c|c|c|c|c|c|} \hline
+  Parameter & \multicolumn{2}{c|}{Rectangle}& \multicolumn{2}{c|}{Ellips (equal)} & \multicolumn{2}{c|}{Ellips (inscribed)}\\ \hhline{~------}
+            &      Fit   & True &      Fit   & True &  Fit       & True  \\ \hline
+$N_S$       &$894\pm38$  &$902$ &$891\pm38$  &$907$ &$855\pm37$  & $867$ \\ \hline
+$N_{\rho}$  &$30.2\pm5.6$&$25$  &$27.3\pm5.3$&$26$  &$21.9\pm4.7$& $17$  \\ \hline
+$N_{comb}$  &$532 \pm 23$&$543$ &$507\pm23$  &$529$ &$421\pm21$  & $405$ \\ \hline
+Purity, $\%$&$61.4\pm2.6$&$61.4$&$62.5\pm2.7$&$62.0$&$65.9\pm2.8$& $67.3$\\ \hline
+ \end{tabular}
+ \end{table}
+
+ \begin{itemize}
+  \item Borders are more or less arbitrary now. To be optimized.
+ \end{itemize}
+\end{small}
+\end{frame}
+
+\subsection{BDT}
+\begin{frame}
+ \frametitle{Boosted Desicion Trees}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+    \only<1-3>{
+     \begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{pics/DT.png}\\
+      \caption{{\it Weak} classifier --- decision tree with a tree depth of about $2$ or $3$, that has very little discrimination power.}
+     \end{figure}
+    }
+    \only<4->{\begin{itemize}
+     \item<4-> The boosted event classification:
+     \begin{equation}
+      y({\bf x}) = \frac{1}{N}\sum_{i=1}^{N}\ln{\alpha_i}h_i({\bf x}),
+     \end{equation}
+     where $h_i({\bf x})=\pm 1$ is a response of an $i$-th individial classifier.
+     Small (large) $y$ values indicate a background-like (signal-like) event.
+     \item<5-> Weakness and smallness of individual classifiers make training procedure more robust.
+    \end{itemize}
+    }
+
+  \end{column}
+  \begin{column}{0.5\textwidth}
+   \only<1-5>{\begin{itemize}
+    \item<1-> {\bf Classification problem}.
+    \item<2-> Collection of $N=\mathcal O(10^3)$ {\it weak~classifiers}.
+    \item<3-> {\it Adaptive Boost}: events that were misclassified during the trainig of a desicion tree are given a higher event weight $\alpha^{\beta}$ in the thaining of the following tree:
+    \begin{equation*}
+     \alpha = \frac{1-err}{err},
+    \end{equation*}
+    where $err<0.5$ is a misclassification rate and $\beta<1$ is a learning rate parameter.
+   \end{itemize}
+   }
+   \only<6>{\includegraphics[width=\textwidth]{pics/tmva_bdt.png}}
+  \end{column}
+ \end{columns}
+\end{frame}
+
+\setcounter{framenumber}{\value{finalframe}}
+\end{document}

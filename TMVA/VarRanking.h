@@ -1,0 +1,66 @@
+--- BDT                      : ---------------------------------------------------------------
+--- BDT                      : Rank : Variable                      : Variable Importance
+--- BDT                      : ---------------------------------------------------------------
+--- BDT                      :    1 : k0hso02                       : 1.529e-01
+--- BDT                      :    2 : log(tag_LH_err)               : 9.995e-02
+--- BDT                      :    3 : abs(cos_thr)                  : 6.442e-02
+--- BDT                      :    4 : abs(thr_sig-0.885)            : 5.082e-02
+--- BDT                      :    5 : k0hso12                       : 4.789e-02
+--- BDT                      :    6 : abs(cos_b0)                   : 4.201e-02
+--- BDT                      :    7 : k0hso22                       : 4.079e-02
+--- BDT                      :    8 : log(chi2_ndf_D0)              : 3.411e-02
+--- BDT                      :    9 : k0hoo4                        : 3.217e-02
+--- BDT                      :   10 : k0hoo2                        : 3.212e-02
+--- BDT                      :   11 : k0hso20                       : 3.126e-02
+--- BDT                      :   12 : k0et                          : 3.071e-02
+--- BDT                      :   13 : k0hoo0                        : 3.035e-02
+--- BDT                      :   14 : p_ks                          : 2.632e-02
+--- BDT                      :   15 : log(dzerr)                    : 2.627e-02
+--- BDT                      :   16 : k0hoo1                        : 2.602e-02
+--- BDT                      :   17 : k0hso04                       : 2.547e-02
+--- BDT                      :   18 : k0mm2                         : 2.470e-02
+--- BDT                      :   19 : k0hso10                       : 2.321e-02
+--- BDT                      :   20 : log(ptgamma)                  : 2.312e-02
+--- BDT                      :   21 : k0hso14                       : 2.312e-02
+--- BDT                      :   22 : log(chi2_tag_vtx/ndf_tag_vtx) : 2.232e-02
+--- BDT                      :   23 : k0hso00                       : 2.062e-02
+--- BDT                      :   24 : log(chi2_ndf_B0)              : 1.859e-02
+--- BDT                      :   25 : thr_oth                       : 1.460e-02
+--- BDT                      :   26 : log(pi0_chi2)                 : 1.351e-02
+--- BDT                      :   27 : log(egamma)                   : 1.236e-02
+--- BDT                      :   28 : k0hso24                       : 1.029e-02
+--- BDT                      : ---------------------------------------------------------------
+
+--- BDTG                     : ---------------------------------------------------------------
+--- BDTG                     : Rank : Variable                      : Variable Importance
+--- BDTG                     : ---------------------------------------------------------------
+--- BDTG                     :    1 : k0hso02                       : 5.921e-02
+--- BDTG                     :    2 : k0hso12                       : 5.254e-02
+--- BDTG                     :    3 : abs(cos_thr)                  : 4.973e-02
+--- BDTG                     :    4 : abs(thr_sig-0.885)            : 4.657e-02
+--- BDTG                     :    5 : k0hso22                       : 4.461e-02
+--- BDTG                     :    6 : abs(cos_b0)                   : 4.294e-02
+--- BDTG                     :    7 : log(chi2_ndf_D0)              : 4.232e-02
+--- BDTG                     :    8 : k0et                          : 3.980e-02
+--- BDTG                     :    9 : p_ks                          : 3.953e-02
+--- BDTG                     :   10 : log(chi2_ndf_B0)              : 3.939e-02
+--- BDTG                     :   11 : k0hso14                       : 3.620e-02
+--- BDTG                     :   12 : log(ptgamma)                  : 3.498e-02
+--- BDTG                     :   13 : thr_oth                       : 3.446e-02
+--- BDTG                     :   14 : log(dzerr)                    : 3.434e-02
+--- BDTG                     :   15 : k0hso04                       : 3.426e-02
+--- BDTG                     :   16 : k0hso24                       : 3.403e-02
+--- BDTG                     :   17 : log(pi0_chi2)                 : 3.331e-02
+--- BDTG                     :   18 : log(tag_LH_err)               : 3.115e-02
+--- BDTG                     :   19 : k0hso20                       : 3.077e-02
+--- BDTG                     :   20 : k0hoo0                        : 3.006e-02
+--- BDTG                     :   21 : k0hso00                       : 2.878e-02
+--- BDTG                     :   22 : log(egamma)                   : 2.856e-02
+--- BDTG                     :   23 : k0hoo1                        : 2.823e-02
+--- BDTG                     :   24 : k0hso10                       : 2.771e-02
+--- BDTG                     :   25 : k0mm2                         : 2.680e-02
+--- BDTG                     :   26 : log(chi2_tag_vtx/ndf_tag_vtx) : 2.605e-02
+--- BDTG                     :   27 : k0hoo2                        : 2.445e-02
+--- BDTG                     :   28 : k0hoo4                        : 1.923e-02
+--- BDTG                     : ---------------------------------------------------------------
+

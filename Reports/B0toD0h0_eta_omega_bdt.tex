@@ -1,0 +1,689 @@
+\documentclass[10 pt,compress,mathserif]{beamer}
+
+%\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+%\usepackage{multirow}
+\usepackage{hhline}
+
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usetheme{Warsaw}
+
+%\usecolortheme{rose}
+%\usecolortheme{dolphin}
+\usecolortheme{lily}
+
+\RequirePackage{xspace}
+\newcommand{\cosbeta}{\ensuremath{\cos{2\varphi_1}}\xspace}
+\newcommand{\sinbeta}{\ensuremath{\sin{2\varphi_1}}\xspace}
+\newcommand{\cosbetasq}{\ensuremath{\cos^2{2\varphi_1}}\xspace}
+\newcommand{\sinbetasq}{\ensuremath{\sin^2{2\varphi_1}}\xspace}
+\newcommand{\cpconj}{\ensuremath{\mathcal{CP}}\xspace}
+\newcommand{\dkspp}{\ensuremath{D^0\to K_S^0\pi^+\pi^-}\xspace}
+\newcommand{\bdh}{\ensuremath{B^0\to \bar D^0h^0}\xspace}
+\newcommand{\bdpi}{\ensuremath{B^0\to \bar D^0\pi^0}\xspace}
+\newcommand{\bdeta}{\ensuremath{B^0\to \bar D^0\eta^0}\xspace}
+\newcommand{\hgg}{\ensuremath{h^0\to \gamma\gamma}\xspace}
+\newcommand{\pigg}{\ensuremath{\pi^0\to \gamma\gamma}\xspace}
+\newcommand{\etagg}{\ensuremath{\eta^0\to \gamma\gamma}\xspace}
+\newcommand{\etappp}{\ensuremath{\eta^0\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\hppp}{\ensuremath{h^0\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\bdomega}{\ensuremath{B^0\to \bar D^0\omega^0}\xspace}
+\newcommand{\omegappp}{\ensuremath{\omega^0\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\aad}{\ensuremath{|f|}\xspace}
+\newcommand{\aadbar}{\ensuremath{|\overline{f}|}\xspace}
+
+\defbeamertemplate*{footline}{shadow theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertframenumber\,/\,\inserttotalframenumber\hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\begin{document}
+\title{Measurement of the CKM angle $\varphi_1$ in \bdh, \dkspp decays with the model-independent approach.}
+\author{Vitaly Vorobyev}
+\institute{Budker Institute of Nuclear Physics,\\
+           Novosibirsk State University}
+\date{March 12, 2014}
+% Создание заглавной страницы
+\frame{\titlepage}
+% Автоматическая генерация содержания
+\frame{\frametitle{Contents}\tableofcontents}
+
+% \section{Introduction}
+
+\section{Continuum suppression}
+\frame{\tableofcontents[current]}
+\begin{frame}[containsverbatim]
+ \frametitle{Continuum suppression: Introduction}
+ \begin{small}
+  \begin{block}{Problem statement}
+  \begin{itemize}
+   \item The goal is to obtain the best signal/continuum separation in the signal region;
+   \item We compare two methods: RooKSFW and (Gradient) Boosted Decision Trees, BDT(g);
+%   \item We are free to choose a set of variables for BDTg;
+   \end{itemize}
+  \end{block}
+  \begin{block}{Statistics vs. Kinematics}
+  \begin{itemize}
+   \item One needs a large signal and continuum data sets to train BDTg well;
+   \item In the perfect case there should be the same kinematics in the training sample and in the signal region data;
+   \item But it is not enough Generic MC continuum data in the signal region. Thats why we need to reach a compromise.
+  \end{itemize}
+  \end{block}
+  \begin{block}{Data sets}
+   \begin{itemize}
+    \item $6$ streams of Gen MC and about $1.5\cdot 10^5$ of \bdpi events;
+    \item We use $0.8$ of datasets for training and $0.2$ for performance study.
+   \end{itemize}
+  \end{block}
+ \end{small}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Continuum suppression: BDT(g)}
+\begin{columns}
+ \begin{column}{0.5\textwidth}
+ \begin{block}{Variables}
+  \begin{itemize}
+   \item $\left|\cos\theta_{B}\right|$;
+   \item $\log(\chi^2/$n.d.f.$(D^0$ fit$))$;
+   \item $\left|\cos\theta_{thrust}\right|$;
+   \item $|$Signal Thrust Vector$|$;
+   \item $|$Others Thrust Vector$|$;
+   \item $\log($tag LH error$)$;
+   \item $\log(\Delta z$ error$)$;
+   \item $\log(\chi^2(\pi^0))$;
+%   \item $\log(E_{\gamma})$;
+   \item $16$ $KSFW$ variables.
+  \end{itemize}
+ \end{block}
+ \end{column}
+ \begin{column}{0.5\textwidth}
+  \begin{block}{Training ranges}
+  \begin{small}
+   \begin{enumerate}
+   \item Signal region:\\
+    $-0.1\ \text{GeV}<\Delta E<0.08\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$
+   \item Full range:\\
+    $\left|\Delta E\right|<0.3\ \text{GeV}$\\
+    $5.200\ \text{GeV}<M_{bc}<5.290\ \text{GeV}$
+   \item $M_{bc}$ cut:\\
+    $\left|\Delta E\right|<0.3\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$
+   \item $\Delta E$ cut:\\
+    $-0.1\ \text{GeV}<\Delta E<0.08\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$
+   \item Soft cut:\\
+    $\left|\Delta E\right|<0.1\ \text{GeV}$\\
+    $5.250\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$
+  \end{enumerate}
+  \end{small}
+  \end{block}
+ \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}%[containsverbatim]
+ \frametitle{Continuum suppression: dependence on training sample}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.4\textwidth}
+  \only<1>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item RooKSFW
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: soft cut}
+   \begin{center}
+    $\left|\Delta E\right|<0.1\ \text{GeV}$\\
+    $5.250\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.815$
+    \item Purity: $77.4\%$
+    \item S. acceptance: $63.2\%$
+    \item C. rejection: $96.9\%$
+    \item S. significance: $15.6$
+   \end{itemize}
+   \end{block}
+  }
+  \only<2>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: signal}
+   \begin{center}
+    $-0.1\ \text{GeV}<\Delta E<0.08\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.917$
+    \item Purity: $71.0\%$
+    \item S. acceptance: $72.1\%$
+    \item C. rejection: $95.1\%$
+    \item S. significance: $16.0$
+   \end{itemize}
+   \end{block}
+  }
+  \only<3>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: full}
+   \begin{center}
+    $\left|\Delta E\right|<0.3\ \text{GeV}$\\
+    $5.200\ \text{GeV}<M_{bc}<5.290\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.217$
+    \item Purity: $75.0\%$
+    \item S. acceptance: $68.3\%$
+    \item C. rejection: $96.2\%$
+    \item S. significance: $16.0$
+   \end{itemize}
+   \end{block}
+  }
+  \only<4>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: $M_{bc}$ cut}
+   \begin{center}
+    $\left|\Delta E\right|<0.3\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.760$
+    \item Purity: $71.1\%$
+    \item S. acceptance: $73.0\%$
+    \item C. rejection: $95.1\%$
+    \item S. significance: $16.1$
+   \end{itemize}
+   \end{block}
+  }
+  \only<5>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: $\Delta E$ cut}
+   \begin{center}
+    $-0.1\ \text{GeV}<\Delta E<0.08\ \text{GeV}$\\
+    $5.200\ \text{GeV}<M_{bc}<5.290\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.600$
+    \item Purity: $75.0\%$
+    \item S. acceptance: $69.7\%$
+    \item C. rejection: $96.1\%$
+    \item S. significance: $16.2$
+   \end{itemize}
+   \end{block}
+  }
+  \only<6>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: soft cut}
+   \begin{center}
+    $\left|\Delta E\right|<0.1\ \text{GeV}$\\
+    $5.250\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.822$
+    \item Purity: $78.4\%$
+    \item S. acceptance: $67.7\%$
+    \item C. rejection: $96.9\%$
+    \item S. significance: $16.3$
+   \end{itemize}
+   \end{block}
+  }
+
+  \end{column}
+  \begin{column}{0.6\textwidth}
+  \begin{center}
+   \only<1>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_lh.png}
+   }
+   \only<2>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh_s.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh_s.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_s.png}
+   }
+   \only<3>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh_s_fr.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh_s_fr.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_fr.png}
+   }
+   \only<4>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh_s_fr_mbcs.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh_s_fr_mbcs.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_mbcs.png}
+   }
+   \only<5>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh_s_fr_mbcs_des.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh_s_fr_mbcs_des.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_des.png}
+   }
+   \only<6>{
+     \includegraphics[width=0.5\textwidth]{pics/br_full.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_full.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_sl.png}
+   }
+  \end{center}
+  \end{column}
+ \end{columns}
+\end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Continuum suppression: different test samples}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \only<1>{
+   Signal distributions for the ''soft cut'' training region\\
+   \includegraphics[width=\textwidth]{pics/bdtg_diff_sl_sig.png}}
+   \only<2>{
+   Continuum distributions for the ''soft cut'' training region\\
+   \includegraphics[width=\textwidth]{pics/bdtg_diff_sl_cont.png}}
+  \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \only<1>{
+   Signal distributions for the ''full'' training region\\
+   \includegraphics[width=\textwidth]{pics/bdtg_diff_fr_sig.png}}
+   \only<2>{
+   Continuum distributions for the ''full'' training region\\
+   \includegraphics[width=\textwidth]{pics/bdtg_diff_fr_cont.png}}
+   \end{center}
+  \end{column}
+ \end{columns}
+
+ \begin{itemize}
+  \item \textcolor{red}{Red} --- signal test region;
+  \item \textcolor{blue}{Blue} --- ''soft cut'' test region;
+  \item Black --- ''full'' test region;
+ \end{itemize}
+\end{small}
+\end{frame}
+
+% \begin{frame}
+%  \frametitle{Continuum suppression: other signal modes}
+% \end{frame}
+% 
+% \begin{frame}
+%  \frametitle{Continuum suppression: sidebands}
+% \end{frame}
+
+\begin{frame}
+ \frametitle{Continuum suppression summary}
+ \begin{enumerate}
+  \item BDTg method suppresses continuum slightly better than the RooKSFW tool.
+  \item Training dataset with ''soft cut'' on $\Delta E$ and $M_{bc}$ showns the best signal significance for $S=500$ and $B=3000$.
+ \end{enumerate}
+\end{frame}
+
+\section{$M_{bc}$-$\Delta E$ signal distributions}
+\frame{\tableofcontents[current]}
+\subsection{Signal MC}
+\begin{frame}
+ \frametitle{Signal modes}
+ \begin{block}{Considered signal modes}
+ \begin{enumerate}
+  \item \bdpi;
+  \item \bdeta
+  \begin{itemize}
+   \item \etagg;
+   \item \etappp;
+  \end{itemize}
+  \item \bdomega, \omegappp;
+ \end{enumerate}
+ \end{block}
+
+ \begin{block}{Random soft $\gamma$ issue}
+ Each signal mode leads to two types of reconstructed events:
+  \begin{itemize}
+   \item $\pi^0$ (or \etagg) is well reconstructed;
+   \item $\pi^0$ (or \etagg) containes wrong soft $\gamma$;
+  \end{itemize}
+  There are other types of wrong reconstruction, but fraction of such events is tiny. We include them into the second type.
+ \end{block}
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{$h^0\to\gamma\gamma$ modes}
+ \begin{small}
+ \begin{itemize}
+  \only<1>{\item Well reconstructed $h^0$}
+  \only<4>{\item Well reconstructed $h^0$, with projections on the signal regions}
+  \only<2>{\item Events with wrong soft $\gamma$}
+  \only<5>{\item Events with wrong soft $\gamma$, with projections on the signal regions}
+  \only<3>{\item Both fractions}
+  \only<6>{\item Both fractions, with projections on the signal regions}
+ \end{itemize}
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\pigg$:
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    \only<1,4>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode1_h0mode10_b0f1.png}}
+    \only<2,5>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode1_h0mode10_b0f5.png}}
+    \only<3,6>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode1_h0mode10_b0f-1.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\etagg$:
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    \only<1,4>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode10_b0f1.png}}
+    \only<2,5>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode10_b0f5.png}}
+    \only<3,6>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode10_b0f-1.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$h^0\to\pi^+\pi^-\pi^0$ modes}
+ \begin{small}
+ \begin{itemize}
+  \only<1>{\item Well reconstructed $h^0$}
+  \only<4>{\item Well reconstructed $h^0$, with projections on the signal regions}
+  \only<2>{\item Events with wrong soft $\gamma$}
+  \only<5>{\item Events with wrong soft $\gamma$, with projections on the signal regions}
+  \only<3>{\item Both fractions}
+  \only<6>{\item Both fractions, with projections on the signal regions}
+ \end{itemize}
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\etappp$:
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    \only<1,4>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f1.png}}
+    \only<2,5>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f5.png}}
+    \only<3,6>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f-1.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\omegappp$:
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    \only<1,4>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode3_h0mode20_b0f1.png}}
+    \only<2,5>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode3_h0mode20_b0f5.png}}
+    \only<3,6>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode3_h0mode20_b0f-1.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Reducing $\Delta E$ range}
+ \begin{small}
+ \begin{itemize}
+  {\item Events with wrong soft $\gamma$, with projections on the signal regions}
+ \end{itemize}
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\etappp$:\\
+   \begin{tiny}
+   $\Delta E>-0.30\ \text{GeV}$
+   \end{tiny}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f5_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f5_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f5.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\etappp$:\\
+   \begin{tiny}
+   $\Delta E>-0.15\ \text{GeV}$
+   \end{tiny}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f5_wproj015.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f5_wproj015.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f5_015.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Signal modes: summary}
+ \begin{enumerate}
+  \item \hppp modes give much narrower $\Delta E$ distributions then \hgg modes;
+  \item There is strong $\Delta E$-$M_{bc}$ correlation for events with random soft $\gamma$. There are (at least) two ways to deal with this correlation:
+  \begin{itemize}
+   \item To introduce correlation into the 2D PDF;
+   \item To reduce $\Delta E$ fit range;
+  \end{itemize}
+  It seems that the second way is good enough for number of the signal events $<10^3$ (in my previous report, I have shown that such a procedure does not lead to significant biases for the \bdpi mode).
+ \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Conclusions}
+\end{frame}
+
+
+\appendix
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
+\section{Backup}
+\begin{frame}
+ \begin{center}
+  \begin{LARGE}
+   Backup
+  \end{LARGE}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Signal region}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/mk_signal.png}\\
+   $\left|m(K_S^0)-0.4975\right|<0.009\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/md_signal.png}\\
+   $\left|m(D^0)-1.865\right|<0.013\ \text{GeV}$
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+   \begin{center}
+    \includegraphics[width=\textwidth]{pics/mpi0_signal.png}\\
+   $\left|m(\pi^0)-0.135\right|<0.012\ \text{GeV}$\\
+   \end{center}
+  \end{column}
+ \end{columns}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/mbc_signal.png}\\
+   $5.272\ \text{GeV}<M_{bc}<5.286\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/de_signal.png}\\
+   $-0.08\ \text{GeV}<\Delta E<0.07\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{BDT: Variables}
+   \includegraphics[width=0.5\textwidth]{pics/tmva_vars_1.png} \includegraphics[width=0.5\textwidth]{pics/tmva_vars_3.png}\\
+   \includegraphics[width=0.5\textwidth]{pics/tmva_vars_2.png} \includegraphics[width=0.5\textwidth]{pics/tmva_vars_4.png}
+\end{frame}
+
+
+
+\end{document}

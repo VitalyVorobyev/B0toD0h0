@@ -1,0 +1,98 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+
+%opening
+\title{Answers for Pavel Krokovny questions. Part I}
+\author{Vitaly Vorobyev}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Questions from 25.09.2015}
+{\bf Q.1)} p.32 Please make similar study for $C_i$ and $S_i$: how the reconstruction efficiency can change it? how much is systematic uncertainty in $\sin{2\varphi_1}$ and $\cos{2\varphi_1}$? The statistical and systematic uncertainties in $C_i$ and $S_i$ values should be taken into account too.
+
+{\bf A.1)} Statistical and systematic uncertainties are directly taken into account as source of systematic uncertainty (Sec.\,(VIII) in note v.2.1). Effect of reconstruction efficiency is studied in Sec.\,(V G 1). Correspondent row in Tab.\,XII at p. 60 is ``Efficiency variation over the Dalitz plot''.
+
+{\bf Q.2)} p.33 Please check the CPV fit procedure on signal MC with various values of $\sin{2\varphi_1}$ and $\cos{2\varphi_1}$, at least with opposite value of $\cos{2\varphi_1}$.
+
+{\bf A.2)} Done. Linearity test is described in Sec.\,(V G 4).
+
+{\bf Q.3)} p.34 The test with background is limited by statistics of generic MC. It can by improved by using wider dE-Mbc sidebands.
+
+{\bf A.3)} It is true, but wider signal area leads to increasing fraction of continuum background. Strictly speaking offset due to background depends on selection of signal area.
+
+I suggest to change an approach to systematics due to background. Scales $k_{1,2}$ defined at p.\,39 in Sec.\,(V D) can be used as nuisance parameters in CP fit.
+
+{\bf Q.4)} p.36, Toy MC. Do you use only signal events here? Could you please make the toy study including background events?
+
+{\bf A.4)} Pseudo toy experiment with background is tricky. Number of ''good`` background events is not enough for it. If one takes background events from extended signal area an effect of this extension is studied instead of effect of background from the signal area. Another way is to make a true toy experiment: to generate ''good`` background events taking into account $\Delta t$, $\sigma_z$, $\chi^2$, $\Delta E$ and $M_{bc}$ distributions. Probably both ways have reasonable compromises, but I do not see a lot of sense to spend a lot of effort here. May be I am wrong.
+
+\subsubsection*{Questions from 28.10.2015}
+{\bf Q.5)} p.14, selection of pi0 candidates:
+Do you require $P(\pi^0)> 200$ MeV both for $\omega\to 3\pi$ and $\eta\to 3\pi$ decays? $\eta$ candidates should have much less background and this cut probably is not required here.
+
+{\bf A.5)} Correspondent distributions are shown at Fig.\,\ref{fig:ppi0}. Cut $200$ MeV maximizes FOM for $\omega$ and almost does not affect on $\eta\to\pi^+\pi^-\pi^0$ mode. There may be more background with soft $\pi^0$ in real data. That is why I put this cut for $\eta$ as well.
+\begin{figure}[htb]
+\includegraphics[width=0.49\textwidth]{pics/ppi0_sig_etappp}
+\includegraphics[width=0.49\textwidth]{pics/ppi0_sig_omega}\\
+\includegraphics[width=0.49\textwidth]{pics/ppi0_bkg_etappp}
+\includegraphics[width=0.49\textwidth]{pics/ppi0_bkg_omega}
+\caption{Left edges of $\pi^0$ momentum spectra.}
+\label{fig:ppi0}
+\end{figure}
+
+{\bf Q.6)} p.14, selection of $h^0\to 3\pi$
+Angle $\theta_{hel}$ should be defined in the same frame, e.g. between omega and Y(4S) in B0 rest frame
+BTW, please describe in BN how do you select these cuts. (S/bkg ratio, FOM, etc)
+
+{\bf A.6)} I will change definition of $\theta_{hel}$. Cuts are chosen by maximization of FOM. I will add it in BN.
+
+{\bf Q.7)} p.15 "We exclude B0 candidates if the same charged track enters to the decay tree mode more than once"
+Candidates with double entries from gammas should be also removed.
+
+{\bf A.7)} Thank you for this notice. I missed this point at BASF module stage. I checked if there are photons of the same energy in selected events. Several events were found in signal and generic MC. So, I added duplicated photons veto to my selection procedure.
+
+{\bf Q.8)} p.16, Table 2
+Are these number obtained for the signal dE-Mbc area or for the wide area? I suggest to use signal area, since only events from signal area are using in CP fit.
+
+{\bf A.8)} These numbers correspond to wide $\Delta E$-$M_{bc}$ fit area. I do not understand what do you mean here. I will add {\it signal loss in the signal area} to this table at next update. But do we really need to define multiplicity value for the signal area? It is a matter of definition.
+%Now it is Tab.\,VI at p. 32. And yes, these numbers correspond to the signal $\Delta E$-$M_{bc}$ area.
+
+{\bf Q.9)} p.18 Background components.
+Please consider self cross-feed: events from one signal mode reconstructed as another: e.g. $D^{*0}[D^0\pi^0] h^0$ as $D^0 h^0$.
+Another potential dangerous background can come from $B\to D^{*0}[D^0 \gamma] h^0$, reconstructed as $D^{*0}[D^0\pi^0] h^0$.
+It has an opposite CP eigenstate, and can provide dilution factor for CP fit.
+
+{\bf A.9)} Done. Sec. (V C).
+
+{\bf Q.10)} p.32, equations 57,58
+I have a general concern about you definition of background events. Imagine that there are no events in some bin. In this case the background yield defined by eq.58 will be negative. Should we got the background yield by simultaneous fit of dE-Mbc distributions on all bins with common signal yield parameter and separate background yields for each bin?
+
+{\bf A.10)} This is an interesting question. First of all $N_{i}^{tot}$ correspond to wide $\Delta E$-$M_{bc}$ area. There are many (much more than signal ones) background events in each bin. That is why $N_{i}^{bkg}>0$ for sure. The only motivation for simultaneous fit is to determine background composition in each bin. This composition is needed for background $\Delta t$ parameterization. At the moment I assume the same fraction of continuum in each Dalitz bin. This assumption is wrong, but it is a good compromise between complexity and rigor from my point of view. We do not see any significant systematics due to background component with current procedure.
+
+Anyway, I'll try to make this simultaneous fit for cross check.
+
+{\bf Q.11)} p.40 Can you compare the measured $K_i$ coefficients with ones measured by CLEO? Correction to detector efficiency will be needed to do it.
+
+{\bf A.11)} I have all necessary inputs for this comparison. I will include it in the next version.
+
+\subsubsection*{Questions from 3.11.2015}
+{\bf Q.12)} Entangling of signal channels (p.37)
+Why there are empty elements in Table 7?
+
+{\bf A.12)} I will include more clear explanation of this table.
+
+{\bf Q.13)} Linearity test (p.48, Fig.32)
+There are two points with same $\cos$/$\sin$. Is this related to the input parameters? e.g. for each sin value there two cos values with opposite sign.
+
+{\bf A.13)} Yes, I took several values of $2\varphi_1$ from $0$ to $2\pi$. There are two equal values of $\sin$ ($\cos$) for two opposite values of $\cos$ ($\sin$).
+
+{\bf Q.14)} Toy MC (p.49, Fig.33)
+Mean values of both  $\cos$/$\sin$ pull distributions are shifted to the positive side ($0.2$-$0.4$). Is this bias statistical significant? Is it consistent with systematical uncertainty?
+Could you please check it by an independent toy MC sample?
+
+{\bf A.14)} These offsets are statistical significant and in agreement with offsets obtained in fit of large signal MC samples. I'm going to repeat toy MC with realistic mixture of signal modes.
+
+\end{document}

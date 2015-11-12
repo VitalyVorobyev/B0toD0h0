@@ -1,0 +1,59 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{Answers for Vladimir Savinov questions (from 07.10.2015)}
+\author{Vitaly Vorobyev}
+
+\begin{document}
+
+\maketitle
+
+{\bf Q.1)} on p.6, when you describe charged pions selection, you write that all you require are SVD hits for their reconstructed tracks. 
+Is that really so? I don't believe it. You are not using ALL reconstructed charged tracks, right? Don't you have at least some selection supposedly applying track quality criteria (at least dr, dz, min pt)?
+
+{\bf A.1)} That was really so. I studied $dr$, $dz$ and $p_t$ distributions and set very soft cuts $|dr|<2$ cm and $|dz|<5$ cm to reject junk tracks. Minimal $p_t$ is set at $50$ MeV and $100$ MeV for pions from $D^0$ decay and $h^0$ decay respectively. Influence of this change is tiny. (see momentum spectra in Appendix D at p.~63).
+
+{\bf Q.2)} on the same page you imply that photons considered as daughters of pi0 candidates are treated the same way (Egamma$>$=40MeV) regardless where in the calorimeter these are reconstructed. Is this really so?
+
+{\bf A.2)} Yes, this is really so. I studied photon energy as a function of polar angle $\theta$. I found photon energy distributions for signal and background are quite similar in most cases (see some spectra in Appendix B and C from p.~59). I tried to increase threshold for minimal photon energy in different ranges of $\cos\theta$ and didn't obtain increased figure-of-merit for the signal $\Delta E$-$M_{bc}$ area.
+
+There is a signal component reconstructed with wrong soft photon (see. Sec. V A 1). This wrong soft photon does not affect CP fit and makes energy spectra closer to a background ones. Moreover, about $7\%$ of reconstructed signal for modes with $D^{*0}$ contain wrong soft $\pi^0$.
+
+But I found significant difference between signal and background lab frame momentum spectra for $\pi^0$ from $h^0$ decay. I set $200$ MeV threshold for it.
+
+%It is true that distribution of a photon energy increases in low energies for forward endcap ($\cos\theta$ close to $1$). collects much more background soft photons than barrel part of the calorimeter. But the same behaviour is observed for the signal component with wrong soft photon (see. Sec. V A 1). That is why more strict cut leads to the signal efficiency decline.
+
+{\bf Q.3)} now, a real question: eq. 11 on p. 10 shows the weights for your chi2-like variable as 1, 1/4 and 1/8 - why? What is the rationale for such choice?
+
+{\bf A.3)} Thank you for this question. I never liked this part of the procedure and I've finally found a bug in calculation of the $\chi^2$-like variable. I changed the multiple candidates selection procedure. Now I use straightforward $\chi^2$ value for all modes. Please take a look at the description in the note (p.15, end of Sec. II A).
+
+{\bf Q.4)} concerning your Figure of Merit (A/sqrt(S+B)) on p.14: am I correct that you assume known branching fractions for the signal?
+
+{\bf A.4)} Yes, I rely on generic MC. I use numbers corresponding to one generic MC stream. Threshold should not be very sensitive to that assumption.
+
+{\bf Q.5)} on p.16:  why and how the choice for alpha=0.14 was made?
+
+{\bf A.5)} It is not true anymore, sorry. This value is used for determination of coefficients taking $\Delta E$-$M_{bc}$ correlation  into account (by fitting $M_{bc}$ distribution in slices of $\Delta E$). Now I determine $\alpha$ in fit of the signal MC.
+
+{\bf Q.6)} generally, calling background from partially reconstructed decays "partial" background is not a good idea (at least in my opinion),
+
+{\bf A.6)} Ok, I changed 'partial' to 'peaking'.
+
+{\bf Q.7)} it's difficult to navigate through your PDF formulas in equations (13) through (22) because you are not explicit in your notation implying that the reader, of course, would know immediately which formulas need to be multiplied by which other formulas and what substitutions need to be made. Rigor is missing. BN883 could definitely be used as calibration point, so to say. 
+
+{\bf A.7)} I've tried to rewrite more clear.
+
+{\bf Q.8)} also from the same category of being a bit sloppy, on pages 21 through 23 you first show PDF in terms of fractions (which you fit for), then, on p.22 you talk about S (number of signal events obtained from the fit? / proportional to this fraction, obviously, right?). 
+
+{\bf A.8)} This part is also rewritten more carefully. $S$ is number of signal events in a signal area obtained from the fit and proportional to the signal fraction, right. I've added an explicit formula for $S$ in the note (p. 29).
+
+{\bf Q.9)} on p.22 you explain that the difference between Sfit and Strue does not correspond to fit error, however, I wonder if fit error could be estimated / elaborated about. 
+
+{\bf A.9)} I have changed this part. Shapes of different background components are determined with four generic MC streams (from 0 to 3) while signal fraction fit and zero-signal test are shown for other two (4 and 5) streams of generic MC. So, all shapes are determined with independent data and we can expect normal statistical behavior. I release several shape parameters in the fit in order to minimize possible effect of difference between MC and real background shapes.
+
+{\bf Q.10)} finally, the description of the analysis on pages 24 through 40 is excellent - these pages, in my opinion, represent the most important part of your note -
+
+{\bf A.10)} Thank you.
+
+\end{document}

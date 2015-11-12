@@ -1,0 +1,52 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{epsfig}
+%\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{floatflt}
+%\usepackage{fontenc}
+%\usepackage{mathtext}
+%\usepackage{appendix}
+
+\usepackage[left=1.5cm,right=1.5cm,
+    top=2cm,bottom=2.5cm,bindingoffset=0cm]{geometry}
+
+\RequirePackage{xspace}
+
+%opening
+%\title{}
+%\author{}
+
+\begin{document}
+
+%\maketitle
+
+%\begin{abstract}
+
+%\end{abstract}
+
+%\section{}
+
+\begin{equation}
+\begin{split}
+ &\frac{\Gamma}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty} dt^{\prime} e^{-\Gamma \left|t^{\prime}\right|}e^{i\omega t^{\prime}}e^{-\frac{\left(t-t^{\prime}\right)^2}{2\sigma^2}} = \\
+ &\frac{\Gamma}{\sqrt{2\pi}\sigma}\int_{0}^{\infty} dt^{\prime} e^{-\Gamma t^{\prime}}e^{i\omega t^{\prime}}e^{-\frac{\left(t-t^{\prime}\right)^2}{2\sigma^2}} + \frac{\Gamma}{\sqrt{2\pi}\sigma}\int_{-\infty}^{0} dt^{\prime} e^{\Gamma t^{\prime}}e^{i\omega t^{\prime}}e^{-\frac{\left(t-t^{\prime}\right)^2}{2\sigma^2}} = \\
+ &\frac{\Gamma}{\sqrt{2\pi}\sigma}\int_{0}^{\infty} dt^{\prime} e^{-\Gamma t^{\prime}}e^{i\omega t^{\prime}}e^{-\frac{\left(t-t^{\prime}\right)^2}{2\sigma^2}} + \frac{\Gamma}{\sqrt{2\pi}\sigma}\int_{0}^{\infty} dt^{\prime} e^{-\Gamma t^{\prime}}e^{-i\omega t^{\prime}}e^{-\frac{\left(t+t^{\prime}\right)^2}{2\sigma^2}} = I_1 + I_2.
+\end{split}
+\end{equation}
+
+\begin{equation}
+ I_1 = \frac{\Gamma}{2}e^{\frac{\sigma^2}{2}\left(\Gamma-i\omega\right)^2}e^{-\left(\Gamma-i\omega\right)t}erfc\left[\frac{\sigma}{\sqrt{2}}\left(\Gamma-i\omega-\frac{t}{\sigma^2}\right)\right]
+\end{equation}
+
+\begin{equation}
+ I_2 = \frac{\Gamma}{2}e^{\frac{\sigma^2}{2}\left(\Gamma+i\omega\right)^2}e^{\left(\Gamma+i\omega\right)t}erfc\left[\frac{\sigma}{\sqrt{2}}\left(\Gamma+i\omega+\frac{t}{\sigma^2}\right)\right]
+\end{equation}
+
+
+\end{document}

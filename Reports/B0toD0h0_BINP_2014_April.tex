@@ -1,0 +1,1733 @@
+\documentclass[10 pt,compress,mathserif]{beamer}
+
+%\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+%\usepackage{multirow}
+\usepackage{hhline}
+
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usetheme{Warsaw}
+
+%\usecolortheme{rose}
+%\usecolortheme{dolphin}
+\usecolortheme{lily}
+
+\RequirePackage{xspace}
+\newcommand{\cosbeta}{\ensuremath{\cos{2\varphi_1}}\xspace}
+\newcommand{\sinbeta}{\ensuremath{\sin{2\varphi_1}}\xspace}
+\newcommand{\cosbetasq}{\ensuremath{\cos^2{2\varphi_1}}\xspace}
+\newcommand{\sinbetasq}{\ensuremath{\sin^2{2\varphi_1}}\xspace}
+\newcommand{\cpconj}{\ensuremath{\mathcal{CP}}\xspace}
+\newcommand{\dkspp}{\ensuremath{D^0\to K_S^0\pi^+\pi^-}\xspace}
+\newcommand{\bdh}{\ensuremath{B^0\to \bar D^0h^0}\xspace}
+\newcommand{\bdpi}{\ensuremath{B^0\to \bar D^0\pi^0}\xspace}
+\newcommand{\bdeta}{\ensuremath{B^0\to \bar D^0\eta^0}\xspace}
+\newcommand{\hgg}{\ensuremath{h^0\to \gamma\gamma}\xspace}
+\newcommand{\pigg}{\ensuremath{\pi^0\to \gamma\gamma}\xspace}
+\newcommand{\etagg}{\ensuremath{\eta^0\to \gamma\gamma}\xspace}
+\newcommand{\etappp}{\ensuremath{\eta^0\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\hppp}{\ensuremath{h^0\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\bdomega}{\ensuremath{B^0\to \bar D^0\omega^0}\xspace}
+\newcommand{\omegappp}{\ensuremath{\omega^0\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\aad}{\ensuremath{|f|}\xspace}
+\newcommand{\aadbar}{\ensuremath{|\overline{f}|}\xspace}
+
+\defbeamertemplate*{footline}{shadow theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertframenumber\,/\,\inserttotalframenumber\hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\begin{document}
+\title{Measurement of the CKM angle $\varphi_1$ in \bdh, \dkspp decays with the model-independent approach.}
+\author{Vitaly Vorobyev}
+\institute{Budker Institute of Nuclear Physics,\\
+           Novosibirsk State University}
+\date{April 2, 2014}
+% Создание заглавной страницы
+\frame{\titlepage}
+% Автоматическая генерация содержания
+\frame{\frametitle{Contents}\tableofcontents}
+
+% \section{Introduction}
+
+\section{Introduction}
+\begin{frame}
+ \frametitle{Motivation}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+   \begin{itemize}
+    \item To improve knowledge of sign of the $\cos2\varphi_1$;
+    \item Previous Belle measurement is based on $350$ fb${}^{-1}$ [BN 883]. Full data set is twice larger;
+    \item Model-independent approach is preferable for high statistics measurement (Belle II);
+    \item This measurement is not accessible at LHCb.
+   \end{itemize}
+
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{block}{\bdpi}
+   \includegraphics[width=\textwidth]{pics/B0toD0pi0.png}
+  \end{block}
+  
+  \begin{block}{$\cos2\varphi_1$}
+   \begin{itemize}
+    \item BaBar {\small [PRL 99, 231802 (2007)]}:
+   \end{itemize}
+  
+   $\cos2\beta = 0.42 \pm 0.49 \pm 0.09 \pm 0.13$
+   
+   \begin{itemize}
+    \item Belle {\small [PRL 97, 081801 (2006)]}:
+   \end{itemize}
+
+   $\cos2\varphi_1 = 1.87^{+0.40}_{-0.53}{}^{+0.22}_{-0.32}$
+  \end{block}
+
+  \end{column}
+ \end{columns}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$\varphi_1$ sensitivity [BN 883]}
+ \begin{small}
+% I follow BN 883.
+ \begin{itemize}
+  \item $B$ oscillations:
+ \end{itemize}
+ \begin{equation}
+  \bar B^0\left(\Delta t\right) \propto \bar B^0\cos\left(\frac{\Delta m\Delta t}{2}\right)-ie^{-i2\varphi_1}B^0\sin\left(\frac{\Delta m\Delta t}{2}\right)
+ \end{equation}
+  \begin{itemize}
+  \item $\bar B^0\to D^0h^0$ decay, where $h^0 = \pi^0,\eta,\omega$ (neglecting $D$ oscillations):
+ \end{itemize}
+ \begin{equation}
+  \widetilde{D}^0\left(\Delta t\right) \propto D^0\cos\left(\frac{\Delta m\Delta t}{2}\right)-ie^{-i2\varphi_1}\xi_{h^0}(-1)^l\bar D^0\sin\left(\frac{\Delta m\Delta t}{2}\right),
+ \end{equation}
+  where $\xi_{h^0}$ is \cpconj eigenvalue of $h^0$, $l$ is orbital moment of the $D^0h^0$ system;
+ \begin{itemize}
+  \item \dkspp decay (assuming \cpconj conservation in $D$ decay):
+ \end{itemize}
+ \begin{equation}
+ \begin{split}
+  &M\left(m_+^2,m_-^2,\Delta t\right) \propto\\
+  &f\left(m_-^2,m_+^2\right)\cos\left(\frac{\Delta m\Delta t}{2}\right)-ie^{-i2\varphi_1}\xi_{h^0}(-1)^l f\left(m_+^2,m_-^2\right)\sin\left(\frac{\Delta m\Delta t}{2}\right),
+ \end{split}
+ \end{equation}
+ where $m_{\pm} \equiv m\left(K_S^0\pi^{\pm}\right)$. Let's denote $f \equiv f\left(m_-^2,m_+^2\right)$ and $\bar f \equiv f\left(m_+^2,m_-^2\right)$.
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Model-independent approach to \bdh}
+ Observable values: time-dependent probabilities
+
+ \begin{equation}
+ \begin{split}
+  N_i\left(\Delta t,\varphi_1\right) &= e^{-\frac{\left|\Delta t\right|}{\tau}}\left(K_{i}+K_{-i}\right)[ 1 + q_{B}\frac{K_{i}-K_{-i}}{K_{i}+K_{-i}}\cos\left(\Delta m\Delta t\right)+\\
+  &+q_{B}\xi_{h^0}(-1)^l\frac{\sqrt{K_iK_{-i}}}{K_{i}+K_{-i}}\sin\left(\Delta m\Delta t\right)\left(\textcolor{red}{C_i\sin2\varphi_1+S_i\cos2\varphi_1}\right)]
+ \end{split}
+ \end{equation}
+ 
+ \begin{itemize}
+  \item Simultaneous time-dependent fit for all DP bins;
+  \item $\sin2\varphi_1$ could be fixed since it is known with high precision;
+  \item $K_i$ could be measured precisely in $D^{\star\pm}\to D^0\pi^{\pm}$.
+ \end{itemize}
+\end{frame}
+
+% \begin{frame}
+%  \frametitle{Signal region}
+%  \begin{small}
+%  \begin{columns}
+%   \begin{column}{0.33\textwidth}
+%   \begin{center}
+%    \includegraphics[width=\textwidth]{pics/mk_signal.png}\\
+%    $\left|m(K_S^0)-0.4975\right|<0.009\ \text{GeV}$\\
+%   \end{center}
+%   \end{column}
+%   \begin{column}{0.33\textwidth}
+%   \begin{center}
+%    \includegraphics[width=\textwidth]{pics/md_signal.png}\\
+%    $\left|m(D^0)-1.865\right|<0.013\ \text{GeV}$
+%   \end{center}
+%   \end{column}
+%   \begin{column}{0.33\textwidth}
+%    \begin{center}
+%     \includegraphics[width=\textwidth]{pics/mpi0_signal.png}\\
+%    $\left|m(\pi^0)-0.135\right|<0.012\ \text{GeV}$\\
+%    \end{center}
+%   \end{column}
+%  \end{columns}
+%  \begin{columns}
+%   \begin{column}{0.5\textwidth}
+%   \begin{center}
+%    \includegraphics[width=\textwidth]{pics/mbc_signal.png}\\
+%    $5.272\ \text{GeV}<M_{bc}<5.286\ \text{GeV}$\\
+%   \end{center}
+%   \end{column}
+%   \begin{column}{0.5\textwidth}
+%   \begin{center}
+%    \includegraphics[width=\textwidth]{pics/de_signal.png}\\
+%    $-0.08\ \text{GeV}<\Delta E<0.07\ \text{GeV}$\\
+%   \end{center}
+%   \end{column}
+%  \end{columns}
+%  \end{small}
+% \end{frame}
+
+\begin{frame}
+ \frametitle{Signal region 1}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{pics/mk_signal.png}\\
+   $\left|m(K_S^0)-0.4975\right|<0.009\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{pics/md_signal.png}\\
+   $\left|m(D^0)-1.865\right|<0.013\ \text{GeV}$
+  \end{center}
+  \end{column}
+ \end{columns}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{pics/mbc_signal.png}\\
+   $5.272\ \text{GeV}<M_{bc}<5.286\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{pics/de_signal.png}\\
+   $-0.08\ \text{GeV}<\Delta E<0.07\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Signal region 2}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+   \begin{center}
+    \includegraphics[width=0.9\textwidth]{pics/mpi0_signal.png}\\
+   $\left|m(\pi^0)-0.135\right|<0.012\ \text{GeV}$\\
+   \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{pics/eta_gg_signal.png}\\
+   $0.520\ \text{GeV}<M(\eta^0)<0.565\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+ \end{columns}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{pics/eta_ppp_signal.png}\\
+   $0.541\ \text{GeV}<M(\eta^0)<0.554\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{pics/omega_signal.png}\\
+   $0.763\ \text{GeV}<M(\omega^0)<0.802\ \text{GeV}$\\
+  \end{center}
+  \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{Event reconstruction: $D^0\pi^0$}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+   \begin{block}{$\pi^{\pm}$ selection}
+  \begin{itemize}
+   \item $r\varphi$ SVD hits $>0$;
+   \item $rz$ SVD hits $>1$.
+  \end{itemize}
+ \end{block}
+ \begin{block}{$\pi^0$ selection}
+  All $\pi^0$ from \verb@Mdst_pi0_Manager@.
+ \end{block}
+ \begin{block}{$K_S^0$ selection}
+ \begin{itemize}
+  \item \verb@nisKsFinder@;
+  \begin{small}
+   \item $0.48\ MeV<m_{K_S^0}<0.52\ MeV$.
+  \end{small}
+ \end{itemize}
+ \end{block}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+   \begin{block}{$D^0$ candidates}
+    \begin{itemize}
+    \begin{small}
+     \item $1.81\ GeV < m_{K_s^0\pi^+\pi^-} < 1.92\ GeV$;
+    \end{small}     
+     \item $D^0$ decay tree fit with \verb@ExKFitter@ with $K_S^0$ and $D^0$ masses and vertices constrains;
+     \item $\chi^2/n.d.f$ of the fit $<1000$.
+    \end{itemize}
+   \end{block}
+   \begin{block}{$B^0$ candidates}
+    \begin{itemize}
+     \item \verb@IPTube@ constrained fit with $D^0$ candidate to obtain $z_{sig}$. $\pi^0$ is not used;
+     \item $\left|\Delta E\right| < 0.3\ GeV$;
+     \item $5.2\ GeV < M_{bc} < 5.3\ GeV$.
+    \end{itemize}
+   \end{block}
+  \end{column}
+ \end{columns}
+\end{frame}
+
+\section{Continuum suppression}
+\frame{\tableofcontents[current]}
+\begin{frame}[containsverbatim]
+ \frametitle{Continuum suppression: Introduction}
+ \begin{small}
+  \begin{block}{Problem statement}
+  \begin{itemize}
+   \item The goal is to obtain the best signal/continuum separation in the signal region;
+   \item We compare two methods: RooKSFW and (Gradient) Boosted Decision Trees, BDT(g);
+%   \item We are free to choose a set of variables for BDTg;
+   \end{itemize}
+  \end{block}
+  \begin{block}{Statistics vs. Kinematics}
+  \begin{itemize}
+   \item One needs a large signal and continuum data sets to train BDTg well;
+   \item In the perfect case there should be the same kinematics in the training sample and in the signal region data;
+   \item But it is not enough Generic MC continuum data in the signal region. Thats why we need to reach a compromise.
+  \end{itemize}
+  \end{block}
+  \begin{block}{Data sets}
+   \begin{itemize}
+    \item $6$ streams of Gen MC and about $1.5\cdot 10^5$ of \bdpi events;
+    \item We use $0.8$ of datasets for training and $0.2$ for performance study.
+   \end{itemize}
+  \end{block}
+ \end{small}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Continuum suppression: Method}
+\begin{columns}
+ \begin{column}{0.5\textwidth}
+  \begin{block}{TMVA: Boosted Decision Trees}
+  \begin{itemize}
+   \item Easy to use and powerful tool for the classification problem;
+   \item May be competitive to the NB tool for the continuum suppression;
+  \end{itemize}
+  \begin{center}
+   \includegraphics[width=0.75\textwidth]{pics/DT.png}\\
+  \end{center}
+%   \verb@http://tmva.sourceforge.net/@
+  \end{block}
+ \end{column}
+ \begin{column}{0.5\textwidth}
+% \begin{block}{Variables}
+  \begin{itemize}
+   \item $\left|\cos\theta_{B}\right|$;
+   \item $\log(\chi^2/$n.d.f.$(D^0$ fit$))$;
+   \item $\left|\cos\theta_{thrust}\right|$;
+   \item $|$Signal Thrust Vector$|$;
+   \item $|$Others Thrust Vector$|$;
+   \item $\log($tag LH error$)$;
+   \item $\log(\Delta z$ error$)$;
+   \item $\log(\chi^2(\pi^0))$;
+%   \item $\log(E_{\gamma})$;
+%   \item $p(K_S^0)$;  
+%   \item $\log(\chi^2/$n.d.f.$(B^0$ fit$))$;
+%   \item $\log(\chi^2/$n.d.f.$($vertex tag$))$;
+   \item $16$ variables from $KSFW$.
+  \end{itemize}
+%  \end{block}
+ \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Continuum suppression: Variables}
+   \includegraphics[width=0.5\textwidth]{pics/tmva_vars_1.png} \includegraphics[width=0.5\textwidth]{pics/tmva_vars_3.png}\\
+   \includegraphics[width=0.5\textwidth]{pics/tmva_vars_2.png} \includegraphics[width=0.5\textwidth]{pics/tmva_vars_4.png}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{Continuum suppression: BDTg response}
+ \begin{center}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+   Linear scale.\\
+   \includegraphics[width=\textwidth]{pics/tmva_bdtg_not_log.png}\\
+  \end{column}
+  \begin{column}{0.5\textwidth}
+   Log scale.\\
+   \includegraphics[width=\textwidth]{pics/tmva_bdtg.png}\\
+  \end{column}
+ \end{columns}
+
+  Dots with errors are for training sample, histograms are for test sample.
+ \end{center}
+ \begin{itemize}
+  \item We use $6$ generic MC streams;
+  \item Overtraining is still there, but it is much smaller than for a single training MC stream.
+%  \item Large space to tune the procedure.
+%  \item Cut \verb@BDT response@ $>0.31$ is applied for further results.
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Continuum suppression: dependence on training sample}
+% \begin{columns}
+%  \begin{column}{0.5\textwidth}
+%  \begin{block}{Variables}
+%   \begin{itemize}
+%    \item $\left|\cos\theta_{B}\right|$;
+%    \item $\log(\chi^2/$n.d.f.$(D^0$ fit$))$;
+%    \item $\left|\cos\theta_{thrust}\right|$;
+%    \item $|$Signal Thrust Vector$|$;
+%    \item $|$Others Thrust Vector$|$;
+%    \item $\log($tag LH error$)$;
+%    \item $\log(\Delta z$ error$)$;
+%    \item $\log(\chi^2(\pi^0))$;
+% %   \item $\log(E_{\gamma})$;
+%    \item $16$ $KSFW$ variables.
+%   \end{itemize}
+%  \end{block}
+%  \end{column}
+%  \begin{column}{0.5\textwidth}
+  \begin{block}{Training ranges}
+  \begin{small}
+   \begin{enumerate}
+   \item Signal region:\\
+    $-0.1\ \text{GeV}<\Delta E<0.08\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$
+   \item Full range:\\
+    $\left|\Delta E\right|<0.3\ \text{GeV}$\\
+    $5.200\ \text{GeV}<M_{bc}<5.290\ \text{GeV}$
+   \item $M_{bc}$ cut:\\
+    $\left|\Delta E\right|<0.3\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$
+   \item $\Delta E$ cut:\\
+    $-0.1\ \text{GeV}<\Delta E<0.08\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$
+   \item Soft cut:\\
+    $\left|\Delta E\right|<0.1\ \text{GeV}$\\
+    $5.250\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$
+  \end{enumerate}
+  \end{small}
+  \end{block}
+%  \end{column}
+% \end{columns}
+\end{frame}
+
+\begin{frame}%[containsverbatim]
+ \frametitle{Continuum suppression: dependence on training sample}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.4\textwidth}
+  \only<1>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item RooKSFW
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: soft cut}
+   \begin{center}
+    $\left|\Delta E\right|<0.1\ \text{GeV}$\\
+    $5.250\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.815$
+    \item Purity: $77.4\%$
+    \item S. acceptance: $63.2\%$
+    \item C. rejection: $96.9\%$
+    \item S. significance: $15.6$
+   \end{itemize}
+   \end{block}
+  }
+  \only<2>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: signal}
+   \begin{center}
+    $-0.1\ \text{GeV}<\Delta E<0.08\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.917$
+    \item Purity: $71.0\%$
+    \item S. acceptance: $72.1\%$
+    \item C. rejection: $95.1\%$
+    \item S. significance: $16.0$
+   \end{itemize}
+   \end{block}
+  }
+  \only<3>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: full}
+   \begin{center}
+    $\left|\Delta E\right|<0.3\ \text{GeV}$\\
+    $5.200\ \text{GeV}<M_{bc}<5.290\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.217$
+    \item Purity: $75.0\%$
+    \item S. acceptance: $68.3\%$
+    \item C. rejection: $96.2\%$
+    \item S. significance: $16.0$
+   \end{itemize}
+   \end{block}
+  }
+  \only<4>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: $M_{bc}$ cut}
+   \begin{center}
+    $\left|\Delta E\right|<0.3\ \text{GeV}$\\
+    $5.271\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.760$
+    \item Purity: $71.1\%$
+    \item S. acceptance: $73.0\%$
+    \item C. rejection: $95.1\%$
+    \item S. significance: $16.1$
+   \end{itemize}
+   \end{block}
+  }
+  \only<5>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: $\Delta E$ cut}
+   \begin{center}
+    $-0.1\ \text{GeV}<\Delta E<0.08\ \text{GeV}$\\
+    $5.200\ \text{GeV}<M_{bc}<5.290\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.600$
+    \item Purity: $75.0\%$
+    \item S. acceptance: $69.7\%$
+    \item C. rejection: $96.1\%$
+    \item S. significance: $16.2$
+   \end{itemize}
+   \end{block}
+  }
+  \only<6>{
+   \begin{block}{Method}
+    \begin{itemize}
+     \item BDTg
+    \end{itemize}
+   \end{block}
+   \begin{block}{Training region: soft cut}
+   \begin{center}
+    $\left|\Delta E\right|<0.1\ \text{GeV}$\\
+    $5.250\ \text{GeV}<M_{bc}<5.289\ \text{GeV}$ 
+   \end{center}
+   \end{block}
+   \begin{block}{$Sig=500$ and $Cont=3000$}
+   \begin{itemize}
+    \item Best cut: $0.822$
+    \item Purity: $78.4\%$
+    \item S. acceptance: $67.7\%$
+    \item C. rejection: $96.9\%$
+    \item S. significance: $16.3$
+   \end{itemize}
+   \end{block}
+  }
+
+  \end{column}
+  \begin{column}{0.6\textwidth}
+  \begin{center}
+   \only<1>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_lh.png}
+   }
+   \only<2>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh_s.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh_s.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_s.png}
+   }
+   \only<3>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh_s_fr.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh_s_fr.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_fr.png}
+   }
+   \only<4>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh_s_fr_mbcs.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh_s_fr_mbcs.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_mbcs.png}
+   }
+   \only<5>{
+     \includegraphics[width=0.5\textwidth]{pics/br_lh_s_fr_mbcs_des.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_lh_s_fr_mbcs_des.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_des.png}
+   }
+   \only<6>{
+     \includegraphics[width=0.5\textwidth]{pics/br_full.png}
+     \includegraphics[width=0.5\textwidth]{pics/ss_full.png}\\
+     \includegraphics[width=0.9\textwidth]{pics/best_cut_sl.png}
+   }
+  \end{center}
+  \end{column}
+ \end{columns}
+\end{small}
+\end{frame}
+
+\begin{frame}
+\frametitle{Multiple candidates and signal selection efficiency} 
+\begin{small}
+\begin{columns}
+ \begin{column}{0.78\textwidth}
+ \begin{itemize}
+%  \item We apply cut \textcolor{blue}{$BDTg>0.98$} which keeps $74.8\%$ of signal and suppress $87.2\%$ of background.
+  \item After the BDTg cut we've got $1.046$ candidates per event on the average for the fit region:
+  \begin{equation*}
+  \begin{split}
+   -0.15\ \text{GeV} < &\Delta E < 0.3\ \text{GeV},\\
+    5.20\ \text{GeV} < &M_{bc} < 5.29\ \text{GeV}
+  \end{split}
+  \end{equation*}
+
+  \item But! In many cases, all candidates originate from a single signal decay (e.g. due to random soft $\gamma$'s). Such events do not affect on the signal selection efficiency.
+ \end{itemize}
+ \end{column}
+ \begin{column}{0.22\textwidth}
+  \small
+   \begin{tabular}{|l|c|} \hline
+   \# & events, $\%$ \\ \hline
+   $1$ & $95.69$\\ \hline
+   $2$ & $4.04$\\ \hline
+   $3$ & $0.22$\\ \hline
+   $4$ & $0.04$\\ \hline
+   $5$ & $<0.01$\\ \hline
+   \end{tabular}
+  \end{column}
+ \end{columns}
+
+ \begin{columns}
+  \begin{column}{0.4\textwidth}
+   \begin{itemize}
+    \item If we consider events containing true background candidates, multiplicity comes to \textcolor{blue}{$1.021$}.
+%    \item We choose candidate with the highest $M_{bc}$. It leads to \textcolor{blue}{$0.04\%$} signal loss.
+    \item We choose candidate with the smallest $|m_{D}-m_{K_S^0\pi^+\pi^-}|$. It leads to \textcolor{blue}{$0.06\%$} signal loss.
+   \end{itemize}
+
+  \end{column}
+  \begin{column}{0.6\textwidth}
+   \begin{table}[bt]
+   \small
+   \begin{tabular}{|l|c|c|} \hline
+   {Criterion} & {Right decision}, $\%$ & {Efficiency}, $\%$ \\ \hline
+   First              & $62.53$ & $99.23$ \\ \hline
+   Random             & $50.37$ & $98.99$ \\ \hline
+   \textcolor{blue}{$M_{bc}$} & \textcolor{blue}{$80.75$} & \textcolor{blue}{$99.61$} \\ \hline
+   \textcolor{blue}{$m_D$}    & \textcolor{blue}{$68.60$} & \textcolor{blue}{$99.36$} \\ \hline
+   $\chi^2(D^0)$      & $67.20$ & $99.33$ \\ \hline
+   $\left|\cos\theta_{thr}\right|$ & $52.83$ & $99.04$ \\ \hline
+   \end{tabular}
+   \end{table}
+  \end{column}
+ \end{columns}
+\end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Continuum suppression summary}
+ \begin{enumerate}
+  \item BDTg method suppresses continuum slightly better than the RooKSFW tool.
+  \item Training dataset with ''soft cut'' on $\Delta E$ and $M_{bc}$ shows the best signal significance for $S=500$ and $B=3000$.
+  \item With BDTg cut and after best candidate selection we've obtained \bdpi signal detection efficiency equals \textcolor{blue}{$(9.78\pm0.03)\%$} for
+  \begin{equation*}
+  \begin{split}
+   -0.3\ \text{GeV} < &\Delta E < 0.3\ \text{GeV},\\
+    5.20\ \text{GeV} < &M_{bc} < 5.29\ \text{GeV}
+  \end{split}
+  \end{equation*}
+  (compare with the Pasha's analysis efficiency $8.7\%$)
+ \end{enumerate}
+\end{frame}
+
+\section{$M_{bc}$-$\Delta E$ fit}
+\subsection{Signal modes}
+\frame{\tableofcontents[current]}
+\begin{frame}
+ \frametitle{Signal modes}
+ \begin{block}{Considered signal modes}
+ \begin{enumerate}
+  \item \bdpi;
+  \item \bdeta
+  \begin{itemize}
+   \item \etagg;
+   \item \etappp;
+  \end{itemize}
+  \item \bdomega, \omegappp;
+ \end{enumerate}
+ \end{block}
+
+ \begin{block}{Random soft $\gamma$ issue}
+ Each signal mode leads to two types of reconstructed events:
+  \begin{itemize}
+   \item $\pi^0$ (or \etagg) is well reconstructed;
+   \item $\pi^0$ (or \etagg) containes wrong soft $\gamma$;
+  \end{itemize}
+  There are other types of wrong reconstruction, but fraction of such events is tiny. We include them into the second type.
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$h^0\to\gamma\gamma$ modes}
+ \begin{small}
+ \begin{itemize}
+  \only<1>{\item Well reconstructed $h^0$}
+  \only<4>{\item Well reconstructed $h^0$, with projections on the signal regions}
+  \only<2>{\item Events with wrong soft $\gamma$}
+  \only<5>{\item Events with wrong soft $\gamma$, with projections on the signal regions}
+  \only<3>{\item Both fractions}
+  \only<6>{\item Both fractions, with projections on the signal regions}
+ \end{itemize}
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\pigg$:
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/de_sig_mode1_h0mode10_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode1_h0mode10_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    \only<1,4>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode1_h0mode10_b0f1.png}}
+    \only<2,5>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode1_h0mode10_b0f5.png}}
+    \only<3,6>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode1_h0mode10_b0f-1.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\etagg$:
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode10_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode10_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    \only<1,4>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode10_b0f1.png}}
+    \only<2,5>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode10_b0f5.png}}
+    \only<3,6>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode10_b0f-1.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$h^0\to\pi^+\pi^-\pi^0$ modes}
+ \begin{small}
+ \begin{itemize}
+  \only<1>{\item Well reconstructed $h^0$}
+  \only<4>{\item Well reconstructed $h^0$, with projections on the signal regions}
+  \only<2>{\item Events with wrong soft $\gamma$}
+  \only<5>{\item Events with wrong soft $\gamma$, with projections on the signal regions}
+  \only<3>{\item Both fractions}
+  \only<6>{\item Both fractions, with projections on the signal regions}
+ \end{itemize}
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\etappp$:
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    \only<1,4>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f1.png}}
+    \only<2,5>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f5.png}}
+    \only<3,6>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f-1.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\omegappp$:
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/de_sig_mode3_h0mode20_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f1.png}}
+    \only<4>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f1_wproj.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f5.png}}
+    \only<5>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f5_wproj.png}}
+    \only<3>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f-1.png}}
+    \only<6>{\includegraphics[width=\textwidth]{pics/mbc_sig_mode3_h0mode20_b0f-1_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    \only<1,4>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode3_h0mode20_b0f1.png}}
+    \only<2,5>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode3_h0mode20_b0f5.png}}
+    \only<3,6>{\includegraphics[width=\textwidth]{pics/scatplot_sig_mode3_h0mode20_b0f-1.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Reducing $\Delta E$ range}
+ \begin{small}
+ \begin{itemize}
+  {\item Events with wrong soft $\gamma$, with projections on the signal regions}
+ \end{itemize}
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\etappp$:\\
+   \begin{tiny}
+   $\Delta E>-0.30\ \text{GeV}$
+   \end{tiny}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f5_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f5_wproj.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f5.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+
+  \begin{columns}
+  \begin{column}{0.2\textwidth}
+   $\etappp$:\\
+   \begin{tiny}
+   $\Delta E>-0.15\ \text{GeV}$
+   \end{tiny}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/de_sig_mode2_h0mode20_b0f5_wproj015.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/mbc_sig_mode2_h0mode20_b0f5_wproj015.png}}
+   \end{center}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+   \begin{center}
+    {\includegraphics[width=\textwidth]{pics/scatplot_sig_mode2_h0mode20_b0f5_015.png}}
+   \end{center}
+   \end{column}
+  \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Signal modes: summary}
+ \begin{enumerate}
+  \item \hppp modes give much narrower $\Delta E$ distributions then \hgg modes;
+  \item There is strong $\Delta E$-$M_{bc}$ correlation for events with random soft $\gamma$. There are (at least) two ways to deal with this correlation:
+  \begin{itemize}
+   \item To introduce correlation into the 2D PDF;
+   \item To reduce $\Delta E$ fit range;
+  \end{itemize}
+  It seems that the second way is good enough for number of the signal events $<10^3$ (in my previous report, I have shown that such a procedure does not lead to significant biases for the \bdpi mode).
+ \end{enumerate}
+\end{frame}
+
+\subsection{Full procedure for the \bdpi mode}
+\begin{frame}
+ \frametitle{Background}
+ \begin{block}{Classification}
+  \begin{enumerate}
+   \item Combinatorics:
+    \begin{itemize}
+     \item Fake $D^0$ (dominante);
+     \item Fake $\pi^0$;
+    \end{itemize}
+   \item $B^+\to D^0\rho^+$, $\rho^+\to\pi^+\pi^0$
+  \end{enumerate}
+ \end{block}
+
+ \begin{block}{Verification of the $(M_{bc},\Delta E)$ fit procedure}
+  \begin{itemize}
+   \item To determine $2D$ shapes of each background component with generic MC streams $0$-$2$;
+   \item To determine $2D$ shape of the signal with signal MC (previous slide);
+   \item To perform fit of the generic MC streams $3$-$5$.
+  \end{itemize}
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Combinatorics}
+ \begin{columns}
+  \begin{column}{0.7\textwidth}
+  \begin{columns}
+   \begin{column}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{pics/de_2dfit_comb.png}
+   \end{column}
+   \begin{column}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{pics/mbc_2dfit_comb.png}
+   \end{column}
+  \end{columns}
+  Fit functions:
+ \begin{itemize}
+  \item $M_{bc}$: Argus;
+  \item $\Delta E$: $2$nd order Chebychev.
+ \end{itemize}
+ \end{column}
+ \begin{column}{0.3\textwidth}
+  \includegraphics[width=\textwidth]{pics/2dplot_comb_2dfit.png}\\
+  \includegraphics[width=\textwidth]{pics/de_mbc_comb.png}
+ \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$B^+\to D^0\rho^+$, $\rho^+\to\pi^+\pi^0$}
+ \begin{columns}
+  \begin{column}{0.7\textwidth}
+  \begin{columns}
+   \begin{column}{0.5\textwidth}
+    \only<1>{\includegraphics[width=\textwidth]{pics/de_2dfit_rho_0.png}}
+   \end{column}
+   \begin{column}{0.5\textwidth}
+    \only<1>{\includegraphics[width=\textwidth]{pics/mbc_2dfit_rho_0.png}}
+   \end{column}
+  \end{columns}
+  \only<1>{
+  Fit functions:
+ \begin{itemize}
+
+  \item $M_{bc}$: $BG(M_{bc}^0,\sigma_l,\sigma_r)$, where $\sigma_l$ and $\sigma_r$ are linearly dependent on $\Delta E$;
+  \item $1+p_2(\Delta E-\Delta E_0)+p_4\ln\left(1+p_5e^{\frac{(p_3-p_2)(\Delta E-\Delta E_0)}{p_4}}\right)$
+ \end{itemize}
+ }
+ \end{column}
+ \begin{column}{0.3\textwidth}
+  \only<1>{\includegraphics[width=\textwidth]{pics/2dplot_rho_2dfit.png}\\}
+  \includegraphics[width=\textwidth]{pics/de_mbc_rho.png}
+ \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Generic MC test (independent dataset)}
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+   \begin{center}
+    \includegraphics[width=\textwidth]{pics/de_2dfit_gen_1.png}
+   \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+   \begin{center}
+    \includegraphics[width=\textwidth]{pics/mbc_2dfit_gen_1.png}
+   \end{center}
+  \end{column}
+  \begin{column}{0.34\textwidth}
+   \begin{center}
+    \only<2>{\includegraphics[width=\textwidth]{pics/2dplot_2dfit.png}}
+    \only<1>{
+        Free parameters:
+   \begin{itemize}
+    \item $N_S$, $N_{\rho}$, $N_{comb}$;
+    \item Signal: $M_{bc}^0$, $\Delta E^0$;
+    \item Comb: $\Delta E$ shape ($2$ params);
+    \item Argus edge.
+   \end{itemize}
+    }
+   \end{center}
+  \end{column}
+ \end{columns}
+ 
+\begin{table}[bt]
+ \small
+ \begin{tabular}{|l|c|c|c|c|} \hline
+Param & \multicolumn{2}{c|}{Signal Region}& \multicolumn{2}{c|}{Full Range}\\ \hhline{~----}
+             &      Fit     & True  &      Fit      & True   \\ \hline
+  $N_S$      & $894 \pm 38$ & $902$ & $1061 \pm 43$ & $1038$ \\ \hline
+  $N_{\rho}$ & $30.2\pm 5.6$& $25$  & $935  \pm 40$ & $887$  \\ \hline
+  $N_{comb}$ & $532 \pm 23$ & $543$ & $(1.317\pm 0.012)\cdot 10^4$ & $1.324\cdot 10^4$ \\ \hline
+Purity, $\%$ &$61.4 \pm 2.6$& $61.4$ &  &  \\ \hline
+ \end{tabular}
+ \end{table}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$\mathcal{B}\left(B^0\to D^0\pi^0\right)$ from the generic MC fit}
+ \begin{block}{Input}
+  \begin{itemize}
+  \item Signal detection efficiency: $(9.78\pm0.03)\%$;
+  \item $\Delta E>-0.15$ GeV cut: $7.00\%$ loss;
+%  \item $\mathcal{B}(\dkspp) = (2.83\pm0.20)\%$;
+  \item $\mathcal{B}(\dkspp) = 2.7\%$ (DECAY.DEC);
+  \item $\mathcal{B}(K_S^0\to\pi^+\pi^-) = (69.20\pm0.05)\%$;
+  \item $n(BB) = (771.6\pm10.6)\cdot 10^6$;
+  \item $3$ streams of Generic MC;
+  \item $N_S=1061\pm43$ from the $(M_{bc},\Delta E)$-fit.
+ \end{itemize}
+ \end{block}
+
+ \begin{block}{Output}
+ \begin{equation*}
+  \mathcal{B}\left(\bdpi\right) = (2.70\pm0.14)\cdot 10^{-4}
+ \end{equation*}
+ \end{block}
+
+ \begin{block}{True value (DECAY.DEC)}
+ \begin{equation*}
+  \mathcal{B}\left(\bdpi\right) = 2.6\cdot 10^{-4}
+ \end{equation*}
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Elliptic signal region}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   Signal
+   \includegraphics[width=\textwidth]{pics/ellips_sig.png}
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   Background
+   \includegraphics[width=\textwidth]{pics/ellips_back.png}
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   Together
+   \includegraphics[width=\textwidth]{pics/ellips_gen.png}
+  \end{center}
+  \end{column}
+ \end{columns}
+
+ \begin{table}[bt]
+ \small
+ \begin{tabular}{|l|c|c|c|c|c|c|} \hline
+  Parameter & \multicolumn{2}{c|}{Rectangle}& \multicolumn{2}{c|}{Ellips (equal)} & \multicolumn{2}{c|}{Ellips (inscribed)}\\ \hhline{~------}
+            &      Fit   & True &      Fit   & True &  Fit       & True  \\ \hline
+$N_S$       &$894\pm38$  &$902$ &$891\pm38$  &$907$ &$855\pm37$  & $867$ \\ \hline
+$N_{\rho}$  &$30.2\pm5.6$&$25$  &$27.3\pm5.3$&$26$  &$21.9\pm4.7$& $17$  \\ \hline
+$N_{comb}$  &$532 \pm 23$&$543$ &$507\pm23$  &$529$ &$421\pm21$  & $405$ \\ \hline
+Purity, $\%$&$61.4\pm2.6$&$61.4$&$62.5\pm2.7$&$62.0$&$65.9\pm2.8$& $67.3$\\ \hline
+ \end{tabular}
+ \end{table}
+
+ \begin{itemize}
+  \item Borders are more or less arbitrary now. To be optimized.
+ \end{itemize}
+\end{small}
+\end{frame}
+
+\subsection{Data}
+\begin{frame}
+ \frametitle{Sideband: $M_{bc}<5.25$ GeV}
+ \begin{tiny}
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+%  \vspace{\baselineskip}
+  Generic MC
+   \includegraphics[width=\textwidth]{pics/de_sideband_comb.png}
+   \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+%  \vspace{\baselineskip}
+  Data
+   \includegraphics[width=\textwidth]{pics/de_sideband_data.png}
+   \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+  Combinatorics in the Signal $M_{bc}$-Region
+   \includegraphics[width=\textwidth]{pics/de_sr_comb.png}
+   \end{center}
+  \end{column}
+ \end{columns}
+ \begin{center}
+  Red line --- best fit, blue line --- fit of the Generic MC sideband.
+ \end{center}
+\end{tiny}
+
+\begin{small}
+ \begin{table}[bt]
+ \small
+ \begin{tabular}{|l|r|r|r|} \hline
+ Param &    MC sideband    & Data sideband & MC signal region \\ \hline
+$c_1$  &$-0.551 \pm 0.010$ & $-0.490 \pm 0.024$ &$-0.741 \pm 0.020$ \\ \hline
+$c_2$  &$ 0.096 \pm 0.010$ & $ 0.043 \pm 0.024$ &$ 0.161 \pm 0.020$ \\ \hline
+ \end{tabular}
+ \end{table}
+
+ \begin{itemize}
+  \item Generic MC fits data $M_{bc}$-sideband quite good;
+  \item Combinatorial $\Delta E$ distributions for $M_{bc}$-sideband and $M_{bc}$-signal region are different.
+ \end{itemize}
+\end{small}
+\end{frame}
+
+\begin{frame}
+\frametitle{Data}
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+   \begin{center}
+    \includegraphics[width=\textwidth]{pics/de_2dfit_data.png}
+   \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+   \begin{center}
+    \includegraphics[width=\textwidth]{pics/mbc_2dfit_data.png}
+   \end{center}
+  \end{column}
+  \begin{column}{0.34\textwidth}
+   \begin{center}
+    \only<1>{\includegraphics[width=\textwidth]{pics/ellips_data.png}}
+    \only<2>{\includegraphics[width=\textwidth]{pics/2dplot_data_2dfit.png}}
+   \end{center}
+  \end{column}
+ \end{columns}
+ 
+\begin{table}[bt]
+ \small
+ \begin{tabular}{|l|c|c|c|c|} \hline
+  Parameter  &      Full    & Rect. SR     &  Eq. El. SR & In. El. SR  \\ \hline
+  $N_S$      & $392 \pm 26$ & $329\pm22$   & $327\pm22$  & $314\pm21$  \\ \hline
+  $N_{\rho}$ & $25.2\pm 2.2$& $7.4\pm0.7$  & $6.3\pm0.6$ & $4.7\pm0.4$ \\ \hline
+  $N_{comb}$ & $462 \pm 71$ & $197\pm3$    & $188\pm3$   & $155\pm2$   \\ \hline
+Purity, $\%$ &              & $61.7\pm4.1$ & $62.8\pm4.2$& $66.2\pm4.5$\\ \hline
+ \end{tabular}
+ \end{table}
+
+ \begin{itemize}
+  \item $\mathcal{B}(B^0\to D^0\pi^0) = (2.47\pm0.40)\cdot 10^{-4}$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$(\Delta E,M_{bc})$-fit summary}
+ \begin{enumerate}
+  \item $2D$-fit allows to obtain the number of the signal events. Fit biases have not been found.
+%  \item $2D$-fit is much more robust and gives much lower statistical uncertainty than $1D$-fit;
+  \item Elliptic shape of the signal region allows to improve the signal purity without any decline of the signal efficiency.
+  \item The procedure has been verified by measurement of the branching fraction of the \bdpi decay setted in the Generic MC.
+ \end{enumerate}
+\end{frame}
+
+\section{Toy MC CPV fit}
+\frame{\tableofcontents[current]}
+
+\begin{frame}
+ \frametitle{Model-independent approach to \bdh}
+ Observable values: time-dependent probabilities
+
+ \begin{equation}
+ \begin{split}
+  N_i\left(\Delta t,\varphi_1\right) &= e^{-\frac{\left|\Delta t\right|}{\tau}}\left(K_{i}+K_{-i}\right)[ 1 + q_{B}\frac{K_{i}-K_{-i}}{K_{i}+K_{-i}}\cos\left(\Delta m\Delta t\right)+\\
+  &+q_{B}\xi_{h^0}(-1)^l\frac{\sqrt{K_iK_{-i}}}{K_{i}+K_{-i}}\sin\left(\Delta m\Delta t\right)\left(\textcolor{red}{C_i\sin2\varphi_1+S_i\cos2\varphi_1}\right)]
+ \end{split}
+ \end{equation}
+ 
+ \begin{itemize}
+  \item Simultaneous time-dependent fit for all DP bins;
+  \item $\sin2\varphi_1$ could be fixed since it is known with high precision;
+  \item $K_i$ could be measured precisely in $D^{\star\pm}\to D^0\pi^{\pm}$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC: model (RooFit framework)}
+ \begin{block}{Generator}
+ \begin{itemize}
+  \item Signal PDF: RooBDecay class.
+  \item $\Delta t$ resolution model: Gaussian($\sigma$).
+  \item Background $\Delta t$ is distributed with the resolution model.
+  \item Miss tag rate parameter ($mistag$) included;
+ \end{itemize}
+ \end{block}
+ 
+ \begin{block}{Simultaneous unbinned $\Delta t$ fit for $16$ Dalitz bins.}
+ \begin{itemize}
+  \item Free parameters: $\sin{2\varphi_1}$, $\cos{2\varphi_1}$, $mistag$, $\sigma$.
+  \item Fixed parameters:
+   \begin{itemize}
+    \item $purity$ --- obtained from kinematic fit;
+    \item $K_i$ --- from $D^{\star\pm}\to D^0\pi^{\pm}_s$ with efficiency correction;
+    \item $C_i$ and $S_i$ --- from CLEO.
+   \end{itemize}
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Exercises}
+  \begin{itemize}
+   \item Fit bias, fit linearity, optimal purity, \dots
+  \end{itemize}
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \centering
+    \begin{beamercolorbox}[sep=8pt,center]{section title}
+      \usebeamerfont{section title} Toy MC\\ 1. Large statistics fits
+    \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC ($\frac{\sigma}{\tau}=0.1$, $mistag = 0.0$, $f_{sig} = 1.0$, $S = 2\cdot10^5$)}
+ \begin{columns}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin1_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin5_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-1_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-5_1_0_01_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin2_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin6_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-2_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-6_1_0_01_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin3_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin7_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-3_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-7_1_0_01_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin4_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin8_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-4_1_0_01_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-8_1_0_01_1.png}
+  \end{column}
+ \end{columns}
+ \begin{center}
+  $\cos{2\varphi_1} = 0.745 \pm 0.006,\quad \sin{2\varphi_1} = 0.688 \pm 0.008$
+  
+  ($\sigma$ and $mistag$ are free as well) ($cos2\varphi^{gen}_1 = 0.731$, $sin2\varphi^{gen}_1 = 0.682$)
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC ($\frac{\sigma}{\tau}=0.8$, $mistag = 0.0$, $f_{sig} = 1.0$, $S = 2\cdot10^5$)}
+ \begin{columns}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin1_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin5_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-1_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-5_1_0_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin2_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin6_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-2_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-6_1_0_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin3_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin7_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-3_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-7_1_0_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin4_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin8_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-4_1_0_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-8_1_0_08_1.png}
+  \end{column}
+ \end{columns}
+ \begin{center}
+  $\cos{2\varphi_1} = 0.733 \pm 0.007,\quad \sin{2\varphi_1} = 0.662 \pm 0.010$
+  
+  ($\sigma$ and $mistag$ are free as well)  ($cos2\varphi^{gen}_1 = 0.731$, $sin2\varphi^{gen}_1 = 0.682$)
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC ($\frac{\sigma}{\tau}=0.8$, $mistag = 0.3$, $f_{sig} = 1.0$, $S = 2\cdot10^5$)}
+ \begin{columns}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin1_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin5_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-1_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-5_1_03_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin2_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin6_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-2_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-6_1_03_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin3_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin7_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-3_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-7_1_03_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin4_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin8_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-4_1_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-8_1_03_08_1.png}
+  \end{column}
+ \end{columns}
+ \begin{center}
+  $\cos{2\varphi_1} = 0.715 \pm 0.019,\quad \sin{2\varphi_1} = 0.697 \pm 0.018$
+  
+  ($\sigma$ and $mistag$ are free as well)  ($cos2\varphi^{gen}_1 = 0.731$, $sin2\varphi^{gen}_1 = 0.682$)
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC ($\frac{\sigma}{\tau}=0.8$, $mistag = 0.3$, $f_{sig} = 0.6$, $S = 2\cdot10^5$)}
+ \begin{columns}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin1_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin5_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-1_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-5_06_03_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin2_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin6_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-2_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-6_06_03_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin3_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin7_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-3_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-7_06_03_08_1.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin4_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin8_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-4_06_03_08_1.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-8_06_03_08_1.png}
+  \end{column}
+ \end{columns}
+ \begin{center}
+  $\cos{2\varphi_1} = 0.740 \pm 0.022,\quad \sin{2\varphi_1} = 0.731 \pm 0.021$
+
+  ($\sigma$ and $mistag$ are free as well)  ($cos2\varphi^{gen}_1 = 0.731$, $sin2\varphi^{gen}_1 = 0.682$)
+ \end{center}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{Single bin precision}
+ \begin{itemize}
+  \item Parameters: $\frac{\sigma}{\tau}=0.8$, $mistag = 0.3$, $f_{sig} = 0.6$, $S = 2\cdot10^5$.
+ \end{itemize}
+ \begin{table}[bt]
+ \small
+\begin{tabular}{|l|c|c|c|c|c|c|} \hline
+$i$ & $K_{i}$ & $K_{-i}$ & $C_i$ & $S_i$ & $\sigma\left({\cos(2\varphi_1)}\right)$ & $\sigma\left({\sin(2\varphi_1)}\right)$ \\ \hline
+$1$ & $0.067$ & $0.016$ & $0.365$ & $-0.179$ & $0.278$ & $0.137$ \\ \hline
+$2$ & $0.093$ & $0.027$ & $0.710$ & $-0.013$ & \textcolor{red}{$1.501$} & \textcolor{green}{$0.054$} \\ \hline
+$3$ & $0.030$ & $0.013$ & $0.481$ & $-0.147$ & $0.375$ & $0.130$ \\ \hline
+$4$ & $0.089$ & $0.040$ & $0.008$ & $0.938$ & \textcolor{green}{$0.053$} & \textcolor{red}{$1.248$} \\ \hline
+$5$ & $0.079$ & $0.015$ & $-0.757$ & $0.386$ & $0.118$ & \textcolor{green}{$0.062$} \\ \hline
+$6$ & $0.102$ & $0.012$ & $-0.884$ & $-0.162$ & $0.296$ & \textcolor{green}{$0.056$} \\ \hline
+$7$ & $0.123$ & $0.026$ & $-0.462$ & $-0.616$ & \textcolor{green}{$0.057$} & \textcolor{green}{$0.076$} \\ \hline
+$8$ & $0.159$ & $0.109$ & $0.106$ & $-1.063$ & \textcolor{green}{$0.024$} & $0.238$ \\ \hline
+\end{tabular}
+\end{table}
+
+ \begin{itemize}
+  \item $\sigma(x)$ are from fit.
+  \item $K_i$, $C_i$ and $S_i$ are from \verb@[CLEO, PRD 82, 112006 (2010)]@
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \centering
+    \begin{beamercolorbox}[sep=8pt,center]{section title}
+      \usebeamerfont{section title} Toy MC\\ 2. Realistic statistics fit
+    \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC ($\frac{\sigma}{\tau}=0.8$, $mistag = 0.3$, $f_{sig} = 0.6$, $S = 10^3$)}
+ \begin{columns}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin1_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin5_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-1_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-5_06_03_08_1_1000.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin2_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin6_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-2_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-6_06_03_08_1_1000.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin3_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin7_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-3_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-7_06_03_08_1_1000.png}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin4_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin8_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-4_06_03_08_1_1000.png}\\
+   \includegraphics[width=\textwidth]{cpfitfigs/dt_bin-8_06_03_08_1_1000.png}
+  \end{column}
+ \end{columns}
+ \begin{center}
+  $\cos{2\varphi_1} = 0.582 \pm 0.222,\quad \sin{2\varphi_1} = 0.312 \pm 0.232$
+  ($\sigma$ and $mistag$ are free as well)  ($cos2\varphi^{gen}_1 = 0.731$, $sin2\varphi^{gen}_1 = 0.682$)
+ \end{center}
+\end{frame}
+
+\begin{frame}
+ \centering
+   \begin{beamercolorbox}[sep=8pt,center]{section title}
+     \usebeamerfont{section title} Toy MC\\ 3. Multiple toys
+   \end{beamercolorbox}
+    \begin{block}{}
+    \begin{itemize}
+     \item We assume $N^{(raw)}_S=10^3$, $N^{(raw)}_{B}=5\cdot10^3$ and apply BDTg cut $0.9656$ which corresponds to purity equals $60.1\%$ and $N_S=840$. We perform $5\cdot 10^3$ toy experiments for each fit configuration.
+     \item Input parameters:
+     \begin{equation*}
+      \sin2\varphi_1=0.682,\quad \cos2\varphi_1=0.731,\quad \frac{\sigma}{\tau}=0.8,\quad mistag = 0.3.
+     \end{equation*}
+     \item Free parameters
+     \begin{equation*}
+      \sin2\varphi_1,\quad \cos2\varphi_1.
+     \end{equation*}
+     \item The goal: to study the procedure with realistic statictics.
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC.}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{block}{Statistics}
+  \begin{itemize}
+   \item $\sigma(\cos) = 0.274\pm0.005$
+   \item $\sigma(\sin) = 0.308\pm0.003$
+   \item Shift($\cos$) = $(1.56\pm0.81)\cdot10^{-2}$
+   \item Shift($\sin$) = $(-0.91\pm0.45)\cdot10^{-2}$
+   \item $92.3\%$ fits converged;
+  \end{itemize}
+  \end{block}
+  \begin{block}{Single fit of the total dataset}
+   \begin{itemize}
+    \item Shift($\cos$) = $(-0.05\pm0.37)\cdot10^{-2}$
+    \item Shift($\sin$) = $(0.27\pm0.44)\cdot10^{-2}$
+   \end{itemize}
+  \end{block}
+  \begin{block}{Conclusion}
+  \begin{itemize}
+   \item $\cosbeta$ distribution is distorted because of negative PDF in bins $4$ and $8$ in $\cos2\varphi_1>1$ region.
+  \end{itemize}
+  \end{block}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{center}
+     \only<1>{$\cos2\varphi_1$\\ \includegraphics[width=\textwidth]{pics/cos_mode0.png}\\}
+     \only<2>{$\sin2\varphi_1$\\ \includegraphics[width=\textwidth]{pics/sin_mode0.png}\\}
+     \only<1>{$\cos2\varphi_1$ Pull\\ \includegraphics[width=\textwidth]{pics/cospull_mode0.png}}
+     \only<2>{$\sin2\varphi_1$ Pull\\ \includegraphics[width=\textwidth]{pics/sinpull_mode0.png}}
+    \end{center}
+  \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \centering
+   \begin{beamercolorbox}[sep=8pt,center]{section title}
+     \usebeamerfont{section title} Toy MC\\ 4. Purity scan
+   \end{beamercolorbox}
+    
+    \begin{block}{}
+    \begin{itemize}
+     \item We assume here $N_S=10^3$ and $N_{B}=5\cdot10^3$ before BDTg cut and study statistical precision for different BDTg cuts.
+     \item Input parameters:
+     \begin{equation*}
+      \sin2\varphi_1=0.682,\quad \cos2\varphi_1=0.731,\quad \frac{\sigma}{\tau}=0.8,\quad mistag = 0.3.
+     \end{equation*}
+     \begin{equation*}
+      \sin2\varphi_1,\quad \cos2\varphi_1.
+     \end{equation*}
+    \item The goal: to determine optimal BDTg cut value.
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC: Purity scan}
+ \begin{small} 
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/purscan_eff.png}\\
+   Fraction of converged fits.
+  \end{center}   
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \only<1>{\includegraphics[width=\textwidth]{pics/purscan_mean.png}\\
+     \textcolor{red}{mean(\sinbeta)}, \textcolor{blue}{mean(\cosbeta)}.
+   }
+   \only<2>{\includegraphics[width=\textwidth]{pics/purscan_gmean.png}\\
+   \textcolor{red}{peak(\sinbeta)}, \textcolor{blue}{peak(\cosbeta)}.
+   }
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \only<1>{\includegraphics[width=\textwidth]{pics/purscan_rms.png}\\
+   \textcolor{red}{RMS(\sinbeta)}, \textcolor{blue}{RMS(\cosbeta)}.
+   }
+   \only<2>{\includegraphics[width=\textwidth]{pics/purscan_width.png}\\
+   \textcolor{red}{Gauss width(\sinbeta)}, \textcolor{blue}{Gauss width(\cosbeta)}.
+   }
+  \end{center}
+  \end{column}
+ \end{columns}
+
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{PDF for arbitrary $\left(\sinbetasq+\cosbetasq\right)$}
+ \begin{equation*}
+ \begin{split}
+  M\left(m_+^2,m_-^2,\Delta t\right) &\propto f\left(m_-^2,m_+^2\right)\cos\left(\frac{\Delta m\Delta t}{2}\right)\\
+  &-i\left(\textcolor{red}{x+iy}\right)\xi_{h^0}(-1)^l f\left(m_+^2,m_-^2\right)\sin\left(\frac{\Delta m\Delta t}{2}\right).
+ \end{split}
+ \end{equation*}
+
+ Let's denote $r^2=x^2+y^2$. Then
+ 
+ \begin{equation*}
+ \begin{split}
+  N_i\left(\Delta t,\varphi_1\right) &= e^{-\frac{\left|\Delta t\right|}{\tau}}\left(K_{i}+\textcolor{red}{r^2}K_{-i}\right)[ 1 + q_{B}\frac{K_{i}-\textcolor{red}{r^2}K_{-i}}{K_{i}+\textcolor{red}{r^2}K_{-i}}\cos\left(\Delta m\Delta t\right)+\\
+  &-2q_{B}\xi_{h^0}(-1)^l\frac{\sqrt{K_iK_{-i}}}{K_{i}+\textcolor{red}{r^2}K_{-i}}\sin\left(\Delta m\Delta t\right)\left(\textcolor{red}{C_iy+S_ix}\right)]
+ \end{split}
+ \end{equation*}
+%  \begin{itemize}
+%   \item Effectively, we've got a substitution $K_{-i}\to r^2 K_{-i}$.
+%  \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC. Modified PDF fit}
+ \begin{small}
+ \begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{block}{Statistics}
+  \begin{itemize}
+   \item $RMS(x) = 0.229$, $\delta x_{mean}= (-0.60\pm0.32)\cdot10^{-2}$, $\delta x_0 = (4.03\pm1.07)\cdot 10^{-2}$;
+   \item $RMS(y) = 0.247$, $\delta y_{mean}= (-4.56\pm0.35)\cdot10^{-2}$, $\delta y_0 = (-1.19\pm1.02)\cdot 10^{-2}$;
+   \item $RMS(r) = 0.130$, $\delta r_{mean}= (1.35\pm0.18)\cdot10^{-2}$, $\delta r_0 = (-3.61\pm0.81)\cdot 10^{-2}$.
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{$5$ fits of $10^3\times$ larger datasets}
+   \begin{itemize}
+    \item $\delta x$ = $(0.99\pm0.73)\cdot10^{-2}$
+    \item $\delta y$ = $(-1.40\pm0.73)\cdot10^{-2}$
+   \end{itemize}
+  \end{block}
+  
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{center}
+     \only<1>{$x$\\ \includegraphics[width=\textwidth]{pics/mode3_x.png}\\}
+     \only<2>{$y$\\ \includegraphics[width=\textwidth]{pics/mode3_y.png}\\}
+     \only<3>{$r$\\ \includegraphics[width=\textwidth]{pics/mode3_r.png}\\}
+     \only<1>{$x$ Pull\\ \includegraphics[width=\textwidth]{pics/mode3_x_pull.png}\\}
+     \only<2>{$y$ Pull\\ \includegraphics[width=\textwidth]{pics/mode3_y_pull.png}\\}
+     \only<3>{
+     \begin{block}{Conclusion}
+      \begin{itemize}
+       \item \textcolor{blue}{$100\%$} fits converged;
+       \item Distributions are asymmetric and shifted.
+      \end{itemize}
+     \end{block}}
+    \end{center}
+  \end{column}
+ \end{columns}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC, modified PDF fit: Purity scan}
+ \begin{small} 
+ \begin{columns}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/mode3_rms.png}\\*
+   \textcolor{red}{RMS($y$)}, \textcolor{blue}{RMS($x$)}.
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/mode3_rad.png}\\
+   $r=\sqrt{x^2+y^2}$
+  \end{center}
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \begin{center}
+   \includegraphics[width=\textwidth]{pics/mode3_mean.png}\\
+   \textcolor{red}{mean($y$)}, \textcolor{blue}{mean($x$)}.
+  \end{center}
+  \end{column}
+ \end{columns}
+ \begin{itemize}
+  \item Right plot: triangles on the correspond to the bifurcated Gaussians peaks, squares --- to the means of the distribution, and cycles --- to the fits of large datasets;
+ \end{itemize}
+ \end{small}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Toy MC CPV fit summary}
+ \begin{enumerate}
+  \item The method provides approximately equal sensitivities to the \sinbeta and \cosbeta;
+  \item Purity $\approx\textcolor{blue}{0.6}$ is optimal for the considered CPV fit procedure;
+  \item Modification of the PDF is required to allow non-physical values of \sinbeta and \cosbeta. {\it Can we perform fit assuming $(\sinbetasq+\cosbetasq)=1$?}
+  \item Distributions of \sinbeta and \cosbeta ($y$ and $x$) are probably biased and asymmetric for the Belle dataset;
+  \item Realistic resolution model should be included in the toy MC for further investigation (Tatami package);
+ \end{enumerate}
+\end{frame}
+
+% \begin{frame}
+%  \frametitle{Conclusions}
+%  
+% \end{frame}
+
+
+\appendix
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
+\section{Backup}
+\begin{frame}
+ \begin{center}
+  \begin{LARGE}
+   Backup
+  \end{LARGE}
+ \end{center}
+\end{frame}
+
+\end{document}

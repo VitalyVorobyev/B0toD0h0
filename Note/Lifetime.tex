@@ -1,0 +1,468 @@
+\documentclass[preprint,aps,showpacs]{revtex4}
+%\documentclass[preprint,aps,draft]{revtex4}
+
+\usepackage{graphicx} % Include figure files
+\usepackage{dcolumn}  % Align table columns on decimal point
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+
+%\graphicspath{{ps}}
+
+\renewcommand{\arraystretch}{1.1}
+
+\RequirePackage{xspace}
+
+\newcommand{\dz}{\ensuremath{\left|D^0\right>}\xspace}
+\newcommand{\dzb}{\ensuremath{\left|\bar D^0\right>}\xspace}
+\newcommand{\da}{\ensuremath{\left|D_1\right>}\xspace}
+\newcommand{\db}{\ensuremath{\left|D_2\right>}\xspace}
+
+\newcommand{\dzt}{\left|D^0\left(t\right)\right>}
+\newcommand{\dzbt}{\left|\bar D^0\left(t\right)\right>}
+\newcommand{\dat}{\left|D_1\left(t\right)\right>}
+\newcommand{\dbt}{\left|D_2\left(t\right)\right>}
+
+\newcommand{\dzti}{\left|D^0\left(0\right)\right>}
+\newcommand{\dzbti}{\left|\bar D^0\left(0\right)\right>}
+\newcommand{\dati}{\left|D_1\left(0\right)\right>}
+\newcommand{\dbti}{\left|D_2\left(0\right)\right>}
+
+\newcommand{\ampmod}{\left|\mathcal{A}\right|}
+\newcommand{\ampbmod}{\left|\mathcal{\bar A}\right|}
+
+\newcommand{\kap}{\varkappa\left(t\right)}
+\newcommand{\sig}{\sigma\left(t\right)}
+
+\newcommand{\dsdpi}{\ensuremath{D^{*{\pm}}\to D^0\pi^{\pm}}\xspace}
+
+\newcommand{\cconj}{\ensuremath{\mathcal{C}}\xspace}
+\newcommand{\cpconj}{\ensuremath{\mathcal{CP}}\xspace}
+\newcommand{\cptconj}{\ensuremath{\mathcal{CPT}}\xspace}
+
+\newcommand{\kspp}{\ensuremath{K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dkpp}{\ensuremath{D\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dnkpp}{\ensuremath{D^0\to K^0_S\pi^+\pi^-}\xspace}
+\newcommand{\dbkpp}{\ensuremath{\overline{D}{}^0\to K^0_S\pi^+\pi^-}\xspace}
+%\newcommand{\bdkp}{\ensuremath{B^0\to D K^+\pi^-}\xspace}
+%\newcommand{\bdnkp}{\ensuremath{B^0\to D^0 K^+\pi^-}\xspace}
+%\newcommand{\bdbkp}{\ensuremath{B^0\to \overline{D}{}^0 K^+\pi^-}\xspace}
+%\newcommand{\bdcpkp}{\ensuremath{B^0\to D_{CP} K^+\pi^-}\xspace}
+%\newcommand{\bdkstar}{\ensuremath{B^0\to D K^{*0}}\xspace}
+
+\newcommand{\bdk}{\ensuremath{B^{\pm}\to D K^{\pm}}\xspace}
+\newcommand{\bdkp}{\ensuremath{B^+\to D K^+}\xspace}
+\newcommand{\bdkm}{\ensuremath{B^+\to D K^+}\xspace}
+\newcommand{\bdcpk}{\ensuremath{B^+\to D_{CP} K^+}\xspace}
+
+\newcommand{\sindbeta}{\ensuremath{\sin{2\beta}}\xspace}
+\newcommand{\cosdbeta}{\ensuremath{\cos{2\beta}}\xspace}
+
+\newcommand{\dkp}{\ensuremath{D\to K^+\pi^-}\xspace}
+\newcommand{\dkpbar}{\ensuremath{D\to K^-\pi^+}\xspace}
+
+\newcommand{\dn}{\ensuremath{D^0}\xspace}
+\newcommand{\dnbar}{\ensuremath{\overline{D}{}^0}\xspace}
+
+\newcommand{\ab}{\ensuremath{\mathcal{A}_B}\xspace}
+\newcommand{\abbar}{\ensuremath{\overline{\mathcal{A}}_B}\xspace}
+
+\newcommand{\pd}{\ensuremath{P}\xspace}
+\newcommand{\pdbar}{\ensuremath{\overline{P}}\xspace}
+
+\newcommand{\ad}{\ensuremath{\mathcal{A}}\xspace}
+\newcommand{\adbar}{\ensuremath{\overline{\mathcal{A}}}\xspace}
+\newcommand{\dvar}{\ensuremath{(m^2_{+}, m^2_{-})}\xspace}
+
+\newcommand{\grad}{\ensuremath{^{\circ}}\xspace}
+
+\newcommand{\ks}{\ensuremath{K_S^0}\xspace}
+
+\newcommand{\mca}{\mathcal{A}}
+\newcommand{\mcab}{\overline{\mathcal{A}}}
+\newcommand{\af}{\ensuremath{\mathcal{A}_f}\xspace}
+\newcommand{\abf}{\ensuremath{\overline{\mathcal{A}}{}_f}\xspace}
+\newcommand{\afb}{\ensuremath{\mathcal{A}_{\overline{f}}}\xspace}
+\newcommand{\abfb}{\ensuremath{\overline{\mathcal{A}}{}_{\overline{f}}}\xspace}
+\newcommand{\afm}{\ensuremath{\mathcal{A}_f^{\prime}}\xspace}
+\newcommand{\abfm}{\ensuremath{\overline{\mathcal{A}}{}_f^{\prime}}\xspace}
+\newcommand{\afbm}{\ensuremath{\mathcal{A}_{\overline{f}}^{\prime}}\xspace}
+\newcommand{\abfbm}{\ensuremath{\overline{\mathcal{A}}_{\overline{f}}^{\prime}}\xspace}
+
+\newcommand{\dkspp}{\ensuremath{D^0\to K_S^0\pi^+\pi^-}\xspace}
+\newcommand{\bdh}{\ensuremath{B^0\to \bar D^0h^0}\xspace}
+\newcommand{\bdpi}{\ensuremath{B^0\to \bar D^0\pi^0}\xspace}
+\newcommand{\bdetagg}{\ensuremath{B^0\to \bar D^0\eta_{\gamma\gamma}}\xspace}
+\newcommand{\bdetappp}{\ensuremath{B^0\to \bar D^0\eta_{\pi^+\pi^-\pi^0}}\xspace}
+\newcommand{\bdomega}{\ensuremath{B^0\to \bar D^0\omega}\xspace}
+\newcommand{\bjpsik}{\ensuremath{B^+\to (J/\psi\to\mu^+\mu^-)K^+}\xspace}
+\newcommand{\bcbjpsik}{\ensuremath{B^+_c\to(B^+\to J/\psi K^+)K^-\pi^+}\xspace}
+%\newcommand{\bcbdpi}{\ensuremath{B^+_c\to(B^+\to (\bar D^0\to K^-\pi^+))\pi^+)K^-\pi^+}\xspace}
+\newcommand{\bcbdpi}{\ensuremath{B^+_c\to(B^+\to \bar D^0\pi^+)K^-\pi^+}\xspace}
+\newcommand{\aad}{\ensuremath{|f|}\xspace}
+\newcommand{\aadbar}{\ensuremath{|\overline{f}|}\xspace}
+
+\newcommand{\hgg}{\ensuremath{h^0\to\gamma\gamma}\xspace}
+\newcommand{\etagg}{\ensuremath{\eta\to\gamma\gamma}\xspace}
+\newcommand{\hppp}{\ensuremath{h^0\to\pi^+\pi^-\pi^0}\xspace}
+\newcommand{\etappp}{\ensuremath{\eta\to\pi^+\pi^-\pi^0}\xspace}
+\newcommand{\omegappp}{\ensuremath{\omega\to\pi^+\pi^-\pi^0}\xspace}
+
+\newcommand{\bptodpi}{\ensuremath{B^{+}\to \bar D^0\pi^+}\xspace}
+
+\newcommand{\de}{\ensuremath{\Delta E}\xspace}
+\newcommand{\mbc}{\ensuremath{M_{bc}}\xspace}
+
+\newcommand{\new}[1]{\textcolor{red}{#1}}
+
+% Belle authors Checklist:
+% 1) Title; use \\ to break title over several lines.
+% 2) Author list
+% 3) Abstract
+% 4) pacs numbers, for PRL, PRD
+% 5) Body
+
+\begin{document}
+
+\title{ \quad\\[1.0cm] Lifetime fit results}
+
+%%%% >>>>> insert the authorlist here. BEFORE the abstract !!!!! <<<<<
+%%%% >>>>> from the authorship confirmation web page
+%%% Name the file author.tex and use \input{author} to insert into your latex file.
+\author{Vitaly~Vorobyev}
+\affiliation{Budker Institute of Nuclear Physics, Lavrentieva 11, Novosibirsk, 630090, Russia}
+\affiliation{Novosibirsk State University, Pirogova 2, Novosibirsk, 630090, Russia}
+
+
+%\author{Anton Poluektov}
+%\affiliation{Budker Institute of Nuclear Physics, Lavrentieva 11, Novosibirsk, 630090, Russia}
+%\affiliation{Department of Physics, University of Warwick, Coventry CV4 7AL, United Kingdom}
+%\collaboration{The Belle Collaboration}
+\noaffiliation
+%% end author list
+
+%\begin{abstract}
+% This measurement of $\cos{2\varphi_1}$ in \bdh, \dkpp decays with time-dependent binned Dalitz analysis is based on a full Belle experiment data sample that contains $700\cdot 10^6$ $BB$ pairs, collected  with the Belle detector at the KEKB asymmetric-energy $e^+e^-$ (3.5 on 8~GeV) collider~\cite{KEKB} operating at the $\Upsilon(4S)$ resonance.
+
+% We report the most beautiful result to date. 
+% These results are obtained from a $YYY\,{\rm fb}^{-1}$ data sample 
+% that contains $XXX \times 10^6 B\bar{B}$ pairs and was collected 
+% near the $\Upsilon(4S)$ resonance,
+% with the Belle detector at the KEKB asymmetric energy $e^+ e^-$
+% collider.
+% {\it For official integrated luminosity, see }
+% {\tt     http://belle.kek.jp/group/ecl/private/lum/, }
+% {\it  and for number of $B\bar{B}$ pairs, see }
+% {\tt     http://belle.kek.jp/secured/nbb/nbb.html.   }
+%\end{abstract}
+
+\pacs{XX.YY.ZZ, AA.BB.CC}
+
+
+\maketitle
+
+%%%% >>>> keep the final version single-spaced
+\tighten
+
+{\renewcommand{\thefootnote}{\fnsymbol{footnote}}}
+\setcounter{footnote}{0}
+
+\section{Tag side single track vertex resolution}
+\begin{table}[htb]
+\caption{Tag side $R_{det}$ parameters for single track verteces.}
+\label{tab:R_det_asc_sgl}
+\begin{tabular}
+%{@{\hspace{0.2cm}}l@{\hspace{0.2cm}}||@{\hspace{0.2cm}}c@{\hspace{0.2cm}}}
+ {|| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} ||  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} || }
+\hline
+ Mode             & Mean ($ps$) & RMS ($ps$) & $S_{mn}$ & $S_{tl}$      & $f_{tl}$ ($\%$) & $f_{olr}$ ($\%$) \\ \hline \hline
+ Default    (SVD1)& ---    &   ---  & $1.164$           & ---           & $0$             & $3.78$       \\ \hline
+ $\pi^0$    (SVD1)& $0.33$ & $5.59$ & $1.068\pm0.008$   & ---           & $0$             & $3.06\pm0.15$\\ \hline
+ $\omega$   (SVD1)& $0.44$ & $5.30$ & $1.085\pm0.010$   & ---           & $0$             & $2.91\pm0.17$\\ \hline
+ $D^0\pi^+$ (SVD1)& $0.37$ & $5.70$ & $1.097\pm0.012$   & ---           & $0$             & $3.24\pm0.22$\\ \hline
+ \hline
+ Default    (SVD2)& ---    &   ---  & $1.053$           & $4.321$       & $7.1$           & $2.23$       \\ \hline
+ $\pi^0$    (SVD2)& $0.29$ & $4.36$ & $1.020\pm0.005$   & $3.16\pm0.11$ & $7.4\pm0.5$     & $1.84\pm0.06$\\ \hline
+ $\omega$   (SVD2)& $0.30$ & $4.27$ & $1.027\pm0.006$   & $3.37\pm0.12$ & $7.1\pm0.4$     & $1.73\pm0.06$\\ \hline
+ $D^0\pi^+$ (SVD2)& $0.24$ & $4.04$ & $1.026\pm0.008$   & $3.07\pm0.10$ & $9.6\pm0.6$     & $1.61\pm0.07$\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[htb]
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m1_sgl_svd1}
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m4_sgl_svd1}
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m6_sgl_svd1}\\
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m1_sgl_svd2}
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m4_sgl_svd2}
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m6_sgl_svd2}\\
+\caption{$t_{rec}-t_{gen}$ for tag side. Single track vertex. SVD1 (top) and SVD2 (bottom).}
+\label{fig:R_det_asc_sgl}
+\end{figure}
+
+\section{Tag side multiple tracks vertex resolution}
+\begin{table}[htb]
+\caption{ Tag side $R_{det}$ parameters for multiple tracks verteces.}
+\label{tab:R_det_asc_mlt}
+\begin{tabular}
+%{@{\hspace{0.2cm}}l@{\hspace{0.2cm}}||@{\hspace{0.2cm}}c@{\hspace{0.2cm}}}
+ {|| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} ||  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} || }
+\hline
+ Mode             & Mean ($ps$) & RMS ($ps$) & $S_0$  & $S_1$           & $f_{olr}$ ($\%$) \\ \hline\hline
+ Default    (SVD1)& ---    &   ---  & $0.7291$        & $0.1719$        & $0.009$          \\ \hline
+ $\pi^0$    (SVD1)& $0.23$ & $1.24$ & $0.875\pm0.009$ & $0.085\pm0.004$ & $0.010\pm0.009$  \\ \hline
+ $\omega$   (SVD1)& $0.22$ & $1.21$ & $0.877\pm0.010$ & $0.087\pm0.005$ & $0.039\pm0.016$  \\ \hline
+ $D^0\pi^+$ (SVD1)& $0.16$ & $1.26$ & $0.882\pm0.012$ & $0.084\pm0.006$ & $0.078\pm0.025$  \\ \hline
+ \hline
+ Default    (SVD2)& ---    &   ---  & $0.8211$        & $0.1408$        & $0.009$          \\ \hline
+ $\pi^0$    (SVD2)& $0.21$ & $1.09$ & $0.861\pm0.004$ & $0.101\pm0.002$ & $0.041\pm0.005$  \\ \hline
+ $\omega$   (SVD2)& $0.21$ & $1.08$ & $0.866\pm0.004$ & $0.099\pm0.002$ & $0.044\pm0.006$  \\ \hline
+ $D^0\pi^+$ (SVD2)& $0.17$ & $1.01$ & $0.873\pm0.005$ & $0.098\pm0.003$ & $0.041\pm0.007$  \\ \hline
+
+\end{tabular}
+\end{table}
+
+\begin{figure}[htb]
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m1_mlt_svd1}
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m4_mlt_svd1}
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m6_mlt_svd1}\\
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m1_mlt_svd2}
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m4_mlt_svd2}
+\includegraphics[width=0.32\textwidth]{pics/res_tag_m6_mlt_svd2}\\
+\caption{$t_{rec}-t_{gen}$ for tag side. Multiple tracks vertex. SVD1 (top) and SVD2 (bottom).}
+\label{fig:R_det_asc_mlt}
+\end{figure}
+
+\section{Signal side resolution}
+% \begin{table}[htb]
+% \caption{Signal side $R_{det}$ parameters for single track verteces.}
+% \label{tab:R_det_sig_sgl}
+% \begin{tabular}
+% %{@{\hspace{0.2cm}}l@{\hspace{0.2cm}}||@{\hspace{0.2cm}}c@{\hspace{0.2cm}}}
+%  {|| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} ||  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} || }
+% \hline
+%  Mode             & Mean ($ps$) & RMS ($ps$) & $S_{mn}$ & $S_{tl}$      & $f_{tl}$ ($\%$) & $f_{olr}$ ($\%$) \\ \hline \hline
+%  Default    (SVD1)& ---    &   ---  & $1.164$         & ---           & $0$             & ---       \\ \hline
+%  $\pi^0$    (SVD1)& $0.04$ & $3.36$ & $2.330\pm0.009$ & ---           & $0$             & $5.74\pm0.11$\\ \hline
+%  $\eta$     (SVD1)& $0.05$ & $3.26$ & $2.372\pm0.012$ & ---           & $0$             & $5.64\pm0.14$\\ \hline
+%  $D^0\pi^+$ (SVD1)& $0.00$ & $1.29$ & $1.357\pm0.007$ & ---           & $0$             & $1.87\pm0.10$\\ \hline
+%  \hline
+%  Default    (SVD2)& ---    &   ---  & $1.053$         & $4.321$       & $5.35$          & ---       \\ \hline
+%  $\pi^0$    (SVD2)& $0.05$ & $2.83$ & $1.574\pm0.004$ & $7.02\pm0.04$ & $17.79\pm0.14$  & $1.55\pm0.03$\\ \hline
+%  $\eta$     (SVD2)& $0.04$ & $2.85$ & $1.582\pm0.005$ & $7.24\pm0.05$ & $17.76\pm0.17$  & $1.56\pm0.03$\\ \hline
+%  $D^0\pi^+$ (SVD2)& $0.00$ & $1.04$ & $1.086\pm0.003$ & $3.52\pm0.03$ & $11.85\pm0.22$  & $0.13\pm0.01$\\ \hline
+% % $\rho$     (SVD2)& $0.00$ & $1.04$ & $1.086\pm0.003$ & $3.52\pm0.03$ & $11.85\pm0.22$  & $0.13\pm0.01$\\ \hline
+% \end{tabular}
+% \end{table}
+
+\begin{figure}[htb]
+\includegraphics[width=0.24\textwidth]{pics/res_m1_svd1_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m2_svd1_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m6_svd1_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m7_d0_svd1}\\
+\includegraphics[width=0.24\textwidth]{pics/res_m1_svd2_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m2_svd2_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m6_svd2_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m7_d0_svd2}\\
+\caption{$t_{rec}-t_{gen}$ for signal side. Single track vertex. SVD1 (top) and SVD2 (bottom).}
+\label{fig:R_det_sig_sgl}
+\end{figure}
+
+% \begin{table}[htb]
+% \caption{ Signal side $R_{det}$ parameters for multiple tracks verteces.}
+% \label{tab:R_det_sig_mlt}
+% \begin{tabular}
+% %{@{\hspace{0.2cm}}l@{\hspace{0.2cm}}||@{\hspace{0.2cm}}c@{\hspace{0.2cm}}}
+%  {|| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} ||  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} || }
+% \hline
+%  Mode             & Mean ($ps$) & RMS ($ps$) & $S_0$  & $S_1$          \\ \hline\hline
+%  Default    (SVD1)& ---    &   ---  & $0.7291$        & $0.1719$       \\ \hline
+%  $\eta$     (SVD1)& $0.05$ & $0.95$ & $1.699\pm0.020$ & $0.431\pm0.007$\\ \hline
+%  $\omega$   (SVD1)& $0.07$ & $0.94$ & $1.651\pm0.012$ & $0.450\pm0.005$\\ \hline
+%  $D^0\pi^+$ (SVD1)& $0.00$ & $0.78$ & $0.995\pm0.007$ & $0.267\pm0.004$\\ \hline
+%  $\rho$     (SVD1)& $0.04$ & $0.80$ & $1.579\pm0.017$ & $0.340\pm0.006$\\ \hline
+%  \hline
+%  Default    (SVD2)& ---    &   ---  & $0.8211$        & $0.1408$       \\ \hline
+%  $\eta$     (SVD2)& $0.06$ & $0.78$ & $1.803\pm0.007$ & $0.401\pm0.003$\\ \hline
+%  $\omega$   (SVD2)& $0.06$ & $0.74$ & $1.749\pm0.005$ & $0.413\pm0.002$\\ \hline
+%  $D^0\pi^+$ (SVD2)& $0.00$ & $0.59$ & $1.152\pm0.003$ & $0.289\pm0.002$\\ \hline
+%  $\rho$     (SVD2)& $0.03$ & $0.64$ & $1.670\pm0.006$ & $0.323\pm0.002$\\ \hline
+% \end{tabular}
+% \end{table}
+
+\begin{table}[htb]
+\caption{Signal side $R_{det}$ parameters for single track verteces with $\sigma$ offset.}
+\label{tab:R_det_sig_sgl}
+\begin{tabular}
+%{@{\hspace{0.2cm}}l@{\hspace{0.2cm}}||@{\hspace{0.2cm}}c@{\hspace{0.2cm}}}
+ {|| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} ||  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}}|| }
+\hline
+ Mode             & $\delta\sigma$ ($cm$) & $S_{mn}$ & $S_{tl}$ & $f_{tl}$ ($\%$) & $f_{olr}$ ($\%$) & $s_{olr}$ ($ps$)\\ \hline \hline
+ $\pi^0$    (SVD1)& $1.72 \pm 0.07$ & $1.232 \pm 0.017$ & $4.41 \pm 0.12$ & $17.50 \pm 0.50$ & $2.88 \pm 0.11$ & $18.1 \pm 0.4$ \\ \hline
+ $\eta$     (SVD1)& $1.79 \pm 0.10$ & $1.193 \pm 0.023$ & $3.99 \pm 0.12$ & $19.83 \pm 0.73$ & $2.94 \pm 0.14$ & $17.6 \pm 0.5$ \\ \hline
+ $D^0\pi^+$ (SVD1)& $0.58 \pm 0.10$ & $1.038 \pm 0.018$ & $3.54 \pm 0.14$ & $10.54 \pm 0.61$ & $0.24 \pm 0.07$ & $12.2 \pm 1.7$ \\ \hline
+ $\rho$     (SVD1)& $1.72 \pm 0.13$ & $1.253 \pm 0.032$ & $4.52 \pm 0.20$ & $19.04 \pm 0.88$ & $2.89 \pm 0.19$ & $17.8 \pm 0.67$\\ \hline
+ \hline
+ $\pi^0$    (SVD2)& $1.10 \pm 0.02$ & $1.163 \pm 0.006$ & $4.37 \pm 0.04$ & $20.16 \pm 0.18$ & $2.25 \pm 0.03$ & $17.20 \pm 0.16$ \\ \hline
+ $\eta$     (SVD2)& $1.07 \pm 0.03$ & $1.174 \pm 0.008$ & $4.39 \pm 0.05$ & $20.13 \pm 0.25$ & $2.33 \pm 0.05$ & $16.65 \pm 0.21$ \\ \hline
+ $D^0\pi^+$ (SVD2)& $0.21 \pm 0.02$ & $1.029 \pm 0.006$ & $3.14 \pm 0.04$ & $12.97 \pm 0.26$ & $0.26 \pm 0.02$ & $10.00$\\ \hline
+ $\rho$     (SVD2)& $1.20 \pm 0.03$ & $1.154 \pm 0.007$ & $4.30 \pm 0.05$ & $22.17 \pm 0.24$ & $2.49 \pm 0.06$ & $16.59 \pm 0.23$\\ \hline
+ $\omega$   (SVD2)& $1.34 \pm 0.02$ & $1.138 \pm 0.007$ & $4.31 \pm 0.04$ & $21.78 \pm 0.19$ & $2.44 \pm 0.04$ & $16.80 \pm 0.16$\\ \hline
+
+\end{tabular}
+\end{table}
+
+\begin{table}[htb]
+\caption{ Signal side $R_{det}$ parameters for multiple tracks verteces with $\sigma$ offset.}
+\label{tab:R_det_sig_mlt}
+\begin{tabular}
+%{@{\hspace{0.2cm}}l@{\hspace{0.2cm}}||@{\hspace{0.2cm}}c@{\hspace{0.2cm}}}
+ {|| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} ||  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} || }
+\hline
+ Mode             & $\delta\sigma$ ($cm$) & $S_0$  & $S_1$  \\ \hline\hline
+ $\eta$     (SVD1)& $8.72 \pm 0.61$ & $0.413 \pm 0.022$ & $0.094 \pm 0.005$ \\ \hline
+ $\omega$   (SVD1)& $9.43 \pm 0.44$ & $0.385 \pm 0.014$ & $0.090 \pm 0.003$ \\ \hline
+ $D^0\pi^+$ (SVD1)& $0.00 \pm 0.01$ & $0.995 \pm 0.007$ & $0.267 \pm 0.004$ \\ \hline
+ $\rho$     (SVD1)& $4.93 \pm 0.29$ & $0.561 \pm 0.021$ & $0.106 \pm 0.004$ \\ \hline
+ \hline
+ $\eta$     (SVD2)& $3.12 \pm 0.06$ & $0.732 \pm 0.008$ & $0.148 \pm 0.002$ \\ \hline
+ $\omega$   (SVD2)& $3.09 \pm 0.04$ & $0.711 \pm 0.005$ & $0.153 \pm 0.001$ \\ \hline
+ $D^0\pi^+$ (SVD2)& $0.48 \pm 0.02$ & $0.954 \pm 0.006$ & $0.238 \pm 0.002$ \\ \hline
+ $\rho$     (SVD2)& $1.60 \pm 0.03$ & $0.913 \pm 0.008$ & $0.166 \pm 0.002$ \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[htb]
+\includegraphics[width=0.24\textwidth]{pics/res_m3_svd1_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m4_svd1_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m5_svd1_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m7_svd1}\\
+\includegraphics[width=0.24\textwidth]{pics/res_m3_svd2_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m4_svd2_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m5_svd2_v2}
+\includegraphics[width=0.24\textwidth]{pics/res_m7_svd2}\\
+\caption{$t_{rec}-t_{gen}$ for signal side. Multiple tracks vertex. SVD1 (top) and SVD2 (bottom).}
+\label{fig:R_det_sig_sgl}
+\end{figure}
+
+\section{Lifetime fit}
+\subsection{Default $R_{det}$ parameters}
+\begin{table}[htb]
+\caption{ Lifetime fit results with default $R_{det}$ parameters.}
+\label{tab:lifetime_def}
+\begin{tabular}
+%{@{\hspace{0.2cm}}l@{\hspace{0.2cm}}||@{\hspace{0.2cm}}c@{\hspace{0.2cm}}}
+ {| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} |  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} | }
+\hline
+ Mode              & Mean ($ps$) & RMS ($ps$) & $\tau$ ($ps$) & $f^{mlt}_{olr}$ ($\%$) & $f^{sgl}_{olr}$ ($\%$) \\ \hline\hline
+ $\pi^0$    (SVD1,sgl)             & $-0.28$ & $6.89$ & $1.662 \pm 0.024$ & --- & $4.56 \pm 0.23$ \\ \hline
+ \etagg     (SVD1,sgl)             & $-0.28$ & $6.48$ & $1.719 \pm 0.029$ & --- & $4.28 \pm 0.26$ \\ \hline
+ $D^0\pi^+$ ($D^0$ only) (SVD1,sgl)& $-0.35$ & $6.19$ & $1.737 \pm 0.034$ & --- & $3.20 \pm 0.28$ \\ \hline
+ \hline
+ $\pi^0$    (SVD1,mlt)             & $-0.18$ & $3.86$ & $1.714 \pm 0.013$ & --- & $1.28 \pm 0.09$ \\ \hline
+ \etagg     (SVD1,mlt)             & $-0.17$ & $3.80$ & $1.721 \pm 0.015$ & --- & $1.12 \pm 0.10$ \\ \hline
+ $D^0\pi^+$ ($D^0$ only) (SVD1,mlt)& $-0.16$ & $2.85$ & $1.754 \pm 0.018$ & --- & $0.01 \pm 0.02$ \\ \hline
+ \hline
+ \etappp    (SVD1,sgl)             & $-0.36$ & $5.57$ & $1.482 \pm 0.044$ & --- & $2.67 \pm 0.36$ \\ \hline
+ $\omega$   (SVD1,sgl)             & $-0.40$ & $5.63$ & $1.477 \pm 0.026$ & --- & $2.70 \pm 0.21$ \\ \hline
+ $D^0\pi^+$ (SVD1,sgl)             & $-0.37$ & $6.16$ & $1.665 \pm 0.032$ & --- & $3.16 \pm 0.27$ \\ \hline
+ \hline
+ \etappp    (SVD1,mlt)             & $-0.12$ & $2.62$ & $1.508 \pm 0.023$ & $0.00 \pm 0.02$ & --- \\ \hline
+ $\omega$   (SVD1,mlt)             & $-0.13$ & $2.58$ & $1.523 \pm 0.014$ & $0.02 \pm 0.02$ & --- \\ \hline
+ $D^0\pi^+$ (SVD1,mlt)             & $-0.16$ & $2.66$ & $1.688 \pm 0.017$ & $0.01 \pm 0.02$ & --- \\ \hline
+ \hline
+ $\pi^0$    (SVD2,sgl)             & $-0.28$ & $5.50$ & $1.578 \pm 0.010$ & --- & $2.61 \pm 0.08$ \\ \hline
+ \etagg     (SVD2,sgl)             & $-0.28$ & $5.42$ & $1.592 \pm 0.012$ & --- & $2.46 \pm 0.09$ \\ \hline
+ $D^0\pi^+$ ($D^0$ only) (SVD2,sgl)& $-0.27$ & $4.72$ & $1.641 \pm 0.012$ & --- & $1.40 \pm 0.08$ \\ \hline
+ \hline
+ $\pi^0$    (SVD2,mlt)             & $-0.15$ & $3.44$ & $1.590 \pm 0.004$ & $0.88 \pm 0.03$ & --- \\ \hline
+ \etagg     (SVD2,mlt)             & $-0.15$ & $3.46$ & $1.603 \pm 0.005$ & $0.91 \pm 0.03$ & --- \\ \hline
+ $D^0\pi^+$ ($D^0$ only) (SVD2,mlt)& $-0.16$ & $2.68$ & $1.629 \pm 0.006$ & $(3.1 \pm 4.6)\cdot10^{-3}$ & \\ \hline
+ \hline
+ \etappp    (SVD2,sgl)             & $-0.32$ & $4.79$ & $1.496 \pm 0.017$ & --- & $1.44 \pm 0.12$ \\ \hline
+ $\omega$   (SVD2,sgl)             & $-0.29$ & $4.81$ & $1.478 \pm 0.010$ & --- & $1.48 \pm 0.07$ \\ \hline
+ $D^0\pi^+$ (SVD2,sgl)             & $-0.26$ & $4.66$ & $1.639 \pm 0.012$ & --- & $1.41 \pm 0.08$ \\ \hline
+ \hline
+ \etappp    (SVD2,mlt)             & $-0.12$ & $2.46$ & $1.480 \pm 0.008$ & $(8.8 \pm 5.6)\cdot10^{-3}$ & --- \\ \hline
+ $\omega$   (SVD2,mlt)             & $-0.12$ & $2.41$ & $1.467 \pm 0.005$ & $(4.4 \pm 2.8)\cdot10^{-3}$ & --- \\ \hline
+ $D^0\pi^+$ (SVD2,mlt)             & $-0.15$ & $2.56$ & $1.627 \pm 0.006$ & $(3.9 \pm 4.6)\cdot10^{-3}$ & --- \\ \hline
+ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[htb]
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m1_sgl_svd1}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m2_sgl_svd1}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_d0pip_d0_sgl_svd1_sig}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m1_sgl_svd2}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m2_sgl_svd2}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_d0pip_d0_sgl_svd2_sig}\\
+
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m1_mlt_svd1}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m2_mlt_svd1}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_d0pip_d0_mlt_svd1_sig}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m1_mlt_svd2}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m2_mlt_svd2}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_d0pip_d0_mlt_svd2_sig}\\
+
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m3_sgl_svd1}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m4_sgl_svd1}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_d0pip_sgl_svd1_sig}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m3_sgl_svd2}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m4_sgl_svd2}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_d0pip_sgl_svd2_sig}\\
+
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m3_mlt_svd1}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m4_mlt_svd1}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_d0pip_mlt_svd1_sig}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m3_mlt_svd2}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_m4_mlt_svd2}
+\includegraphics[width=0.15\textwidth]{pics/lifetime_d0pip_mlt_svd2_sig}\\
+\caption{Lifetime fit with default $R_{det}$ parameters.}
+\label{fig:R_det_sig_sgl}
+\end{figure}
+
+\begin{table}[htb]
+\caption{ Lifetime fit results with default and optimized $R_{det}$ parameters.}
+\label{tab:lifetime_opt}
+\begin{tabular}
+%{@{\hspace{0.2cm}}l@{\hspace{0.2cm}}||@{\hspace{0.2cm}}c@{\hspace{0.2cm}}}
+ {| @{\hspace{0.2cm}}l@{\hspace{0.2cm}} |  @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} @{\hspace{0.2cm}}c@{\hspace{0.2cm}} | }
+\hline
+ Mode                              & Default            & $R_{tag}$          & $R_{sig}$ & $R_{tag}$ and $R_{sig}$ \\ \hline\hline
+ $\pi^0$    (SVD1,sgl)             & $ 0.128 \pm 0.024$ & $ 0.167 \pm 0.024$ & $-0.048 \pm 0.025$ & $-0.008 \pm 0.024$ \\ \hline
+ \etagg     (SVD1,sgl)             & $ 0.185 \pm 0.029$ & $ 0.225 \pm 0.029$ & $ 0.004 \pm 0.030$ & $ 0.045 \pm 0.030$ \\ \hline
+ $D^0\pi^+$ ($D^0$ only) (SVD1,sgl)& $ 0.099 \pm 0.034$ & $ 0.133 \pm 0.034$ & $ 0.059 \pm 0.034$ & $ 0.094 \pm 0.034$ \\ \hline
+ \hline
+ $\pi^0$    (SVD1,mlt)             & $ 0.178 \pm 0.013$ & $ 0.185 \pm 0.013$ & $ 0.012 \pm 0.013$ & $ 0.017 \pm 0.013$ \\ \hline
+ \etagg     (SVD1,mlt)             & $ 0.187 \pm 0.015$ & $ 0.193 \pm 0.016$ & $ 0.025 \pm 0.017$ & $ 0.032 \pm 0.016$ \\ \hline
+ $D^0\pi^+$ ($D^0$ only) (SVD1,mlt)& $ 0.116 \pm 0.018$ & $ 0.121 \pm 0.018$ & $ 0.080 \pm 0.018$ & $ 0.084 \pm 0.018$ \\ \hline
+ \hline
+ \etappp    (SVD1,sgl)             & $-0.052 \pm 0.044$ & $-0.014 \pm 0.045$ & $-0.172 \pm 0.047$ & $-0.135 \pm 0.046$ \\ \hline
+ $\omega$   (SVD1,sgl)             & $-0.057 \pm 0.026$ & $-0.019 \pm 0.026$ & $-0.184 \pm 0.027$ & $-0.146 \pm 0.027$ \\ \hline
+ $D^0\pi^+$ (SVD1,sgl)             & $ 0.027 \pm 0.032$ & $ 0.062 \pm 0.032$ & $ 0.031 \pm 0.032$ & $ 0.066 \pm 0.032$ \\ \hline
+ \hline
+ \etappp    (SVD1,mlt)             & $-0.026 \pm 0.023$ & $-0.022 \pm 0.023$ & $-0.145 \pm 0.023$ & $-0.142 \pm 0.023$ \\ \hline
+ $\omega$   (SVD1,mlt)             & $-0.011 \pm 0.014$ & $-0.057 \pm 0.014$ & $-0.127 \pm 0.014$ & $-0.122 \pm 0.014$ \\ \hline
+ $D^0\pi^+$ (SVD1,mlt)             & $ 0.050 \pm 0.017$ & $ 0.054 \pm 0.017$ & $ 0.054 \pm 0.017$ & $0.057 \pm 0.017$ \\ \hline
+ \hline
+ $\pi^0$    (SVD2,sgl)             & $ 0.044 \pm 0.010$ & $ 0.070 \pm 0.010$ & $-0.159 \pm 0.010$ & $-0.132 \pm 0.010$ \\ \hline
+ \etagg     (SVD2,sgl)             & $ 0.058 \pm 0.012$ & $ 0.083 \pm 0.012$ & $-0.144 \pm 0.012$ & $-0.117 \pm 0.012$ \\ \hline
+ $D^0\pi^+$ ($D^0$ only) (SVD2,sgl)& $ 0.003 \pm 0.012$ & $ 0.028 \pm 0.012$ & $-0.020 \pm 0.012$ & $ 0.004 \pm 0.012$ \\ \hline
+ \hline
+ $\pi^0$    (SVD2,mlt)             & $ 0.056 \pm 0.004$ & $ 0.061 \pm 0.004$ & $-0.133 \pm 0.005$ & $-0.128 \pm 0.005$ \\ \hline
+ \etagg     (SVD2,mlt)             & $ 0.069 \pm 0.005$ & $ 0.073 \pm 0.005$ & $-0.121 \pm 0.005$ & $-0.117 \pm 0.005$ \\ \hline
+ $D^0\pi^+$ ($D^0$ only) (SVD2,mlt)& $-0.009 \pm 0.006$ & $-0.005 \pm 0.006$ & $-0.030 \pm 0.006$ & $-0.026 \pm 0.006$ \\ \hline
+ \hline
+ \etappp    (SVD2,sgl)             & $-0.038 \pm 0.017$ & $-0.014 \pm 0.017$ & $-0.127 \pm 0.018$ & $-0.101 \pm 0.018$ \\ \hline
+ $\omega$   (SVD2,sgl)             & $-0.056 \pm 0.010$ & $-0.032 \pm 0.010$ & $-0.141 \pm 0.010$ & $-0.116 \pm 0.010$ \\ \hline
+ $D^0\pi^+$ (SVD2,sgl)             & $ 0.001 \pm 0.012$ & $ 0.025 \pm 0.012$ & $-0.003 \pm 0.012$ & $ 0.021 \pm 0.012$ \\ \hline
+ \hline
+ \etappp    (SVD2,mlt)             & $-0.054 \pm 0.008$ & $-0.050 \pm 0.008$ & $-0.134 \pm 0.008$ & $-0.130 \pm 0.008$ \\ \hline
+ $\omega$   (SVD2,mlt)             & $-0.067 \pm 0.005$ & $-0.063 \pm 0.005$ & $-0.146 \pm 0.005$ & $-0.142 \pm 0.005$ \\ \hline
+ $D^0\pi^+$ (SVD2,mlt)             & $-0.011 \pm 0.006$ & $-0.007 \pm 0.006$ & $-0.016 \pm 0.006$ & $-0.012 \pm 0.006$ \\ \hline
+ \hline
+\end{tabular}
+\end{table}
+
+\end{document}

@@ -1,0 +1,128 @@
+\documentclass[10 pt,compress,mathserif]{beamer}
+
+%\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+%\usepackage{multirow}
+\usepackage{hhline}
+%\titlehead{\centering\includegraphics[width=6cm]{pics/B-logo.png}}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usetheme{Warsaw}
+
+%\usecolortheme{rose}
+%\usecolortheme{dolphin}
+\usecolortheme{lily}
+
+\RequirePackage{xspace}
+\newcommand{\cosbeta}{\ensuremath{\cos{2\varphi_1}}\xspace}
+\newcommand{\sinbeta}{\ensuremath{\sin{2\varphi_1}}\xspace}
+\newcommand{\cosbetasq}{\ensuremath{\cos^2{2\varphi_1}}\xspace}
+\newcommand{\sinbetasq}{\ensuremath{\sin^2{2\varphi_1}}\xspace}
+\newcommand{\cpconj}{\ensuremath{\mathcal{CP}}\xspace}
+\newcommand{\dkspp}{\ensuremath{D^0\to K_S^0\pi^+\pi^-}\xspace}
+\newcommand{\bdh}{\ensuremath{B^0\to \bar D^0h^0}\xspace}
+\newcommand{\bdpi}{\ensuremath{B^0\to \bar D^0\pi^0}\xspace}
+\newcommand{\bdpp}{\ensuremath{B^0\to \bar D^0\pi^+\pi^-}\xspace}
+\newcommand{\bdstpi}{\ensuremath{B^0\to \bar D^{\star0}\pi^0}\xspace}
+\newcommand{\bdsth}{\ensuremath{B^0\to \bar D^{\star0}h^0}\xspace}
+\newcommand{\bdeta}{\ensuremath{B^0\to \bar D^0\eta}\xspace}
+\newcommand{\bdetast}{\ensuremath{B^0\to \bar D^0\eta^{\prime}}\xspace}
+\newcommand{\hgg}{\ensuremath{h^0\to \gamma\gamma}\xspace}
+\newcommand{\pigg}{\ensuremath{\pi^0\to \gamma\gamma}\xspace}
+\newcommand{\etagg}{\ensuremath{\eta\to \gamma\gamma}\xspace}
+\newcommand{\etappp}{\ensuremath{\eta\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\hppp}{\ensuremath{h^0\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\bdomega}{\ensuremath{B^0\to \bar D^0\omega}\xspace}
+\newcommand{\omegappp}{\ensuremath{\omega\to \pi^+\pi^-\pi^0}\xspace}
+\newcommand{\aad}{\ensuremath{|f|}\xspace}
+\newcommand{\aadbar}{\ensuremath{|\overline{f}|}\xspace}
+
+\defbeamertemplate*{footline}{shadow theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertframenumber\,/\,\inserttotalframenumber\hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\begin{document}
+\title{Measurement of the CKM angle $\varphi_1$ in \bdh, \dkspp decays with the model-independent approach.}
+\author{Vitaly Vorobyev}
+\institute{Budker Institute of Nuclear Physics,\\
+           Novosibirsk State University}
+\date{July 2, 2014}
+% Создание заглавной страницы
+\frame{\titlepage}
+% Автоматическая генерация содержания
+\frame{\frametitle{Contents}\tableofcontents}
+
+\section{$\Delta t$ resolution}
+\begin{frame}
+ \frametitle{$\Delta t$ resolution}
+ \begin{block}{Detector resolution}
+  Is determined by kinematic vertex fit (signal and tagging sides are treated separately).
+ \end{block}
+ \begin{block}{Non-primary tracks resolution}
+  Part of the tag side resolution determined by tracks from secondary vertex.
+ \end{block}
+ \begin{block}{Kinematic resolution}
+  Equation $\Delta t = \Delta z/(\gamma\beta c)$ assumes $B$-mesons are in rest in the CMS system. This approximation leads to distortion of the $\Delta t$ distribution.
+ \end{block}
+ \begin{block}{Outlier}
+  Very wide fraction of the RF.
+ \end{block}
+\end{frame}
+
+
+\section{$R_{det}$ parameterization}
+\begin{frame}
+ \frametitle{Parameterization of the detector resolution in Tatami}
+ \begin{block}{Multiple tracks}
+  \begin{equation}
+   R_{det}^{mult}(\delta z) = G\left(\delta z,0,(s_0+s_1\xi)\sigma_z\right),
+  \end{equation}
+   where $G$ is Gaussian, $\sigma_z$ is an estimated error from the kinematic fit.
+  \end{block}
+
+  \begin{block}{Single track}
+   \begin{equation}
+    R_{det}^{sing}(\delta z) = (1-f_{tail})G(\delta z,0,s_{main}\sigma_z)+f_{tail}G(\delta z,0,s_{tail}\sigma_z),
+   \end{equation}
+   where
+  \end{block}
+\end{frame}
+
+
+\section{Conclusions}
+\begin{frame}
+ \frametitle{Conclusions}
+
+\end{frame}
+
+\appendix
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
+\section{Backup}
+\begin{frame}
+ \begin{center}
+  \begin{LARGE}
+   Backup
+  \end{LARGE}
+ \end{center}
+\end{frame}
+
+
+
+\setcounter{framenumber}{\value{finalframe}}
+\end{document}
