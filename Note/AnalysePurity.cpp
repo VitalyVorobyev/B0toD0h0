@@ -10,7 +10,7 @@ void DrawComparison(const int N, const int ref[2][16], double arrs[N][2][16], do
     shapes[i] = 20+i;
     for(int k=0; k<2; k++){
       for(int j=0; j<16; j++){
-        arrs[i][k][j] -= ref[k][j];
+        arrs[i][k][j] -= ref[k][15-j];
       }
     }
   }

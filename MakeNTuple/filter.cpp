@@ -1,13 +1,13 @@
 #include "filter.h"
-#include "../rooksfw/ksfw_pi0.h"
-#include "../rooksfw/ksfw_etagg.h"
-#include "../rooksfw/ksfw_etappp.h"
-#include "../rooksfw/ksfw_omega.h"
-#include "../rooksfw/ksfw_etapgg.h"
-#include "../rooksfw/ksfw_etapppp.h"
-#include "../rooksfw/ksfw_dst0pi0.h"
-#include "../rooksfw/ksfw_dst0etagg.h"
-#include "../rooksfw/ksfw_dst0etappp.h"
+//#include "../rooksfw/ksfw_pi0.h"
+//#include "../rooksfw/ksfw_etagg.h"
+//#include "../rooksfw/ksfw_etappp.h"
+//#include "../rooksfw/ksfw_omega.h"
+//#include "../rooksfw/ksfw_etapgg.h"
+//#include "../rooksfw/ksfw_etapppp.h"
+//#include "../rooksfw/ksfw_dst0pi0.h"
+//#include "../rooksfw/ksfw_dst0etagg.h"
+//#include "../rooksfw/ksfw_dst0etappp.h"
 
 #include <algorithm>    // std::shuffle
 #include <random>       // std::default_random_engine
@@ -42,7 +42,7 @@ filter::filter(const int type_in, const int type_out, const int str_num, const s
 
   m_type_in  = type_in;
   m_type_out = type_out;
-  intree = new TChain("TEvent");
+//  intree = new TChain("TEvent");
   prefix = string("/home/vitaly/B0toDh0/Tuples/");
 
   SetMVA();
@@ -51,10 +51,10 @@ filter::filter(const int type_in, const int type_out, const int str_num, const s
   SetOutput(toutstr);
   line_out += toutstr + string(".root");
 
-  cout << "InFile:" << endl;
-  cout << "  " << line_in;
+  cout << "InFile(s):" << endl;
+  for(int i=0; i<line_in.size(); i++) cout << "  " << line_in[i] << endl;
   cout << "OutFile:" << endl;
-  cout << "  " << line_out;
+  cout << "  " << line_out << endl;
 
 //  outtree   = new TTree("rawTEvent","rawTEvent");
 //  outfile      = new TFile(line_out.c_str(),"RECREATE");
@@ -70,122 +70,141 @@ void filter::MakeNTuples(void){
   Filter();
   MultiFilter();
 //  outtree->Write();
-  mult_outtree->Write();
-  outfile->Close();
+//  mult_outtree->Write();
+//  outfile->Close();
+  return;
+}
+
+void filter::PrepareSigEvtVec(vector<ICPVEvent>& vec1,vector<ICPVEvent>& vec2,vector<int>& ind1,vector<int>& ind2){
+  TChain insigchain("TEvent");
+  const string fname = prefix + insinfile;
+  insigchain.Add(fname.c_str());
+  TTree*  insigtree_svd1 = insigchain.CopyTree("exp < 30 && (b0f == 1 || b0f == 5 || b0f == 10)");
+  TTree*  insigtree_svd2 = insigchain.CopyTree("exp > 30 && (b0f == 1 || b0f == 5 || b0f == 10)");
+  const int Nsvd1 = insigtree_svd1->GetEntries();
+  const int Nsvd2 = insigtree_svd2->GetEntries();
+  GetShuffledVector(Nsvd1,ind1);
+  GetShuffledVector(Nsvd2,ind2);
+  ICPVEvent::FillVectorWithTTree(vec1,insigtree_svd1,m_data_type,false);
+  ICPVEvent::FillVectorWithTTree(vec2,insigtree_svd2,m_data_type,false);
   return;
 }
 
 void filter::Filter(void){
   ICPVEvent evt(m_data_type,false);
-//  SetBranchAddresses(intree,false);
-  TChain* insigchain;
-  TTree* insigtree_svd1;
-  TTree* insigtree_svd2;
-  if(make_substitution && m_type_in == 22){
-    insigchain = new TChain("TEvent");
-    insigchain->Add(insinfile.c_str());
-    insigtree_svd1  = insigchain->CopyTree("exp < 30 && (b0f == 1 || b0f == 5 || b0f == 10)");
-    insigtree_svd2  = insigchain->CopyTree("exp > 30 && (b0f == 1 || b0f == 5 || b0f == 10)");
-    const int Nsvd1 = insigtree_svd1->GetEntries();
-    const int Nsvd2 = insigtree_svd2->GetEntries();
-    GetShuffledVector(Nsvd1,sigindex_svd1);
-    GetShuffledVector(Nsvd2,sigindex_svd2);
-
-    SetBranchAddresses(insigtree_svd1,false);
-    SetBranchAddresses(insigtree_svd2,false);
+  const string rawfname = prefix + string("raw_") + line_out;
+  cout << rawfname << endl;
+  TFile rawfile;
+  rawfile.Open(rawfname.c_str(),"RECREATE");
+  TChain InTree("TEvent");
+  for(int i=0; i<line_in.size(); i++){
+    const string infname = prefix + line_in[i];
+    cout << infname << endl;
+    InTree.Add(infname.c_str());
   }
-  SetBranches(outtree);
+
+  evt.SetBrAddresses(&InTree);
+  cout << "BranchAddresses set" << endl;
+
+  TTree rawotree("rawTEvent","rawTEvent");
+  evt.SetBranches(&rawotree);
+  cout << "Branches set" << endl;
+
+  vector<ICPVEvent> sigvec_svd1;
+  vector<ICPVEvent> sigvec_svd2;
+  vector<int> sigind_svd1;
+  vector<int> sigind_svd2;
+  if(make_substitution && m_type_in == 22) PrepareSigEvtVec(sigvec_svd1,sigvec_svd2,sigind_svd1,sigind_svd2);
 
   int svd1ind = 0;
   int svd2ind = 0;
-  const int NTot = intree->GetEntries();
+  const int NTot = InTree.GetEntries();
   for(int i=1; i<NTot; i++){
-    if(!(i%10000)){ cout << i << " events" << endl;}
-    intree->GetEvent(i);
-    if(mode != m_out_mode || h0mode != m_out_h0mode) continue;
-    if(make_substitution && m_type_in == 22 && (b0f == 1 || b0f == 5 || b0f == 10)){
-      if(exp<30) insigtree_svd1->GetEvent(sigindex_svd1[svd1ind++]);
-      else       insigtree_svd2->GetEvent(sigindex_svd2[svd2ind++]);
-      cout << mode << " " << h0mode << " " << svd1ind << " " << svd2ind << endl;
+    if(!(i%10000)){ cout << i << " events" << " " << evt.mbc << " " << evt.de << " " << evt.b0f << endl;}
+    InTree.GetEvent(i);
+    if(evt.mode != m_out_mode || evt.h0mode != m_out_h0mode) continue;
+    if(make_substitution && m_type_in == 22 && (evt.b0f == 1 || evt.b0f == 5 || evt.b0f == 10)){
+      if(evt.exp<30) evt = sigvec_svd1[sigind_svd1[svd1ind++]];//insigtree_svd1->GetEvent(sigindex_svd1[svd1ind++]);
+      else           evt = sigvec_svd2[sigind_svd2[svd2ind++]];//insigtree_svd2->GetEvent(sigindex_svd2[svd2ind++]);
+      cout << evt.mode << " " << evt.h0mode << " " << svd1ind << " " << svd2ind << endl;
     }
 
-    if(!M_DATA && (b0f == 0 || b0f<-1)) continue;
+    if(!M_DATA && (evt.b0f == 0 || evt.b0f<-1)) continue;
 
-    if(mk<cuts->get_mk_min()       || mk>cuts->get_mk_max())       continue;
-    if(de<cuts->get_de_fit_min()   || de>cuts->get_de_fit_max())   continue;
-    if(mbc<cuts->get_mbc_fit_min() || mbc>cuts->get_mbc_fit_max()) continue;
-    if(md_raw<cuts->get_md_min()   || md_raw>cuts->get_md_max())   continue;
-    dmdst0 = mdst0 - md_raw;
-    if(mode>9 && (dmdst0<cuts->get_dm_dst0_min() || dmdst0>cuts->get_dm_dst0_max())) continue;
-    if(mode == 5 && (dmetap<cuts->get_dm_etap_min(h0mode) || dmetap>cuts->get_dm_etap_max(h0mode))) continue;
-    if(mh0<cuts->get_mh0_min(mode,h0mode) || mh0>cuts->get_mh0_max(mode,h0mode)) continue;
+    if(evt.mk<cuts->get_mk_min()       || evt.mk>cuts->get_mk_max())       continue;
+    if(evt.de<cuts->get_de_fit_min()   || evt.de>cuts->get_de_fit_max())   continue;
+    if(evt.mbc<cuts->get_mbc_fit_min() || evt.mbc>cuts->get_mbc_fit_max()) continue;
+    if(evt.md_raw<cuts->get_md_min()   || evt.md_raw>cuts->get_md_max())   continue;
+    evt.dmdst0 = evt.mdst0 - evt.md_raw;
+    if(evt.mode>9 && (evt.dmdst0<cuts->get_dm_dst0_min() || evt.dmdst0>cuts->get_dm_dst0_max())) continue;
+    if(evt.mode == 5 && (evt.dmetap<cuts->get_dm_etap_min(evt.h0mode) || evt.dmetap>cuts->get_dm_etap_max(evt.h0mode))) continue;
+    if(evt.mh0<cuts->get_mh0_min(evt.mode,evt.h0mode) || evt.mh0>cuts->get_mh0_max(evt.mode,evt.h0mode)) continue;
 
-    if( abs(r_pip)>2 || abs(r_pim)>2) continue;
-    if( abs(z_pip)>5 || abs(z_pim)>2) continue;
-    if((abs(r_pi1)>2 || abs(r_pi2)>2) && r_pi1 != -99) continue;
-    if((abs(z_pi1)>5 || abs(z_pi2)>5) && z_pi1 != -99) continue;
+    if( abs(evt.r_pip)>2 || abs(evt.r_pim)>2) continue;
+    if( abs(evt.z_pip)>5 || abs(evt.z_pim)>2) continue;
+    if((abs(evt.r_pi1)>2 || abs(evt.r_pi2)>2) && evt.r_pi1 != -99) continue;
+    if((abs(evt.z_pi1)>5 || abs(evt.z_pi2)>5) && evt.z_pi1 != -99) continue;
 
-    flv = tag_LH>0 ? -1 : 1;
-    if(e_g1 > e_g2){
-      switchAB(e_g1,e_g2);
-      switchAB(th_g1,th_g2);
+    evt.flv = evt.tag_LH>0 ? -1 : 1;
+    if(evt.e_g1 > evt.e_g2){
+      switchAB(evt.e_g1,evt.e_g2);
+      switchAB(evt.th_g1,evt.th_g2);
     }
 
-    if(e_g3 > e_g4){
-      switchAB(e_g3,e_g4);
-      switchAB(th_g3,th_g4);
+    if(evt.e_g3 > evt.e_g4){
+      switchAB(evt.e_g3,evt.e_g4);
+      switchAB(evt.th_g3,evt.th_g4);
     }
 
-    rndm_pi0 = -1;
     if(!M_DATA){
-      d0ch0 = d0_chain[0];
-      d0ch1 = d0_chain[1];
-      d0ch2 = d0_chain[2];
-      d0ch3 = d0_chain[3];
+      evt.d0ch0 = evt.d0_chain[0];
+      evt.d0ch1 = evt.d0_chain[1];
+      evt.d0ch2 = evt.d0_chain[2];
+      evt.d0ch3 = evt.d0_chain[3];
 
-      h0ch0 = h0_chain[0];
-      h0ch1 = h0_chain[1];
-      if(!(b0f == 1 || b0f == 5 || b0f == 10) && (d0f == 1 || d0f == 10) && (h0f == 1 || h0f == 3) && b0f != 0 && mbc>5.2 && abs(d0ch1) == 423 && abs(d0ch3) == 511 && (mode == 10 || mode == 20) && abs(h0ch1) == 511 && (h0ch0 == 111 || h0ch0 == 221) && abs(d0ch0) == 421){
-        rndm_pi0 = 1;
+      evt.h0ch0 = evt.h0_chain[0];
+      evt.h0ch1 = evt.h0_chain[1];
+      if(!(evt.b0f == 1 || evt.b0f == 5 || evt.b0f == 10) && (evt.d0f == 1 || evt.d0f == 10) && (evt.h0f == 1 || evt.h0f == 3) && evt.b0f != 0 && evt.mbc>5.2 && abs(evt.d0ch1) == 423 && abs(evt.d0ch3) == 511 && (evt.mode == 10 || evt.mode == 20) && abs(evt.h0ch1) == 511 && (evt.h0ch0 == 111 || evt.h0ch0 == 221) && abs(evt.d0ch0) == 421){
+        evt.rndm_pi0 = 1;
       } else{
-        rndm_pi0 = 0;
+        evt.rndm_pi0 = 0;
       }
     }
 
     if(!M_DATA){
-      bin_mc = Phsp->GetBin(mp_mc,mm_mc);
-      if((mp_mc>mm_mc && flv_mc*bin_mc>0) || (mp_mc<mm_mc && flv_mc*bin_mc<0)) bin_mc = -bin_mc;
+      evt.bin_mc = Phsp->GetBin(evt.mp_mc,evt.mm_mc);
+      if((evt.mp_mc>evt.mm_mc && evt.flv_mc*evt.bin_mc>0) || (evt.mp_mc<evt.mm_mc && evt.flv_mc*evt.bin_mc<0)) evt.bin_mc = -evt.bin_mc;
     }
-    bin = Phsp->GetBin(mp,mm);
-    if((mp>mm && tag_LH*bin<0) || (mp<mm && tag_LH*bin>0)) bin = -bin;
-    if(bin) phsp = 1;
-    else    phsp = 0;
+    evt.bin = Phsp->GetBin(evt.mp,evt.mm);
+    if((evt.mp>evt.mm && evt.tag_LH*evt.bin<0) || (evt.mp<evt.mm && evt.tag_LH*evt.bin>0)) evt.bin = -evt.bin;
+    if(evt.bin) evt.phsp = 1;
+    else        evt.phsp = 0;
 
 // **     Bin sign conventions     ** //
 //    bin*tag_LH>0 if mp>mm           //
 //    bin_mc*flv_mc<0 if mp_mc>mm_mc  //
 // ////////////////////////////////// //
 
-    z_sig *= 10; z_asc *=10;// z_sig_d0 *= 10;
-    dz = z_sig - z_asc;
+    evt.z_sig *= 10; evt.z_asc *=10;// z_sig_d0 *= 10;
+    evt.dz = evt.z_sig - evt.z_asc;
     if(M_SIGMC){
-      dz_mc_sig = z_sig-z_sig_mc;
-      dz_mc_asc = z_asc-z_asc_mc;
-      dt_mc     = t_sig_mc - t_asc_mc;
-      dz_mc     = z_sig_mc - z_asc_mc;
+      evt.dz_mc_sig = evt.z_sig-evt.z_sig_mc;
+      evt.dz_mc_asc = evt.z_asc-evt.z_asc_mc;
+      evt.dt_mc     = evt.t_sig_mc - evt.t_asc_mc;
+      evt.dz_mc     = evt.z_sig_mc - evt.z_asc_mc;
     }
-    sz_sig = 10.*TMath::Sqrt(sz_sig);
-    sz_asc = 10.*TMath::Sqrt(sz_asc);
+    evt.sz_sig = 10.*TMath::Sqrt(evt.sz_sig);
+    evt.sz_asc = 10.*TMath::Sqrt(evt.sz_asc);
 
     // * Standatd ICPV cuts * //
-    good_icpv = IsGoodICPV(ndf_z_sig,sz_sig,chisq_z_sig,ndf_z_asc,sz_asc,chisq_z_asc);
-    if(!good_icpv) continue;
+    evt.good_icpv = IsGoodICPV(evt.ndf_z_sig,evt.sz_sig,evt.chisq_z_sig,evt.ndf_z_asc,evt.sz_asc,evt.chisq_z_asc);
+    if(!evt.good_icpv) continue;
     // * ////////////////// * //
 
-    lh1 = lh(mode,h0mode,k1mm2,k1vars,true);
-    lh0 = lh(mode,h0mode,k0mm2,k0vars,false);
+    evt.lh1 = lh(evt.mode,evt.h0mode,evt.k1mm2,evt.k1vars,true);
+    evt.lh0 = lh(evt.mode,evt.h0mode,evt.k0mm2,evt.k0vars,false);
 
-    tmvaevt.Fill();
+    tmvaevt.Fill(evt);
 //    m_lh0          = (float)lh0;//mode < 3 ? (float)lh1 : (float)(1./1.005-lh1*lh1);
 //    m_costhBcms    = (float)abs(costhBcms);
 //    m_chi2_mass_d0 = (float)log(chi2_mass_d0);
@@ -196,27 +215,42 @@ void filter::Filter(void){
 //    m_p_pi0_h0     = (float)p_pi0_h0;
 //    m_cos_hel      = (float)abs(cos_hel);
 
-    bdt = BDT(mode,h0mode);
+    evt.bdt = BDT(evt.mode,evt.h0mode);
 
     if(!M_DATA && !M_SIGMC){
-      bin_mc = bin;
-      flv_mc = tag_LH > 0 ? -1 : 1;
+      evt.bin_mc = evt.bin;
+      evt.flv_mc = evt.tag_LH > 0 ? -1 : 1;
     }
-    outtree->Fill();
+//    outtree->Fill();
+    rawotree.Fill();
   }
-  cout << "After the first stage: " << outtree->GetEntries() << " events" << endl;
+  cout << "After the first stage: " << rawotree.GetEntries() << " events" << endl;
+  rawotree.Write();
+  rawfile.Close();
   return;
 }
 
 void filter::MultiFilter(void){
-  cout << "... And still " << outtree->GetEntries() << " events" << endl;
-  SetBranchAddresses(outtree,true);
-  SetBranches(mult_outtree);
+  TChain intr("rawTEvent","rawTEvent");
+  const string rawfname = prefix + string("raw_") + line_out;
+  intr.Add(rawfname.c_str());
+  cout << "... And still " << intr.GetEntries() << " events" << endl;
+//  SetBranchAddresses(outtree,true);
+//  SetBranches(mult_outtree);
+
+  ICPVEvent evt(m_data_type,true);
+  evt.SetBrAddresses(&intr);
+
+  const string ofname = prefix + line_out;
+  TFile ofile(ofname.c_str(),"RECREATE");
+  TTree outr("TEvent","TEvent");
+  evt.SetBranches(&outr);
 
   int nevents = 0;
   int nrecords = 0;
 
-  const int NTot = outtree->GetEntries();
+//  const int NTot = outtree->GetEntries();
+  const int NTot =  intr.GetEntries();
   cout << "... and " << NTot << endl;
   int my_des;
   vector<double> mdv;
@@ -228,58 +262,64 @@ void filter::MultiFilter(void){
   vector<int> recnum;
   bool dst0_flag = false;
   bool signal_flag = false;
-  outtree->GetEvent(0);
-  mdv.push_back(md_raw);
-  h0v.push_back(mh0);
-  modev.push_back(mode); h0modev.push_back(h0mode);
-  if(mode == 5)    dmv.push_back(dmetap);
-  else if(mode>9){ dmv.push_back(dmdst0); dst0_flag = true;}
-  else             dmv.push_back(0);
+//  outtree->GetEvent(0);
+  intr.GetEvent(0);
+  mdv.push_back(evt.md_raw);
+  h0v.push_back(evt.mh0);
+  modev.push_back(evt.mode); h0modev.push_back(evt.h0mode);
+  if(evt.mode == 5)    dmv.push_back(evt.dmetap);
+  else if(evt.mode>9){ dmv.push_back(evt.dmdst0); dst0_flag = true;}
+  else                 dmv.push_back(0);
   recnum.push_back(0);
   if(!M_DATA){
-    bflags.push_back(b0f);
-    if(b0f == 1 || b0f == 5 || b0f == 10) signal_flag = true;
+    bflags.push_back(evt.b0f);
+    if(evt.b0f == 1 || evt.b0f == 5 || evt.b0f == 10) signal_flag = true;
   } else bflags.push_back(0);
-  int cur_evtn = evtn;
-  int cur_run = run;
-  for(int i=1; i<(NTot); i++){
-    if(!(i%10000)){ cout << i << " events" << ", mbc = " << mbc << endl;}
-    outtree->GetEvent(i);
+  int cur_evtn = evt.evtn;
+  int cur_run  = evt.run;
+  for(int i=1; i<NTot; i++){
+    if(!(i%10000)){ cout << i << " events" << ", mbc = " << evt.mbc << endl;}
+//    outtree->GetEvent(i);
+    intr.GetEvent(i);
     nrecords++;
-    if(cur_evtn == evtn && cur_run == run){
-      mdv.push_back(md_raw); h0v.push_back(mh0);
-      if(mode == 5)   dmv.push_back(dmetap);
-      else if(mode>9){ dmv.push_back(dmdst0); dst0_flag = true;}
-      else            dmv.push_back(0);
-      modev.push_back(mode); h0modev.push_back(h0mode);
+    if(cur_evtn == evt.evtn && cur_run == evt.run){
+      mdv.push_back(evt.md_raw); h0v.push_back(evt.mh0);
+      if(evt.mode == 5)    dmv.push_back(evt.dmetap);
+      else if(evt.mode>9){ dmv.push_back(evt.dmdst0); dst0_flag = true;}
+      else                 dmv.push_back(0);
+      modev.push_back(evt.mode); h0modev.push_back(evt.h0mode);
       recnum.push_back(i);
       if(!M_DATA){
-        bflags.push_back(b0f);
-        if(b0f == 1 || b0f == 5 || b0f == 10) signal_flag = true;
+        bflags.push_back(evt.b0f);
+        if(evt.b0f == 1 || evt.b0f == 5 || evt.b0f == 10) signal_flag = true;
       } else bflags.push_back(0);
     } else{
-      cur_evtn = evtn; cur_run = run;
+      cur_evtn = evt.evtn; cur_run = evt.run;
       nevents++;
       if(mdv.size() > 1){
         my_des = my_decision2(mdv,h0v,dmv,bflags,modev,h0modev);
-        outtree->GetEvent(recnum[my_des]);
+//        outtree->GetEvent(recnum[my_des]);
+        intr.GetEvent(recnum[my_des]);
       } else{
-        outtree->GetEvent(i-1);
+//        outtree->GetEvent(i-1);
+        intr.GetEvent(i-1);
       }
-      mult_outtree->Fill();
-      outtree->GetEvent(i);
+//      mult_outtree->Fill();
+//      outtree->GetEvent(i);
+      outr.Fill();
+      intr.GetEvent(i);
       if(signal_flag) sig_counter++;
       mdv.clear(); h0v.clear(); modev.clear(); h0modev.clear(); dmv.clear();
       recnum.clear(); bflags.clear(); dst0_flag = false; signal_flag = false;
-      mdv.push_back(md_raw); h0v.push_back(mh0);
-      if(mode == 5)   dmv.push_back(dmetap);
-      else if(mode>9){ dmv.push_back(dmdst0); dst0_flag = true;}
-      else            dmv.push_back(0);
-      modev.push_back(mode); h0modev.push_back(h0mode);
+      mdv.push_back(evt.md_raw); h0v.push_back(evt.mh0);
+      if(evt.mode == 5)    dmv.push_back(evt.dmetap);
+      else if(evt.mode>9){ dmv.push_back(evt.dmdst0); dst0_flag = true;}
+      else                 dmv.push_back(0);
+      modev.push_back(evt.mode); h0modev.push_back(evt.h0mode);
       recnum.push_back(i);
       if(!M_DATA){
-        bflags.push_back(b0f);
-        if(b0f == 1 || b0f == 5 || b0f == 10) signal_flag = true;
+        bflags.push_back(evt.b0f);
+        if(evt.b0f == 1 || evt.b0f == 5 || evt.b0f == 10) signal_flag = true;
       } else bflags.push_back(0);
     }
   }
@@ -305,196 +345,159 @@ void filter::MultiFilter(void){
     cout << "Multiplicity: " << mult << endl;
     cout << "Signal loss:  " << 100.*(totl_des-good_des)/sig_counter << endl;
   }
+
+  outr.Write();
+  ofile.Close();
   return;
 }
 
 void filter::SetInput(const int str_num, const string &angle){
   stringstream out;
+  line_in.clear();
   switch(m_type_in){
   case 0://Data
-    line_in = prefix + string("b2dh_data.root");
-    intree->Add(line_in.c_str());
-    line_out = prefix + string("Fil_b2dh_data");//.root");
-    outfile = new TFile(line_out.c_str(),"RECREATE");
+    line_in.push_back(string("b2dh_data.root"));
+    line_out = string("Fil_b2dh_data");//.root");
     M_DATA = true;
     break;
   case 11://Signal MC pi0
     if(angle != string("")){
       out.str("");
-      out << prefix << string("Linearity/b2dh_sigmcPI0") << angle << string("_s1.root");
-      line_in = out.str();
+      out << string("Linearity/b2dh_sigmcPI0") << angle << string("_s1.root");
+      line_in.push_back(out.str());
       out.str("");
-      out << prefix << string("Linearity/Fil_b2dh_sigmcPi0") << angle << string("_s1.root");
+      out << string("Linearity/Fil_b2dh_sigmcPi0") << angle << string("_s1.root");
       line_out = out.str();
     } else if(str_num){
       out.str("");
-      out << prefix << string("b2dh_sigmcPI0_s") << str_num << string(".root");
-      line_in = out.str();
+      out << string("b2dh_sigmcPI0_s") << str_num << string(".root");
+      line_in.push_back(out.str());
       out.str("");
-      out << prefix << string("Fil_b2dh_sigmcPi0_s") << str_num;// << "_" << toutstr << string(".root");
+      out << string("Fil_b2dh_sigmcPi0_s") << str_num;// << "_" << toutstr << string(".root");
       line_out = out.str();
     } else{
-      line_in = prefix + string("b2dh_sigmcPI0_s8.root");
-      line_out = prefix + string("Fil_b2dh_sigmcPi0_s8");// + toutstr + string(".root");
+      line_in.push_back(string("b2dh_sigmcPI0_s8.root"));
+      line_out = string("Fil_b2dh_sigmcPi0_s8");// + toutstr + string(".root");
     }
     M_SIGMC = true;
-    intree->Add(line_in.c_str());
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     break;
   case 101://Signal MC D*0h0
     if(str_num){
       out.str("");
-      out << prefix << string("b2dh_sigmcDST0_s") << str_num << string(".root");
-      line_in = out.str();
+      out << string("b2dh_sigmcDST0_s") << str_num << string(".root");
+      line_in.push_back(out.str());
       out.str("");
-      out << prefix << string("Fil_b2dh_sigmcDST0_s") << str_num;// << string(".root");
+      out << string("Fil_b2dh_sigmcDST0_s") << str_num;// << string(".root");
       line_out = out.str();
     } else{
-      line_in = prefix + string("b2dh_sigmcDST0_s2.root");
-      line_out = prefix + string("Fil_b2dh_sigmcDST0_s2");//.root");
+      line_in.push_back(string("b2dh_sigmcDST0_s2.root"));
+      line_out = string("Fil_b2dh_sigmcDST0_s2");//.root");
     }
     M_SIGMC = true;
-    intree->Add(line_in.c_str());
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     break;
   case 12://Signal MC eta
     if(str_num){
       out.str("");
-      out << prefix << string("b2dh_sigmcETA_s") << str_num << string(".root");
-      line_in = out.str();
+      out << string("b2dh_sigmcETA_s") << str_num << string(".root");
+      line_in.push_back(out.str());
       out.str("");
-      out << prefix << string("Fil_b2dh_sigmcETA_s") << str_num;// << string(".root");
+      out << string("Fil_b2dh_sigmcETA_s") << str_num;// << string(".root");
       line_out = out.str();
     } else{
-      line_in = prefix + string("b2dh_sigmcETA_s3.root");
-      line_out = prefix + string("Fil_b2dh_sigmcETA_s3");//.root");
+      line_in.push_back(string("b2dh_sigmcETA_s3.root"));
+      line_out = string("Fil_b2dh_sigmcETA_s3");//.root");
     }
-    intree->Add(line_in.c_str());
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     M_SIGMC = true;
     break;
   case 13://Signal MC omega
     if(angle != string("")){
       out.str("");
-      out << prefix << string("Linearity/b2dh_sigmcOMEGA") << angle << string("_s1.root");
-      line_in = out.str();
+      out << string("Linearity/b2dh_sigmcOMEGA") << angle << string("_s1.root");
+      line_in.push_back(out.str());
       out.str("");
-      out << prefix << string("Linearity/Fil_b2dh_sigmcOMEGA") << angle << string("_s1.root");
+      out << string("Linearity/Fil_b2dh_sigmcOMEGA") << angle << string("_s1.root");
       line_out = out.str();
     } else if(str_num){
       out.str("");
-      out << prefix << string("b2dh_sigmcOMEGA_s") << str_num << string(".root");
-      line_in = out.str();
+      out << string("b2dh_sigmcOMEGA_s") << str_num << string(".root");
+      line_in.push_back(out.str());
       out.str("");
-      out << prefix << string("Fil_b2dh_sigmcOMEGA_s") << str_num;// << string(".root");
+      out << string("Fil_b2dh_sigmcOMEGA_s") << str_num;// << string(".root");
       line_out = out.str();
     } else{
-      line_in = prefix + string("b2dh_sigmcOMEGA_s6.root");
-      line_out = prefix + string("Fil_b2dh_sigmcOMEGA_s6");//.root");
+      line_in.push_back(string("b2dh_sigmcOMEGA_s6.root"));
+      line_out = string("Fil_b2dh_sigmcOMEGA_s6");//.root");
     }
-    intree->Add(line_in.c_str());
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     M_SIGMC = true;
     break;
   case 14://Signal MC rho
     if(str_num){
       out.str("");
-      out << prefix << string("b2dh_sigmcRHO_s") << str_num << string(".root");
-      line_in = out.str();
+      out << string("b2dh_sigmcRHO_s") << str_num << string(".root");
+      line_in.push_back(out.str());
       out.str("");
-      out << prefix << string("Fil_b2dh_sigmcRHO_s") << str_num;// << string(".root");
+      out << string("Fil_b2dh_sigmcRHO_s") << str_num;// << string(".root");
       line_out = out.str();
     } else{
-      line_in = prefix + string("b2dh_sigmcRHO_s1.root");
-      line_out = prefix + string("Fil_b2dh_sigmcRHO_s1");//.root");
+      line_in.push_back(string("b2dh_sigmcRHO_s1.root"));
+      line_out = string("Fil_b2dh_sigmcRHO_s1");//.root");
     }
-    intree->Add(line_in.c_str());
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     M_SIGMC = true;
     break;
   case 15://Signal MC eta'
     if(str_num){
       out.str("");
-      out << prefix << string("b2dh_sigmcETAP_s") << str_num << string(".root");
-      line_in = out.str();
+      out << string("b2dh_sigmcETAP_s") << str_num << string(".root");
+      line_in.push_back(out.str());
       out.str("");
-      out << prefix << string("Fil_b2dh_sigmcETAP_s") << str_num;// << string(".root");
+      out << string("Fil_b2dh_sigmcETAP_s") << str_num;// << string(".root");
       line_out = out.str();
     } else{
-      line_in = prefix + string("b2dh_sigmcETAP_s1.root");
-      line_out = prefix + string("Fil_b2dh_sigmcETAP_s1");//.root");
+      line_in.push_back(string("b2dh_sigmcETAP_s1.root"));
+      line_out = string("Fil_b2dh_sigmcETAP_s1");//.root");
     }
-    intree->Add(line_in.c_str());
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     M_SIGMC = true;
     break;
   case 21://charged
     out.str("");
-//    out << prefix << string("b2dh_charged_") << str_num+10 << string(".root");
-    out << prefix << string("GenMC/s") << str_num << string("/b2dh_charged_") << str_num+10 << string(".root");
-    line_in = out.str();
-    intree->Add(line_in.c_str());
-    out.str("");
-//    out << prefix << string("b2dh_charged_") << str_num << string(".root");
-    out << prefix << string("GenMC/s") << str_num << string("/b2dh_charged_") << str_num << string(".root");
-    line_in = out.str();
-    intree->Add(line_in.c_str());
-    out.str("");
-    out << prefix << string("Fil_b2dh_charged_") << str_num << "_" << str_num+10;// << string(".root");
+    out << string("GenMC/s") << str_num << string("/b2dh_charged_") << str_num+10 << string(".root");
+    line_in.push_back(out.str());
+    out.str(""); out << string("GenMC/s") << str_num << string("/b2dh_charged_") << str_num << string(".root");
+    line_in.push_back(out.str());
+    out.str(""); out << string("Fil_b2dh_charged_") << str_num << "_" << str_num+10;// << string(".root");
     line_out = out.str();
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     break;
   case 22://mixed
+    out.str(""); out << string("GenMC/s") << str_num << string("/b2dh_mixed_") << str_num+10 << string(".root");
+    line_in.push_back(out.str());
+    out.str(""); out << string("GenMC/s") << str_num << string("/b2dh_mixed_") << str_num << string(".root");
+    line_in.push_back(out.str());
     out.str("");
-//    out << prefix << string("b2dh_mixed_") << str_num+10 << string(".root");
-    out << prefix << string("GenMC/s") << str_num << string("/b2dh_mixed_") << str_num+10 << string(".root");
-    line_in = out.str();
-    intree->Add(line_in.c_str());
-    out.str("");
-//    out << prefix << string("b2dh_mixed_") << str_num << string(".root");
-    out << prefix << string("GenMC/s") << str_num << string("/b2dh_mixed_") << str_num << string(".root");
-    line_in = out.str();
-    intree->Add(line_in.c_str());
-    out.str("");
-    out << prefix << string("Fil_b2dh_mixed_") << str_num << "_" << str_num+10;// << string(".root");
+    out << string("Fil_b2dh_mixed_") << str_num << "_" << str_num+10;// << string(".root");
     if(make_substitution) out << "_subs";
     line_out = out.str();
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     break;
   case 23://charm
-    out.str("");
-//    out << prefix << string("b2dh_charm_") << str_num+10 << string(".root");
-    out << prefix << string("GenMC/s") << str_num << string("/b2dh_charm_") << str_num+10 << string(".root");
-    line_in = out.str();
-    intree->Add(line_in.c_str());
-    out.str("");
-//    out << prefix << string("b2dh_charm_") << str_num << string(".root");
-    out << prefix << string("GenMC/s") << str_num << string("/b2dh_charm_") << str_num << string(".root");
-    line_in = out.str();
-    intree->Add(line_in.c_str());
-    out.str("");
-    out << prefix << string("Fil_b2dh_charm_") << str_num << "_" << str_num+10;// << string(".root");
+    out.str(""); out << string("GenMC/s") << str_num << string("/b2dh_charm_") << str_num+10 << string(".root");
+    line_in.push_back(out.str());
+    out.str(""); out << string("GenMC/s") << str_num << string("/b2dh_charm_") << str_num << string(".root");
+    line_in.push_back(out.str());
+    out.str(""); out << string("Fil_b2dh_charm_") << str_num << "_" << str_num+10;// << string(".root");
     line_out = out.str();
-//    outfile = new TFile(line_out.c_str(),"RECREATE");
     break;
   case 24://uds
-    out.str("");
-//    out << prefix << string("b2dh_uds_") << str_num+10 << string(".root");
-    out << prefix << string("GenMC/s") << str_num << string("/b2dh_uds_") << str_num+10 << string(".root");
-    line_in = out.str();
-    intree->Add(line_in.c_str());
-    out.str("");
-//    out << prefix << string("b2dh_uds_") << str_num << string(".root");
-    out << prefix << string("GenMC/s") << str_num << string("/b2dh_uds_") << str_num << string(".root");
-    line_in = out.str();
-    intree->Add(line_in.c_str());
-    out.str("");
-    out << prefix << string("Fil_b2dh_uds_") << str_num << "_" << str_num+10;// << string(".root");
+    out.str(""); out << string("GenMC/s") << str_num << string("/b2dh_uds_") << str_num+10 << string(".root");
+    line_in.push_back(out.str());
+    out.str(""); out << string("GenMC/s") << str_num << string("/b2dh_uds_") << str_num << string(".root");
+    line_in.push_back(out.str());
+    out.str(""); out << string("Fil_b2dh_uds_") << str_num << "_" << str_num+10;// << string(".root");
     line_out = out.str();
     break;
   default:
     break;
   }
+  line_out += "_v2";
+  return;
 }
 
 void filter::SetOutput(string& toutstr){
@@ -503,51 +506,51 @@ void filter::SetOutput(string& toutstr){
     toutstr = string("_m1_h0m10");
     m_out_mode = 1;
     m_out_h0mode = 10;
-    if(make_substitution && type_in == 22) insinfile = prefix + string("b2dh_sigmcPI0_s8.root");
+    if(make_substitution && m_type_in == 22) insinfile = string("b2dh_sigmcPI0_s8.root");
     break;
   case 2:
     toutstr = string("_m2_h0m10");
     m_out_mode = 2;
     m_out_h0mode = 10;
-    if(make_substitution && type_in == 22) insinfile = prefix + string("b2dh_sigmcETA_s3.root");
+    if(make_substitution && m_type_in == 22) insinfile = string("b2dh_sigmcETA_s3.root");
     break;
   case 3:
     toutstr = string("_m2_h0m20");
     m_out_mode = 2;
     m_out_h0mode = 20;
-    if(make_substitution && type_in == 22) insinfile = prefix + string("b2dh_sigmcETA_s3.root");
+    if(make_substitution && m_type_in == 22) insinfile = string("b2dh_sigmcETA_s3.root");
     break;
   case 4:
     toutstr = string("_m3_h0m20");
     m_out_mode = 3;
     m_out_h0mode = 20;
-    if(make_substitution && type_in == 22) insinfile = prefix + string("b2dh_sigmcOMEGA_s6.root");
+    if(make_substitution && m_type_in == 22) insinfile = string("b2dh_sigmcOMEGA_s6.root");
     break;
   case 5:
     toutstr = string("_m5_h0m10");
     m_out_mode = 5;
     m_out_h0mode = 10;
-    if(make_substitution && type_in == 22) insinfile = prefix + string("b2dh_sigmcETAP_s1.root");
+    if(make_substitution && m_type_in == 22) insinfile = string("b2dh_sigmcETAP_s1.root");
     break;
   case 10:
     toutstr = string("_m10_h0m10");
     m_out_mode = 10;
     m_out_h0mode = 10;
-    if(make_substitution && type_in == 22) insinfile = prefix + string("b2dh_sigmcDST0_s2.root");
+    if(make_substitution && m_type_in == 22) insinfile = string("b2dh_sigmcDST0_s2.root");
     break;
   case 20:
     toutstr = string("_m20_h0m10");
     m_out_mode = 20;
     m_out_h0mode = 10;
-    if(make_substitution && type_in == 22) insinfile = prefix + string("b2dh_sigmcDST0_s2.root");
+    if(make_substitution && m_type_in == 22) insinfile = string("b2dh_sigmcDST0_s2.root");
     break;
   default:
-    cout << "Wrong out mode " << type_out << endl;
+    cout << "Wrong out mode " << m_type_out << endl;
     return;
   }
 }
 
-int filter::SetMVA(void){
+void filter::SetMVA(void){
   ksfw1_pi0        = new rooksfw("ksfw1_pi0",   ksfw1_alpha_pi0,   ksfw1_sigpdf_pi0,   ksfw1_bkgpdf_pi0);
   ksfw1_etagg      = new rooksfw("ksfw1_etagg", ksfw1_alpha_etagg, ksfw1_sigpdf_etagg, ksfw1_bkgpdf_etagg);
   ksfw1_etappp     = new rooksfw("ksfw1_etappp",ksfw1_alpha_etappp,ksfw1_sigpdf_etappp,ksfw1_bkgpdf_etappp);
@@ -696,7 +699,7 @@ int filter::my_decision2(const vector<double>& d0mass,const vector<double>& h0ma
   vector<double> chisq_mins;
   vector<int> indexes;
   int imin = 0;
-  cout << "Cand flag[0]: " << b0fvec[0] << ", mode " << modev[0] << ", h0mode " << h0modev[0] << endl;
+//  cout << "Cand flag[0]: " << b0fvec[0] << ", mode " << modev[0] << ", h0mode " << h0modev[0] << endl;
   double chisq_min = chisq_cand(modev[0],h0modev[0],d0mass[0],h0mass[0],dmass[0]);
   chisq_mins.clear(); indexes.clear();
   chisq_mins.push_back(chisq_min);
@@ -710,7 +713,7 @@ int filter::my_decision2(const vector<double>& d0mass,const vector<double>& h0ma
       PrintVariants2(d0mass,h0mass,dmass,b0fvec,modev,h0modev);
       printflag = false;
     }
-    cout << "Cand flag[i]: " << b0fvec[i] << ", mode " << modev[i] << ", h0mode " << h0modev[i] << endl;
+//    cout << "Cand flag[i]: " << b0fvec[i] << ", mode " << modev[i] << ", h0mode " << h0modev[i] << endl;
     double chisq_cur = chisq_cand(modev[i],h0modev[i],d0mass[i],h0mass[i],dmass[i]);
     if((chisq_cur+0.0001)<chisq_min){
       chisq_min = chisq_cur;

@@ -103,7 +103,7 @@ int main(int argc, char** argv){
 // //  pfit2.ZeroSigTest(streams2,0,true);
 //  pfit2.MakeGenMCPutiryFit(streams2,0,1,0,0,true);// No mixing
 // //  pfit2.MakeGenMCPutiryFit(streams2,0,2,0,0,true,nstr,cstr);// Mixing
-  pfit2.MakeGenMCPutiryFit2(streams2,true,true);// Mixing
+  pfit2.MakeGenMCPutiryFit2(streams2,true,false);// Mixing
 
 //  return 0;
 

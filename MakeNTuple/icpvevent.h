@@ -4,6 +4,29 @@
 #include <vector>
 #include "TTree.h"
 
+template<class T> class ICPVVar{
+  ICPVVar(const T& v, const std::string& n): val(v),name(n) {}
+  T val;
+  std::string name;
+//  bool type;
+  ICPVVar& operator=(const ICPVVar& ovar){
+    this->val  = ovar.val;
+    this->name = ovar.name;
+    return *this;
+  }
+};
+
+class ICPVEvt{
+public:
+  std::vector< ICPVVar<int> >    IVars;
+  std::vector< ICPVVar<double> > DVars;
+
+//  ICPVEvt& operator=(ICPVEvt& othevt);
+//  void SetBrAddresses(TTree* tree);
+//  void SetBranches(TTree* tree);
+//  static int FillVectorWithTTree(std::vector<ICPVEvent>& vec, TTree* tree, int type, const bool second_iter, const int svd = 0);
+};
+
 class ICPVEvent{
 public:
   ICPVEvent(int type,const bool second_iter);
@@ -55,7 +78,7 @@ public:
   Int_t good_icpv;
   double lh0,lh1,bdt;
 
-//  ICPVEvent& operator=(ICPVEvent& othevt);
+  ICPVEvent& operator=(const ICPVEvent& oth);
   void SetBrAddresses(TTree* tree);
   void SetBranches(TTree* tree);
   static int FillVectorWithTTree(std::vector<ICPVEvent>& vec, TTree* tree, int type, const bool second_iter, const int svd = 0);
@@ -67,11 +90,11 @@ private:
 
 class TMVAEvent{
   public:
-  TMVAEvent(void);
+  TMVAEvent(void) {}
   Float_t m_costhBcms, m_chi2_mass_d0, m_cos_thr, m_thr_sig, m_h0_chi2, m_egamma, m_cos_hel;
   Float_t m_p_pi0_h0, m_p_pip_h0, m_p_pim_h0, m_lh0;
 
   void Fill(const ICPVEvent& evt);
-}
+};
 
 #endif // ICPVEVENT_H

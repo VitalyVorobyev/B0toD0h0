@@ -77,10 +77,12 @@ void ICPVEvent::SetBrAddresses(TTree* tree){
   tree->SetBranchAddress("pz_ks",&pz_ks);
   tree->SetBranchAddress("chi2_vtx_d0",&chi2_vtx_d0);
   tree->SetBranchAddress("chi2_mass_d0",&chi2_mass_d0);
-  if(!m_type){
+  if(m_type){
     tree->SetBranchAddress("nptag",&nptag);
-    tree->SetBranchAddress("d0_chain",&d0_chain);
-    tree->SetBranchAddress("h0_chain",&h0_chain);
+    if(!m_second_iter){
+      tree->SetBranchAddress("d0_chain",&d0_chain);
+      tree->SetBranchAddress("h0_chain",&h0_chain);
+    }
     tree->SetBranchAddress("b0id",&b0id);
     tree->SetBranchAddress("b0f",&b0f);
     tree->SetBranchAddress("d0id",&d0id);
@@ -111,14 +113,25 @@ void ICPVEvent::SetBrAddresses(TTree* tree){
   tree->SetBranchAddress("mp",&mp);
   tree->SetBranchAddress("mm",&mm);
   tree->SetBranchAddress("atckpi_max",&atckpi_max);
-  tree->SetBranchAddress("mh0_raw",&mh0);
-  tree->SetBranchAddress("mpi0_raw",&mpi0);
-  tree->SetBranchAddress("mks_raw",&mk);
-  tree->SetBranchAddress("md0_raw",&md_raw);
-  tree->SetBranchAddress("md0_fit",&md_fit);
-  tree->SetBranchAddress("md0",&md);
-  tree->SetBranchAddress("md0pip",&mdpip);
-  tree->SetBranchAddress("md0pim",&mdpim);
+  if(!m_second_iter){
+    tree->SetBranchAddress("mks_raw",&mk);
+    tree->SetBranchAddress("md0pip",&mdpip);
+    tree->SetBranchAddress("md0pim",&mdpim);
+    tree->SetBranchAddress("md0_raw",&md_raw);
+    tree->SetBranchAddress("md0",&md);
+    tree->SetBranchAddress("md0_fit",&md_fit);
+    tree->SetBranchAddress("mh0_raw",&mh0);
+    tree->SetBranchAddress("mpi0_raw",&mpi0);
+  } else{
+    tree->SetBranchAddress("mk",&mk);
+    tree->SetBranchAddress("mdpip",&mdpip);
+    tree->SetBranchAddress("mdpim",&mdpim);
+    tree->SetBranchAddress("md_raw",&md_raw);
+    tree->SetBranchAddress("md",&md);
+    tree->SetBranchAddress("md_fit",&md_fit);
+    tree->SetBranchAddress("mh0",&mh0);
+    tree->SetBranchAddress("mpi0",&mpi0);
+  }
   tree->SetBranchAddress("mdst0",&mdst0);
   tree->SetBranchAddress("metap",&metap);
   tree->SetBranchAddress("dmetap",&dmetap);
@@ -233,7 +246,7 @@ void ICPVEvent::SetBranches(TTree* tree){
   tree->Branch("pz_ks",&pz_ks,"pz_ks/D");
   tree->Branch("chi2_vtx_d0",&chi2_vtx_d0,"chi2_vtx_d0/D");
   tree->Branch("chi2_mass_d0",&chi2_mass_d0,"chi2_mass_d0/D");
-  if(!m_type){
+  if(m_type){
     tree->Branch("nptag",&nptag,"nptag/I");
     tree->Branch("bin_mc",&bin_mc,"bin_mc/I");
     tree->Branch("flv_mc",&flv_mc,"flv_mc/I");
@@ -349,7 +362,7 @@ void ICPVEvent::SetBranches(TTree* tree){
   return;
 }
 
-static int ICPVEvent::FillVectorWithTTree(std::vector<ICPVEvent>& vec, TTree* tree,int type,const bool second_iter,const int svd){
+int ICPVEvent::FillVectorWithTTree(std::vector<ICPVEvent>& vec, TTree* tree,int type,const bool second_iter,const int svd){
   vec.clear();
   const int NTot = tree->GetEntries();
   ICPVEvent evt(type,second_iter);
@@ -361,6 +374,145 @@ static int ICPVEvent::FillVectorWithTTree(std::vector<ICPVEvent>& vec, TTree* tr
     vec.push_back(evt);
   }
   return vec.size();
+}
+
+ICPVEvent& ICPVEvent::operator=(const ICPVEvent& oth){
+  this->exp = oth.exp;
+  this->run = oth.run;
+  this->evtn = oth.evtn;
+  this->p_d0 = oth.p_d0;
+  this->p_h0 = oth.p_h0;
+  this->p_pi0_h0 = oth.p_pi0_h0;
+  this->p_pip_h0 = oth.p_pip_h0;
+  this->p_pim_h0 = oth.p_pim_h0;
+  this->egamma   = oth.egamma;
+  this->cos_thr  = oth.cos_thr;
+  this->cos_hel  = oth.cos_hel;
+  this->thr_sig  = oth.thr_sig;
+  this->thr_oth  = oth.thr_oth;
+  this->phsp     = oth.phsp;
+  this->bin      = oth.bin;
+  this->hel_h0   = oth.hel_h0;
+  this->hel_pi0  = oth.hel_pi0;
+  this->e_g1   = oth.e_g1;
+  this->e_g2   = oth.e_g2;
+  this->e_g3   = oth.e_g3;
+  this->e_g4   = oth.e_g4;
+  this->th_g1   = oth.th_g1;
+  this->th_g2   = oth.th_g2;
+  this->th_g3   = oth.th_g3;
+  this->th_g4   = oth.th_g4;
+  this->r_pip   = oth.r_pip;
+  this->r_pim   = oth.r_pim;
+  this->r_pi1   = oth.r_pi1;
+  this->r_pi2   = oth.r_pi2;
+  this->z_pip   = oth.z_pip;
+  this->z_pim   = oth.z_pim;
+  this->z_pi1   = oth.z_pi1;
+  this->z_pi2   = oth.z_pi2;
+  this->pt_pip   = oth.pt_pip;
+  this->pt_pim   = oth.pt_pim;
+  this->pt_pi1   = oth.pt_pi1;
+  this->pt_pi2   = oth.pt_pi2;
+  this->px_pim   = oth.px_pim;
+  this->py_pim   = oth.py_pim;
+  this->pz_pim   = oth.pz_pim;
+  this->px_pip   = oth.px_pip;
+  this->py_pip   = oth.py_pip;
+  this->pz_pip   = oth.pz_pip;
+  this->px_ks   = oth.px_ks;
+  this->py_ks   = oth.py_ks;
+  this->pz_ks   = oth.pz_ks;
+  this->chi2_vtx_d0   = oth.chi2_vtx_d0;
+  this->chi2_mass_d0   = oth.chi2_mass_d0;
+  this->t_sig_mc   = oth.t_sig_mc;
+  this->z_sig_mc   = oth.z_sig_mc;
+  this->t_asc_mc   = oth.t_asc_mc;
+  this->z_asc_mc   = oth.z_asc_mc;
+  this->mp_raw   = oth.mp_raw;
+  this->mm_raw   = oth.mm_raw;
+  this->mp_mc   = oth.mp_mc;
+  this->mm_mc   = oth.mm_mc;
+  this->d0_t_mc   = oth.d0_t_mc;
+  this->dt_mc   = oth.dt_mc;
+  this->dz_mc   = oth.dz_mc;
+  this->dz_mc_sig   = oth.dz_mc_sig;
+  this->dz_mc_asc   = oth.dz_mc_asc;
+  this->b0f   = oth.b0f;
+  this->d0f   = oth.d0f;
+  this->h0f   = oth.h0f;
+  this->pi0f   = oth.pi0f;
+  this->bin_mc   = oth.bin_mc;
+  this->flv_mc   = oth.flv_mc;
+  this->nptag   = oth.nptag;
+  this->d0ch0   = oth.d0ch0;
+  this->d0ch1   = oth.d0ch1;
+  this->d0ch2   = oth.d0ch2;
+  this->d0ch3   = oth.d0ch3;
+  this->h0ch0   = oth.h0ch0;
+  this->h0ch1   = oth.h0ch1;
+  this->rndm_pi0   = oth.rndm_pi0;
+  this->b0id   = oth.b0id;
+  this->d0id   = oth.d0id;
+  this->h0id   = oth.h0id;
+  this->dst0id   = oth.dst0id;
+  this->dst0f   = oth.dst0f;
+  this->etapid   = oth.etapid;
+  this->etapf   = oth.etapf;
+  this->d0_flv_mc   = oth.d0_flv_mc;
+  this->mbc   = oth.mbc;
+  this->de   = oth.de;
+  this->mp   = oth.mp;
+  this->mm   = oth.mm;
+  this->dz   = oth.dz;
+  this->atckpi_max   = oth.atckpi_max;
+  this->mpi0   = oth.mpi0;
+  this->mh0   = oth.mh0;
+  this->mk   = oth.mk;
+  this->md   = oth.md;
+  this->md_raw   = oth.md_raw;
+  this->md_fit   = oth.md_fit;
+  this->mdpip   = oth.mdpip;
+  this->mdpim   = oth.mdpim;
+  this->mdst0   = oth.mdst0;
+  this->metap   = oth.metap;
+  this->dmdst0   = oth.dmdst0;
+  this->dmetap   = oth.dmetap;
+  this->mode   = oth.mode;
+  this->h0mode   = oth.h0mode;
+  this->z_sig   = oth.z_sig;
+  this->z_asc   = oth.z_asc;
+  this->sz_sig   = oth.sz_sig;
+  this->sz_asc   = oth.sz_asc;
+  this->ntrk_sig   = oth.ntrk_sig;
+  this->ntrk_asc   = oth.ntrk_asc;
+  this->ndf_z_sig   = oth.ndf_z_sig;
+  this->ndf_z_asc   = oth.ndf_z_asc;
+  this->chisq_z_sig   = oth.chisq_z_sig;
+  this->chisq_z_asc   = oth.chisq_z_asc;
+  this->cl_z_sig   = oth.cl_z_sig;
+  this->cl_z_asc   = oth.cl_z_asc;
+  this->h0_chi2   = oth.h0_chi2;
+  this->pi0_chi2   = oth.pi0_chi2;
+  this->costhBcms   = oth.costhBcms;
+  this->tag_LH   = oth.tag_LH;
+  this->tag_LH_err   = oth.tag_LH_err;
+  this->flv   = oth.flv;
+  this->good_icpv   = oth.good_icpv;
+  this->lh0   = oth.lh0;
+  this->lh1   = oth.lh1;
+  this->bdt   = oth.bdt;
+  for(int i=0; i<8; i++){
+    this->d0_chain[i] = oth.d0_chain[i];
+    this->h0_chain[i] = oth.h0_chain[i];
+  }
+  this->k0mm2   = oth.k0mm2;
+  this->k1mm2   = oth.k1mm2;
+  for(int i=0; i<17; i++){
+    this->k0vars[i] = oth.k0vars[i];
+    this->k1vars[i] = oth.k1vars[i];
+  }
+  return *this;
 }
 
 void TMVAEvent::Fill(const ICPVEvent& evt){

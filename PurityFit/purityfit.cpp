@@ -425,20 +425,23 @@ RooDataSet* PurityFit::GetGenMCDataSet(const vector<int> streams){
   TChain* tree = new TChain("TEvent","TEvent");
   stringstream out;
   for(int i=0; i<streams.size(); i++){
-    out.str("");
-    out << "_" << streams[i] << "_1" << streams[i] << "_m" << m_mode << "_h0m" << m_h0mode << ".root";
+    out.str(""); out << "_" << streams[i] << "_1" << streams[i];
+    const string str_line = out.str();
+    out.str(""); out << "_m" << m_mode << "_h0m" << m_h0mode << ".root";
+    const string mode_line = out.str();
     const string prefix("/home/vitaly/B0toDh0/Tuples/Fil_b2dh_");
     string line;
     if(m_bb_or_cnt_flag != 2){
-      line = prefix + string("uds")     + out.str();
+      line = prefix + string("uds")     + str_line + mode_line;
       tree->Add(line.c_str());
-      line = prefix + string("charm")   + out.str();
+      line = prefix + string("charm")   + str_line + mode_line;
       tree->Add(line.c_str());
     }
     if(m_bb_or_cnt_flag != 1){
-      line = prefix + string("mixed")   + out.str();
+      line = prefix + string("mixed")   + str_line + string("_subs_v2") + mode_line;
+      cout << line << endl;
       tree->Add(line.c_str());
-      line = prefix + string("charged") + out.str();
+      line = prefix + string("charged") + str_line + mode_line;
       tree->Add(line.c_str());
     }
   }

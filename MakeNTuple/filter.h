@@ -26,6 +26,7 @@ public:
   filter(const int type_in,const int type_out, const int str_num=0, const std::string& angle = std::string(""));
   void MakeNTuples(void);
 private:
+  void PrepareSigEvtVec(vector<ICPVEvent>& vec1,vector<ICPVEvent>& vec2,vector<int>& ind1,vector<int>& ind2);
   void SetMVA(void);
   void SetInput(const int str_num, const std::string& angle);
   void SetOutput(std::string& toutstr);
@@ -36,47 +37,47 @@ private:
   void SetBranches(TTree* tree);
   std::string prefix;
   std::string line_out;
-  std::string line_in;
-  TChain* intree;
+  std::vector< std::string > line_in;
+//  TChain* intree;
 //  TChain* insigchain;
 //  TTree* insigtree_svd1;
 //  TTree* insigtree_svd2;
-  TFile* outfile;
-  TTree* outtree;
-  TTree* mult_outtree;
-  std::vector<int> sigindex_svd1;
-  std::vector<int> sigindex_svd2;
+//  TFile* outfile;
+//  TTree* outtree;
+//  TTree* mult_outtree;
+//  std::vector<int> sigindex_svd1;
+//  std::vector<int> sigindex_svd2;
   std::string insinfile;
-  rooksfw* ksfw1_pi0;
-  rooksfw* ksfw1_etagg;
-  rooksfw* ksfw1_etappp;
-  rooksfw* ksfw1_omega;
-  rooksfw* ksfw0_pi0;
-  rooksfw* ksfw0_etagg;
-  rooksfw* ksfw0_etappp;
-  rooksfw* ksfw0_omega;
+//  rooksfw* ksfw1_pi0;
+//  rooksfw* ksfw1_etagg;
+//  rooksfw* ksfw1_etappp;
+//  rooksfw* ksfw1_omega;
+//  rooksfw* ksfw0_pi0;
+//  rooksfw* ksfw0_etagg;
+//  rooksfw* ksfw0_etappp;
+//  rooksfw* ksfw0_omega;
 
-  rooksfw* ksfw0_dst0pi0;
-  rooksfw* ksfw0_dst0etagg;
-  rooksfw* ksfw0_dst0etappp;
-  rooksfw* ksfw0_etapgg;
-  rooksfw* ksfw0_etapppp;
+//  rooksfw* ksfw0_dst0pi0;
+//  rooksfw* ksfw0_dst0etagg;
+//  rooksfw* ksfw0_dst0etappp;
+//  rooksfw* ksfw0_etapgg;
+//  rooksfw* ksfw0_etapppp;
 
-  rooksfw* ksfw1_dst0pi0;
-  rooksfw* ksfw1_dst0etagg;
-  rooksfw* ksfw1_dst0etappp;
-  rooksfw* ksfw1_etapgg;
-  rooksfw* ksfw1_etapppp;
+//  rooksfw* ksfw1_dst0pi0;
+//  rooksfw* ksfw1_dst0etagg;
+//  rooksfw* ksfw1_dst0etappp;
+//  rooksfw* ksfw1_etapgg;
+//  rooksfw* ksfw1_etapppp;
 
   double lh(const int mode, const int h0mode, const double& kmm2,const double* kvars,const bool fsf = false);
   double BDT(const int mode, const int h0mode);
 
   MyParams* cuts;
 
-  TMVA::Reader* reader_pi0;
-  TMVA::Reader* reader_gg;
-  TMVA::Reader* reader_ppp;
-  TMVA::Reader* reader_omega;
+//  TMVA::Reader* reader_pi0;
+//  TMVA::Reader* reader_gg;
+//  TMVA::Reader* reader_ppp;
+//  TMVA::Reader* reader_omega;
   TMVAEvent tmvaevt;
 //  Float_t m_costhBcms, m_chi2_mass_d0, m_cos_thr, m_thr_sig, m_h0_chi2, m_egamma, m_cos_hel;
 //  Float_t m_p_pi0_h0, m_p_pip_h0, m_p_pim_h0, m_lh0;
@@ -105,7 +106,7 @@ private:
   int m_type_in, m_type_out;
   int m_out_mode, m_out_h0mode;
 
-  ICPVEvent evt;
+//  ICPVEvent* evt;
 };
 
 #endif // FILTER_H
